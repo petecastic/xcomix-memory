@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Domino & Pickle's Hoagie Stand | X-COMIX</title>
+<meta name="twitter:card" content="player">
+<meta name="twitter:site" content="@mrpetecastic">
+<meta name="twitter:title" content="Domino & Pickle's Hoagie Stand">
+<meta name="twitter:description" content="An old-school idle tycoon: set the price, buy the rolls, watch the weather, hire Grizz. Free in your browser.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/hoagie/promo.jpg">
+<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/hoagie/embed.html">
+<meta name="twitter:player:width" content="480">
+<meta name="twitter:player:height" content="480">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="hoagie.css">
+</head><body class="embed">
+<div class="win" id="app">
+ <div class="tb"><span class="ico"></span><span class="t">Domino &amp; Pickle's Hoagie Stand</span><button class="tbb" id="snd" title="Sound">&#128263;</button></div>
+ 
+ <div class="hud">
+  <span class="cell">Day <b id="hDay">1</b></span>
+  <span class="cell">$<b id="hMoney">0.00</b></span>
+  <span class="cell" title="Reputation"><b id="hRep">&#9733;</b></span>
+  <span class="cell" title="Today / tomorrow"><b id="hWx">&#9728;</b></span>
+  <span class="cell" id="hSqC" title="Golden Squeakers"><b id="hSq"></b></span>
+ </div>
+ <div class="main">
+  <div class="left">
+   <div class="scene"><canvas id="cv" width="640" height="360"></canvas></div>
+   <div class="ctrl">
+    <button class="btn big" id="go">OPEN STAND &#9654;</button>
+    <button class="btn" id="spd" title="Speed">1x</button>
+    <button class="btn" id="auto" title="Idle mode">AUTO: OFF</button>
+   </div>
+  </div>
+  <div class="right">
+   <div class="tabs" id="tabs"></div>
+   <div class="panel" id="panel"></div>
+  </div>
+ </div>
+</div>
+
+<div class="ovl" id="ovl"><div class="win dlg"><div class="tb"><span class="ico"></span><span class="t" id="dT">Notice</span></div><div class="bd" id="dB"></div><div class="btns" id="dBtns"></div></div></div>
+<div id="start"><div class="win dlg"><div class="tb"><span class="ico"></span><span class="t">Domino &amp; Pickle's Hoagie Stand</span></div><div class="bd">
+<div class="hero"><img src="img/domino_stand.png" alt="Domino"><img class="s" src="img/pickle_sit.png" alt="Pickle"></div>
+<div style="font-weight:bold;margin-top:6px">Pawsington Falls Hoagie Tycoon</div>
+<div style="font-size:11px">Set the price. Stock the rolls. Mind the weather.</div>
+<button class="btn go blink" id="startBtn">TAP TO START</button>
+</div></div></div>
+<script src="hoagie.js"></script>
+</body></html>
