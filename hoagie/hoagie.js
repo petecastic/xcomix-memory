@@ -545,8 +545,8 @@ function shareURL(){
   var last=S.hist.length?S.hist[S.hist.length-1]:null;
   var t='Domino and Pickle\'s hoagie stand is open in Pawsington Falls.';
   if(last)t='My Domino and Pickle hoagie stand made $'+money(S.life)+' by Day '+S.day+(S.crumbs?', and the crumb trail led to Pickle\'s bed '+S.crumbs+(S.crumbs===1?' time':' times'):'')+'.';
-  t+='\n\nSee you in another timeline.';
-  return 'https://x.com/intent/post?text='+encodeURIComponent(t)+'&url='+encodeURIComponent(URL_GAME);
+  t+='\n\nPlay free: '+URL_GAME+'\n\nSee you in another timeline.';
+  return 'https://x.com/intent/post?text='+encodeURIComponent(t);
 }
 function msg(title,body,btns){
   $('dT').textContent=title;$('dB').innerHTML=body;var b=$('dBtns');b.innerHTML='';
