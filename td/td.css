@@ -2,7 +2,7 @@
 html,body{margin:0;padding:0;background:#120d1f;color:#eef;font-family:"Trebuchet MS",Verdana,Arial,sans-serif;-webkit-text-size-adjust:100%}
 body{background:radial-gradient(ellipse at 50% -10%,#3a1f4a 0,#1a1230 45%,#0c0916 100%) fixed;min-height:100vh}
 #app{margin:0 auto;max-width:880px;position:relative;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
-#app.ingame{max-width:none}
+#app.ingame{max-width:100vw}#hud,#bar,#stage{max-width:100%;box-sizing:border-box}.tb,.next{flex-shrink:0}
 img{-webkit-user-drag:none}
 .scr{padding:10px}
 #scrGame{padding:0}
@@ -51,7 +51,7 @@ img{-webkit-user-drag:none}
 .hr{display:flex;gap:4px;margin-left:auto}
 #stage{position:relative;background:#000;line-height:0}#cv{display:block;touch-action:none;cursor:crosshair}
 #bar{display:flex;gap:6px;padding:5px;background:linear-gradient(#2a2050,#17112e);border-top:2px solid #0a0716;align-items:stretch;min-height:86px}
-.shop{display:flex;gap:4px;overflow-x:auto;flex:1;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+.shop{display:flex;gap:4px;overflow-x:auto;flex:1 1 0;min-width:0;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
 .tb{flex:none;width:66px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:3px 2px;border-radius:8px;border:1px solid #0a0716;cursor:pointer;color:#fff;font-family:inherit;
  background:linear-gradient(#4a3f78,#2b2152);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
 .tb img{height:44px;max-width:60px;object-fit:contain;filter:drop-shadow(0 2px 0 rgba(0,0,0,.5))}
@@ -93,3 +93,5 @@ body.embed .intro{display:none}
 body.embed .scr:not(#scrGame){height:100vh;overflow:auto}
 body.embed .title{min-height:100vh;justify-content:center;padding:8px;gap:10px;border-radius:0}
 body.embed .tag{display:none}
+
+#cv{max-width:100%}#stage{overflow:hidden}

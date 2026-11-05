@@ -437,7 +437,7 @@ function onDown(ev){if(!G||G.over)return;var p=tile(ev),touch=ev.pointerType?ev.
  var hitT=null;for(var i=0;i<G.tw.length;i++)if(G.tw[i].c===p.c&&G.tw[i].r===p.r)hitT=G.tw[i];
  G.sel=hitT;ui.sel();}
 function onMove(ev){if(!G||!G.place||(ev.pointerType&&ev.pointerType!=='mouse'))return;var p=tile(ev);G.ghost={c:p.c,r:p.r};G.ghostTouch=false;}
-function layout(){var app=$('app');if(!app||!cv)return;var vw=window.innerWidth||800,vh=window.innerHeight||600,hud=$('hud'),bar=$('bar'),it=$('introTxt');
+function layout(){var app=$('app');if(!app||!cv)return;var vw=Math.min(window.innerWidth||800,(document.documentElement&&document.documentElement.clientWidth)||9999,(screen&&screen.width)||9999),vh=window.innerHeight||600,hud=$('hud'),bar=$('bar'),it=$('introTxt');
  var hudH=hud?hud.offsetHeight:34,barH=bar?bar.offsetHeight:96,extra=EMBED?0:(it?it.offsetHeight:0)+12;
  var w=Math.min(vw,880),mh=w*H/W;if(mh+hudH+barH+extra>vh){mh=Math.max(120,vh-hudH-barH-extra);w=Math.min(vw,mh*W/H);}
  w=Math.floor(w);app.style.width=w+'px';var h=Math.floor(w*H/W);$('stage').style.height=h+'px';
@@ -493,7 +493,7 @@ function go(mi,mode,daily){$('dlg').style.display='none';G=newGame(mi,mode,daily
  $('pause').innerHTML='&#10074;&#10074;';showScr('scrGame');ui.shop();ui.sel();ui.hud();layout();
  bubble(W/2,H/2,G.daily?'DAILY: '+G.daily.mod.n+'. '+G.daily.mod.d:G.map.n+'. '+G.map.place,3.5);try{window.scrollTo(0,0);}catch(e){}}
 function stars3(n){var s='';for(var k=0;k<3;k++)s+='<span class="'+(k<n?'on':'')+'">&#9733;</span>';return s;}
-function maps(){G=null;showScr('scrMaps');var l=level(S.xp),nx=LV[l],pv=LV[l-1]||0,i;
+function maps(){G=null;try{$('dlg').style.display='none';}catch(e){}showScr('scrMaps');var l=level(S.xp),nx=LV[l],pv=LV[l-1]||0,i;
  $('lvl').textContent=l;$('xpb').style.width=(nx===undefined?100:clamp((S.xp-pv)/(nx-pv)*100,0,100))+'%';$('xpt').textContent=S.xp+' XP'+(nx!==undefined?' / '+nx:'');
  var nu=null;for(i=0;i<TW.length;i++)if(TW[i].lv>l&&(!nu||TW[i].lv<nu.lv))nu=TW[i];
  $('nextUnl').innerHTML=nu?'Next tower at Lv '+nu.lv+': <b>'+esc(nu.n)+'</b> ('+esc(nu.show)+')':'Every tower unlocked. Go for Hard and Endless.';
