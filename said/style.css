@@ -1,0 +1,7 @@
+.modes{display:flex;gap:6px;margin:6px 0}.modes button{flex:1}
+#line{background:#fff;color:#000;border:3px solid #000;border-radius:18px;padding:14px;font:800 19px/1.25 "Comic Sans MS","Comic Neue",system-ui;text-align:center;min-height:84px;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:4px 4px 0 #ff2e63;margin:8px 0 14px}
+#line:after{content:"";position:absolute;bottom:-14px;left:40px;border:12px solid transparent;border-top-color:#fff;border-bottom:0}
+#opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}#opts button.ok{background:#2c2}#opts button.no{background:#e33}
+#reveal{margin-top:10px;text-align:center;min-height:120px}#reveal img{width:100%;max-width:360px;border:3px solid #000;border-radius:8px;display:block;margin:0 auto 4px}
+.mystery{font:900 70px Impact;color:#333}
+body.embed #line{font-size:15px;min-height:56px;padding:8px;margin:4px 0 10px}body.embed #reveal{min-height:0}body.embed #reveal img{max-width:220px}body.embed .mystery{font-size:40px}body.embed #opts button{padding:7px 4px;font-size:12px}

@@ -11,7 +11,7 @@ function start(mode){mode=mode||st?.mode||'easy';const[n,cols]=MODES[mode];
  document.querySelectorAll('[data-mode]').forEach(b=>b.classList.toggle('on',b.dataset.mode===mode));
  board.style.setProperty('--cols',cols);board.innerHTML='';$('#win').hidden=true;$('#quip').textContent=mode==='daily'?'Daily board · '+today():'Flip two cards. Find the pairs.';
  deck.forEach(({c})=>{const el=document.createElement('button');el.className='card';el.dataset.id=c[0];el.setAttribute('aria-label','card');
-  el.innerHTML=`<div class="in"><div class="f back"><span>X</span><small>COMIX</small></div><div class="f front"><img src="cards/${c[0]}.webp" alt="${c[1]}" loading="eager" decoding="async"><b>${c[1]}</b></div></div>`;
+  el.innerHTML=`<div class="in"><div class="f back"><span>X</span><small>COMIX</small></div><div class="f front"><img src="${window.CARDS||"cards/"}${c[0]}.webp" alt="${c[1]}" loading="eager" decoding="async"><b>${c[1]}</b></div></div>`;
   el.addEventListener('click',()=>flip(el,c));board.appendChild(el)});hud();showBest()}
 function hud(){$('#moves').textContent=st.moves;const s=st.t0?Math.floor((Date.now()-st.t0)/1000):0;$('#time').textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');return s}
 function flip(el,c){if(st.lock||el.classList.contains('up'))return;
@@ -26,10 +26,8 @@ function win(){clearInterval(st.timer);const secs=hud();let b=null;try{b=JSON.pa
  const rec=!b||st.moves<b.moves||(st.moves===b.moves&&secs<b.secs);if(rec)try{localStorage.setItem(key(),JSON.stringify({moves:st.moves,secs}))}catch(e){}
  const label=st.mode==='daily'?'Daily '+today():st.mode[0].toUpperCase()+st.mode.slice(1);
  const text=`I matched all ${st.n} X-COMIX pairs (${label}) in ${st.moves} moves and ${secs}s! 🃏 Can you beat me? #XCOMIX`;
- const url=location.href.startsWith('http')&&!/localhost|127\.|0\.0\.0\.0/.test(location.host)?location.href.replace('embed.html','index.html'):'';
+ const url='https://petecastic.github.io/xcomix-memory/memory/';
  $('#share').href='https://x.com/intent/post?text='+encodeURIComponent(text)+(url?'&url='+encodeURIComponent(url):'');
  $('#stats').textContent=`${st.n} pairs · ${st.moves} moves · ${secs}s`+(rec?' · NEW BEST!':'');$('#win').hidden=false;showBest()}
 document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>start(b.dataset.mode));$('#again').onclick=()=>start();
 start(document.body.dataset.start||'easy');
-(()=>{const d=new URLSearchParams(location.search).get('demo');if(!d)return;const cs=[...board.children],by={};cs.forEach(c=>(by[c.dataset.id]=by[c.dataset.id]||[]).push(c));const ps=Object.values(by);
-const k=d==='win'?ps.length:3;ps.slice(0,k).forEach(([a,b])=>{a.click();b.click()});if(d==='board'){cs.find(c=>!c.classList.contains('up')).click()}})();

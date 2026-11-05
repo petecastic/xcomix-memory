@@ -1,0 +1,20 @@
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
+html,body{background:#0d0d14;color:#fff;font:600 15px/1.25 system-ui,-apple-system,"Segoe UI",sans-serif;min-height:100%;overscroll-behavior:none}
+body{background:radial-gradient(circle at 20% 0,#2a1a4a,#0d0d14 60%);padding:10px max(10px,env(safe-area-inset-left)) 20px}
+.wrap{max-width:520px;margin:0 auto}
+h1{font:900 28px/1 Impact,"Arial Black",sans-serif;letter-spacing:1px;text-align:center;-webkit-text-stroke:1.5px #000;text-shadow:3px 3px 0 #ff2e63}
+h1 span{color:#ffd400}.sub{text-align:center;color:#bbb;font-size:12px;margin:4px 0 8px}
+button,.btn{font:800 14px system-ui;padding:10px 6px;border:3px solid #000;border-radius:10px;background:#272738;color:#fff;box-shadow:3px 3px 0 #000;text-decoration:none;text-align:center;touch-action:manipulation;cursor:pointer;display:inline-block}
+button.on,.btn.go{background:#ffd400;color:#000}
+.hud{display:flex;justify-content:space-between;background:#000;border:2px solid #ffd400;border-radius:10px;padding:7px 10px;font-size:13px;margin:6px 0}.hud b{color:#ffd400}
+.quip{min-height:2.4em;margin:6px 2px;font-size:14px;text-align:center;color:#ddd}.quip b{color:#ff5c8a}
+#over{position:fixed;inset:0;background:#000c;display:flex;align-items:center;justify-content:center;padding:16px;z-index:9}#over[hidden]{display:none}
+.panel{background:#1b1b2b;border:4px solid #000;outline:3px solid #ffd400;border-radius:16px;padding:18px;text-align:center;max-width:340px;width:100%;box-shadow:6px 6px 0 #ff2e63}
+.panel h2{font:900 32px Impact,sans-serif;color:#ffd400;-webkit-text-stroke:1px #000}.panel p{margin:10px 0 14px}.panel img{max-width:100%;border:3px solid #000;border-radius:8px;margin-bottom:8px}
+.row{display:flex;gap:8px}.row>*{flex:1}.share{background:#fff!important;color:#000!important}
+footer{text-align:center;color:#888;font-size:11px;margin-top:12px}footer a{color:#ffd400}
+.back{position:absolute;left:10px;top:10px;font-size:12px;color:#ffd400;text-decoration:none}
+body.embed{padding:6px}body.embed h1{font-size:20px}body.embed .sub,body.embed footer,body.embed .back{display:none}body.embed .wrap{max-width:470px}body.embed .hud{padding:4px 8px;margin:4px 0}body.embed .quip{min-height:1.3em;margin:3px;font-size:12px}
+[hidden]{display:none!important}
+body:not(.embed) h1{margin-top:18px}
+body.embed #go{padding:6px;font-size:14px;margin:4px auto}

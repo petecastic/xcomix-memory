@@ -1,0 +1,3 @@
+#cv{width:100%;max-width:520px;display:block;margin:4px auto;border:3px solid #000;border-radius:12px;touch-action:none;box-shadow:4px 4px 0 #ff2e63;aspect-ratio:4/3;background:#120c24}
+#go{display:block;margin:8px auto;width:70%;font-size:18px}
+body.embed #cv{max-width:440px}

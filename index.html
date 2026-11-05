@@ -1,18 +1,28 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<title>X-COMIX Memory Match</title><meta name="theme-color" content="#0d0d14">
-<meta name="description" content="Flip cards, match the X-COMIX crew. Daily board for everyone.">
-<!-- Replace https://petecastic.github.io/xcomix-memory with the final public HTTPS URL. Player cards need X approval; the image is the fallback. -->
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@mrpetecastic">
-<meta name="twitter:title" content="X-COMIX Memory Match"><meta name="twitter:description" content="Flip two cards, find the pairs. Beat today's Daily board.">
-<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/embed.html"><meta name="twitter:player:width" content="480"><meta name="twitter:player:height" content="480">
-<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/shots/promo.png">
-<meta property="og:title" content="X-COMIX Memory Match"><meta property="og:type" content="website"><meta property="og:url" content="https://petecastic.github.io/xcomix-memory/">
-<meta property="og:image" content="https://petecastic.github.io/xcomix-memory/shots/promo.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="675">
-<link rel="stylesheet" href="style.css"></head><body class="" data-start="easy"><div class="wrap">
-<h1>X-<span>COMIX</span> MATCH</h1>
-<div class="modes"><button data-mode="easy">Easy</button><button data-mode="medium">Medium</button><button data-mode="hard">Hard</button><button data-mode="daily">Daily</button></div>
-<div class="hud"><span>Moves <b id="moves">0</b></span><span>⏱ <b id="time">0:00</b></span><span>Best <b id="best">—</b></span></div>
-<div id="quip"></div><div id="board"></div><footer>X-COMIX by @mrpetecastic · #XCOMIX</footer></div>
-<div id="win" hidden><div class="panel"><h2>ALL MATCHED!</h2><p id="stats"></p><div class="row"><button id="again">Play again</button><a id="share" class="btn" target="_blank" rel="noopener">Share on 𝕏</a></div></div></div>
-<script src="game.js" defer></script></body></html>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>X-COMIX Arcade · 3 AM Valley</title><meta name="theme-color" content="#0d0d14">
+<meta name="description" content="Six free X-COMIX MULTIVERSE games. Memory Match, Suspicious Moose, Bear Fetch, Who Said It?, Panel Panic and Overmind Says.">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@mrpetecastic"><meta name="twitter:title" content="X-COMIX Arcade · 3 AM Valley">
+<meta name="twitter:description" content="Six free X-COMIX MULTIVERSE games. Tap and play."><meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/arcade.jpg">
+<meta property="og:title" content="X-COMIX Arcade · 3 AM Valley"><meta property="og:type" content="website"><meta property="og:url" content="https://petecastic.github.io/xcomix-memory/">
+<meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/arcade.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="675">
+<link rel="stylesheet" href="arcade/common.css"><style>
+.clock{margin:8px auto 4px;width:92px;height:92px;border-radius:50%;background:#f5e6b8;border:5px solid #000;box-shadow:0 0 30px #ffd40088;display:flex;align-items:center;justify-content:center;font:900 22px Impact,sans-serif;color:#000}
+.lead{text-align:center;color:#ccc;font-size:13px;margin:6px 8px 12px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{display:block;text-decoration:none;color:#fff;background:#1b1b2b;border:3px solid #000;border-radius:14px;overflow:hidden;box-shadow:4px 4px 0 #000;position:relative}
+.tile img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:3px solid #000}
+.tile b{display:block;font:900 17px Impact,sans-serif;letter-spacing:.5px;padding:6px 8px 0;color:#ffd400}.tile small{display:block;padding:2px 8px 8px;color:#bbb;font-size:11px;font-weight:600}
+.tile.big{grid-column:1/-1;box-shadow:5px 5px 0 #ff2e63}.tile.big b{font-size:24px}
+.tile i{position:absolute;top:6px;right:6px;font-style:normal;font-size:10px;background:#ff2e63;border:2px solid #000;border-radius:6px;padding:2px 5px}
+</style></head><body><div class="wrap">
+<h1>X-<span>COMIX</span> ARCADE</h1><div class="clock">12:49</div>
+<p class="lead">The mill clock's stuck at 12:49 and Circuit 13 just blinked. Every world in the 3 AM Valley is one tap away.</p>
+<div class="grid">
+<a class="tile big" href="memory/"><img src="shots/promo.png" alt=""><i>DAILY</i><b>MEMORY MATCH</b><small>Flip cards, match the X-COMIX crew. Easy, Medium, Hard and a Daily board.</small></a>
+<a class="tile" href="moose/"><img src="arcade/promo/moose.jpg" alt=""><b>SUSPICIOUS MOOSE</b><small>Tap Krampus in the Mill Street windows. Not Marjorie.</small></a>
+<a class="tile" href="fetch/"><img src="arcade/promo/fetch.jpg" alt=""><b>BEAR FETCH</b><small>Jump Bucky the Goose, grab Sal's hoagies.</small></a>
+<a class="tile" href="said/"><img src="arcade/promo/said.jpg" alt=""><i>DAILY</i><b>WHO SAID IT?</b><small>Real lines from the valley cast. Keep your streak.</small></a>
+<a class="tile" href="panels/"><img src="arcade/promo/panels.jpg" alt=""><i>DAILY</i><b>PANEL PANIC</b><small>Unscramble a real X-COMIX page.</small></a>
+<a class="tile big" href="says/"><img src="arcade/promo/says.jpg" alt=""><b>OVERMIND SAYS</b><small>The toaster AI flashes Peter, Krampus, Bear and Zib. Repeat it, or lose Harmony.</small></a>
+</div><footer>X-COMIX MULTIVERSE by <a href="https://x.com/PeteCastic" target="_blank" rel="noopener">@PeteCastic</a> · #XCOMIX · “X-COMIX, we never close.”</footer></div></body></html>

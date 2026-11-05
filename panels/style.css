@@ -1,0 +1,4 @@
+.modes{display:flex;gap:6px;margin:6px 0}.modes button{flex:1}
+#board{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;aspect-ratio:16/9;background:#000;border:3px solid #000;border-radius:10px;overflow:hidden;box-shadow:4px 4px 0 #ff2e63}
+.tile{padding:0;border:0;border-radius:0;box-shadow:none;background-size:300% 300%;outline:0}
+.tile.sel{outline:4px solid #ffd400;outline-offset:-4px;filter:brightness(1.2)}
