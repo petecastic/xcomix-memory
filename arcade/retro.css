@@ -1,0 +1,16 @@
+body.retro{background:#14102a url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='2' fill='%23ffffff12'/%3E%3C/svg%3E")}
+body.retro h1{font-family:"Press Start 2P",Impact,monospace;font-size:24px;color:#fff;text-shadow:3px 3px 0 #ff2e63,6px 6px 0 #000;letter-spacing:2px}
+.stage{position:relative;max-width:480px;margin:6px auto;border:4px solid #000;outline:3px solid #2ee6ff;border-radius:12px;overflow:hidden;background:#000;box-shadow:6px 6px 0 #ff2e63}
+.stage canvas{display:block;width:100%;height:auto;touch-action:none;image-rendering:pixelated}
+.bhud{display:flex;justify-content:space-between;gap:6px;font:900 16px/1 "Courier New",monospace;background:#000;color:#fff;border:3px solid #000;border-radius:10px;padding:8px 10px;margin:6px auto;max-width:480px;box-shadow:inset 0 0 0 2px #ffd400}
+.bhud b{color:#ffd400;font-size:18px}
+.title{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(#3a1d6ecc,#000e);cursor:pointer;z-index:5;text-align:center;padding:12px}
+.tbox h2{font:900 30px Impact,sans-serif;color:#ffd400;-webkit-text-stroke:1.5px #000;text-shadow:3px 3px 0 #ff2e63}.tbox p{font-size:12px;color:#ddd;margin:6px 0}
+.tbox img{width:84px;height:84px;object-fit:cover;border-radius:50%;border:4px solid #000;outline:3px solid #ffd400;background:#fff}
+.ctp{display:inline-block;margin:10px 0 6px;padding:10px 18px;border-radius:30px;background:linear-gradient(#7dff5a,#1fae1f);color:#000;font:900 18px Impact,sans-serif;border:3px solid #000;box-shadow:0 4px 0 #000;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{filter:brightness(1.4);transform:scale(1.05)}}
+.hi{font:900 12px "Courier New",monospace;color:#2ee6ff}.hi b{color:#fff}
+.mute{position:fixed;right:8px;top:8px;z-index:10;padding:4px 8px;font-size:16px;border-radius:20px;background:#fff;color:#000}
+.pick{display:flex;gap:6px;justify-content:center;margin:6px 0}.pick button{padding:4px;border-radius:12px;background:#fff2}.pick button.on{background:#ffd400}.pick img{width:44px;height:44px;border-radius:50%;object-fit:cover;display:block}
+body.embed .bhud{font-size:13px;padding:4px 8px;margin:3px auto}body.embed .stage{max-width:340px;margin:2px auto}body.embed h1{font-size:15px}
+body.embed h1{display:none}

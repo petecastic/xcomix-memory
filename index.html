@@ -1,28 +1,46 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>X-COMIX Arcade · 3 AM Valley</title><meta name="theme-color" content="#0d0d14">
-<meta name="description" content="Six free X-COMIX MULTIVERSE games. Memory Match, Suspicious Moose, Bear Fetch, Who Said It?, Panel Panic and Overmind Says.">
+<meta name="description" content="Nine free X-COMIX MULTIVERSE games: Hangman, Brick Breaker, Downhill Slalom, Memory Match, Suspicious Moose, Bear Fetch, Who Said It?, Panel Panic and Overmind Says.">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content="@mrpetecastic"><meta name="twitter:title" content="X-COMIX Arcade · 3 AM Valley">
-<meta name="twitter:description" content="Six free X-COMIX MULTIVERSE games. Tap and play."><meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/arcade.jpg">
+<meta name="twitter:description" content="Nine free X-COMIX MULTIVERSE games. No ads, no login. Tap and play."><meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/arcade.jpg">
 <meta property="og:title" content="X-COMIX Arcade · 3 AM Valley"><meta property="og:type" content="website"><meta property="og:url" content="https://petecastic.github.io/xcomix-memory/">
 <meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/arcade.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="675">
 <link rel="stylesheet" href="arcade/common.css"><style>
-.clock{margin:8px auto 4px;width:92px;height:92px;border-radius:50%;background:#f5e6b8;border:5px solid #000;box-shadow:0 0 30px #ffd40088;display:flex;align-items:center;justify-content:center;font:900 22px Impact,sans-serif;color:#000}
-.lead{text-align:center;color:#ccc;font-size:13px;margin:6px 8px 12px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.tile{display:block;text-decoration:none;color:#fff;background:#1b1b2b;border:3px solid #000;border-radius:14px;overflow:hidden;box-shadow:4px 4px 0 #000;position:relative}
-.tile img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:3px solid #000}
-.tile b{display:block;font:900 17px Impact,sans-serif;letter-spacing:.5px;padding:6px 8px 0;color:#ffd400}.tile small{display:block;padding:2px 8px 8px;color:#bbb;font-size:11px;font-weight:600}
-.tile.big{grid-column:1/-1;box-shadow:5px 5px 0 #ff2e63}.tile.big b{font-size:24px}
-.tile i{position:absolute;top:6px;right:6px;font-style:normal;font-size:10px;background:#ff2e63;border:2px solid #000;border-radius:6px;padding:2px 5px}
-</style></head><body><div class="wrap">
-<h1>X-<span>COMIX</span> ARCADE</h1><div class="clock">12:49</div>
-<p class="lead">The mill clock's stuck at 12:49 and Circuit 13 just blinked. Every world in the 3 AM Valley is one tap away.</p>
-<div class="grid">
-<a class="tile big" href="memory/"><img src="shots/promo.png" alt=""><i>DAILY</i><b>MEMORY MATCH</b><small>Flip cards, match the X-COMIX crew. Easy, Medium, Hard and a Daily board.</small></a>
-<a class="tile" href="moose/"><img src="arcade/promo/moose.jpg" alt=""><b>SUSPICIOUS MOOSE</b><small>Tap Krampus in the Mill Street windows. Not Marjorie.</small></a>
-<a class="tile" href="fetch/"><img src="arcade/promo/fetch.jpg" alt=""><b>BEAR FETCH</b><small>Jump Bucky the Goose, grab Sal's hoagies.</small></a>
-<a class="tile" href="said/"><img src="arcade/promo/said.jpg" alt=""><i>DAILY</i><b>WHO SAID IT?</b><small>Real lines from the valley cast. Keep your streak.</small></a>
-<a class="tile" href="panels/"><img src="arcade/promo/panels.jpg" alt=""><i>DAILY</i><b>PANEL PANIC</b><small>Unscramble a real X-COMIX page.</small></a>
-<a class="tile big" href="says/"><img src="arcade/promo/says.jpg" alt=""><b>OVERMIND SAYS</b><small>The toaster AI flashes Peter, Krampus, Bear and Zib. Repeat it, or lose Harmony.</small></a>
-</div><footer>X-COMIX MULTIVERSE by <a href="https://x.com/PeteCastic" target="_blank" rel="noopener">@PeteCastic</a> · #XCOMIX · “X-COMIX, we never close.”</footer></div></body></html>
+body{background:#1a1238;padding:0}
+.top{background:#0a0812;border-bottom:4px solid #ff2e63;padding:8px 12px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:4}
+.logo{font:900 22px Impact,sans-serif;color:#fff;letter-spacing:1px;text-shadow:2px 2px 0 #ff2e63}.logo span{color:#ffd400}
+.clk{margin-left:auto;font:900 13px "Courier New",monospace;background:#f5e6b8;color:#000;border:2px solid #000;border-radius:20px;padding:3px 8px}
+.wrap{max-width:760px;padding:10px}
+.free{text-align:center;font:900 30px Impact,sans-serif;color:#7dff5a;-webkit-text-stroke:1.5px #000;text-shadow:3px 3px 0 #000;margin:6px 0 0;transform:rotate(-2deg)}
+.lead{text-align:center;color:#ccc;font-size:12px;margin:2px 8px 10px}
+.pickday{display:flex;gap:10px;align-items:center;background:linear-gradient(135deg,#ffd400,#ff8a00);color:#000;border:4px solid #000;border-radius:16px;padding:8px;box-shadow:5px 5px 0 #ff2e63;text-decoration:none;margin-bottom:12px}
+.pickday img{width:46%;border:3px solid #000;border-radius:10px;aspect-ratio:16/9;object-fit:cover}.pickday h3{font:900 12px "Courier New",monospace}.pickday b{display:block;font:900 24px Impact,sans-serif}.pickday .play{display:inline-block;margin-top:6px}
+.cats{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:6px}
+.cats button{border-radius:30px;padding:7px 14px;font:900 14px Impact,sans-serif;letter-spacing:.5px;background:linear-gradient(#fff,#cfd8ff);color:#000;flex:none}
+.cats button.on{background:linear-gradient(#7dff5a,#1fae1f)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.tile{display:flex;flex-direction:column;text-decoration:none;color:#fff;background:#2a2050;border:3px solid #000;border-radius:14px;overflow:hidden;box-shadow:4px 4px 0 #000;position:relative}
+.th{position:relative;display:block}.th img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;border-bottom:3px solid #000}
+.th i{position:absolute;top:5px;left:5px;font-style:normal;font:900 10px Impact;background:#ff2e63;border:2px solid #000;border-radius:6px;padding:2px 5px}
+.tile b{font:900 16px Impact,sans-serif;color:#ffd400;padding:6px 8px 0}.tile small{padding:2px 8px;color:#ccc;font-size:11px;flex:1}
+.cat{position:absolute;top:5px;right:5px;font:900 9px "Courier New",monospace;font-style:normal;background:#000c;padding:2px 5px;border-radius:6px;color:#2ee6ff}
+.foot{display:flex;justify-content:space-between;align-items:center;padding:6px 8px 8px}
+.stars{font-size:14px;color:#555;letter-spacing:-1px}.stars s{text-decoration:none;cursor:pointer}.stars s.on{color:#ffd400}
+.play{background:linear-gradient(#7dff5a,#1fae1f);color:#000;font:900 13px Impact,sans-serif;border:2px solid #000;border-radius:20px;padding:4px 10px;box-shadow:0 3px 0 #000}
+.note{text-align:center;color:#888;font-size:10px;margin-top:8px}
+</style></head><body>
+<div class="top"><div class="logo">X-<span>COMIX</span> ARCADE</div><div class="clk">🕐 12:49</div></div>
+<div class="wrap"><div class="free">FREE GAMES!</div><p class="lead">Made in the 3 AM Valley by @PeteCastic. No ads, no login. One tap and you're playing.</p>
+<a class="pickday" id="pick"></a>
+<div class="cats" id="cats"><button class="on" data-c="All">ALL</button><button data-c="Action">ACTION</button><button data-c="Puzzle">PUZZLE</button><button data-c="Sports">SPORTS</button><button data-c="Word">WORD</button></div>
+<div class="grid" id="grid"><a class="tile" data-cat="Word" data-k="hangman" href="hangman/"><span class="th"><img src="arcade/promo/hangman.jpg" alt="" loading="lazy"><i>DAILY</i></span><b>HANGMAN</b><small>Save Sal's hoagie from Bucky the Goose.</small><span class="foot"><span class="stars" data-k="hangman"></span><span class="play">PLAY ▶</span></span><em class="cat">Word</em></a><a class="tile" data-cat="Action" data-k="bricks" href="bricks/"><span class="th"><img src="arcade/promo/bricks.jpg" alt="" loading="lazy"><i>NEW</i></span><b>BRICK BREAKER</b><small>Smash Mill Street and the Krampus boss wall.</small><span class="foot"><span class="stars" data-k="bricks"></span><span class="play">PLAY ▶</span></span><em class="cat">Action</em></a><a class="tile" data-cat="Sports" data-k="slalom" href="slalom/"><span class="th"><img src="arcade/promo/slalom.jpg" alt="" loading="lazy"><i>NEW</i></span><b>DOWNHILL SLALOM</b><small>Ski 25 gates. Dodge Bucky.</small><span class="foot"><span class="stars" data-k="slalom"></span><span class="play">PLAY ▶</span></span><em class="cat">Sports</em></a><a class="tile" data-cat="Puzzle" data-k="memory" href="memory/"><span class="th"><img src="shots/promo.png" alt="" loading="lazy"><i>DAILY</i></span><b>MEMORY MATCH</b><small>Flip cards, match the crew.</small><span class="foot"><span class="stars" data-k="memory"></span><span class="play">PLAY ▶</span></span><em class="cat">Puzzle</em></a><a class="tile" data-cat="Action" data-k="moose" href="moose/"><span class="th"><img src="arcade/promo/moose.jpg" alt="" loading="lazy"></span><b>SUSPICIOUS MOOSE</b><small>Tap Krampus in the windows.</small><span class="foot"><span class="stars" data-k="moose"></span><span class="play">PLAY ▶</span></span><em class="cat">Action</em></a><a class="tile" data-cat="Action" data-k="fetch" href="fetch/"><span class="th"><img src="arcade/promo/fetch.jpg" alt="" loading="lazy"></span><b>BEAR FETCH</b><small>Jump the goose, grab hoagies.</small><span class="foot"><span class="stars" data-k="fetch"></span><span class="play">PLAY ▶</span></span><em class="cat">Action</em></a><a class="tile" data-cat="Word" data-k="said" href="said/"><span class="th"><img src="arcade/promo/said.jpg" alt="" loading="lazy"><i>DAILY</i></span><b>WHO SAID IT?</b><small>Real lines from the cast.</small><span class="foot"><span class="stars" data-k="said"></span><span class="play">PLAY ▶</span></span><em class="cat">Word</em></a><a class="tile" data-cat="Puzzle" data-k="panels" href="panels/"><span class="th"><img src="arcade/promo/panels.jpg" alt="" loading="lazy"><i>DAILY</i></span><b>PANEL PANIC</b><small>Unscramble a real page.</small><span class="foot"><span class="stars" data-k="panels"></span><span class="play">PLAY ▶</span></span><em class="cat">Puzzle</em></a><a class="tile" data-cat="Puzzle" data-k="says" href="says/"><span class="th"><img src="arcade/promo/says.jpg" alt="" loading="lazy"></span><b>OVERMIND SAYS</b><small>Repeat the toaster AI.</small><span class="foot"><span class="stars" data-k="says"></span><span class="play">PLAY ▶</span></span><em class="cat">Puzzle</em></a></div><p class="note">★ Stars are your own rating, saved only on this device.</p>
+<footer>X-COMIX MULTIVERSE by <a href="https://x.com/PeteCastic" target="_blank" rel="noopener">@PeteCastic</a> · #XCOMIX · “X-COMIX, we never close.”</footer></div>
+<script>
+const T=[...document.querySelectorAll('.tile')],d=new Date(),n=(d.getFullYear()*400+d.getMonth()*31+d.getDate())%T.length,p=T[n];
+document.getElementById('pick').href=p.getAttribute('href');document.getElementById('pick').innerHTML=`<img src="${p.querySelector('img').src}" alt=""><div><h3>★ TODAY'S PICK</h3><b>${p.querySelector('b').textContent}</b><small>${p.querySelector('small').textContent}</small><br><span class="play">PLAY NOW ▶</span></div>`;
+document.getElementById('cats').onclick=e=>{const b=e.target.closest('button');if(!b)return;document.querySelectorAll('#cats button').forEach(x=>x.classList.toggle('on',x===b));T.forEach(t=>t.hidden=b.dataset.c!=='All'&&t.dataset.cat!==b.dataset.c)};
+const R=k=>+(localStorage.getItem('xca-rate-'+k)||0);
+document.querySelectorAll('.stars').forEach(s=>{const k=s.dataset.k,draw=()=>s.innerHTML=[1,2,3,4,5].map(i=>`<s data-i="${i}" class="${i<=R(k)?'on':''}">★</s>`).join('');draw();
+ s.addEventListener('click',e=>{const i=e.target.dataset.i;if(!i)return;e.preventDefault();e.stopPropagation();localStorage.setItem('xca-rate-'+k,i);draw()})});
+</script></body></html>
