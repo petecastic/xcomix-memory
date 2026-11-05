@@ -14,3 +14,6 @@ body.retro h1{font-family:"Press Start 2P",Impact,monospace;font-size:24px;color
 .pick{display:flex;gap:6px;justify-content:center;margin:6px 0}.pick button{padding:4px;border-radius:12px;background:#fff2}.pick button.on{background:#ffd400}.pick img{width:44px;height:44px;border-radius:50%;object-fit:cover;display:block}
 body.embed .bhud{font-size:13px;padding:4px 8px;margin:3px auto}body.embed .stage{max-width:340px;margin:2px auto}body.embed h1{font-size:15px}
 body.embed h1{display:none}
+.title{overflow:auto}
+@media (max-height:520px){.tbox p{font-size:10px;margin:3px 0}.tbox img{width:52px;height:52px}.tbox h2{font-size:20px}.ctp{margin:4px 0;padding:7px 14px;font-size:15px}.pick img{width:34px;height:34px}.pick{margin:3px 0}}
+@media (max-height:400px){.tbox p{display:none}}

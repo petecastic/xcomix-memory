@@ -33,10 +33,12 @@ function draw(){c.fillStyle='#f4f9ff';c.fillRect(0,0,W,H);const cam=y-130;
  c.strokeStyle='#ff2e63';c.lineWidth=4;c.save();c.rotate(a);c.beginPath();c.moveTo(-7,-2);c.lineTo(-7,16);c.moveTo(7,-2);c.lineTo(7,16);c.stroke();c.restore();
  c.fillStyle='#2ee6ff';c.fillRect(-8,-14,16,14);c.beginPath();c.arc(0,-24,12,0,7);c.save();c.clip();c.drawImage(im[SK[who]],-12,-36,24,24);c.restore();c.strokeStyle='#000';c.lineWidth=2;c.beginPath();c.arc(0,-24,12,0,7);c.stroke();c.restore();
  c.font='bold 18px Impact';c.textAlign='center';for(const f of fx){c.fillStyle='#ff2e63';c.fillText(f.txt,f.x,f.y-cam-40-(50-f.t)/2);f.t--}fx=fx.filter(f=>f.t>0)}
-function loop(){if(run)step();if(objs)draw();requestAnimationFrame(loop)}
-cv.addEventListener('pointerdown',e=>{const r=cv.getBoundingClientRect();hold=e.clientX-r.left<r.width/2?-1:1});addEventListener('pointerup',()=>hold=0);addEventListener('pointercancel',()=>hold=0);
+var acc=0,lt=0;function loop(t){if(!lt)lt=t;acc+=Math.min(100,t-lt);lt=t;var n=0;while(acc>=16.67&&n<6){if(run)step();acc-=16.67;n++}try{if(objs)draw()}catch(e){}requestAnimationFrame(loop)}
+cv.style.touchAction='none';cv.addEventListener('touchmove',e=>e.preventDefault(),{passive:false});
+if(!window.PointerEvent){cv.addEventListener('touchstart',e=>{e.preventDefault();const r=cv.getBoundingClientRect();hold=e.touches[0].clientX-r.left<r.width/2?-1:1},{passive:false});cv.addEventListener('touchend',()=>hold=0)}
+cv.addEventListener('pointerdown',e=>{e.preventDefault();const r=cv.getBoundingClientRect();hold=e.clientX-r.left<r.width/2?-1:1});addEventListener('pointerup',()=>hold=0);addEventListener('pointercancel',()=>hold=0);
 cv.addEventListener('pointermove',e=>{if(e.buttons){const r=cv.getBoundingClientRect();hold=e.clientX-r.left<r.width/2?-1:1}});
-addEventListener('keydown',e=>{keys[e.key]=1;if(e.key.startsWith('Arrow'))e.preventDefault()});addEventListener('keyup',e=>keys[e.key]=0);
+addEventListener('keydown',e=>{keys[e.key]=1;if(String(e.key).indexOf('Arrow')===0)e.preventDefault()});addEventListener('keyup',e=>keys[e.key]=0);
 addEventListener('deviceorientation',e=>{if(e.gamma!=null&&matchMedia('(pointer:coarse)').matches)tilt=e.gamma});
 XC.muteBtn();start();run=false;draw();requestAnimationFrame(loop);
 const pk=Object.keys(SK).map(k=>`<button data-k="${k}" class="${k===who?'on':''}"><img src="../arcade/art/${SK[k]}.jpg" alt="${k}"></button>`).join('');

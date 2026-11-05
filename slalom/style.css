@@ -1,2 +1,2 @@
 canvas#cv{aspect-ratio:3/4}
-body.embed .stage{max-width:285px}body.embed h1{font-size:13px;margin:0}
+body.embed .stage{max-width:none;width:min(96vw,calc((100vh - 64px)*.75))}body.embed h1{font-size:13px;margin:0}
