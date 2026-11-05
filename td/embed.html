@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>12:49 Defense: Earth on Mars | X-COMIX</title>
+<meta name="description" content="X-COMIX tower defense. Pete the cable guy, Krampus, Marjorie, Big Jimmy, Pikaru, Lt. Rumple and more hold the 12:49 crack from Mill Street to New Fishtown on Mars. Free in your browser.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="12:49 Defense: Earth on Mars">
+<meta name="twitter:description" content="X-COMIX tower defense. Pete the cable guy, Krampus, Marjorie, Big Jimmy, Pikaru, Lt. Rumple and more hold the 12:49 crack from Mill Street to New Fishtown on Mars. Free in your browser.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/td/promo.jpg">
+<meta name="twitter:image:alt" content="X-COMIX characters as towers along a road that runs from Philly rowhomes onto red Mars dust, with geese, Cinder Mites and Gully the gull coming down it">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://petecastic.github.io/xcomix-memory/td/">
+<meta property="og:title" content="12:49 Defense: Earth on Mars">
+<meta property="og:description" content="X-COMIX tower defense. Pete the cable guy, Krampus, Marjorie, Big Jimmy, Pikaru, Lt. Rumple and more hold the 12:49 crack from Mill Street to New Fishtown on Mars. Free in your browser.">
+<meta property="og:image" content="https://petecastic.github.io/xcomix-memory/td/promo.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<link rel="canonical" href="https://petecastic.github.io/xcomix-memory/td/">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="td.css">
+</head><body class="embed">
+<div id="app">
+<section id="scrTitle" class="scr title">
+ <div class="logo"><span class="k">12:49</span><span class="d">DEFENSE</span><span class="s">EARTH ON MARS</span></div>
+ <div class="cast"><img src="img/peter.png" alt=""><img src="img/krampus.png" alt=""><img src="img/jimmy.png" alt=""><img src="img/pikaru.png" alt=""><img src="img/marjorie.png" alt=""><img src="img/rumple.png" alt=""></div>
+ <button class="hb big go blink" id="startBtn">TAP TO START</button>
+ <div class="tag">X-COMIX tower defense &middot; 6 maps &middot; 14 towers &middot; daily challenge</div>
+</section>
+<section id="scrMaps" class="scr" style="display:none">
+ <div class="top"><div class="logo sm"><span class="k">12:49</span><span class="d">DEFENSE</span></div>
+ <div class="lvbox"><b>LV <span id="lvl">1</span></b><span class="xpbar"><i id="xpb"></i></span><small id="xpt"></small></div>
+ <div class="tbtn"><button class="hb" id="toRoster">ROSTER</button><button class="hb" id="toHelp">HOW TO</button><button class="hb snd" title="Sound">&#128263;</button></div></div>
+ <div class="nextunl" id="nextUnl"></div>
+ <div id="daily" class="daily"></div>
+ <div id="mapList" class="maplist"></div>
+</section>
+<section id="scrGame" class="scr" style="display:none">
+ <div id="hud"><span class="hc l" title="Lives">&#10084; <b id="hLives">20</b></span><span class="hc c" title="Cash"><b id="hCash">$0</b></span><span class="hc w" title="Wave">WAVE <b id="hWave">0</b></span><span class="mapn" id="mapName"></span>
+ <span class="hr"><button class="hb sm" id="mainBtn" style="display:none">THROW MAIN</button><button class="hb sm" id="auto" title="Auto-send waves">AUTO</button><button class="hb sm" id="spd" title="Speed">1x</button><button class="hb sm" id="pause" title="Pause">&#10074;&#10074;</button><button class="hb sm snd" title="Sound">&#128263;</button><button class="hb sm" id="menuBtn" title="Menu">&#9776;</button></span></div>
+ <div id="stage"><canvas id="cv" width="800" height="500"></canvas></div>
+ <div id="bar"><div id="shop" class="shop"></div><div id="selp" class="selp" style="display:none"></div><button class="hb next go" id="next">START &#9654;</button></div>
+ <div id="introTxt" class="intro"></div>
+</section>
+<section id="scrRoster" class="scr" style="display:none">
+ <div class="top"><button class="hb back">&larr; MAPS</button><h2>The Roster</h2></div>
+ <div class="pan"><h3>Towers</h3><div id="rosterList" class="rlist"></div><h3>Who's coming through the crack</h3><div id="enemyList" class="elist"></div></div>
+</section>
+<section id="scrHelp" class="scr" style="display:none">
+ <div class="top"><button class="hb back">&larr; MAPS</button><h2>How to</h2></div>
+ <div class="pan"><h2>How to play</h2>
+ <ul><li>Pick a tower in the bar, then tap a free tile. On a phone you tap once to preview and again to place. With a mouse, hold Shift to keep placing.</li>
+ <li>Tap a placed tower to upgrade it. Each tower has two paths. Only one can reach tier 3.</li>
+ <li>Hit <b>START</b> to send wave 1. You can call the next wave early once the current one is fully out. You get the wave bonus when you call it.</li>
+ <li>Some enemies are <b>hidden</b> and look faded. They need a tower that can see them: Salt, Lumos, Lt. Rumple, or the right upgrade.</li>
+ <li>Flying enemies (gulls, puffs, Echo moths) ignore Krampus, Big Jimmy, Stanley and the Trash Wheel.</li>
+ <li>Lives: an enemy that reaches the crack costs 1. A boss costs 20. You get 3 stars for keeping 90% of your lives and 2 stars for 50%.</li>
+ <li>XP from every game levels you up and unlocks new towers. Clearing a map opens the next one, plus its Hard and Endless modes.</li>
+ <li>The daily challenge gives everyone the same map, the same rule twist and 5 borrowed towers.</li>
+ <li>Watch for Zib. Tap him for a little help.</li>
+ <li>Keys: 1-9 pick a tower, Space sends the next wave, P pauses, Esc cancels.</li></ul>
+ <h2>Timeline notes</h2>
+ <ul><li><b>Another timeline.</b> None of this is canon. A 12:49 crack has folded Bristol, Philly and the Pike onto Mars. Nobody gets hurt: enemies are shooed, soaked, calmed, ticketed or sent home.</li>
+ <li><b>Domino &amp; Pickle sit this one out.</b> Their show doesn't do crossovers, so they're not here.</li>
+ <li><b>Echoes of the Red Horizon is Season 1 only.</b> Salt, Lumos, Zib, Tank Morrow, the Overmind and the Mars hazards (Cinder Mites, Echo Moths, Phobos Puffs, Dustrunners, Hollowhounds, the Regolith Crawler) all come from Season 1. Later threats are left out.</li>
+ <li><b>Mars has no rowhomes.</b> The Earth houses you see on Mars are blue Echo projections, not real buildings.</li>
+ <li><b>Pete is a cable guy</b>, not a lineman. Krampus works the poles. Pete runs the coax.</li>
+ <li>The geese here are generic geese. Bucky is benched.</li>
+ <li>No real brands. Every snack, shop and sign is made up.</li></ul></div>
+</section>
+<div id="dlg"><div class="dlgw"><div class="dlgt">12:49 DEFENSE</div><div id="dlgB"></div></div></div>
+</div>
+
+<script src="data.js"></script>
+<script src="td.js"></script>
+</body></html>
