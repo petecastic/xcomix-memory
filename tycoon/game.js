@@ -33,6 +33,8 @@ var DEFS=[
  {id:'glider',n:'Ridge Glider Launch',k:'ride',cat:'rides',w:2,h:2,c:3200,up:60,pw:-2,p:3,ex:5.8,in:3.8,na:2.0,dur:300,cap:4,out:1,col:'#7fd1e8',b:'Off the tower, out over the park. The best view on Mars.'},
  {id:'cavern',n:'Crystal Cavern Tour',k:'ride',cat:'rides',w:2,h:2,c:3800,up:55,pw:-2,p:3,ex:5.0,in:1.2,na:0.5,dur:380,cap:10,shel:1,col:'#8fe3ff',b:'Down into humming crystal. Sheltered from dust storms.'},
  {id:'stage',n:'Festival Dawn Stage',k:'ride',cat:'rides',w:2,h:2,c:1800,up:40,pw:-2,p:1,ex:3.2,in:0.3,na:0.1,dur:420,cap:20,col:'#d07ae0',b:'Music every night, Fringe style. We ride messy, we ride free.'},
+ {id:'carousel',n:'Machine-Herd Carousel',k:'ride',cat:'rides',w:2,h:2,c:2000,up:35,pw:-1,p:2,ex:3.4,in:0.6,na:0.4,dur:300,cap:14,col:'#e8b04a',b:'Ride little salvage herd-beasts round and round. Gentle, good for families.'},
+ {id:'drop',n:'Olympus Drop Tower',k:'ride',cat:'rides',w:2,h:2,c:5200,up:90,pw:-4,p:4,ex:6.4,in:7.4,na:3.8,dur:260,cap:8,out:1,col:'#c84a7a',b:'Up the tower for a long look at the Red Horizon, then straight down.'},
  {id:'station',n:'Coaster Station',k:'coaster',cat:'coaster',w:1,h:1,c:800,up:90,pw:-3,p:4,ex:0,in:0,na:0,dur:400,cap:12,out:1,col:'#c43c3c',b:'Start of a roller coaster. Lay track from both sides and close the loop.'},
  // zoo
  {id:'pen_glow',n:'Glowhound Run',k:'exhibit',cat:'zoo',w:3,h:3,c:2200,up:60,pw:0,p:1,ex:4.4,in:0.4,na:0,dur:140,cap:24,an:'glow',cnt:4,col:'#5b8f3a',b:'Glowhounds: fur shifts color with mood. Teal means joy.'},
@@ -50,6 +52,8 @@ var DEFS=[
  {id:'vent',n:'Geothermal Vent',k:'city',cat:'city',w:2,h:2,c:2000,up:40,pw:12,col:'#7a4a33',b:'Taps the heat under the Fringe. +12 power.'},
  {id:'green',n:'Crystaberry Greenhouse',k:'city',cat:'city',w:2,h:2,c:1500,up:30,pw:-1,o2:8,col:'#5fbf8a',b:'Grows crystaberries and breathes for the park. +8 oxygen.'},
  {id:'mush',n:'Tunnel-Mush Farm',k:'city',cat:'city',w:1,h:1,c:500,up:10,pw:0,o2:3,col:'#9a7bb8',b:'Cheap air. Mush loves the dark. +3 oxygen.'},
+ {id:'solar',n:'Solar Mirror Array',k:'city',cat:'city',w:2,h:2,c:1400,up:20,pw:7,solar:1,col:'#6a8ab8',b:'+7 power on clear sols. Drops to half in a dust storm.'},
+ {id:'o2crack',n:'Oxygen Cracker',k:'city',cat:'city',w:2,h:2,c:3000,up:50,pw:-3,o2:20,col:'#b8c8d0',b:'Cracks ice into breathable air. +20 oxygen for big crowds.'},
  {id:'shelter',n:'Storm Shelter Dome',k:'city',cat:'city',w:2,h:2,c:1200,up:15,pw:-1,rad:4,col:'#e8a060',b:'Guests within 4 tiles shrug off dust storms.'},
  {id:'watch',n:'Fringe Watch Post',k:'city',cat:'city',w:1,h:1,c:900,up:35,pw:-1,rad:7,col:'#5a7ab8',b:'Stops Vex\u2019s Nullifiers within 7 tiles.'},
  // shops
@@ -60,6 +64,8 @@ var DEFS=[
  {id:'water',n:'Ice-Melt Water',k:'shop',cat:'shops',w:1,h:1,c:250,up:10,pw:0,p:1,fair:1,sell:'drink',amt:50,col:'#5ab8e0',sign:'W',b:'Polar ice, melted and cold.'},
  {id:'harlan',n:'Harlan\u2019s Trinkets',k:'shop',cat:'shops',w:1,h:1,c:500,up:25,pw:0,p:5,fair:5,sell:'souv',amt:0,col:'#b08a5a',sign:'H',b:'Scrap, trinkets and stories. Souvenirs make guests happy.'},
  {id:'kiosk',n:'Info & Dust Masks',k:'shop',cat:'shops',w:1,h:1,c:400,up:20,pw:0,p:3,fair:3,sell:'mask',amt:0,col:'#d0d0d0',sign:'i',b:'Maps and dust masks. Guests buy masks when a storm hits.'},
+ {id:'cafe',n:'Fringe Market Caf\u00e9',k:'shop',cat:'shops',w:1,h:1,c:600,up:30,pw:-1,p:5,fair:5,sell:'food',amt:85,col:'#d87a4a',sign:'F',b:'Market food from the Fringe stalls. Pricier and very filling.'},
+ {id:'balloon',n:'Spark Balloon Cart',k:'shop',cat:'shops',w:1,h:1,c:300,up:12,pw:0,p:3,fair:3,sell:'souv',amt:0,col:'#ff7ab0',sign:'*',b:'Glowing balloons. A cheap souvenir that makes kids grin.'},
  {id:'wc',n:'Recycler Restroom',k:'shop',cat:'shops',w:1,h:1,c:400,up:20,pw:-1,p:0,fair:0,sell:'wc',amt:0,col:'#9aa6b0',sign:'WC',b:'Everybody has to go sometime.'},
  // scenery
  {id:'vines',n:'Red Vines',k:'scen',cat:'scen',w:1,h:1,c:40,up:0,beauty:2,col:'#3f8f5a',b:'Pretty. Guests nearby are happier.'},
@@ -67,11 +73,67 @@ var DEFS=[
  {id:'crystal',n:'Crystal Cluster',k:'scen',cat:'scen',w:1,h:1,c:120,up:0,beauty:4,col:'#8fe3ff',b:'Hums faintly at 47.2 Hz.'},
  {id:'flyer',n:'Wright Flyer Statue',k:'scen',cat:'scen',w:1,h:1,c:150,up:0,beauty:5,col:'#c9c2b0',b:'A little biplane on a pedestal, like Aria\u2019s pendant.'},
  {id:'banner',n:'Festival Banner',k:'scen',cat:'scen',w:1,h:1,c:50,up:0,beauty:2,col:'#ff5a5a',b:'Festival colors on a pole.'},
+ {id:'fountain',n:'Ice-Melt Fountain',k:'scen',cat:'scen',w:1,h:1,c:300,up:4,beauty:6,col:'#8fd0f0',b:'Polar meltwater that sparkles in the low sun.'},
+ {id:'arch',n:'Festival Arch',k:'scen',cat:'scen',w:1,h:1,c:180,up:0,beauty:4,col:'#e0703a',b:'A painted arch over the walkway. Festival style.'},
  {id:'bench',n:'Bench',k:'scen',cat:'scen',w:1,h:1,c:60,up:0,beauty:1,seat:1,col:'#8a5a3a',b:'Tired guests sit and rest here (next to a path).'},
  {id:'bin',n:'Litter Bin',k:'scen',cat:'scen',w:1,h:1,c:45,up:0,beauty:0,bin:1,col:'#6a7a6a',b:'Guests drop wrappers here instead of on the path (3 tiles).'}
 ];
 var DEF={};DEFS.forEach(function(d){DEF[d.id]=d;});
-var CATS=[['rides','Rides'],['coaster','Coaster'],['zoo','Zoo'],['aqua','Aquarium'],['city','Colony'],['shops','Shops'],['scen','Scenery'],['land','Paths']];
+var CATS=[['rides','Rides'],['coaster','Coaster'],['zoo','Zoo'],['aqua','Aquarium'],['city','Colony'],['shops','Shops'],['scen','Scenery'],['land','Paths & Land']];
+// research: every scenario starts with BASE; the rest is researched over time
+var BASE=['wheel','bumper','stage','pen_glow','hab','vent','green','mush','tacos','chews','water','wc','vines','lantern','banner','bench','bin'];
+var RES=[
+ {id:'r_spin',cat:'rides',n:'Spinning rides',pts:60,un:['spinner','carousel']},
+ {id:'r_swing',cat:'rides',n:'Low-G swing rigs',pts:90,un:['swing']},
+ {id:'r_cave',cat:'rides',n:'Crystal caving',pts:120,un:['cavern']},
+ {id:'r_race',cat:'rides',n:'Thunderbug racing',pts:150,un:['thunder']},
+ {id:'r_tower',cat:'rides',n:'Tower launches',pts:200,un:['glider','drop']},
+ {id:'c_kit',cat:'coaster',n:'Scrap coaster kit',pts:110,un:['station']},
+ {id:'z_puff',cat:'zoo',n:'Shadowpuff groves',pts:70,un:['pen_puff']},
+ {id:'z_flit',cat:'zoo',n:'Aero-flit aviaries',pts:100,un:['pen_flit']},
+ {id:'z_lumos',cat:'zoo',n:'Lumos-kin care',pts:120,un:['pen_lumos']},
+ {id:'z_herd',cat:'zoo',n:'Machine-herd wrangling',pts:160,un:['pen_herd']},
+ {id:'a_dome',cat:'aqua',n:'Ice-sea domes',pts:130,un:['aq_jelly','aq_vore']},
+ {id:'a_deep',cat:'aqua',n:'Deep-water domes',pts:190,un:['aq_abyss']},
+ {id:'a_tidal',cat:'aqua',n:'Tidal tanks',pts:250,un:['aq_tidal']},
+ {id:'k_solar',cat:'city',n:'Solar mirrors',pts:60,un:['solar']},
+ {id:'k_shel',cat:'city',n:'Storm shelters',pts:70,un:['shelter']},
+ {id:'k_watch',cat:'city',n:'Fringe Watch posts',pts:80,un:['watch']},
+ {id:'k_o2',cat:'city',n:'Oxygen crackers',pts:160,un:['o2crack']},
+ {id:'s_brew',cat:'shops',n:'Brew & stew stalls',pts:45,un:['brew','stew']},
+ {id:'s_mask',cat:'shops',n:'Dust masks & maps',pts:55,un:['kiosk']},
+ {id:'s_souv',cat:'shops',n:'Trinkets & balloons',pts:80,un:['harlan','balloon']},
+ {id:'s_cafe',cat:'shops',n:'Market caf\u00e9',pts:110,un:['cafe']},
+ {id:'e_cryst',cat:'scen',n:'Crystal sculpting',pts:50,un:['crystal','arch']},
+ {id:'e_monu',cat:'scen',n:'Monuments & fountains',pts:100,un:['flyer','fountain']},
+ {id:'p_broom',cat:'park',n:'Better brooms',pts:70,fx:'Scavengers sweep a wider area.'},
+ {id:'p_radio',cat:'park',n:'Fringe Radio',pts:90,fx:'Unlocks radio ads in Marketing.'},
+ {id:'p_manual',cat:'park',n:'Maintenance manuals',pts:130,fx:'Rides wear out 35% slower.'},
+ {id:'p_filter',cat:'park',n:'Dust filters',pts:150,fx:'Dust storms bother guests half as much.'}
+];
+var RESN={};RES.forEach(function(r){RESN[r.id]=r;});
+var RCATS=[['rides','Rides'],['coaster','Coasters'],['zoo','Zoo'],['aqua','Aquarium'],['city','Colony'],['shops','Shops'],['scen','Scenery'],['park','Park tech']];
+var FUND=[['None',0,0],['Low',250,3],['Normal',500,6],['Max',1000,10]]; // name, $/month, points/sol
+// guest types
+var GT={
+ fam:{n:'Family',col:'#4fb04f',imax:[1.2,4.2],cash:[45,110],zoo:1.7,ride:0.9,coast:0.4,b:'Gentle rides, creatures and snacks.'},
+ thrill:{n:'Thrill-seeker',col:'#e0503a',imax:[6,9.8],cash:[30,95],zoo:0.45,ride:1.3,coast:2.2,b:'Wants big drops and fast coasters.'},
+ fan:{n:'Creature fan',col:'#3ab0c0',imax:[2,6],cash:[25,85],zoo:2.6,ride:0.6,coast:0.6,b:'Here for the Glowhounds and the domes.'},
+ tourist:{n:'Tourist',col:'#d0a030',imax:[2.5,7],cash:[70,160],zoo:1,ride:1,coast:1,b:'Big spender. Loves souvenirs.'},
+ local:{n:'Colony local',col:'#9a7bb8',imax:[2,7.5],cash:[15,55],zoo:1,ride:1,coast:1,b:'From your habitat pods. Short visits, small budget.'}
+};
+// marketing
+var CAMPS=[
+ {id:'flyers',n:'Festival flyers',c:400,days:16,dem:0.12,b:'Flyers round the Fringe settlements. +12% guests for a month.'},
+ {id:'radio',n:'Fringe Radio ads',c:1200,days:16,dem:0.28,res:'p_radio',b:'Spots on the colony radio. +28% guests for a month.'},
+ {id:'voucher',n:'Half-price entry',c:500,days:12,dem:0.4,half:1,b:'Entry at half price for 12 sols. Lots more guests, less gate money.'},
+ {id:'spot',n:'Ride spotlight',c:600,days:16,dem:0.1,spot:1,b:'Advertise your most exciting ride. Thrill-seekers flock to it.'},
+ {id:'creature',n:'Creature Days',c:700,days:16,dem:0.15,fans:1,b:'Families and creature fans come for the exhibits.'}
+];
+var CAMPN={};CAMPS.forEach(function(c){CAMPN[c.id]=c;});
+// Mars seasons (8 months in a park year)
+var SEASONS=[['Spring',1.0,0.6,'#7fd17a'],['Spring',1.0,0.6,'#7fd17a'],['Summer',1.15,0.8,'#ffcf4a'],['Summer',1.15,0.8,'#ffcf4a'],['Dust season',0.95,2.4,'#e07a3a'],['Dust season',0.95,2.4,'#e07a3a'],['Winter',0.8,0.7,'#9ac8f0'],['Winter',0.8,0.7,'#9ac8f0']]; // name, demand, storm mult, colour
+function season(d){var m=Math.floor((d===undefined?S.day:d)/MDAYS)%YMONTHS;return SEASONS[m];}
 var STAFF={
  handy:{n:'Scavenger (handyman)',w:50,col:'#3cb043',b:'Sweeps litter and sick off the paths.'},
  mech:{n:'Mechanic',w:80,col:'#3a6fd8',b:'Fixes broken rides.'},
@@ -83,34 +145,89 @@ var COASTER_NAMES=['Red Horizon Racer','Chasm Screamer','Olympus Drop','Dust Dev
 var NAMES=['Ada','Bo','Cass','Dax','Eli','Fen','Gia','Hal','Ivo','Juno','Kai','Lio','Mara','Nix','Oz','Pia','Quin','Rae','Sol','Tamsin','Ula','Vik','Wren','Xan','Yara','Zed','Odo','Mina','Tove','Remy','Bram','Cleo','Dara','Esme','Faro','Gus','Hira','Ines','Jory','Kit'];
 var SNAMES=['Voss','Reyes','Okafor','Lind','Moreau','Tanaka','Quill','Barros','Hale','Ivers','Nakamura','Pryce','Sato','Varga','Wells','Ortiz','Kade','Rook'];
 var SCEN=[
- {id:'fringe',n:'Elysium Fringe Fair',money:10000,loan:10000,maxLoan:30000,fee:8,seed:7,ice:1,storms:1,vex:1,
-  goal:{guests:250,rating:600,years:2},
-  b:'Lena wants the Fringe to have a real festival park. Have 250 guests in the park and a park rating of at least 600 by the end of Year 2.'},
- {id:'polar',n:'Polar Ice Shelf',money:15000,loan:10000,maxLoan:40000,fee:10,seed:21,ice:3,storms:1,vex:0.7,
-  goal:{guests:350,exhibits:6,years:3},
-  b:'Sira hung her polar gear up for good. Build a zoo and aquarium park on the ice: 6 creature exhibits and 350 guests by the end of Year 3.'},
- {id:'chasm',n:'Whispering Chasm Thrills',money:12000,loan:15000,maxLoan:40000,fee:10,seed:99,ice:1,storms:2,vex:1.6,rocks:2,
-  goal:{coaster:6.5,value:40000,years:2},
-  b:'Chasm storms, rocky ground and Vex\u2019s Nullifiers sneaking around. Build a coaster with excitement 6.5+ and a company value of $40,000 by the end of Year 2.'},
+ {id:'fringe',n:'Elysium Fringe Fair',money:10000,loan:10000,maxLoan:30000,fee:8,seed:7,ice:1,storms:1,vex:1,land:[16,40,48,64],
+  goal:{years:2,tiers:[{guests:250,rating:600},{guests:380,rating:670},{guests:500,rating:720}]},
+  b:'The Fringe needs a real festival park. Start small by the gate, research new rides and grow.'},
+ {id:'polar',n:'Polar Ice Shelf',money:15000,loan:10000,maxLoan:40000,fee:10,seed:21,ice:3,storms:1,vex:0.7,land:[8,24,56,64],pre:['z_puff','a_dome'],
+  goal:{years:3,tiers:[{guests:300,exhibits:4},{guests:400,exhibits:6},{guests:550,exhibits:8}]},
+  b:'A zoo and aquarium park on the ice. Fill it with creature exhibits.'},
+ {id:'chasm',n:'Whispering Chasm Thrills',money:12000,loan:15000,maxLoan:40000,fee:10,seed:99,ice:1,storms:2,vex:1.6,rocks:2,land:[16,32,48,64],pre:['c_kit','r_spin'],
+  goal:{years:2,tiers:[{coaster:6.0,value:30000},{coaster:6.5,value:40000},{coaster:7.2,value:60000}]},
+  b:'Chasm storms, rocky ground and Vex\u2019s Nullifiers sneaking around. Build a great coaster.'},
+ {id:'crater',n:'Crystal Crater Gardens',money:14000,loan:10000,maxLoan:40000,fee:10,seed:58,ice:2,storms:1,vex:0.8,land:[16,36,48,64],pre:['e_cryst','r_spin','s_brew'],
+  goal:{years:3,tiers:[{guests:300,rating:650},{guests:400,rating:720},{guests:500,rating:780}]},
+  b:'Crater floors full of humming crystal. Make the most beautiful park on Mars.'},
+ {id:'dust',n:'Dust Season Rush',money:9000,loan:12000,maxLoan:35000,fee:10,seed:141,ice:1,storms:2.4,vex:1.2,land:[20,40,44,64],pre:['k_shel','s_mask'],
+  goal:{years:2,tiers:[{guests:300,value:25000},{guests:400,value:40000},{guests:500,value:60000}]},
+  b:'Storms all year. Shelter domes, masks and covered rides keep the crowd happy.'},
+ {id:'grand',n:'Red Horizon Grand Park',money:20000,loan:20000,maxLoan:80000,fee:12,seed:203,ice:2,storms:1.2,vex:1.4,land:[16,40,48,64],
+  goal:{years:4,tiers:[{guests:600,rating:700,value:80000},{guests:800,rating:750,value:120000},{guests:1000,rating:800,value:180000}]},
+  b:'The big one. Grow from a gate into the grandest park under the Red Horizon.'},
  {id:'sandbox',n:'Open Regolith (Sandbox)',money:250000,loan:0,maxLoan:0,fee:10,seed:3,ice:2,storms:1,vex:0.5,goal:null,
-  b:'No goals and $250,000. Build the Mars park you always wanted.'}
+  b:'No goals, everything researched, all land owned and $250,000. Build the park you always wanted.'}
+];
+var TIERN=['','Bronze','Silver','Gold'],TIERC=['','#c8803a','#b8c0c8','#f0c040'];
+var AWARDS={
+ clean:{n:'Cleanest Park on the Fringe',good:1},beauty:{n:'Most Beautiful Park',good:1},thrill:{n:'Best Thrills on Mars',good:1},creature:{n:'Best Creature Care',good:1},
+ value:{n:'Best Value Park',good:1},safe:{n:'Safest Park',good:1},food:{n:'Best Food in Aetheria',good:1},happy:{n:'Happiest Guests',good:1},
+ messy:{n:'Messiest Park',good:0},worst:{n:'Worst Park in Aetheria',good:0},dark:{n:'Power Cut Park',good:0}
+};
+var ACH=[
+ ['ride','Opening Day','Build your first ride.'],['coaster','Track Layer','Finish a roller coaster.'],['coaster7','Chasm Screamer','Finish a coaster with excitement 7+.'],
+ ['g100','Busy Sol','Have 100 guests in the park at once.'],['g500','Festival Crowd','Have 500 guests in the park at once.'],
+ ['zoo','Creature Keeper','Open a creature exhibit.'],['zoo5','Full Menagerie','Have all five zoo creature exhibits.'],['aqua','Under the Ice','Open an aquarium dome.'],
+ ['storm','Weathered It','Get through a dust storm with a rating of 500+.'],['vex','Fringe Watch','Stop Vex\u2019s Nullifiers 5 times.'],
+ ['res10','Bright Ideas','Finish 10 research projects.'],['land','Landowner','Buy a plot of land.'],['rich','Deep Pockets','Have $100,000 in cash.'],
+ ['debt','Debt Free','Pay off your whole loan.'],['award','Award Winner','Win a yearly park award.'],['year3','Long Haul','Reach Year 3 in one park.'],
+ ['bronze','Bronze Medal','Reach a bronze goal.'],['silver','Silver Medal','Reach a silver goal.'],['gold','Gold Medal','Reach a gold goal.']
 ];
 var SCN={};SCEN.forEach(function(s){SCN[s.id]=s;});
 var EX=W>>1, EY=H-1; // park entrance (on the bottom-left edge)
 
 // ---------- state ----------
 var S=null;
-function blankFin(){return{adm:0,ride:0,food:0,shop:0,rent:0,build:0,upkeep:0,wages:0,interest:0};}
+function blankFin(){return{adm:0,ride:0,food:0,shop:0,rent:0,build:0,upkeep:0,wages:0,interest:0,research:0,market:0,land:0};}
 function newState(sid){
  var sc=SCN[sid]||SCEN[0];
- var s={v:1,scen:sc.id,money:sc.money,loan:sc.loan,maxLoan:sc.maxLoan,day:0,tick:0,rating:500,fee:sc.fee,open:true,
+ var s={v:2,scen:sc.id,money:sc.money,loan:sc.loan,maxLoan:sc.maxLoan,day:0,tick:0,rating:500,fee:sc.fee,open:true,
   terr:new Array(N),path:new Array(N),litter:new Array(N),occ:new Array(N),trk:new Array(N),
   objs:{},nid:1,guests:[],staff:[],gid:1,fin:{cur:blankFin(),hist:[]},msgs:[],storm:0,vexN:0,won:false,lost:false,
-  totalGuests:0,turned:0,pathVer:1,coasterN:0,park:'Elysium Fringe Park'};
- for(var i=0;i<N;i++){s.path[i]=0;s.litter[i]=0;s.occ[i]=0;s.trk[i]=-1;}
+  totalGuests:0,turned:0,pathVer:1,coasterN:0,park:'Elysium Fringe Park',
+  own:new Array(N),res:{fund:2,done:{},cur:null,prog:0,focus:null},camps:[],awards:[],tier:0,over:false,hist:[],yr:{brk:0,vex:0},vexStop:0,buzz:0,wx:'clear',hadLoan:sc.loan>0};
+ var L=sc.land||[0,0,W,H];
+ for(var i=0;i<N;i++){s.path[i]=0;s.litter[i]=0;s.occ[i]=0;s.trk[i]=-1;var x=i%W,y=(i/W)|0;s.own[i]=(x>=L[0]&&x<L[2]&&y>=L[1]&&y<L[3])?1:0;}
+ if(sc.id==='sandbox')RES.forEach(function(r){s.res.done[r.id]=1;});
+ (sc.pre||[]).forEach(function(id){s.res.done[id]=1;});
  genMap(s,sc);
  return s;
 }
+// older saves (v1) had no research or land: open everything up so they keep playing as before
+function fixState(s){
+ if(!s.own){s.own=[];for(var i=0;i<N;i++)s.own.push(1);}
+ if(!s.res){s.res={fund:2,done:{},cur:null,prog:0,focus:null};RES.forEach(function(r){s.res.done[r.id]=1;});}
+ if(!s.camps)s.camps=[];if(!s.awards)s.awards=[];if(s.tier===undefined)s.tier=s.won?1:0;if(!s.hist)s.hist=[];if(!s.yr)s.yr={brk:0,vex:0};
+ if(!s.vexStop)s.vexStop=0;if(!s.buzz)s.buzz=0;if(!s.wx)s.wx='clear';
+ for(var k in s.objs){var o=s.objs[k];if(o.insp===undefined)o.insp=8;if(o.lastI===undefined)o.lastI=s.day;if(o.ref===undefined)o.ref=o.built;}
+ var bf=blankFin();for(var c in bf)if(s.fin.cur[c]===undefined)s.fin.cur[c]=0;
+ s.v=2;return s;
+}
+var UNL={};
+function computeUnl(){UNL={};BASE.forEach(function(id){UNL[id]=1;});RES.forEach(function(r){if(S.res.done[r.id]&&r.un)r.un.forEach(function(id){UNL[id]=1;});});}
+function unlocked(id){return S.scen==='sandbox'||!!UNL[id];}
+function hasTech(id){return !!S.res.done[id];}
+function resFor(defId){for(var i=0;i<RES.length;i++)if(RES[i].un&&RES[i].un.indexOf(defId)>=0)return RES[i];return null;}
+// ---------- land ----------
+var PS=8,PN=W/PS;
+function owned(x,y){return inb(x,y)&&S.own[idx(x,y)]===1;}
+function parcelOwned(px,py){return S.own[idx(px*PS,py*PS)]===1;}
+function parcelBuyable(px,py){if(px<0||py<0||px>=PN||py>=PN||parcelOwned(px,py))return false;
+ return (px>0&&parcelOwned(px-1,py))||(px<PN-1&&parcelOwned(px+1,py))||(py>0&&parcelOwned(px,py-1))||(py<PN-1&&parcelOwned(px,py+1));}
+function parcelPrice(px,py){var ice=0,rock=0;for(var j=py*PS;j<py*PS+PS;j++)for(var i=px*PS;i<px*PS+PS;i++){var t=S.terr[idx(i,j)];if(t===5)ice++;if(t===4)rock++;}
+ var dist=Math.abs(px+0.5-EX/PS)+Math.abs(py+0.5-EY/PS);return Math.round((900+dist*260+ice*14+rock*6)/50)*50;}
+function buyParcel(px,py){if(!parcelBuyable(px,py))return{ok:false,why:parcelOwned(px,py)?'You already own this land.':'You can only buy land next to land you own.'};
+ var c=parcelPrice(px,py);if(S.money<c)return{ok:false,why:'Not enough money. This plot costs '+fmt(c)+'.'};
+ for(var j=py*PS;j<py*PS+PS;j++)for(var i=px*PS;i<px*PS+PS;i++)S.own[idx(i,j)]=1;
+ spend('land',c);Render.dirty=true;Sfx.play('cash');msg('Bought a new plot of land for '+fmt(c)+'.','good');achieve('land');return{ok:true,cost:c};}
 function genMap(s,sc){
  var r=mulberry(sc.seed*977+13);
  // smooth value noise
@@ -151,6 +268,7 @@ function footprintOk(type,x,y){
   if(S.path[t])return{ok:false,why:'There is a path in the way.'};
   if(S.trk[t]>=0)return{ok:false,why:'Coaster track is in the way.'};
   if(i===EX&&j===EY)return{ok:false,why:'That\u2019s the park entrance.'};
+  if(S.own[t]!==1)return{ok:false,why:'You don\u2019t own this land. Buy it under Paths & Land.'};
   if(S.terr[t]===4)rocks++;}
  if(d.ice){var near=false;for(j=y-2;j<y+d.h+2&&!near;j++)for(i=x-2;i<x+d.w+2;i++)if(inb(i,j)&&S.terr[idx(i,j)]===5){near=true;break;}
   if(!near)return{ok:false,why:'Aquarium domes need polar ice within 2 tiles (the pale blue ground).'};}
@@ -160,8 +278,9 @@ function footprintOk(type,x,y){
 function place(type,x,y,free){
  var d=DEF[type],f=footprintOk(type,x,y);
  if(!f.ok)return f;
+ if(!free&&!unlocked(type)){var rr=resFor(type);return{ok:false,why:'Not researched yet'+(rr?' ('+rr.n+')':'')+'.'};}
  if(!free&&S.money<f.cost)return{ok:false,why:'Not enough money. You need '+fmt(f.cost)+'.'};
- var o={id:S.nid++,t:type,x:x,y:y,w:d.w,h:d.h,open:d.k!=='coaster',broken:false,rel:100,riders:0,q:0,cust:0,inc:0,minc:0,sold:0,price:d.p||0,built:S.day,welfare:100,cost:f.cost};
+ var o={id:S.nid++,t:type,x:x,y:y,w:d.w,h:d.h,open:d.k!=='coaster',broken:false,rel:100,riders:0,q:0,cust:0,inc:0,minc:0,sold:0,price:d.p||0,built:S.day,ref:S.day,insp:8,lastI:S.day,welfare:100,cost:f.cost};
  if(d.k==='coaster'){o.cn=COASTER_NAMES[S.coasterN++%COASTER_NAMES.length];o.loop=null;o.ok=false;o.err='Lay track from both sides of the station and close the loop.';o.tp=0;o.tv=0;o.dwell=0;}
  for(var j=y;j<y+d.h;j++)for(var i=x;i<x+d.w;i++){var t=idx(i,j);S.occ[t]=o.id;if(S.terr[t]===4)S.terr[t]=1;}
  if(d.k==='coaster')S.trk[idx(x,y)]=0;
@@ -174,6 +293,7 @@ function placePath(x,y,free){
  if(!inb(x,y))return{ok:false,why:'Off the map.'};var t=idx(x,y);
  if(S.path[t])return{ok:false,why:''};
  if(S.occ[t])return{ok:false,why:'Something is built here.'};
+ if(S.own[t]!==1)return{ok:false,why:'You don\u2019t own this land.'};
  if(S.trk[t]>=0&&S.trk[t]<2)return{ok:false,why:'Track is too low to walk under (raise it to 2+).'};
  var cost=12+(S.terr[t]===4?40:0);
  if(!free&&S.money<cost)return{ok:false,why:'Not enough money.'};
@@ -184,6 +304,8 @@ function placeTrack(x,y,h,free){
  if(!inb(x,y))return{ok:false,why:'Off the map.'};var t=idx(x,y);
  if(S.trk[t]>=0)return{ok:false,why:''};
  if(S.occ[t])return{ok:false,why:'Something is built here.'};
+ if(S.own[t]!==1)return{ok:false,why:'You don\u2019t own this land.'};
+ if(!free&&!unlocked('station'))return{ok:false,why:'Research the scrap coaster kit first.'};
  if(S.path[t]&&h<2)return{ok:false,why:'Raise the track to height 2+ to cross over a path.'};
  if(x===EX&&y===EY)return{ok:false,why:'That\u2019s the entrance.'};
  var cost=45+h*5+(S.terr[t]===4?40:0);
@@ -209,7 +331,7 @@ function bulldoze(x,y){
  if(o){removeObj(o,true);validateAll();Sfx.play('boom');return{ok:true,what:DEF[o.t].n};}
  if(S.trk[t]>=0){S.trk[t]=-1;Render.dirty=true;validateAll();Sfx.play('boom');return{ok:true,what:'track'};}
  if(S.path[t]){S.path[t]=0;S.litter[t]=0;S.pathVer++;Render.dirty=true;Sfx.play('boom');return{ok:true,what:'path'};}
- if(S.terr[t]===4){if(S.money<40)return{ok:false,why:'Clearing rocks costs $40.'};S.terr[t]=1;spend('build',40);Render.dirty=true;Sfx.play('boom');return{ok:true,what:'rocks'};}
+ if(S.terr[t]===4){if(S.own[t]!==1)return{ok:false,why:'You don\u2019t own this land.'};if(S.money<40)return{ok:false,why:'Clearing rocks costs $40.'};S.terr[t]=1;spend('build',40);Render.dirty=true;Sfx.play('boom');return{ok:true,what:'rocks'};}
  return{ok:false,why:''};
 }
 
@@ -297,7 +419,7 @@ function utilities(){
  if(cov.v===cacheVer)return cov;
  var u={v:cacheVer,pwP:6,pwU:0,o2P:6,o2U:0,res:0,beauty:new Float32Array(N),bin:new Uint8Array(N),shel:new Uint8Array(N),watch:new Uint8Array(N)};
  var ids=Object.keys(S.objs).map(Number).sort(function(a,b){return a-b;});
- ids.forEach(function(id){var o=S.objs[id],d=DEF[o.t];if(d.pw>0)u.pwP+=d.pw;else if(d.pw<0)u.pwU-=d.pw;if(d.o2>0)u.o2P+=d.o2;else if(d.o2<0)u.o2U-=d.o2;if(d.res)u.res+=d.res;});
+ ids.forEach(function(id){var o=S.objs[id],d=DEF[o.t];if(d.pw>0)u.pwP+=(d.solar&&S.storm>0)?Math.floor(d.pw/2):d.pw;else if(d.pw<0)u.pwU-=d.pw;if(d.o2>0)u.o2P+=d.o2;else if(d.o2<0)u.o2U-=d.o2;if(d.res)u.res+=d.res;});
  var avail=u.pwP;
  ids.forEach(function(id){var o=S.objs[id],d=DEF[o.t];if(d.pw<0){if(avail>=-d.pw){o.pwr=true;avail+=d.pw;}else o.pwr=false;}else o.pwr=true;});
  function area(o,r,arr,val,add){var cx=o.x+(o.w-1)/2,cy=o.y+(o.h-1)/2;for(var j=Math.floor(cy-r);j<=Math.ceil(cy+r);j++)for(var i=Math.floor(cx-r);i<=Math.ceil(cx+r);i++){if(!inb(i,j))continue;if(Math.abs(i-cx)+Math.abs(j-cy)>r+0.5)continue;var t=idx(i,j);if(add)arr[t]+=val;else arr[t]=val;}}
@@ -317,6 +439,10 @@ function rideIn(o){var d=DEF[o.t];return d.k==='coaster'?(o.in||0):d.in;}
 function rideNa(o){var d=DEF[o.t];return d.k==='coaster'?(o.na||0):d.na;}
 function rideCap(o){var d=DEF[o.t];return d.cap||10;}
 function fairPrice(o){var d=DEF[o.t];if(d.k==='shop')return d.fair;return Math.max(1,rideEx(o)*0.7+0.6);}
+function ageM(o){return Math.max(0,(S.day-(o.ref!==undefined?o.ref:o.built))/MDAYS);}
+function ageF(o){return DEF[o.t].k==='exhibit'?1:Math.max(0.72,1-ageM(o)/50);}
+function appeal(o){return rideEx(o)*ageF(o);}
+function campOn(id){for(var i=0;i<S.camps.length;i++)if(S.camps[i].id===id&&S.camps[i].until>S.day)return S.camps[i];return null;}
 function isAttraction(o){var k=DEF[o.t].k;return k==='ride'||k==='exhibit'||(k==='coaster'&&o.ok);}
 
 // ---------- guests ----------
@@ -324,13 +450,18 @@ var THINK_ANIMAL={glow:'The Glowhounds just turned teal. So cute!',puff:'A Shado
 var ANIMAL_N={glow:'Glowhounds',puff:'Shadowpuffs',flit:'Aero-flits',herd:'machine herd',lumos:'Lumos-kin',vore:'Aquavores',abyss:'Abyssals',jelly:'jellies',tidal:'Bay Beast'};
 var SHIRTS=['#e04040','#4060e0','#40c040','#e0c040','#c040c0','#40c0c0','#f08030','#ffffff','#303030','#a05030'];
 function think(g,s,m){for(var i=0;i<g.th.length;i++){if(g.th[i].s===s&&S.day-g.th[i].d<2)return;}g.th.unshift({s:s,d:S.day,m:m||0});if(g.th.length>8)g.th.pop();}
+function pickType(){
+ var U=utilities(),cd=campOn('creature')?2:1,w=[['fam',30*cd],['thrill',25*(campOn('spot')?1.5:1)],['fan',15*cd],['tourist',12],['local',U.res*0.8]],tot=0,i;
+ for(i=0;i<w.length;i++)tot+=w[i][1];var r=Math.random()*tot;for(i=0;i<w.length;i++){r-=w[i][1];if(r<=0)return w[i][0];}return 'fam';}
+function feeNow(){return campOn('voucher')?Math.floor(S.fee/2):S.fee;}
 function spawnGuest(){
- var cash=ri(20,90);
- if(cash<S.fee+3){S.turned++;return null;}
+ var gt=pickType(),T=GT[gt],fee=feeNow();
+ var cash=ri(T.cash[0],T.cash[1]);
+ if(cash<fee+3){S.turned++;return null;}
  var g={id:S.gid++,n:pick(NAMES)+' '+pick(SNAMES).charAt(0)+'.',x:EX,y:EY,fx:EX+0.5,fy:EY+0.5,nx:-1,ny:-1,px:-1,py:-1,st:'walk',tgt:null,on:0,tt:0,cool:10,
-  cash:cash-S.fee,happy:ri(62,85),hunger:ri(5,35),thirst:ri(5,35),wc:ri(0,25),naus:0,energy:ri(80,100),th:[],mask:false,souv:false,trash:0,spent:S.fee,rides:0,done:{},
-  imax:2.5+Math.random()*6.5,ntol:Math.random(),stay:DAY*ri(8,18),age:0,off:(Math.random()-0.5)*0.36,col:pick(SHIRTS),watch:false};
- earn('adm',S.fee);S.guests.push(g);S.totalGuests++;
+  gt:gt,cash:cash-fee,happy:ri(62,85),hunger:ri(5,35),thirst:ri(5,35),wc:ri(0,25),naus:0,energy:ri(80,100),th:[],mask:false,souv:false,trash:0,spent:S.fee,rides:0,done:{},
+  imax:rnd(T.imax[0],T.imax[1]),ntol:Math.random(),stay:DAY*(gt==='local'?ri(5,10):ri(8,18)),age:0,off:(Math.random()-0.5)*0.36,col:pick(SHIRTS),watch:false};
+ g.spent=fee;earn('adm',fee);S.guests.push(g);S.totalGuests++;
  think(g,'I just got to '+S.park+'!',1);
  return g;
 }
@@ -368,7 +499,11 @@ function chooseTarget(g,t){
   var att=isAttraction(o2);
   if(!att&&!(d.sell==='souv'&&!g.souv&&g.cash>=o2.price+4))continue;
   if(!o2.open)continue;var fd=objField(o2);if(fd[t]<0)continue;
-  var w=att?(rideEx(o2)+0.5)/(1+(g.done[o2.id]||0)*2.5):1.2;w*=1/(1+fd[t]/14);
+  var w=att?(appeal(o2)+0.5)/(1+(g.done[o2.id]||0)*2.5):1.2;w*=1/(1+fd[t]/14);
+  if(att){var T=GT[g.gt||'fam'],kk=d.k;w*=kk==='exhibit'?T.zoo:(kk==='coaster'?T.coast:T.ride);
+   if(g.gt==='thrill'&&rideIn(o2)>=5)w*=1.6;if(g.gt==='fam'&&rideIn(o2)>4.5)w*=0.3;
+   if(S.spotId===o2.id&&campOn('spot'))w*=2.5;if(d.out&&S.wx==='cold')w*=0.6;}
+  else if(g.gt==='tourist')w*=2;
   c.push([o2,w]);tot+=w;}
  if(!c.length)return;
  var r=Math.random()*tot,ch=c[0][0];for(var i=0;i<c.length;i++){r-=c[i][1];if(r<=0){ch=c[i][0];break;}}
@@ -412,7 +547,9 @@ function finishRide(g){
  o.riders=Math.max(0,o.riders-1);
  var d=DEF[o.t],nm=oname(o),ex=rideEx(o),inn=rideIn(o),na=rideNa(o);
  g.done[o.id]=(g.done[o.id]||0)+1;g.rides++;
- var fun=ex*2.6-Math.max(0,inn-g.imax)*5;
+ var fun=ex*ageF(o)*2.6-Math.max(0,inn-g.imax)*5;
+ if(g.gt==='thrill'&&inn<2.5&&d.k!=='exhibit'){fun*=0.55;if(Math.random()<0.4)think(g,nm+' was too tame for me',0);}
+ if(d.k==='exhibit'&&(g.gt==='fan'||g.gt==='fam'))fun*=1.15;
  if(d.k==='exhibit'){fun*=0.4+0.6*o.welfare/100;if(o.welfare<40)think(g,'The '+ANIMAL_N[d.an]+' look unhappy',-1);else if(Math.random()<0.6)think(g,THINK_ANIMAL[d.an],1);}
  g.happy=clamp(g.happy+fun,0,100);g.energy-=3;
  g.naus=Math.min(100,g.naus+na*7*(1.3-g.ntol));
@@ -468,7 +605,7 @@ function guestTick(g){
  if(g.st==='sit'){g.tt--;g.energy=Math.min(100,g.energy+0.4);g.naus=Math.max(0,g.naus-0.3);if(g.tt<=0)g.st='walk';return;}
  var t=idx(g.x,g.y),U=utilities(),dh=0;
  if(g.hunger>80)dh-=0.02;if(g.thirst>80)dh-=0.025;if(g.wc>85)dh-=0.03;if(g.naus>60)dh-=0.02;if(g.energy<15)dh-=0.015;
- if(S.storm>0&&!g.mask&&!U.shel[t]){dh-=0.035;if(Math.random()<0.002)think(g,'I can\u2019t breathe in this dust',-1);}
+ if(S.storm>0&&!g.mask&&!U.shel[t]){dh-=hasTech('p_filter')?0.0175:0.035;if(Math.random()<0.002)think(g,'I can\u2019t breathe in this dust',-1);}
  if(S.o2def){dh-=0.015;if(Math.random()<0.001)think(g,'The air feels thin in here',-1);}
  g.happy=clamp(g.happy+dh,0,100);
  moveAgent(g,false);
@@ -490,15 +627,15 @@ function bfsLitter(start,max){
 function decideStaff(s,t){
  if(s.type==='handy'){
   if(S.litter[t]>0){S.litter[t]=0;s.done++;s.st='work';s.tt=10;return -1;}
-  if((!s.route||!s.route.length)&&s.cool<=0){s.route=bfsLitter(t,24);s.cool=20;}
+  if((!s.route||!s.route.length)&&s.cool<=0){s.route=bfsLitter(t,hasTech('p_broom')?40:24);s.cool=20;}
   if(s.route&&s.route.length){var n=s.route.shift();if(S.path[n])return n;s.route=null;}
   return wander(s,t);
  }
  if(s.type==='mech'||s.type==='keeper'){
   if(s.tgt){var o=S.objs[s.tgt];
-   var need=o&&(s.type==='mech'?o.broken:o.welfare<95);
+   var need=o&&(s.type==='mech'?(o.broken||(s.job==='insp'&&o.insp>0&&S.day-o.lastI>=o.insp)):o.welfare<95);
    if(!need){if(o){if(s.type==='mech')o.mech=0;else o.keeper=0;}s.tgt=null;}
-   else{var fd=objField(o);if(fd[t]===0){s.st='work';s.tt=s.type==='mech'?110:60;return -1;}if(fd[t]>0)return stepDown(fd,t);
+   else{var fd=objField(o);if(fd[t]===0){s.st='work';s.tt=s.type==='mech'?(o.broken?110:50):60;return -1;}if(fd[t]>0)return stepDown(fd,t);
     if(s.type==='mech')o.mech=0;else o.keeper=0;s.tgt=null;}
   }
  }
@@ -506,7 +643,7 @@ function decideStaff(s,t){
 }
 function finishWork(s){
  var o=s.tgt?S.objs[s.tgt]:null;
- if(s.type==='mech'&&o){o.broken=false;o.rel=Math.min(100,o.rel+35);o.mech=0;s.done++;msg(oname(o)+' has been fixed by '+s.n+'.','good');s.tgt=null;}
+ if(s.type==='mech'&&o){if(o.broken){o.broken=false;o.rel=Math.min(100,o.rel+35);msg(oname(o)+' has been fixed by '+s.n+'.','good');}else{o.rel=Math.min(100,o.rel+8);}o.lastI=S.day;o.mech=0;s.done++;s.tgt=null;s.job=null;}
  if(s.type==='keeper'&&o){o.welfare=100;o.keeper=0;s.done++;s.tgt=null;}
 }
 function staffTick(s){
@@ -521,9 +658,13 @@ function assignStaff(){
    if(!need||o[key])continue;
    var fd=objField(o),best=null,bd=1e9;
    S.staff.forEach(function(s){if(s.type!==type||s.tgt||s.st==='work')return;var dd=fd[idx(s.x,s.y)];if(dd>=0&&dd<bd){bd=dd;best=s;}});
-   if(best){best.tgt=o.id;best.route=null;o[key]=best.id;}
+   if(best){best.tgt=o.id;best.route=null;best.job='fix';o[key]=best.id;}
   }
  });
+ // routine inspections by idle mechanics
+ for(var k2 in S.objs){var o2=S.objs[k2],d2=DEF[o2.t];if(!(d2.k==='ride'||(d2.k==='coaster'&&o2.ok))||o2.broken||o2.mech||!o2.insp||S.day-o2.lastI<o2.insp)continue;
+  var fd2=objField(o2),bst=null,bdd=1e9;S.staff.forEach(function(s){if(s.type!=='mech'||s.tgt||s.st==='work')return;var dd=fd2[idx(s.x,s.y)];if(dd>=0&&dd<bdd){bdd=dd;bst=s;}});
+  if(bst){bst.tgt=o2.id;bst.route=null;bst.job='insp';o2.mech=bst.id;}}
  // entertainers cheer guests nearby
  S.staff.forEach(function(s){if(s.type!=='ent')return;S.guests.forEach(function(g){if(g.st!=='walk')return;if(Math.abs(g.fx-s.fx)+Math.abs(g.fy-s.fy)<2.5){g.happy=Math.min(100,g.happy+2);if(Math.random()<0.1)think(g,'That Lumos costume made me smile!',1);}});});
 }
@@ -537,7 +678,7 @@ function calcRating(){
  for(var k in S.objs){var o=S.objs[k],d=DEF[o.t];if(isAttraction(o)&&o.open)att++;if(o.broken)brk++;if(d.k==='scen')sc++;}
  for(var i=0;i<N;i++)if(S.path[i])lit+=S.litter[i];
  var avg=n?hap/n:60;
- var r=120+avg*3.6+Math.min(220,att*16)+Math.min(80,sc*1.5)+Math.min(100,n/4)-Math.min(160,lit*1.2)-brk*30-(n&&nau/n>35?60:0)-(S.o2def?60:0)-(S.storm?20:0);
+ var r=100+avg*3.6+Math.min(240,att*14)+Math.min(80,sc*1.5)+Math.min(60,n/8)-Math.min(160,lit*1.2)-brk*30-(n&&nau/n>35?60:0)-(S.o2def?60:0)-(S.storm?20:0);
  S.rating=Math.round(clamp(S.rating+(r-S.rating)*0.3,0,999));
  S.avgHappy=Math.round(avg);S.lit=lit;
 }
@@ -548,66 +689,140 @@ function vexEvent(){
  if(!cand.length)return;
  var o=pick(cand),d=DEF[o.t],cx=o.x+o.w/2,cy=o.y+o.h/2,U=utilities(),safe=U.watch[idx(Math.floor(cx),Math.floor(cy))];
  S.staff.forEach(function(s){if(s.type==='guard'&&Math.abs(s.fx-cx)+Math.abs(s.fy-cy)<8)safe=1;});
- if(safe){msg('Fringe Watch spotted Vex\u2019s Nullifiers near '+oname(o)+' and chased them off.','good');return;}
- S.vexN++;
+ if(safe){S.vexStop++;if(S.vexStop>=5)achieve('vex');msg('Fringe Watch spotted Vex\u2019s Nullifiers near '+oname(o)+' and chased them off.','good');return;}
+ S.vexN++;S.yr.vex++;
  if(d.k==='scen'){removeObj(o,false);msg('\u26a0 Vex\u2019s Nullifiers smashed a '+d.n+'. Hire Fringe Watch guards or build watch posts.','bad');}
  else{o.broken=true;o.rel=Math.max(20,o.rel-20);msg('\u26a0 Vex\u2019s Nullifiers sabotaged '+oname(o)+'! It needs a mechanic.','bad');}
 }
 function newDay(){
- S.day++;var U=utilities(),sc=SCN[S.scen],mech=0;
+ S.day++;var U=utilities(),sc=SCN[S.scen],mech=0,se=season();
  S.staff.forEach(function(s){spend('wages',STAFF[s.type].w/MDAYS);if(s.type==='mech')mech++;});
  if(S.loan>0)spend('interest',S.loan*0.10/YMONTHS/MDAYS);
  for(var k in S.objs){var o=S.objs[k],d=DEF[o.t];
-  if(d.up)spend('upkeep',d.up/MDAYS);
+  if(d.up)spend('upkeep',d.up/MDAYS*(1+Math.min(1,ageM(o)/40)));
   if(d.rent)earn('rent',d.rent/MDAYS);
   if(d.k==='exhibit')o.welfare=Math.max(0,o.welfare-9);
   if((d.k==='ride'||(d.k==='coaster'&&o.ok))&&o.open&&!o.broken){
-   o.rel=Math.max(25,o.rel-(0.5+Math.random()*0.7));
-   var ch=(100-o.rel)/1100*((S.storm>0&&d.out)?2.5:1);
-   if(Math.random()<ch&&!isDemo()){o.broken=true;msg(oname(o)+' has broken down! '+(mech?'A mechanic is on the way.':'Hire a mechanic from the Staff window.'),'bad');}
+   o.rel=Math.max(25,o.rel-(0.5+Math.random()*0.7)*(1+ageM(o)/20)*(hasTech('p_manual')?0.65:1));
+   var ch=(100-o.rel)/1100*((S.storm>0&&d.out)?2.5:1)*((o.insp&&S.day-o.lastI<=o.insp+1)?0.55:1);
+   if(Math.random()<ch&&!isDemo()){o.broken=true;S.yr.brk++;msg(oname(o)+' has broken down! '+(mech?'A mechanic is on the way.':'Hire a mechanic from the Staff window.'),'bad');}
   }
  }
- if(S.storm>0){S.storm--;if(S.storm===0)msg('The dust storm has passed. Clear skies over the Fringe.','good');}
- else if(S.day>8&&Math.random()<sc.storms/40&&!isDemo()){S.storm=ri(3,6);msg('\u26a0 A dust storm is rolling in off the Whispering Chasm! Guests want masks and shelter.','bad');}
+ // research
+ if(!isDemo()&&S.scen!=='sandbox')researchDay();
+ // weather & seasons
+ if(S.storm>0){S.storm--;if(S.storm===0){cacheVer++;msg('The dust storm has passed. Clear skies over the Fringe.','good');if(S.rating>=500)achieve('storm');}}
+ else if(S.day>8&&Math.random()<sc.storms*se[2]/40&&!isDemo()){S.storm=ri(3,6);cacheVer++;msg('\u26a0 A dust storm is rolling in off the Whispering Chasm! Guests want masks and shelter.','bad');}
+ var r=Math.random();S.wx=S.storm?'storm':(se[0]==='Winter'?(r<0.35?'cold':'clear'):(se[0]==='Dust season'?(r<0.4?'windy':(r<0.6?'hazy':'clear')):(r<0.15?'hazy':'clear')));
+ if(S.day%MDAYS===0&&S.day%(MDAYS*2)===0&&!isDemo()){msg(se[0]+' has begun on Mars.'+(se[0]==='Dust season'?' Expect more dust storms.':se[0]==='Winter'?' Cold snaps keep some guests away.':se[0]==='Summer'?' Big crowds come out in summer.':''),'');}
  vexEvent();
  S.o2need=U.o2U+Math.ceil(S.guests.length/40);S.o2def=U.o2P<S.o2need;
  if(S.o2def&&S.day%4===0&&!isDemo())msg('Oxygen is running low for this many guests. Build greenhouses or mush farms.','bad');
  if(U.pwU>U.pwP&&S.day%4===0&&!isDemo())msg('Not enough power! Some rides and stalls are dark. Build a Geothermal Vent.','bad');
+ // campaigns ending
+ S.camps=S.camps.filter(function(c){if(c.until<=S.day){if(!isDemo())msg(CAMPN[c.id].n+' campaign has finished.');return false;}return true;});
  calcRating();
+ if(!isDemo()){checkGoal();checkAch();}
  if(S.day%MDAYS===0)newMonth();
 }
+function researchDay(){
+ var R=S.res,f=FUND[R.fund];if(!f[1])return;
+ spend('research',f[1]/MDAYS);
+ if(!R.cur||R.done[R.cur])R.cur=nextRes();if(!R.cur)return;
+ R.prog+=f[2];var it=RESN[R.cur];
+ if(R.prog>=it.pts){R.done[it.id]=1;R.prog=0;R.cur=null;computeUnl();
+  var names=it.un?it.un.map(function(id){return DEF[id].n;}).join(', '):it.fx;
+  msg('\u2697 Research done: '+it.n+'. '+(it.un?'New to build: '+names+'.':names),'good');
+  if(Object.keys(R.done).length>=10)achieve('res10');
+  R.cur=nextRes();}
+}
+function nextRes(){var R=S.res,best=null;
+ for(var i=0;i<RES.length;i++){var r=RES[i];if(R.done[r.id])continue;
+  // a project needs the one before it in its category
+  var prev=null;for(var j=i-1;j>=0;j--)if(RES[j].cat===r.cat){prev=RES[j];break;}if(prev&&!R.done[prev.id])continue;
+  var sc=r.pts*(R.focus&&R.focus!==r.cat?3:1);if(!best||sc<best[1])best=[r.id,sc];}
+ return best?best[0]:null;}
 function newMonth(){
- S.fin.hist.unshift(S.fin.cur);if(S.fin.hist.length>6)S.fin.hist.pop();S.fin.cur=blankFin();
+ S.fin.hist.unshift(S.fin.cur);if(S.fin.hist.length>24)S.fin.hist.pop();
+ var c=S.fin.cur;S.hist.unshift({cash:Math.round(S.money),rating:S.rating,guests:S.guests.length,value:parkValue(),profit:Math.round(profitOf(c))});if(S.hist.length>24)S.hist.pop();
+ S.fin.cur=blankFin();
  for(var k in S.objs)S.objs[k].minc=0;
- checkGoal();
+ if(S.day%(MDAYS*YMONTHS)===0&&!isDemo())yearAwards();
+ if(Math.floor(S.day/(MDAYS*YMONTHS))>=2)achieve('year3');
  if(!isDemo()){save('auto');}
 }
+function profitOf(c){return c.adm+c.ride+c.food+c.shop+c.rent-c.build-c.upkeep-c.wages-c.interest-(c.research||0)-(c.market||0)-(c.land||0);}
+function yearAwards(){
+ var n=S.guests.length,U=utilities(),sc=0,ex=[],wel=0,food=0,best=0,thr=0,k,o,d,got=[];
+ for(k in S.objs){o=S.objs[k];d=DEF[o.t];if(d.k==='scen')sc++;if(d.k==='exhibit'){ex.push(o);wel+=o.welfare;}if(d.sell==='food'||d.sell==='drink')food++;
+  if(d.k==='coaster'&&o.ok)best=Math.max(best,o.ex);if(isAttraction(o)&&rideIn(o)>=5)thr++;}
+ var att=0;for(k in S.objs)if(isAttraction(S.objs[k]))att++;
+ if(n>=60&&(S.lit||0)<n*0.04)got.push('clean');if((S.lit||0)>Math.max(30,n*0.25))got.push('messy');
+ if(sc>=45)got.push('beauty');if(best>=6.5&&thr>=2)got.push('thrill');
+ if(ex.length>=3&&wel/ex.length>=75)got.push('creature');
+ if(n>=100&&S.fee<=(6+att*1.6)*0.8&&S.rating>=500)got.push('value');
+ if(S.yr.brk<=3&&S.yr.vex===0&&n>=60)got.push('safe');
+ if(food>=6&&(S.avgHappy||0)>=70)got.push('food');
+ if(n>=120&&(S.avgHappy||0)>=80)got.push('happy');
+ if(S.rating<300)got.push('worst');if(U.pwU>U.pwP)got.push('dark');
+ var yr=Math.floor(S.day/(MDAYS*YMONTHS)),b=0;
+ got.forEach(function(id){S.awards.push({y:yr,id:id});b+=AWARDS[id].good?0.06:-0.08;});
+ S.buzz=clamp(b,-0.2,0.3);S.yr={brk:0,vex:0};
+ if(got.some(function(id){return AWARDS[id].good;}))achieve('award');
+ msg(got.length?'\u2605 Year '+yr+' park awards: '+got.map(function(id){return AWARDS[id].n;}).join(', ')+'.':'Year '+yr+' awards: nothing for your park this time.',got.length?'good':'');
+ UI.awardsDialog&&UI.awardsDialog(yr,got);
+}
 function deadline(){var g=SCN[S.scen].goal;return g?g.years*YMONTHS*MDAYS:0;}
-function goalStatus(){
- var g=SCN[S.scen].goal;if(!g)return null;var parts=[],n=S.guests.length;
+function tierParts(t){
+ var g=SCN[S.scen].goal.tiers[t-1],parts=[],n=S.guests.length;
  if(g.guests)parts.push({t:g.guests+' guests in the park',ok:n>=g.guests,now:n});
  if(g.rating)parts.push({t:'Park rating '+g.rating+'+',ok:S.rating>=g.rating,now:S.rating});
  if(g.exhibits){var e=0;for(var k in S.objs)if(DEF[S.objs[k].t].k==='exhibit')e++;parts.push({t:g.exhibits+' zoo/aquarium exhibits',ok:e>=g.exhibits,now:e});}
  if(g.coaster){var b=0;for(k in S.objs){var o=S.objs[k];if(DEF[o.t].k==='coaster'&&o.ok)b=Math.max(b,o.ex);}parts.push({t:'A coaster with excitement '+g.coaster+'+',ok:b>=g.coaster,now:b.toFixed(1)});}
- if(g.value)parts.push({t:'Company value '+fmt(g.value),ok:companyValue()>=g.value,now:fmt(companyValue())});
- return{parts:parts,all:parts.every(function(p){return p.ok;}),by:'end of Year '+g.years};
+ if(g.value){var cv=companyValue();parts.push({t:'Company value '+fmt(g.value),ok:cv>=g.value,now:fmt(cv)});}
+ return{parts:parts,all:parts.every(function(p){return p.ok;})};
 }
+function goalStatus(){
+ var g=SCN[S.scen].goal;if(!g)return null;var tiers=[];for(var t=1;t<=g.tiers.length;t++)tiers.push(tierParts(t));
+ var nx=Math.min(S.tier+1,g.tiers.length);
+ return{tiers:tiers,parts:tiers[nx-1].parts,all:tiers[0].all,by:'end of Year '+g.years,next:S.tier<g.tiers.length?nx:0};
+}
+function progGet(){try{var p=JSON.parse(store.get('rht-prog')||'{}');return p&&typeof p==='object'?p:{};}catch(e){return{};}}
+function progSet(sid,t){var p=progGet();if((p[sid]||0)<t){p[sid]=t;store.set('rht-prog',JSON.stringify(p));}}
+function scenOpen(i){if(SCEN[i].id==='sandbox'||i===0)return true;if(store.get('rht-unlockall')==='1')return true;return (progGet()[SCEN[i-1].id]||0)>=1;}
 function checkGoal(){
- if(isDemo()||S.won||S.lost)return;var st=goalStatus();if(!st)return;
- if(st.all){S.won=true;msg('\u2605 Scenario complete! You beat '+SCN[S.scen].n+'.','good');UI.endDialog(true);}
- else if(S.day>=deadline()){S.lost=true;msg('Time\u2019s up on '+SCN[S.scen].n+'.','bad');UI.endDialog(false);}
+ if(isDemo()||S.over)return;var g=SCN[S.scen].goal;if(!g)return;var st=goalStatus(),best=0;
+ for(var t=1;t<=st.tiers.length;t++){if(st.tiers[t-1].all)best=t;else break;}
+ if(best>S.tier){S.tier=best;S.won=true;progSet(S.scen,best);achieve(['','bronze','silver','gold'][best]);
+  msg('\u2605 '+TIERN[best]+' goal reached in '+SCN[S.scen].n+'!','good');UI.endDialog(true,best);}
+ if(S.day>=deadline()){S.over=true;if(S.tier<1){S.lost=true;msg('Time\u2019s up on '+SCN[S.scen].n+'.','bad');}UI.endDialog(S.tier>0,S.tier,true);}
+}
+// achievements live outside saves (they belong to the player, not the park)
+var achCache=null;
+function achGet(){if(achCache)return achCache;try{achCache=JSON.parse(store.get('rht-ach')||'{}')||{};}catch(e){achCache={};}return achCache;}
+function achieve(id){if(isDemo()||!id)return;var a=achGet();if(a[id])return;a[id]=Date.now();store.set('rht-ach',JSON.stringify(a));
+ var it=ACH.filter(function(x){return x[0]===id;})[0];if(it&&UI.toast)UI.toast('\u{1F3C6} Achievement: '+it[1],it[2]);}
+function checkAch(){
+ var n=S.guests.length,ex={},aq=0,rides=0,k,o,d;
+ if(n>=100)achieve('g100');if(n>=500)achieve('g500');if(S.money>=100000)achieve('rich');
+ if(S.hadLoan&&S.loan<=0&&S.scen!=='sandbox')achieve('debt');if(S.loan>0)S.hadLoan=true;
+ for(k in S.objs){o=S.objs[k];d=DEF[o.t];if(d.k==='ride')rides++;if(d.k==='coaster'&&o.ok){achieve('coaster');if(o.ex>=7)achieve('coaster7');}
+  if(d.k==='exhibit'){if(d.ice)aq++;else ex[o.t]=1;}}
+ if(rides)achieve('ride');if(Object.keys(ex).length)achieve('zoo');if(Object.keys(ex).length>=5)achieve('zoo5');if(aq)achieve('aqua');
 }
 function arrivals(){
  if(!S.open)return;
  var U=utilities(),app=0,att=0;
  for(var k in S.objs){var o=S.objs[k],d=DEF[o.t];
-  if(isAttraction(o)&&o.open&&!o.broken&&!(d.pw<0&&!o.pwr)){app+=rideEx(o)*(d.k==='exhibit'?(0.4+0.6*o.welfare/100):1);att++;}
+  if(isAttraction(o)&&o.open&&!o.broken&&!(d.pw<0&&!o.pwr)){app+=appeal(o)*(d.k==='exhibit'?(0.4+0.6*o.welfare/100):1);att++;}
   else if(d.k==='shop')app+=0.4;}
- var want=(30+app*12+U.res)*(0.4+S.rating/800);
- var value=6+att*1.6,ff=S.fee<=value?1:Math.max(0.08,1-(S.fee-value)/value);
- want*=ff;if(S.storm)want*=0.5;want=Math.min(want,650);S.want=Math.round(want);
+ var want=(30+app*9+U.res*0.7)*(0.4+S.rating/800);
+ var value=6+att*1.6,fee=feeNow(),ff=fee<=value?1:Math.max(0.08,1-(fee-value)/value);
+ var mk=0;S.camps.forEach(function(c){if(c.until>S.day)mk+=CAMPN[c.id].dem;});
+ want*=ff*season()[1]*(1+mk)*(1+(S.buzz||0))*(S.wx==='cold'?0.85:1);if(S.storm)want*=0.5;want=Math.min(want,1200);S.want=Math.round(want);
  var n=S.guests.length;
- if(n<want&&Math.random()<0.05+0.15*(1-n/want))spawnGuest();
+ // guests stream in until the park reaches its pull; the bigger the gap the faster they come
+ var r=Math.min(2,(want-n)/120);while(r>0){if(Math.random()<Math.min(1,r))spawnGuest();r-=1;}
 }
 function simTick(){
  S.tick++;
@@ -621,10 +836,10 @@ function simTick(){
  if(S.tick%DAY===0)newDay();
 }
 // ---------- save / load ----------
-function save(slot){try{var s=JSON.stringify(S);var ok=store.set('rht-save-'+slot,s);store.set('rht-meta-'+slot,JSON.stringify({d:dateStr(),sc:SCN[S.scen].n,m:S.money,g:S.guests.length}));return ok;}catch(e){return false;}}
+function save(slot){try{var s=JSON.stringify(S);var ok=store.set('rht-save-'+slot,s);store.set('rht-meta-'+slot,JSON.stringify({d:dateStr(),sc:SCN[S.scen].n,m:S.money,g:S.guests.length,t:S.tier||0}));return ok;}catch(e){return false;}}
 function saveMeta(slot){try{var m=store.get('rht-meta-'+slot);return m?JSON.parse(m):null;}catch(e){return null;}}
-function load(slot){var raw=store.get('rht-save-'+slot);if(!raw)return false;try{var s=JSON.parse(raw);if(!s||s.v!==1||!s.terr||s.terr.length!==N)return false;setState(s);return true;}catch(e){return false;}}
-function setState(s){S=s;fields={};cacheVer++;cov.v=-1;Render.dirty=true;if(UI.reset)UI.reset();}
+function load(slot){var raw=store.get('rht-save-'+slot);if(!raw)return false;try{var s=JSON.parse(raw);if(!s||(s.v!==1&&s.v!==2)||!s.terr||s.terr.length!==N)return false;setState(fixState(s));return true;}catch(e){return false;}}
+function setState(s){S=s;computeUnl();fields={};cacheVer++;cov.v=-1;Render.dirty=true;if(UI.reset)UI.reset();}
 
 // ---------- rendering ----------
 var Render={dirty:true,grid:false};
@@ -674,7 +889,16 @@ function bakeTerrain(){
    b.fillStyle='rgba(120,100,80,0.25)';if(hv>0.5)b.fillRect(pts[0][0]-2,pts[0][1]+6,4,1);
   }
   if(Render.grid){poly(b,pts,null,'rgba(0,0,0,0.16)',0.6);}
+  if(S.own&&S.own[t]!==1)poly(b,pts,'rgba(18,6,2,0.45)');
  }
+ // a soft golden line along the edge of the land you own
+ if(S.own){b.strokeStyle='rgba(255,214,140,0.55)';b.lineWidth=1;b.setLineDash&&b.setLineDash([3,2]);b.beginPath();
+  for(var yy=0;yy<H;yy++)for(var xx=0;xx<W;xx++){if(S.own[idx(xx,yy)]!==1)continue;
+   if(yy>0&&S.own[idx(xx,yy-1)]!==1){var a1=P(xx,yy),a2=P(xx+1,yy);b.moveTo(a1[0],a1[1]);b.lineTo(a2[0],a2[1]);}
+   if(xx<W-1&&S.own[idx(xx+1,yy)]!==1){a1=P(xx+1,yy);a2=P(xx+1,yy+1);b.moveTo(a1[0],a1[1]);b.lineTo(a2[0],a2[1]);}
+   if(yy<H-1&&S.own[idx(xx,yy+1)]!==1){a1=P(xx,yy+1);a2=P(xx+1,yy+1);b.moveTo(a1[0],a1[1]);b.lineTo(a2[0],a2[1]);}
+   if(xx>0&&S.own[idx(xx-1,yy)]!==1){a1=P(xx,yy);a2=P(xx,yy+1);b.moveTo(a1[0],a1[1]);b.lineTo(a2[0],a2[1]);}}
+  b.stroke();b.setLineDash&&b.setLineDash([]);}
  Render.dirty=false;
 }
 // --- object drawing ---
@@ -734,6 +958,7 @@ function drawShop(o,d){
  var c=P(o.x+0.5,o.y+0.5,z+6);
  ctx.fillStyle=o.pwr===false?'#555':d.col;ctx.fillRect(c[0]-6,c[1]-4,12,7);ctx.strokeStyle='#000';ctx.lineWidth=0.75;ctx.strokeRect(c[0]-6,c[1]-4,12,7);
  ctx.fillStyle='#000';ctx.font='bold 6px Tahoma,Verdana,sans-serif';ctx.textAlign='center';ctx.fillText(d.sign,c[0],c[1]+2);
+ if(o.t==='balloon'){for(var bi=0;bi<3;bi++){var bp=[c[0]-5+bi*5,c[1]-12-bi%2*3+Math.sin(animT*2+bi)*1.2];line([c[0],c[1]-4],[bp[0],bp[1]+3],'#ddd',0.4);circ(bp[0],bp[1],2.6,['#ff7ab0','#8fe3ff','#ffd84a'][bi],OUT);}}
 }
 function drawRide(o,d,run){
  var a=o._a||0,c=P(o.x+o.w/2,o.y+o.h/2),i,k;
@@ -784,6 +1009,23 @@ function drawRide(o,d,run){
   box(o.x+0.05,o.y+0.05,1.9,1.9,28,30,d.col);
   for(i=0;i<5;i++){var lp=P(o.x+0.2+i*0.4,o.y+1.95,29);circ(lp[0],lp[1],1.6,(Math.floor(animT*4)+i)%2?'#ffef6a':'#ff4af0');}
   if(run&&o.riders>0){for(i=0;i<3;i++){var bp=P(o.x+0.6+i*0.4,o.y+0.8,6);ctx.fillStyle=SHIRTS[i+2];ctx.fillRect(bp[0]-1.5,bp[1]-7-Math.abs(Math.sin(animT*6+i))*2,3,6);}}
+ }else if(o.t==='carousel'){
+  ell(c[0],c[1]+1,27,13.5,'#5a3a22');ell(c[0],c[1]-2,25,12.5,'#c8a070',OUT);
+  var on=run&&o.riders>0,hs=[];for(i=0;i<6;i++){var an2=(on?a*1.3:0)+i*Math.PI/3;hs.push([Math.cos(an2),Math.sin(an2),i]);}
+  hs.sort(function(p,q){return p[1]-q[1];});
+  var drawH=function(p){var px=c[0]+p[0]*18,py=c[1]-5+p[1]*9,bob=on?Math.sin(a*5+p[2])*2:0;line([px,py-22],[px,py+1],'#d8c070',0.8);ctx.fillStyle=['#8a8f98','#b0705a','#6a9ab8'][p[2]%3];ctx.fillRect(px-4,py-8+bob,8,4);ctx.fillRect(px+(p[0]>0?2:-5),py-11+bob,3,3);ctx.strokeStyle='#222';ctx.lineWidth=0.5;ctx.strokeRect(px-4,py-8+bob,8,4);};
+  hs.filter(function(p){return p[1]<0;}).forEach(drawH);
+  line([c[0],c[1]-2],[c[0],c[1]-30],'#d8c070',2.5);
+  hs.filter(function(p){return p[1]>=0;}).forEach(drawH);
+  for(k=0;k<8;k++){var a0=k/8*Math.PI*2,a1=(k+1)/8*Math.PI*2;poly(ctx,[[c[0],c[1]-44],[c[0]+Math.cos(a0)*27,c[1]-27+Math.sin(a0)*9],[c[0]+Math.cos(a1)*27,c[1]-27+Math.sin(a1)*9]],k%2?'#fff4dc':d.col);}
+  ell(c[0],c[1]-27,27,9,null,OUT,0.8);circ(c[0],c[1]-45,2,'#ffd84a',OUT);
+ }else if(o.t==='drop'){
+  box(o.x+0.1,o.y+0.1,1.8,1.8,0,3,'#5a5e66','#6e737c');
+  box(o.x+0.78,o.y+0.78,0.44,0.44,3,86,'#8a8f98','#b0b6c0');
+  var on2=run&&o.riders>0,ph=on2?(a*0.22)%1:0,zz=ph<0.72?6+ph/0.72*72:78-Math.pow((ph-0.72)/0.28,2)*72;
+  var rp=P(o.x+1,o.y+1,zz);ell(rp[0],rp[1],13,6.5,shade(d.col,0.7));ell(rp[0],rp[1]-3,13,6.5,d.col,OUT);
+  for(i=0;i<5;i++){var ra=i/5*Math.PI+0.3;ctx.fillStyle=SHIRTS[i];ctx.fillRect(rp[0]+Math.cos(ra)*10-1.5,rp[1]+Math.sin(ra)*4-1,3,4);}
+  var tp=P(o.x+1,o.y+1,88);circ(tp[0],tp[1],2.2,Math.floor(animT*2)%2?'#ff4040':'#802020',OUT);
  }else if(o.t==='station'){
   box(o.x+0.05,o.y+0.05,0.9,0.9,0,4,'#8a8a8a','#a8a8a8');
   [[0.1,0.1],[0.9,0.1],[0.9,0.9],[0.1,0.9]].forEach(function(q){line(P(o.x+q[0],o.y+q[1],4),P(o.x+q[0],o.y+q[1],20),'#555',1.2);});
@@ -806,6 +1048,13 @@ function drawCity(o,d){
  else if(o.t==='mush'){for(i=0;i<3;i++){var mp=P(o.x+0.3+i*0.22,o.y+0.65-i*0.2);line(mp,[mp[0],mp[1]-6-i*2],'#e8dcc8',2);ell(mp[0],mp[1]-7-i*2,5,2.5,'#9a5ab8',OUT);circ(mp[0]-1,mp[1]-8-i*2,0.8,'#fff');}}
  else if(o.t==='shelter'){ctx.globalAlpha=0.7;dome(c[0],c[1]-2,28,26,'#e8a060','#7a4a20');ctx.globalAlpha=1;for(i=-2;i<=2;i++){ctx.beginPath();ctx.ellipse(c[0],c[1]-2,Math.abs(i)*7+0.1,26,0,Math.PI,Math.PI*2);ctx.strokeStyle='rgba(120,70,30,0.5)';ctx.lineWidth=0.7;ctx.stroke();}
   poly(ctx,[[c[0]-4,c[1]+12],[c[0]+4,c[1]+12],[c[0]+4,c[1]+4],[c[0]-4,c[1]+4]],'#3a2010');}
+ else if(o.t==='solar'){for(var sj=0;sj<2;sj++)for(var si=0;si<2;si++){var bx=o.x+si,by=o.y+sj;line(P(bx+0.5,by+0.5,0),P(bx+0.5,by+0.5,6),'#555',1.2);
+   poly(ctx,[P(bx+0.12,by+0.12,4),P(bx+0.88,by+0.12,10),P(bx+0.88,by+0.88,10),P(bx+0.12,by+0.88,4)],S.storm>0?'#3a3a48':'#24467a','#9ac0f0',0.7);
+   if(!S.storm){ctx.globalAlpha=0.35+0.25*Math.sin(animT*1.5+si+sj*2);poly(ctx,[P(bx+0.3,by+0.2,5.5),P(bx+0.5,by+0.2,7),P(bx+0.5,by+0.4,7)],'#e0f0ff');ctx.globalAlpha=1;}}}
+ else if(o.t==='o2crack'){box(o.x+0.15,o.y+0.15,1.7,1.7,0,4,'#7a7f88','#9aa0a8');
+  box(o.x+0.3,o.y+0.35,0.5,0.5,4,26,'#e8eef2','#ffffff');box(o.x+1.15,o.y+0.35,0.5,0.5,4,20,'#d8e4ea','#f4fbff');box(o.x+0.4,o.y+1.2,1.2,0.5,4,10,'#6a8aa0','#8aaac0');
+  line(P(o.x+0.8,o.y+0.6,20),P(o.x+1.15,o.y+0.6,16),'#555',1.5);
+  for(i=0;i<4;i++){var vp=(animT*0.6+i*0.25)%1,v0=P(o.x+0.55,o.y+0.6,27);ctx.globalAlpha=0.5*(1-vp);circ(v0[0]+Math.sin(vp*5+i)*3,v0[1]-vp*26,2+vp*5,'#cfe8ff');}ctx.globalAlpha=1;}
  else if(o.t==='watch'){box(o.x+0.38,o.y+0.38,0.24,0.24,0,32,'#5a6a8a');box(o.x+0.2,o.y+0.2,0.6,0.6,32,40,'#3a4a6a');var lp=P(o.x+0.5,o.y+0.5,44);circ(lp[0],lp[1],2.2,Math.floor(animT*2)%2?'#6af':'#246');}
 }
 function drawScen(o,d){
@@ -816,10 +1065,16 @@ function drawScen(o,d){
  else if(o.t==='flyer'){box(o.x+0.35,o.y+0.35,0.3,0.3,0,8,'#9a9080');var f=P(o.x+0.5,o.y+0.5,14);ctx.fillStyle='#e8e0c8';ctx.fillRect(f[0]-9,f[1]-3,18,2);ctx.fillRect(f[0]-9,f[1]+1,18,2);ctx.fillStyle='#8a7a5a';ctx.fillRect(f[0]-1,f[1]-3,2,6);line([f[0]-3,f[1]],[f[0]+11,f[1]],'#5a4a3a',1);line([f[0],f[1]+3],[f[0],f[1]+6],'#5a4a3a',1);}
  else if(o.t==='banner'){line(c,[c[0],c[1]-22],'#555',1.2);var wv=Math.sin(animT*3+o.id)*2;poly(ctx,[[c[0],c[1]-22],[c[0]+12,c[1]-20+wv],[c[0]+12,c[1]-13+wv],[c[0],c[1]-15]],o.id%2?'#ff5a5a':'#ffd84a',OUT);}
  else if(o.t==='bench'){box(o.x+0.25,o.y+0.38,0.5,0.24,2,4,'#8a5a3a');line(P(o.x+0.3,o.y+0.6,0),P(o.x+0.3,o.y+0.6,2),'#333',1);line(P(o.x+0.7,o.y+0.6,0),P(o.x+0.7,o.y+0.6,2),'#333',1);box(o.x+0.25,o.y+0.38,0.5,0.05,4,9,'#6a4028');}
+ else if(o.t==='fountain'){ell(c[0],c[1],12,6,'#8a8a90',OUT);ell(c[0],c[1]-1.5,10,5,'#4aa8e0');ell(c[0],c[1]-2,6,3,'#7fd0f4');
+  line([c[0],c[1]-2],[c[0],c[1]-8],'#9aa0a8',2);for(i=0;i<8;i++){var fp=(animT*0.9+i/8)%1,fa=i/8*Math.PI*2;ctx.globalAlpha=1-fp*0.6;circ(c[0]+Math.cos(fa)*fp*8,c[1]-10-Math.sin(fp*Math.PI)*8+fp*8+Math.sin(fa)*fp*3,1,'#d8f4ff');}ctx.globalAlpha=1;}
+ else if(o.t==='arch'){var l0=P(o.x+0.12,o.y+0.5),r0=P(o.x+0.88,o.y+0.5);line(l0,[l0[0],l0[1]-22],'#7a4a2a',2.4);line(r0,[r0[0],r0[1]-22],'#7a4a2a',2.4);
+  ctx.beginPath();ctx.moveTo(l0[0],l0[1]-21);ctx.quadraticCurveTo(c[0],c[1]-34,r0[0],r0[1]-21);ctx.strokeStyle=d.col;ctx.lineWidth=3.5;ctx.stroke();ctx.strokeStyle='#ffd84a';ctx.lineWidth=1;ctx.stroke();
+  for(i=0;i<5;i++){var ff=(i+0.5)/5,fx=l0[0]+(r0[0]-l0[0])*ff,fy=l0[1]-21+(r0[1]-l0[1])*ff-Math.sin(ff*Math.PI)*7;poly(ctx,[[fx-1.5,fy+1],[fx+1.5,fy+1],[fx,fy+5]],SHIRTS[i]);}}
  else if(o.t==='bin'){ctx.fillStyle='#5a6a5a';ctx.fillRect(c[0]-3,c[1]-9,6,9);ell(c[0],c[1]-9,3,1.5,'#7a8a7a',OUT);ell(c[0],c[1],3,1.5,'#4a5a4a');}
 }
 function drawObj(o){
  var d=DEF[o.t];
+ if(d.k!=='scen'&&d.k!=='coaster'){var sh=0.22;poly(ctx,[P(o.x+sh,o.y+sh),P(o.x+o.w+sh,o.y+sh),P(o.x+o.w+sh,o.y+o.h+sh),P(o.x+sh,o.y+o.h+sh)],'rgba(30,8,2,0.22)');}
  if(d.k==='exhibit'){if(d.ice)drawAqua(o,d);else drawPen(o,d);}
  else if(d.k==='shop')drawShop(o,d);
  else if(d.k==='city')drawCity(o,d);
@@ -862,7 +1117,8 @@ function frame(now){
  var dtR=Math.min(0.1,(now-(lastFrame||now))/1000);lastFrame=now;
  if(Render.dirty)bakeTerrain();
  ctx.setTransform(1,0,0,1,0,0);ctx.imageSmoothingEnabled=false;
- ctx.fillStyle='#1a0905';ctx.fillRect(0,0,cv.width,cv.height);
+ if(!Render.sky||Render.skyH!==cv.height){Render.sky=ctx.createLinearGradient(0,0,0,cv.height);Render.sky.addColorStop(0,'#2b1220');Render.sky.addColorStop(0.55,'#3a160d');Render.sky.addColorStop(1,'#140705');Render.skyH=cv.height;}
+ ctx.fillStyle=Render.sky;ctx.fillRect(0,0,cv.width,cv.height);
  // starfield-ish sky dust
  var k=dpr*cam.z;ctx.setTransform(k,0,0,k,Math.round(cv.width/2-cam.x*k),Math.round(cv.height/2-cam.y*k));ctx.imageSmoothingEnabled=false;
  ctx.drawImage(bake,-OX,-OY);
@@ -886,6 +1142,8 @@ function frame(now){
  ctx.setTransform(1,0,0,1,0,0);
  if(S.storm>0){ctx.fillStyle='rgba(170,70,30,0.30)';ctx.fillRect(0,0,cv.width,cv.height);ctx.strokeStyle='rgba(230,150,100,0.35)';ctx.lineWidth=1.5*dpr;var tt=now/1000;
   for(i=0;i<70;i++){var sx=((hsh(i,1)*cv.width+tt*(300+hsh(i,2)*300)*dpr)%(cv.width+100))-50,sy=hsh(i,3)*cv.height;ctx.beginPath();ctx.moveTo(sx,sy);ctx.lineTo(sx-30*dpr,sy+4*dpr);ctx.stroke();}}
+ else if(Game.mode==='play'){var sn=season()[0],tint=sn==='Winter'?'rgba(150,190,240,0.09)':sn==='Summer'?'rgba(255,210,110,0.05)':sn==='Dust season'?'rgba(210,120,60,0.07)':null;
+  if(S.wx==='hazy')tint='rgba(220,150,100,0.10)';if(tint){ctx.fillStyle=tint;ctx.fillRect(0,0,cv.width,cv.height);}}
 }
 function drawGate(){
  var a=P(EX+0.05,EY+0.5),b=P(EX+0.95,EY+0.5);
@@ -992,9 +1250,12 @@ function buildWin(cat){
   if(c==='land'){
    h+=item('path','Regolith Path','$12 / tile','Guests only walk on paths. Click or drag to lay them.','#c9b597',sel&&sel.k==='path');
    h+=item('bull','Bulldozer','refund 40%','Remove buildings, track and paths. Also clears rocks ($40).','#d0402a',sel&&sel.k==='bull');
+   if(S.scen!=='sandbox')h+=item('land','Buy Land','plots of 8\u00d78','Expand the park. Click a dark plot next to your land. Price shows on the map.','#e8b04a',sel&&sel.k==='land');
   }else{
-   if(c==='coaster')h+='<div class="note">1. Put a <b>Coaster Station</b> next to a path.<br>2. Pick <b>Track</b>, click tiles out of <i>both</i> sides of the station.<br>3. Raise the height to build a lift hill, then drop it fast.<br>4. Close the loop back into the station. It opens by itself.</div>';
-   DEFS.forEach(function(d){if(d.cat!==c)return;h+=item(d.id,d.n,fmt(d.c),d.w+'\u00d7'+d.h+(d.pw<0?' \u00b7 \u26a1'+(-d.pw):'')+(d.pw>0?' \u00b7 +'+d.pw+' power':'')+(d.o2>0?' \u00b7 +'+d.o2+' O\u2082':'')+(d.ice?' \u00b7 near ice':'')+' \u2014 '+d.b,d.col,sel&&sel.k==='obj'&&sel.id===d.id);});
+   if(c==='coaster'&&!unlocked('station'))h+='<div class="note">Coasters need the <b>Scrap coaster kit</b>. Open Research to work on it.</div>';
+   else if(c==='coaster')h+='<div class="note">1. Put a <b>Coaster Station</b> next to a path.<br>2. Pick <b>Track</b>, click tiles out of <i>both</i> sides of the station.<br>3. Raise the height to build a lift hill, then drop it fast.<br>4. Close the loop back into the station. It opens by itself.</div>';
+   var locked=[];
+   DEFS.forEach(function(d){if(d.cat!==c)return;if(!unlocked(d.id)){locked.push(d);return;}h+=item(d.id,d.n,fmt(d.c),d.w+'\u00d7'+d.h+(d.pw<0?' \u00b7 \u26a1'+(-d.pw):'')+(d.pw>0?' \u00b7 +'+d.pw+' power':'')+(d.o2>0?' \u00b7 +'+d.o2+' O\u2082':'')+(d.ice?' \u00b7 near ice':'')+' \u2014 '+d.b,d.col,sel&&sel.k==='obj'&&sel.id===d.id);});
    if(c==='coaster'){
     h+=item('track','Coaster Track','$45+ / piece','Click tiles to lay track at the height below. Steps of up to 3 per piece.','#e04a3a',sel&&sel.k==='track');
     h+='<div class="row">Track height: <button data-a="th" data-v="-1">\u25bc</button> <b class="big">'+UI.trackH+'</b> <button data-a="th" data-v="1">\u25b2</button> <small>(0\u201312, keys [ and ])</small></div>';
@@ -1002,6 +1263,7 @@ function buildWin(cat){
      h+='<div class="cst"><b>'+esc(o.cn)+'</b> '+(o.ok?'<span class="ok">\u2714 '+(o.open?'Open':'Closed')+'</span> Excitement '+o.ex.toFixed(1)+' \u00b7 Intensity '+o.in.toFixed(1)+' \u00b7 '+o.len+' pieces':'<span class="no">\u2716 '+esc(o.err)+'</span>')+' <button data-a="locate" data-v="'+o.id+'">Locate</button> <button data-a="info" data-v="'+o.id+'">Info</button></div>';}
     if(!any)h+='<div class="cst">No coasters yet.</div>';
    }
+   if(locked.length)h+='<div class="sub">Not researched yet</div>'+locked.map(function(d){var r=resFor(d.id);return '<button class="item lock" data-a="research"><span class="sw" style="background:'+d.col+'"></span><b>'+esc(d.n)+'</b><em>\u2697</em><small>'+(r?esc(r.n)+(S.res.cur===r.id?' \u2014 being researched now':''):'')+'</small></button>';}).join('');
   }
   return h+'</div>';
  },{w:360,x:8,y:62,live:true});
@@ -1020,7 +1282,9 @@ function objWin(o){
    if(d.k!=='exhibit'||rideIn(x)>0)h+='<table class="kv"><tr><td>Excitement</td><td>'+rideEx(x).toFixed(2)+' ('+lvl(rideEx(x))+')</td></tr><tr><td>Intensity</td><td>'+rideIn(x).toFixed(2)+' ('+lvl(rideIn(x))+')</td></tr><tr><td>Nausea</td><td>'+rideNa(x).toFixed(2)+' ('+lvl(rideNa(x))+')</td></tr></table>';
    if(d.k==='coaster'&&x.ok)h+='<table class="kv"><tr><td>Length</td><td>'+x.len+' pieces</td></tr><tr><td>Biggest drop</td><td>'+x.maxDrop+' levels</td></tr><tr><td>Top speed</td><td>'+Math.round(x.maxV*260)+' km/h</td></tr></table>';
    if(d.k==='exhibit')h+='<div class="row">'+ANIMAL_N[d.an]+' welfare '+bar(x.welfare,x.welfare<40?'#c00':'#080')+' '+Math.round(x.welfare)+'%</div><div class="row"><small>'+(x.keeper?'A keeper is coming to feed them.':(S.staff.some(function(s){return s.type==='keeper';})?'Keepers feed them when they get hungry.':'<span class="no">Hire a Creature Keeper or they get sad.</span>'))+'</small></div>';
-   h+='<table class="kv"><tr><td>On it now / in line</td><td>'+x.riders+' / '+x.q+'</td></tr><tr><td>Total customers</td><td>'+x.cust+'</td></tr><tr><td>Income this month</td><td>'+fmt(x.minc)+'</td></tr>'+(d.k!=='exhibit'?'<tr><td>Reliability</td><td>'+Math.round(x.rel)+'%</td></tr>':'')+'</table>';
+   h+='<table class="kv"><tr><td>On it now / in line</td><td>'+x.riders+' / '+x.q+'</td></tr><tr><td>Total customers</td><td>'+x.cust+'</td></tr><tr><td>Income this month</td><td>'+fmt(x.minc)+'</td></tr>'+(d.k!=='exhibit'?'<tr><td>Reliability</td><td>'+bar(x.rel,x.rel<60?'#c33':'#2a7a3a')+' '+Math.round(x.rel)+'%</td></tr><tr><td>Age</td><td>'+ageTxt(x)+(ageF(x)<0.95?' <small class="no">(less exciting)</small>':'')+'</td></tr><tr><td>Last inspected</td><td>'+(S.day-x.lastI)+' sols ago</td></tr>':'')+'</table>';
+   if(d.k!=='exhibit'){h+='<div class="row">Inspect every: '+[[4,'4 sols'],[8,'8'],[16,'16'],[0,'Never']].map(function(q){return '<button data-a="insp" data-v="'+x.id+','+q[0]+'"'+(x.insp===q[0]?' class="on"':'')+'>'+q[1]+'</button>';}).join(' ')+'</div>';
+    if(ageM(x)>=3)h+='<div class="row"><button data-a="refurb" data-v="'+x.id+'">Refurbish ('+fmt(refurbCost(x))+')</button> <small>makes it like new</small></div>';}
   }else if(d.k==='shop'){
    h+='<div class="row">Status: <b>'+st+'</b></div><div class="row"><button data-a="setopen" data-v="'+x.id+',1"'+(x.open?' class="on"':'')+'>Open</button> <button data-a="setopen" data-v="'+x.id+',0"'+(!x.open?' class="on"':'')+'>Close</button></div>';
    if(d.sell!=='wc')h+='<div class="row">Price: <button data-a="price" data-v="'+x.id+',-1">\u2212</button> <b class="big">'+fmt(x.price)+'</b> <button data-a="price" data-v="'+x.id+',1">+</button> <small>fair is about '+fmt(d.fair)+'</small></div>';
@@ -1033,12 +1297,14 @@ function objWin(o){
   return h;
  },{w:300,x:window.innerWidth-312,y:62,live:true});
 }
+function ageTxt(o){var m=Math.floor(ageM(o));return m<1?'Brand new':m<YMONTHS?m+' month'+(m>1?'s':''):Math.floor(m/YMONTHS)+'y '+(m%YMONTHS)+'m';}
+function refurbCost(o){return Math.round((o.cost||DEF[o.t].c||1000)*0.35/10)*10;}
 function guestStatus(g){if(g.st==='ride'){var o=S.objs[g.on];return o?(g.watch?'Watching ':'On ')+oname(o):'Riding';}if(g.st==='queue'){o=S.objs[g.on];return 'Queuing for '+(o?oname(o):'a ride');}if(g.st==='sit')return 'Sitting on a bench';if(g.tgt==='exit')return 'Leaving the park';if(g.tgt&&S.objs[g.tgt])return 'Heading to '+oname(S.objs[g.tgt]);return 'Walking around';}
 function guestWin(g){
  UI.selGuest=g;
  openWin('guest',function(){return g.n;},function(){
   if(g.st==='gone')return '<p>'+esc(g.n)+' has left the park.</p>';
-  var h='<div class="row"><b>'+esc(guestStatus(g))+'</b></div><div class="thoughts">'+g.th.map(function(t){return '<div class="'+(t.m>0?'ok':t.m<0?'no':'')+'">\u201c'+esc(t.s)+'\u201d</div>';}).join('')+'</div>';
+  var h='<div class="row"><span class="chip" style="background:'+GT[g.gt||'fam'].col+'">'+GT[g.gt||'fam'].n+'</span> <b>'+esc(guestStatus(g))+'</b></div><div class="thoughts">'+g.th.map(function(t){return '<div class="'+(t.m>0?'ok':t.m<0?'no':'')+'">\u201c'+esc(t.s)+'\u201d</div>';}).join('')+'</div>';
   h+='<table class="kv"><tr><td>Happiness</td><td>'+bar(g.happy,g.happy<30?'#c00':'#080')+'</td></tr><tr><td>Energy</td><td>'+bar(g.energy)+'</td></tr><tr><td>Hunger</td><td>'+bar(g.hunger,'#a60')+'</td></tr><tr><td>Thirst</td><td>'+bar(g.thirst,'#06a')+'</td></tr><tr><td>Nausea</td><td>'+bar(g.naus,'#6a0')+'</td></tr><tr><td>Toilet</td><td>'+bar(g.wc,'#880')+'</td></tr>';
   h+='<tr><td>Cash</td><td>'+fmt(g.cash)+' (spent '+fmt(g.spent)+')</td></tr><tr><td>Rides taken</td><td>'+g.rides+'</td></tr><tr><td>Likes intensity up to</td><td>'+g.imax.toFixed(1)+'</td></tr><tr><td>Carrying</td><td>'+([g.mask?'dust mask':'',g.souv?'Harlan\u2019s souvenir':'',g.trash?'wrapper':''].filter(Boolean).join(', ')||'nothing')+'</td></tr></table>';
   return h+'<div class="row"><button data-a="gloc">Locate</button></div>';
@@ -1049,6 +1315,8 @@ function guestsWin(){
   var n=S.guests.length,cnt={};S.guests.forEach(function(g){if(g.th[0]){var s=g.th[0].s.replace(/^I just got to .*/,'I just got to the park!');cnt[s]=(cnt[s]||0)+1;}});
   var top=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a];}).slice(0,9);
   var h='<table class="kv"><tr><td>In the park now</td><td>'+n+'</td></tr><tr><td>Total visitors</td><td>'+S.totalGuests+'</td></tr><tr><td>Average happiness</td><td>'+bar(S.avgHappy||0,'#080')+'</td></tr><tr><td>Park can draw about</td><td>'+(S.want||0)+'</td></tr><tr><td>Turned away (too poor for the fee)</td><td>'+S.turned+'</td></tr></table>';
+  var gc={};S.guests.forEach(function(g){gc[g.gt||'fam']=(gc[g.gt||'fam']||0)+1;});
+  h+='<div class="sub">Who\u2019s visiting</div><div class="gtypes">'+Object.keys(GT).map(function(k){var v=gc[k]||0;return '<div title="'+esc(GT[k].b)+'"><span class="chip" style="background:'+GT[k].col+'">'+GT[k].n+'</span> '+bar(n?v/n*100:0,GT[k].col)+' '+v+'</div>';}).join('')+'</div>';
   h+='<div class="sub">What guests are thinking</div><div class="thoughts">'+(top.map(function(s){return '<div>'+cnt[s]+' \u00d7 \u201c'+esc(s)+'\u201d</div>';}).join('')||'<div>Nobody here yet.</div>')+'</div>';
   h+='<div class="sub">Some guests (click to follow)</div><div class="glist">'+S.guests.slice(-14).reverse().map(function(g){return '<button data-a="pickg" data-v="'+g.id+'">'+esc(g.n)+' \u2014 '+Math.round(g.happy)+'%</button>';}).join('')+'</div>';
   return h;
@@ -1062,31 +1330,97 @@ function staffWin(){
   return h+'</div>';
  },{w:360,live:true});
 }
+var FROWS=[['adm','Park admissions',1],['ride','Ride tickets',1],['food','Food & drink',1],['shop','Shops',1],['rent','Habitat rent',1],['build','Construction',-1],['land','Land',-1],['upkeep','Upkeep',-1],['wages','Staff wages',-1],['research','Research',-1],['market','Marketing',-1],['interest','Loan interest',-1]];
+function monthLbl(i){var mm=Math.floor(S.day/MDAYS)-i;return 'M'+(mm%YMONTHS+1)+' Y'+(Math.floor(mm/YMONTHS)+1);}
+function finChart(){
+ var n=Math.min(12,S.fin.hist.length),cols=[];for(var i=n-1;i>=0;i--)cols.push({c:S.fin.hist[i],cash:S.hist[i]?S.hist[i].cash:null,l:monthLbl(i+1)});
+ cols.push({c:S.fin.cur,cash:Math.round(S.money),l:'Now'});
+ var inc=function(c){return c.adm+c.ride+c.food+c.shop+c.rent;},bld=function(c){return c.build+(c.land||0);},oth=function(c){return c.upkeep+c.wages+c.interest+(c.research||0)+(c.market||0);};
+ var mx=1,mc=1,mn=0;cols.forEach(function(q){mx=Math.max(mx,inc(q.c),bld(q.c)+oth(q.c));if(q.cash!==null){mc=Math.max(mc,q.cash);mn=Math.min(mn,q.cash);}});
+ var Wd=420,Hd=150,pl=34,pr=34,pt=10,pb=22,bw=(Wd-pl-pr)/cols.length,y0=pt+(Hd-pt-pb)/2,sc=(Hd-pt-pb)/2/mx;
+ var h='<svg class="chart" viewBox="0 0 '+Wd+' '+Hd+'" preserveAspectRatio="none">';
+ h+='<line x1="'+pl+'" x2="'+(Wd-pr)+'" y1="'+y0+'" y2="'+y0+'" class="ax"/>';
+ h+='<text x="'+(pl-3)+'" y="'+(pt+6)+'" class="tl r">+'+short(mx)+'</text><text x="'+(pl-3)+'" y="'+(Hd-pb)+'" class="tl r">\u2212'+short(mx)+'</text>';
+ var pts=[];
+ cols.forEach(function(q,i){var x=pl+i*bw+bw*0.18,w=bw*0.64,iv=inc(q.c)*sc,bv=bld(q.c)*sc,ov=oth(q.c)*sc;
+  h+='<rect x="'+x.toFixed(1)+'" y="'+(y0-iv).toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+iv.toFixed(1)+'" class="bi"><title>'+q.l+' income '+fmt(inc(q.c))+'</title></rect>';
+  h+='<rect x="'+x.toFixed(1)+'" y="'+y0.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+ov.toFixed(1)+'" class="bo"><title>'+q.l+' running costs '+fmt(oth(q.c))+'</title></rect>';
+  h+='<rect x="'+x.toFixed(1)+'" y="'+(y0+ov).toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+bv.toFixed(1)+'" class="bb"><title>'+q.l+' construction & land '+fmt(bld(q.c))+'</title></rect>';
+  if(cols.length<=8||i%2===cols.length%2||i===cols.length-1)h+='<text x="'+(x+w/2).toFixed(1)+'" y="'+(Hd-6)+'" class="tl c">'+q.l.replace(' Y',' \u00b7')+'</text>';
+  if(q.cash!==null){var cy=pt+(Hd-pt-pb)*(1-(q.cash-mn)/((mc-mn)||1));pts.push((x+w/2).toFixed(1)+','+cy.toFixed(1));}});
+ if(pts.length>1)h+='<polyline points="'+pts.join(' ')+'" class="cl"/>';
+ pts.forEach(function(p){var a=p.split(',');h+='<circle cx="'+a[0]+'" cy="'+a[1]+'" r="2.2" class="cd"/>';});
+ h+='<text x="'+(Wd-pr+3)+'" y="'+(pt+6)+'" class="tl cash">'+short(mc)+'</text><text x="'+(Wd-pr+3)+'" y="'+(Hd-pb)+'" class="tl cash">'+short(mn)+'</text></svg>';
+ return h+'<div class="legend"><span><i class="bi"></i>Income</span><span><i class="bo"></i>Running costs</span><span><i class="bb"></i>Construction & land</span><span><i class="cl"></i>Cash</span></div>';
+}
+function short(v){var a=Math.abs(v),s=v<0?'\u2212':'';return s+'$'+(a>=1e6?(a/1e6).toFixed(1)+'M':a>=1e3?Math.round(a/1e3)+'k':Math.round(a));}
 function finWin(){
  openWin('fin','Finances',function(){
-  var cols=[S.fin.cur].concat(S.fin.hist.slice(0,3)),m=Math.floor(S.day/MDAYS);
-  var head=cols.map(function(c,i){var mm=m-i;return '<th>'+(i===0?'This month':'M'+(mm%YMONTHS+1)+' Y'+(Math.floor(mm/YMONTHS)+1))+'</th>';}).join('');
-  var rows=[['adm','Park admissions',1],['ride','Ride tickets',1],['food','Food & drink',1],['shop','Shops',1],['rent','Habitat rent',1],['build','Construction',-1],['upkeep','Upkeep',-1],['wages','Staff wages',-1],['interest','Loan interest',-1]];
-  var h='<table class="fin"><tr><th></th>'+head+'</tr>';
-  rows.forEach(function(r){h+='<tr><td>'+r[1]+'</td>'+cols.map(function(c){var v=(c[r[0]]||0)*r[2];return '<td class="'+(v<0?'neg':'')+'">'+(v?fmt(v):'')+'</td>';}).join('')+'</tr>';});
-  h+='<tr class="tot"><td>Profit</td>'+cols.map(function(c){var v=c.adm+c.ride+c.food+c.shop+c.rent-c.build-c.upkeep-c.wages-c.interest;return '<td class="'+(v<0?'neg':'')+'">'+fmt(v)+'</td>';}).join('')+'</tr></table>';
-  h+='<table class="kv"><tr><td>Cash</td><td><b>'+fmt(S.money)+'</b></td></tr><tr><td>Loan (10%/yr)</td><td><button data-a="loan" data-v="-1000">\u2212$1,000</button> <b>'+fmt(S.loan)+'</b> <button data-a="loan" data-v="1000">+$1,000</button></td></tr><tr><td>Max loan</td><td>'+fmt(S.maxLoan)+'</td></tr><tr><td>Park value</td><td>'+fmt(parkValue())+'</td></tr><tr><td>Company value</td><td>'+fmt(companyValue())+'</td></tr></table>';
+  var cols=[S.fin.cur].concat(S.fin.hist.slice(0,UI.finWide?5:3));
+  var head=cols.map(function(c,i){return '<th>'+(i===0?'This month':monthLbl(i))+'</th>';}).join('');
+  var h=finChart()+'<table class="fin"><tr><th></th>'+head+'</tr>';
+  FROWS.forEach(function(r){if(!cols.some(function(c){return c[r[0]];}))return;h+='<tr><td>'+r[1]+'</td>'+cols.map(function(c){var v=(c[r[0]]||0)*r[2];return '<td class="'+(v<0?'neg':'')+'">'+(v?fmt(v):'')+'</td>';}).join('')+'</tr>';});
+  h+='<tr class="tot"><td>Profit</td>'+cols.map(function(c){var v=profitOf(c);return '<td class="'+(v<0?'neg':'')+'">'+fmt(v)+'</td>';}).join('')+'</tr></table>';
+  h+='<table class="kv"><tr><td>Cash</td><td><b>'+fmt(S.money)+'</b></td></tr><tr><td>Loan (10%/yr)</td><td><button data-a="loan" data-v="-1000">\u2212$1,000</button> <b>'+fmt(S.loan)+'</b> <button data-a="loan" data-v="1000">+$1,000</button> <small>max '+fmt(S.maxLoan)+'</small></td></tr><tr><td>Interest</td><td>'+fmt(Math.round(S.loan*0.10/YMONTHS))+' / month</td></tr><tr><td>Park value</td><td>'+fmt(parkValue())+'</td></tr><tr><td>Company value</td><td>'+fmt(companyValue())+' <small>(cash + park \u2212 loan)</small></td></tr></table>';
   return h;
- },{w:440,live:true});
+ },{w:460,live:true});
 }
-function parkWin(){
+function researchWin(){
+ openWin('research','Research & Development',function(){
+  var R=S.res,h='';
+  if(S.scen==='sandbox')return '<p class="blurb">Sandbox: everything is already researched.</p>';
+  var cur=R.cur?RESN[R.cur]:null;
+  h+='<div class="rescur">'+(cur?'<b>Working on: '+esc(cur.n)+'</b> '+bar(R.prog/cur.pts*100,'#c8642a')+' <small>'+Math.round(R.prog)+' / '+cur.pts+(FUND[R.fund][2]?' \u00b7 about '+Math.ceil((cur.pts-R.prog)/FUND[R.fund][2])+' sols left':' \u00b7 paused')+'</small><div class="sub0">'+(cur.un?'Unlocks: '+cur.un.map(function(id){return esc(DEF[id].n);}).join(', '):esc(cur.fx))+'</div>':(nextRes()?'<b>Pick a funding level to start research.</b>':'<b>Everything has been researched!</b>'))+'</div>';
+  h+='<div class="row">Funding: '+FUND.map(function(f,i){return '<button data-a="fund" data-v="'+i+'"'+(R.fund===i?' class="on"':'')+'>'+f[0]+(f[1]?' <small>'+fmt(f[1])+'/mo</small>':'')+'</button>';}).join(' ')+'</div>';
+  h+='<div class="row">Focus: <button data-a="focus" data-v=""'+(!R.focus?' class="on"':'')+'>Anything</button> '+RCATS.map(function(c){return '<button data-a="focus" data-v="'+c[0]+'"'+(R.focus===c[0]?' class="on"':'')+'>'+c[1]+'</button>';}).join(' ')+'</div>';
+  h+='<div class="rtree">'+RCATS.map(function(c){var its=RES.filter(function(r){return r.cat===c[0];});
+   return '<div class="rcol"><b>'+c[1]+'</b>'+its.map(function(r){var st=R.done[r.id]?'done':(R.cur===r.id?'cur':'');return '<div class="rit '+st+'" title="'+esc(r.un?r.un.map(function(id){return DEF[id].n;}).join(', '):r.fx)+'">'+(st==='done'?'\u2714 ':st==='cur'?'\u2697 ':'\u2022 ')+esc(r.n)+'</div>';}).join('')+'</div>';}).join('')+'</div>';
+  var nd=Object.keys(R.done).length;h+='<div class="row"><small>'+nd+' of '+RES.length+' projects done. Research items unlock one after another in each column.</small></div>';
+  return h;
+ },{w:470,live:true});
+}
+function marketWin(){
+ openWin('market','Marketing',function(){
+  var h='<p class="blurb">Campaigns bring more guests for a while. They stack, but each costs money up front.</p>';
+  CAMPS.forEach(function(c){var on=campOn(c.id),lock=c.res&&!hasTech(c.res);
+   h+='<div class="camp'+(on?' on':'')+(lock?' lock':'')+'"><div><b>'+esc(c.n)+'</b> <em>'+fmt(c.c)+'</em><small>'+esc(c.b)+(lock?' Needs research: '+esc(RESN[c.res].n)+'.':'')+'</small></div>'+(on?'<span class="ok">'+(on.until-S.day)+' sols left</span>':(lock?'<span>\u2697</span>':'<button data-a="camp" data-v="'+c.id+'">Start</button>'))+'</div>';});
+  var mk=0;S.camps.forEach(function(c){mk+=CAMPN[c.id].dem;});
+  h+='<table class="kv"><tr><td>Extra demand from campaigns</td><td>+'+Math.round(mk*100)+'%</td></tr><tr><td>Award buzz</td><td>'+(S.buzz>=0?'+':'')+Math.round((S.buzz||0)*100)+'%</td></tr><tr><td>Season</td><td>'+season()[0]+' ('+(season()[1]>=1?'+':'')+Math.round((season()[1]-1)*100)+'% guests)</td></tr></table>';
+  return h;
+ },{w:380,live:true});
+}
+function graphSVG(key,col,lbl){
+ var pts=S.hist.slice(0,16).reverse().map(function(q){return q[key];});pts.push(key==='rating'?S.rating:key==='guests'?S.guests.length:parkValue());
+ var mx=Math.max.apply(null,pts.concat([1])),mn=Math.min.apply(null,pts.concat([0])),Wd=300,Hd=70,p=4;
+ var xy=pts.map(function(v,i){return (p+i*(Wd-2*p)/Math.max(1,pts.length-1)).toFixed(1)+','+(Hd-p-(v-mn)/((mx-mn)||1)*(Hd-2*p-10)).toFixed(1);});
+ return '<div class="gr"><b>'+lbl+'</b> <small>now '+(key==='value'?fmt(pts[pts.length-1]):pts[pts.length-1])+' \u00b7 high '+(key==='value'?fmt(mx):mx)+'</small><svg class="chart sm" viewBox="0 0 '+Wd+' '+Hd+'" preserveAspectRatio="none"><polyline points="'+xy.join(' ')+'" fill="none" stroke="'+col+'" stroke-width="2"/></svg></div>';
+}
+function parkWin(tab){
+ if(tab)UI.parkTab=tab;
  openWin('park','Park \u2014 '+S.park,function(){
-  var U=utilities(),gs=goalStatus();
-  var h='<div class="row"><button data-a="popen" data-v="1"'+(S.open?' class="on"':'')+'>Park open</button> <button data-a="popen" data-v="0"'+(!S.open?' class="on"':'')+'>Closed</button></div>';
-  h+='<div class="row">Entry fee: <button data-a="fee" data-v="-1">\u2212</button> <b class="big">'+fmt(S.fee)+'</b> <button data-a="fee" data-v="1">+</button></div>';
-  h+='<table class="kv"><tr><td>Park rating</td><td>'+bar(S.rating/10,S.rating<400?'#c00':'#080')+' <b>'+S.rating+'</b></td></tr><tr><td>Guests</td><td>'+S.guests.length+'</td></tr><tr><td>Average happiness</td><td>'+(S.avgHappy||0)+'%</td></tr><tr><td>Litter on paths</td><td>'+(S.lit||0)+'</td></tr>';
-  h+='<tr><td>Power</td><td>'+U.pwP+' made / '+U.pwU+' used'+(U.pwU>U.pwP?' <span class="no">SHORT</span>':'')+'</td></tr><tr><td>Oxygen</td><td>'+U.o2P+' made / '+(S.o2need||0)+' needed'+(S.o2def?' <span class="no">LOW</span>':'')+'</td></tr><tr><td>Weather</td><td>'+(S.storm?'<span class="no">Dust storm ('+S.storm+' sols)</span>':'Clear')+'</td></tr><tr><td>Vex incidents</td><td>'+S.vexN+'</td></tr></table>';
-  h+='<div class="sub">Scenario: '+esc(SCN[S.scen].n)+'</div>';
-  if(gs){h+='<p class="blurb">'+esc(SCN[S.scen].b)+'</p><ul class="goal">'+gs.parts.map(function(p){return '<li class="'+(p.ok?'ok':'')+'">'+(p.ok?'\u2714 ':'\u2610 ')+esc(p.t)+' <small>(now: '+p.now+')</small></li>';}).join('')+'</ul><div class="row"><small>Deadline: '+gs.by+' \u00b7 today is '+dateStr()+(S.won?' \u00b7 <b class="ok">WON!</b>':'')+(S.lost?' \u00b7 <b class="no">time up</b>':'')+'</small></div>';}
-  else h+='<p class="blurb">Sandbox. No goals, just build.</p>';
+  var U=utilities(),gs=goalStatus(),T=UI.parkTab||'status';
+  var h='<div class="tabs">'+[['status','Status'],['goals','Goals'],['awards','Awards'],['graphs','Graphs']].map(function(q){return '<button data-a="ptab" data-v="'+q[0]+'"'+(q[0]===T?' class="on"':'')+'>'+q[1]+'</button>';}).join('')+'</div>';
+  if(T==='status'){
+   h+='<div class="row"><button data-a="popen" data-v="1"'+(S.open?' class="on"':'')+'>Park open</button> <button data-a="popen" data-v="0"'+(!S.open?' class="on"':'')+'>Closed</button> &nbsp; Entry fee: <button data-a="fee" data-v="-1">\u2212</button> <b class="big">'+fmt(S.fee)+'</b> <button data-a="fee" data-v="1">+</button></div>';
+   h+='<table class="kv"><tr><td>Park rating</td><td>'+bar(S.rating/10,S.rating<400?'#c33':'#2a7a3a')+' <b>'+S.rating+'</b></td></tr><tr><td>Guests</td><td>'+S.guests.length+' <small>(could draw about '+(S.want||0)+')</small></td></tr><tr><td>Average happiness</td><td>'+(S.avgHappy||0)+'%</td></tr><tr><td>Litter on paths</td><td>'+(S.lit||0)+'</td></tr>';
+   h+='<tr><td>Power</td><td>'+U.pwP+' made / '+U.pwU+' used'+(U.pwU>U.pwP?' <span class="no">SHORT</span>':'')+'</td></tr><tr><td>Oxygen</td><td>'+U.o2P+' made / '+(S.o2need||0)+' needed'+(S.o2def?' <span class="no">LOW</span>':'')+'</td></tr><tr><td>Season</td><td>'+season()[0]+' \u00b7 '+wxName()+'</td></tr><tr><td>Park value</td><td>'+fmt(parkValue())+'</td></tr><tr><td>Vex incidents</td><td>'+S.vexN+'</td></tr></table>';
+  }else if(T==='goals'){
+   h+='<div class="sub0">'+esc(SCN[S.scen].n)+'</div><p class="blurb">'+esc(SCN[S.scen].b)+'</p>';
+   if(gs){gs.tiers.forEach(function(t,i){var got=S.tier>i+1-1&&S.tier>=i+1;h+='<div class="tier t'+(i+1)+(got?' got':'')+'"><b><span class="medal" style="background:'+TIERC[i+1]+'"></span>'+TIERN[i+1]+(got?' \u2714':'')+'</b><ul class="goal">'+t.parts.map(function(p){return '<li class="'+(p.ok?'ok':'')+'">'+(p.ok?'\u2714 ':'\u2610 ')+esc(p.t)+' <small>(now: '+p.now+')</small></li>';}).join('')+'</ul></div>';});
+    h+='<div class="row"><small>Reach a tier any time before the '+gs.by+'. Today is '+dateStr()+'. Bronze unlocks the next scenario.'+(S.lost?' <b class="no">Time\u2019s up.</b>':'')+'</small></div>';}
+   else h+='<p class="blurb">Sandbox. No goals, just build.</p>';
+  }else if(T==='awards'){
+   h+='<div class="sub0">Yearly park awards</div>'+(S.awards.length?'<div class="awl">'+S.awards.slice().reverse().map(function(a){var A=AWARDS[a.id];return '<div class="'+(A.good?'ok':'no')+'">'+(A.good?'\u2605 ':'\u2716 ')+'Year '+a.y+': '+A.n+'</div>';}).join('')+'</div>':'<p class="blurb">Awards are handed out at the end of each park year (8 months). Clean paths, scenery, thrills, happy creatures and fair prices all count.</p>');
+   var ach=achGet(),na=ACH.filter(function(x){return ach[x[0]];}).length;
+   h+='<div class="sub0">Achievements '+na+' / '+ACH.length+'</div><div class="ach">'+ACH.map(function(x){return '<div class="'+(ach[x[0]]?'got':'')+'" title="'+esc(x[2])+'"><b>'+(ach[x[0]]?'\u{1F3C6}':'\u25cb')+' '+esc(x[1])+'</b><small>'+esc(x[2])+'</small></div>';}).join('')+'</div>';
+  }else{
+   if(!S.hist.length)h+='<p class="blurb">Graphs fill in at the end of each month.</p>';
+   h+=graphSVG('guests','#2a6ab8','Guests')+graphSVG('rating','#2a7a3a','Park rating')+graphSVG('value','#c8642a','Park value');
+  }
   return h;
- },{w:340,live:true});
+ },{w:380,live:true});
 }
+function wxName(){return S.storm?'Dust storm':({clear:'Clear',hazy:'Hazy',windy:'Windy',cold:'Cold snap'})[S.wx]||'Clear';}
 function newsWin(){openWin('news','Messages',function(){return '<div class="thoughts news">'+S.msgs.slice().reverse().map(function(m){return '<div class="'+(m.k==='good'?'ok':m.k==='bad'?'no':'')+'"><small>'+dateStr(m.d)+'</small> '+esc(m.t)+'</div>';}).join('')+'</div>';},{w:380,live:true});}
 function fileWin(){
  openWin('file','File & Options',function(){
@@ -1103,6 +1437,7 @@ function helpWin(){
   '<p><b>Paths:</b> guests only walk on paths. Every ride, stall and exhibit must touch one.</p>'+
   '<p><b>Coasters:</b> place a Station by a path, lay Track out of both sides, raise it for a lift hill, drop it, and close the loop.</p>'+
   '<p><b>Keep guests happy:</b> food, drinks, restrooms, benches, bins, scenery. Hire Scavengers to sweep, Mechanics to fix, Keepers to feed creatures, Fringe Watch to stop Vex.</p>'+
+  '<p><b>Growing:</b> Research (flask) unlocks new rides, creatures, domes and park tech. Buy Land under Paths to expand. Marketing brings crowds. Rides get old: set mechanic inspections and refurbish them. Each park year (8 months) has Spring, Summer, Dust season and Winter, and ends with park awards. Goals have bronze, silver and gold; bronze unlocks the next scenario.</p>'+
   '<p><b>Mars stuff:</b> rides need power (Geothermal Vents). Big crowds need oxygen (Greenhouses, Mush Farms). Aquarium domes need polar ice nearby. Dust storms: sell masks, build Shelter Domes.</p>'+
   '<p><b>Controls:</b> drag or arrow keys/WASD to scroll \u00b7 mouse wheel or +/\u2212 to zoom \u00b7 move the mouse to the edge to scroll \u00b7 Space pause \u00b7 1\u20134 speed \u00b7 [ ] track height \u00b7 G grid \u00b7 B bulldozer \u00b7 click a guest to read their thoughts. On touch: tap to build or inspect, drag to scroll (two fingers while building).</p></div>';},{w:420});
 }
@@ -1112,24 +1447,41 @@ function menuWin(){
  var sel=UI.menuSel||'fringe';
  openWin('menu','Red Horizon Tycoon',function(){
   var h='<div class="logo"><span>RED HORIZON</span><b>TYCOON</b><i>A park on Mars \u00b7 from the world of <u>Echoes of the Red Horizon</u></i></div>';
-  h+='<div class="sub">Choose a scenario</div><div class="scen">'+SCEN.map(function(s){return '<button data-a="msel" data-v="'+s.id+'" class="'+(s.id===(UI.menuSel||'fringe')?'on':'')+'"><b>'+esc(s.n)+'</b><small>'+esc(s.b)+'</small></button>';}).join('')+'</div>';
+  h+='<div class="sub">Choose a scenario</div><div class="scen">'+SCEN.map(function(s,i){var op=scenOpen(i),md=progGet()[s.id]||0;return '<button data-a="msel" data-v="'+s.id+'" class="'+(s.id===(UI.menuSel||'fringe')?'on':'')+(op?'':' lock')+'"><b>'+(md?'<span class="medal" style="background:'+TIERC[md]+'" title="'+TIERN[md]+'"></span>':'')+(op?'':'\u{1F512} ')+esc(s.n)+(s.goal?' <i>'+s.goal.years+' yrs</i>':'')+'</b><small>'+(op?esc(s.b):'Get bronze in '+esc(SCEN[i-1].n)+' to unlock.')+'</small></button>';}).join('')+'</div>';
   h+='<div class="row c"><button class="go" data-a="start">\u25b6 Start new park</button>';
   var am=saveMeta('auto');if(am)h+=' <button data-a="load" data-v="auto">Continue ('+esc(am.d)+')</button>';
   ['1','2','3'].forEach(function(s){var m=saveMeta(s);if(m)h+=' <button data-a="load" data-v="'+s+'">Load slot '+s+'</button>';});
-  h+=' <button data-a="help">How to play</button></div><div class="row c"><small>Free \u00b7 no download \u00b7 no ads \u00b7 by @MrPetecastic \u00b7 sound is off (turn on in File)</small></div>';
+  h+=' <button data-a="help">How to play</button> <button data-a="achs">Achievements</button></div><div class="row c"><small>Free \u00b7 no download \u00b7 no ads \u00b7 by @MrPetecastic \u00b7 sound is off (turn on in File)</small></div>';
   return h;
  },{w:520,x:Math.max(4,(window.innerWidth-520)/2),y:Math.max(8,window.innerHeight*0.12)});
  var mw=UI.wins.menu;if(mw)mw.el.querySelector('.x').style.display='none';
 }
-UI.endDialog=function(won){
- Game.speed=0;
- openWin('end',won?'Scenario complete!':'Scenario over',function(){var gs=goalStatus();return '<div class="end '+(won?'won':'')+'"><b>'+(won?'\u2605 You did it! \u2605':'Time\u2019s up')+'</b><p>'+esc(SCN[S.scen].n)+'</p><ul class="goal">'+gs.parts.map(function(p){return '<li class="'+(p.ok?'ok':'')+'">'+(p.ok?'\u2714 ':'\u2716 ')+esc(p.t)+'</li>';}).join('')+'</ul><p>You can keep playing this park as long as you like.</p><div class="row c"><button data-a="close">Keep playing</button> <button data-a="menu">New game</button> <button data-a="share">Brag on X</button></div></div>';},{w:340,x:Math.max(4,(window.innerWidth-340)/2),y:120});
+UI.endDialog=function(won,tier,final){
+ Game.speed=0;updateSpeedBtns();tier=tier||0;var mx=SCN[S.scen].goal?SCN[S.scen].goal.tiers.length:3,nxt=SCEN[SCEN.indexOf(SCN[S.scen])+1];
+ openWin('end',final?(won?'Scenario finished':'Scenario over'):TIERN[tier]+' goal reached!',function(){var gs=goalStatus();
+  var h='<div class="end '+(won?'won':'')+'">'+(tier?'<div class="bigmedal" style="background:'+TIERC[tier]+'">'+TIERN[tier].charAt(0)+'</div>':'')+'<b>'+(won?(final?TIERN[tier]+' medal!':'\u2605 '+TIERN[tier]+' \u2605'):'Time\u2019s up')+'</b><p>'+esc(SCN[S.scen].n)+'</p>';
+  if(!final&&tier<mx){h+='<p>Next: <b>'+TIERN[tier+1]+'</b></p><ul class="goal">'+gs.tiers[tier].parts.map(function(p){return '<li class="'+(p.ok?'ok':'')+'">'+(p.ok?'\u2714 ':'\u2610 ')+esc(p.t)+'</li>';}).join('')+'</ul><p>Keep going before the '+gs.by+'.</p>';}
+  else if(!won)h+='<ul class="goal">'+gs.tiers[0].parts.map(function(p){return '<li class="'+(p.ok?'ok':'')+'">'+(p.ok?'\u2714 ':'\u2716 ')+esc(p.t)+'</li>';}).join('')+'</ul><p>You can keep playing this park as long as you like.</p>';
+  else h+='<p>You can keep playing this park as long as you like.</p>';
+  if(tier===1&&nxt&&nxt.id!=='sandbox')h+='<p class="ok">Unlocked: '+esc(nxt.n)+'</p>';
+  return h+'<div class="row c"><button data-a="close">Keep playing</button> <button data-a="menu">Scenarios</button> <button data-a="share">Brag on X</button></div></div>';},{w:340,x:Math.max(4,(window.innerWidth-340)/2),y:110});
+ Sfx.play(won?'cash':'bad');
 };
+UI.awardsDialog=function(yr,got){
+ openWin('awardsd','Year '+yr+' Park Awards',function(){
+  if(!got.length)return '<div class="end"><b>No awards this year</b><p>Judges look at cleanliness, scenery, thrills, creature care, prices, safety, food and happy guests.</p><div class="row c"><button data-a="close">OK</button></div></div>';
+  return '<div class="end won"><ul class="awl">'+got.map(function(id){var A=AWARDS[id];return '<li class="'+(A.good?'ok':'no')+'">'+(A.good?'\u2605 ':'\u2716 ')+A.n+'</li>';}).join('')+'</ul><p>'+(S.buzz>=0?'Good press brings more guests next year.':'Bad press keeps some guests away next year.')+'</p><div class="row c"><button data-a="close">OK</button></div></div>';
+ },{w:320,x:Math.max(4,(window.innerWidth-320)/2),y:120});
+};
+UI.toast=function(t,sub){var host=document.getElementById('toasts');if(!host){host=document.createElement('div');host.id='toasts';document.body.appendChild(host);}
+ if(UI.lastToast===t&&Date.now()-(UI.lastToastT||0)<5000)return;UI.lastToast=t;UI.lastToastT=Date.now();var e=document.createElement('div');e.className='toast';e.innerHTML='<b>'+esc(t)+'</b>'+(sub?'<small>'+esc(sub)+'</small>':'');host.appendChild(e);Sfx.play('cash');
+ setTimeout(function(){e.classList.add('out');},3800);setTimeout(function(){if(e.parentNode)e.parentNode.removeChild(e);},4400);};
+function centerGate(){centerOn(EX-1.5,EY-1.5);}
 function startGame(sid){
  closeWin('menu');setState(newState(sid));Game.mode='play';Game.speed=1;document.body.classList.remove('inmenu');
- cam.z=window.innerWidth<700?1:2;centerOn(EX,EY-8);
- msg('Welcome to '+SCN[sid].n+'. '+(SCN[sid].goal?'Open the Park window (flag) to see your goal.':'Sandbox: build anything.'),'good');
- msg('Tip: guests only walk on paths. Start by laying paths from the entrance, then add a ride and a food stall.');
+ cam.z=window.innerWidth<700?1:2;centerGate();
+ msg('Welcome to '+SCN[sid].n+'. '+(SCN[sid].goal?'Goals are in the Park window (flag): bronze, silver and gold.':'Sandbox: build anything.'),'good');
+ msg('Tip: guests only walk on paths. Lay paths from the entrance, then add a ride and a food stall. Research (flask) unlocks more.');
  if(window.innerWidth>700)buildWin('rides');
  updateSpeedBtns();
 }
@@ -1143,7 +1495,7 @@ function share(){
 var ACT={
  close:function(v,wid){closeWin(wid);if(wid==='end'&&Game.mode==='play'&&!Game.speed){Game.speed=1;updateSpeedBtns();}},
  tab:function(v){UI.buildCat=v;setTool(null);refreshWin(UI.wins.build);},
- tool:function(v){var t=v==='path'?{k:'path'}:v==='bull'?{k:'bull'}:v==='track'?{k:'track'}:{k:'obj',id:v};
+ tool:function(v){var t=v==='path'?{k:'path'}:v==='bull'?{k:'bull'}:v==='track'?{k:'track'}:v==='land'?{k:'land'}:{k:'obj',id:v};
   var cur=UI.tool;if(cur&&cur.k===t.k&&cur.id===t.id)setTool(null);else setTool(t);Sfx.play('click');},
  th:function(v){UI.trackH=clamp(UI.trackH+Number(v),0,12);refreshWin(UI.wins.build);},
  price:function(v){var a=v.split(','),o=S.objs[a[0]];if(!o)return;o.price=clamp(o.price+Number(a[1]),0,30);},
@@ -1160,10 +1512,20 @@ var ACT={
  fee:function(v){S.fee=clamp(S.fee+Number(v),0,60);},
  popen:function(v){S.open=v==='1';msg(S.open?'The park is open!':'The park is closed. Guests will head home.');},
  save:function(v){var ok=save(v);UI.ticker(ok?'Saved to slot '+v+'.':'Couldn\u2019t save in this browser (storage is off).',ok?'good':'bad');refreshWin(UI.wins.file);},
- load:function(v){if(load(v)){closeWin('menu');Game.mode='play';Game.speed=1;document.body.classList.remove('inmenu');for(var k in UI.wins)closeWin(k);centerOn(EX,EY-12);msg('Loaded. '+dateStr(),'good');updateSpeedBtns();}else UI.ticker('That save couldn\u2019t be loaded.','bad');},
+ load:function(v){if(load(v)){closeWin('menu');Game.mode='play';Game.speed=1;document.body.classList.remove('inmenu');for(var k in UI.wins)closeWin(k);cam.z=window.innerWidth<700?1:2;centerGate();msg('Loaded. '+dateStr(),'good');updateSpeedBtns();}else UI.ticker('That save couldn\u2019t be loaded.','bad');},
  menu:function(){closeWin('end');menuWin();Game.demoState=null;bootDemoBG();},
- msel:function(v){UI.menuSel=v;refreshWin(UI.wins.menu);},
- start:function(){startGame(UI.menuSel||'fringe');},
+ msel:function(v){var i=SCEN.indexOf(SCN[v]);if(!scenOpen(i)){UI.ticker('Locked. Get a bronze medal in '+SCEN[i-1].n+' first.','bad');return;}UI.menuSel=v;refreshWin(UI.wins.menu);},
+ start:function(){var v=UI.menuSel||'fringe';if(!scenOpen(SCEN.indexOf(SCN[v])))v='fringe';startGame(v);},
+ achs:function(){openWin('achs','Achievements',function(){var ach=achGet();return '<div class="ach">'+ACH.map(function(x){return '<div class="'+(ach[x[0]]?'got':'')+'"><b>'+(ach[x[0]]?'\u{1F3C6}':'\u25cb')+' '+esc(x[1])+'</b><small>'+esc(x[2])+'</small></div>';}).join('')+'</div>';},{w:380});},
+ ptab:function(v){UI.parkTab=v;refreshWin(UI.wins.park);},
+ research:function(){researchWin();},
+ fund:function(v){S.res.fund=Number(v);if(!S.res.cur)S.res.cur=nextRes();},
+ focus:function(v){S.res.focus=v||null;if(S.res.cur&&S.res.prog<1)S.res.cur=nextRes();},
+ camp:function(v){var c=CAMPN[v];if(!c||campOn(v))return;if(c.res&&!hasTech(c.res))return;if(S.money<c.c){UI.ticker('Not enough money for that campaign.','bad');return;}
+  spend('market',c.c);S.camps.push({id:v,until:S.day+c.days});if(c.spot){var best=null;for(var k in S.objs){var o=S.objs[k];if(isAttraction(o)&&DEF[o.t].k!=='exhibit'&&(!best||appeal(o)>appeal(best)))best=o;}S.spotId=best?best.id:0;}
+  msg('Marketing: '+c.n+' is running.'+(c.spot&&S.spotId?' Spotlight on '+oname(S.objs[S.spotId])+'.':''),'good');Sfx.play('cash');},
+ insp:function(v){var a=v.split(','),o=S.objs[a[0]];if(o)o.insp=Number(a[1]);},
+ refurb:function(v){var o=S.objs[v];if(!o)return;var c=refurbCost(o);if(S.money<c){UI.ticker('Not enough money to refurbish.','bad');return;}spend('build',c);o.ref=S.day;o.rel=Math.min(100,o.rel+30);o.lastI=S.day;msg(oname(o)+' has been refurbished. Good as new!','good');Sfx.play('cash');},
  help:function(){helpWin();},
  sound:function(){Sfx.toggle();refreshWin(UI.wins.file);},
  grid:function(){Render.grid=!Render.grid;Render.dirty=true;refreshWin(UI.wins.file);},
@@ -1190,26 +1552,40 @@ var ICONS={
  park:'.k........|.krrrrr...|.krrrrrr..|.krrrrr...|.k........|.k........|.k........|.k........|.k........|kkk.......',
  news:'kkkkkkkkkk|kwwwwwwwwk|kwkkkkwwwk|kwkkkkwssk|kwwwwwwwwk|kwssssssswk|kwssssssssk|kwwwwwwwwk|kkkkkkkkkk|..........',
  help:'..kkkkk...|.kbbbbbk..|kbbwwwbbk.|kbbbbwbbk.|.kbbwwbk..|..kbwbbk..|..kbbbbk..|..kbwbbk..|...kkkk...|..........',
+ more:'..........|.kkkkkkkk.|.kkkkkkkk.|..........|.kkkkkkkk.|.kkkkkkkk.|..........|.kkkkkkkk.|.kkkkkkkk.|..........',
+ play:'..........|.kk..k....|.kwk.kk...|.kwwkkwk..|.kwwwkwwk.|.kwwwkwwk.|.kwwkkwk..|.kwk.kk...|.kk..k....|..........',
+ zoomi:'..kkkk....|.kwwwwk...|kwwkwwwk..|kwkkkwwk..|kwwkwwwk..|.kwwwwk...|..kkkkkk..|......kkk.|.......kkk|........kk',
+ zoomo:'..kkkk....|.kwwwwk...|kwwwwwwk..|kwkkkwwk..|kwwwwwwk..|.kwwwwk...|..kkkkkk..|......kkk.|.......kkk|........kk',
+ flask:'...kkkk...|...kwwk...|...kwwk...|...kwwk...|..kwwwwk..|.kwwccwwk.|.kwccccwk.|kwccpcccwk|kccccpccck|.kkkkkkkk.',
+ mega:'.......kk.|.....kkrk.|...kkrrrk.|kkkrrrrrk.|kwkrrrrrk.|kwkrrrrrk.|kkkrrrrrk.|.k.kkrrrk.|.k...kkrk.|.kk....kk.',
  share:'..........|......k...|......kk..|kkkkkkkkk.|kwwwwwwkkk|kwwwwwwkk.|kwk...k...|kwk.......|kkkkkkk...|..........'
 };
-var PAL={k:'#000',r:'#d02020',y:'#f0d020',g:'#20a040',b:'#2050d0',w:'#ffffff',o:'#f0a060',c:'#30c8d8',p:'#9040c0',n:'#7a4a20',s:'#909090'};
+var PAL={k:'#2a1a14',r:'#d02020',y:'#f0d020',g:'#20a040',b:'#2050d0',w:'#ffffff',o:'#f0a060',c:'#30c8d8',p:'#9040c0',n:'#7a4a20',s:'#909090'};
 function iconURL(name){var rows=ICONS[name].split('|'),c=document.createElement('canvas');c.width=10;c.height=10;var x=c.getContext('2d');
  rows.forEach(function(r,j){for(var i=0;i<10&&i<r.length;i++){var ch=r.charAt(i);if(PAL[ch]){x.fillStyle=PAL[ch];x.fillRect(i,j,1,1);}}});return c.toDataURL();}
-var TB=[['file','File','file'],['pause','Pause','pause'],['s1','1\u00d7',null],['s2','2\u00d7',null],['s4','4\u00d7',null],['s8','8\u00d7',null],['zo','Zoom \u2212',null],['zi','Zoom +',null],['|'],
- ['b-rides','Rides','rides'],['b-coaster','Coaster','coaster'],['b-zoo','Zoo','zoo'],['b-aqua','Aquarium','aqua'],['b-city','Colony','city'],['b-shops','Shops','shops'],['b-scen','Scenery','scen'],['b-land','Paths','land'],['bull','Bulldoze','bull'],['|'],
- ['staff','Staff','staff'],['guests','Guests','guests'],['fin','Money','fin'],['park','Park','park'],['news','News','news'],['help','Help','help'],['share','Post','share']];
+var TB=[['more','More','more','All buttons'],['file','Menu','file','Save, load, options, new game'],['pause','Pause','pause','Pause the game (Space)'],['spd','Speed','play','Game speed 1\u00d7 / 2\u00d7 / 4\u00d7 / 8\u00d7 (keys 1\u20134)'],['zo','Zoom \u2212','zoomo','Zoom out (\u2212 or wheel)'],['zi','Zoom +','zoomi','Zoom in (+ or wheel)'],['|'],
+ ['b-rides','Rides','rides','Flat rides and towers'],['b-coaster','Coaster','coaster','Build your own roller coaster'],['b-zoo','Zoo','zoo','Creature exhibits'],['b-aqua','Aquarium','aqua','Ice-sea domes (near polar ice)'],['b-city','Colony','city','Power, oxygen, habitats, shelters'],['b-shops','Shops','shops','Food, drinks, souvenirs, restrooms'],['b-scen','Scenery','scen','Make the park pretty'],['b-land','Paths','land','Paths, land and bulldozer'],['bull','Bulldoze','bull','Remove things (B)'],['|'],
+ ['research','Research','flask','Unlock new rides and tech'],['market','Marketing','mega','Ad campaigns for more guests'],['staff','Staff','staff','Hire and fire staff'],['guests','Guests','guests','Who is in your park'],['fin','Money','fin','Finances, chart and loan'],['park','Park','park','Rating, goals, awards, graphs'],['news','News','news','Recent messages'],['|'],['help','Help','help','How to play'],['share','Post','share','Share on X']];
+var TB_CORE={more:1,pause:1,spd:1,'b-rides':1,research:1,fin:1,park:1};
 function buildToolbar(){var tb=$('toolbar');if(!tb)return;
- tb.innerHTML=TB.map(function(b){if(b[0]==='|')return '<span class="sep"></span>';return '<button data-t="'+b[0]+'" title="'+b[1]+'">'+(b[2]?'<img alt="" src="'+iconURL(b[2])+'">':'<span class="tx">'+b[1].split(' ').pop()+'</span>')+'<small>'+b[1].replace('Zoom ','Zoom')+'</small></button>';}).join('');
- tb.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=b.getAttribute('data-t');Sfx.play('click');
+ tb.innerHTML=TB.map(function(b){if(b[0]==='|')return '<span class="sep"></span>';return '<button data-t="'+b[0]+'" aria-label="'+b[1]+'" data-tip="'+esc(b[3]||'')+'" class="'+(TB_CORE[b[0]]?'core':'ext')+'"><img alt="" src="'+iconURL(b[2])+'"><small>'+(b[0]==='spd'?'1\u00d7':b[0]==='b-rides'?'<span class="lg">Rides</span><span class="sm">Build</span>':b[1].replace('Zoom ','Zoom'))+'</small></button>';}).join('');
+ var tip=document.createElement('div');tip.id='tbtip';document.body.appendChild(tip);
+ tb.addEventListener('pointerover',function(e){var b=e.target.closest&&e.target.closest('button');if(!b||e.pointerType!=='mouse'){tip.style.display='none';return;}
+  var r=b.getBoundingClientRect();tip.innerHTML='<b>'+esc(b.getAttribute('aria-label'))+'</b>'+(b.getAttribute('data-tip')?'<small>'+b.getAttribute('data-tip')+'</small>':'');tip.style.display='block';tip.style.left=Math.max(4,Math.min(window.innerWidth-200,r.left))+'px';tip.style.top=(r.bottom+6)+'px';});
+ tb.addEventListener('pointerout',function(){tip.style.display='none';});
+ tb.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=b.getAttribute('data-t');Sfx.play('click');tip.style.display='none';
+  if(t==='more'){tb.classList.toggle('open');return;}
+  if(tb.classList.contains('open')&&t!=='zi'&&t!=='zo')tb.classList.remove('open');
   if(t==='file')fileWin();else if(t==='pause'){Game.speed=Game.speed?0:(Game.prevSpeed||1);if(Game.speed)Game.prevSpeed=Game.speed;}
-  else if(t.charAt(0)==='s'&&t.length===2){Game.speed=Number(t.charAt(1));Game.prevSpeed=Game.speed;}
+  else if(t==='spd'){var sp=[1,2,4,8],ci=sp.indexOf(Game.speed);Game.speed=sp[(ci+1)%4];Game.prevSpeed=Game.speed;}
   else if(t==='zi')zoomStep(1);else if(t==='zo')zoomStep(-1);
   else if(t.indexOf('b-')===0)buildWin(t.slice(2));
   else if(t==='bull'){buildWin('land');setTool({k:'bull'});}
+  else if(t==='research')researchWin();else if(t==='market')marketWin();
   else if(t==='staff')staffWin();else if(t==='guests')guestsWin();else if(t==='fin')finWin();else if(t==='park')parkWin();else if(t==='news')newsWin();else if(t==='help')helpWin();else if(t==='share')share();
   updateSpeedBtns();});
 }
-function updateSpeedBtns(){var tb=$('toolbar');if(!tb)return;['s1','s2','s4','s8'].forEach(function(s){var b=tb.querySelector('[data-t="'+s+'"]');if(b)b.classList.toggle('on',Game.speed===Number(s.charAt(1)));});var p=tb.querySelector('[data-t="pause"]');if(p)p.classList.toggle('on',Game.speed===0);}
+function updateSpeedBtns(){var tb=$('toolbar');if(!tb)return;var sb=tb.querySelector('[data-t="spd"] small');if(sb){var tx=(Game.speed||Game.prevSpeed||1)+'\u00d7';if(sb.textContent!==tx)sb.textContent=tx;}var p=tb.querySelector('[data-t="pause"]');if(p)p.classList.toggle('on',Game.speed===0);}
 var ZOOMS=[0.5,1,2,3];
 function zoomStep(dir,sx,sy){var i=ZOOMS.indexOf(cam.z);if(i<0)i=1;var ni=clamp(i+dir,0,ZOOMS.length-1);if(ni===i)return;
  if(sx===undefined){sx=cw/2;sy=ch/2;}var bx=(sx-cw/2)/cam.z+cam.x,by=(sy-ch/2)/cam.z+cam.y;cam.z=ZOOMS[ni];cam.x=bx-(sx-cw/2)/cam.z;cam.y=by-(sy-ch/2)/cam.z;clampCam();}
@@ -1219,7 +1595,7 @@ function updateStatus(){
  var set=function(id,h){var e=$(id);if(e&&e.innerHTML!==h)e.innerHTML=h;};
  set('st-money','<b class="'+(S.money<0?'no':'')+'">'+fmt(S.money)+'</b>');set('st-guests',S.guests.length+(S.guests.length===1?' guest':' guests'));
  set('st-rating','Rating '+S.rating+' '+bar(S.rating/10,S.rating<400?'#c00':'#080'));set('st-date',dateStr());
- set('st-wx',S.storm?'<b class="no">DUST STORM</b>':'Clear skies');
+ var se=season();set('st-wx','<i class="sdot" style="background:'+se[3]+'"></i>'+se[0]+' \u00b7 '+(S.storm?'<b class="no">Dust storm</b>':wxName()));
  set('st-pw','\u26a1'+U.pwP+'/'+U.pwU+(U.pwU>U.pwP?' <b class="no">!</b>':''));set('st-o2','O\u2082 '+U.o2P+'/'+(S.o2need||U.o2U));
  for(var k in UI.wins){var w=UI.wins[k];if(w.live&&!UI.ptrDown)refreshWin(w);}
 }
@@ -1232,7 +1608,8 @@ function floatText(sx,sy,t,col){var host=$('fx');if(!host)return;var e=document.
 function applyTool(sx,sy,isDrag){
  var t=UI.tool;if(!t)return;var tt=tileAt(sx,sy),r=null;if(!inb(tt[0],tt[1]))return;
  if(isDrag&&drag&&drag.lastTile&&drag.lastTile[0]===tt[0]&&drag.lastTile[1]===tt[1])return;if(drag)drag.lastTile=tt;
- if(t.k==='path')r=placePath(tt[0],tt[1]);else if(t.k==='track')r=placeTrack(tt[0],tt[1],UI.trackH);else if(t.k==='bull')r=bulldoze(tt[0],tt[1]);
+ if(t.k==='land'){if(isDrag)return;r=buyParcel(Math.floor(tt[0]/PS),Math.floor(tt[1]/PS));if(r.ok)r.cost=r.cost;}
+ else if(t.k==='path')r=placePath(tt[0],tt[1]);else if(t.k==='track')r=placeTrack(tt[0],tt[1],UI.trackH);else if(t.k==='bull')r=bulldoze(tt[0],tt[1]);
  else{if(isDrag&&DEF[t.id].k!=='scen')return;var a=toolAnchor(t,tt[0],tt[1]);r=place(t.id,a[0],a[1]);}
  if(r&&r.ok){if(r.cost)floatText(sx,sy-10,'-'+fmt(r.cost));if(r.what)floatText(sx,sy-10,'Removed '+r.what,'#fff');if(UI.wins.build)refreshWin(UI.wins.build);}
  else if(r&&r.why&&!isDrag){UI.ticker(r.why,'bad');floatText(sx,sy-10,r.why.split('.')[0],'#ff8070');}
@@ -1248,6 +1625,8 @@ function pickAt(sx,sy){
 UI.drawGhost=function(){
  var h=UI.hover,t=UI.tool;if(!h||!t||Game.mode!=='play')return;
  var tiles=[],ok=true;
+ if(t.k==='land'){var px=Math.floor(h[0]/PS),py=Math.floor(h[1]/PS);if(px<0||py<0||px>=PN||py>=PN)return;var bok=parcelBuyable(px,py)&&S.money>=parcelPrice(px,py),x0=px*PS,y0=py*PS;
+  poly(ctx,[P(x0,y0),P(x0+PS,y0),P(x0+PS,y0+PS),P(x0,y0+PS)],parcelOwned(px,py)?'rgba(255,255,255,0.06)':(bok?'rgba(255,214,120,0.28)':'rgba(255,70,50,0.25)'),parcelOwned(px,py)?'rgba(255,255,255,0.4)':(bok?'#ffd678':'#ff6a50'),1.5);return;}
  if(t.k==='obj'){var d=DEF[t.id],a=toolAnchor(t,h[0],h[1]),f=footprintOk(t.id,a[0],a[1]);ok=f.ok&&S.money>=f.cost;for(var j=0;j<d.h;j++)for(var i=0;i<d.w;i++)tiles.push([a[0]+i,a[1]+j]);}
  else tiles.push(h);
  tiles.forEach(function(q){poly(ctx,[P(q[0],q[1]),P(q[0]+1,q[1]),P(q[0]+1,q[1]+1),P(q[0],q[1]+1)],t.k==='bull'?'rgba(255,80,40,0.35)':(ok?'rgba(90,255,90,0.35)':'rgba(255,60,60,0.4)'),t.k==='bull'?'#ff6040':(ok?'#7f7':'#f66'),1);});
@@ -1255,6 +1634,7 @@ UI.drawGhost=function(){
 };
 function tipFor(sx,sy){var tip=$('tip');if(!tip)return;var t=UI.tool;if(!t||Game.mode!=='play'||!UI.hover){tip.style.display='none';return;}
  var s='';if(t.k==='obj'){var d=DEF[t.id],a=toolAnchor(t,UI.hover[0],UI.hover[1]),f=footprintOk(t.id,a[0],a[1]);s=d.n+' \u2014 '+(f.ok?fmt(f.cost):f.why);}
+ else if(t.k==='land'){var lx=Math.floor(UI.hover[0]/PS),ly=Math.floor(UI.hover[1]/PS);s=parcelOwned(lx,ly)?'You own this land':(parcelBuyable(lx,ly)?'Buy this plot \u2014 '+fmt(parcelPrice(lx,ly)):'Buy land next to your park first');}
  else if(t.k==='path')s='Path $12';else if(t.k==='track')s='Track, height '+UI.trackH;else s='Bulldozer';
  if(s!==lastTip){tip.textContent=s;lastTip=s;}tip.style.display='block';tip.style.left=(sx+16)+'px';tip.style.top=(sy+18)+'px';}
 function bindInput(){
@@ -1318,6 +1698,6 @@ function boot(){
  window.requestAnimationFrame(loop);
 }
 window.RHT={get S(){return S;},w2s:worldToScreen,footprintOk:footprintOk,DEF:DEF,place:place,placePath:placePath,placeTrack:placeTrack,validateAll:validateAll,warm:warm,startGame:startGame,hire:hire,centerOn:centerOn,cam:cam,Game:Game,UI:UI,
- objWin:objWin,guestWin:guestWin,finWin:finWin,parkWin:parkWin,staffWin:staffWin,guestsWin:guestsWin,buildWin:buildWin,newsWin:newsWin,save:save,load:load,closeWin:closeWin,P:P,setTool:setTool,zoomStep:zoomStep,dateStr:dateStr};
+ objWin:objWin,guestWin:guestWin,finWin:finWin,parkWin:parkWin,staffWin:staffWin,guestsWin:guestsWin,buildWin:buildWin,newsWin:newsWin,save:save,load:load,closeWin:closeWin,P:P,setTool:setTool,zoomStep:zoomStep,dateStr:dateStr,buyParcel:buyParcel,parcelPrice:parcelPrice,goalStatus:goalStatus,unlocked:unlocked,ACT:ACT,parkValue:parkValue,companyValue:companyValue,utilities:utilities,researchWin:researchWin,marketWin:marketWin};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
