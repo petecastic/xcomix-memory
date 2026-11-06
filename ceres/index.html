@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Graveyard Shift: Ceres — Work Order Shelter | X-COMIX</title>
+<meta name="description" content="Fallout Shelter-style cutaway base builder on haunted Ceres Station. Assign Dom, Vivian, Tess and night-shift visitors. Free, no ads.">
+<meta name="theme-color" content="#061820">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mrpetecastic">
+<meta name="twitter:title" content="Graveyard Shift: Ceres — Work Order Shelter">
+<meta name="twitter:description" content="Cutaway base builder on haunted Ceres Station. Dig dark decks, throw the PORT RICHMOND SUB, survive the shift. Free in your browser.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/ceres.jpg">
+<meta name="twitter:image:alt" content="Cutaway of haunted Ceres Station with Dom DiNardo and crew working the decks">
+<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/ceres/embed.html">
+<meta name="twitter:player:width" content="480">
+<meta name="twitter:player:height" content="480">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://petecastic.github.io/xcomix-memory/ceres/">
+<meta property="og:title" content="Graveyard Shift: Ceres — Work Order Shelter">
+<meta property="og:description" content="Cutaway base builder on haunted Ceres Station. Dig dark decks, throw the PORT RICHMOND SUB, survive the shift. Free in your browser.">
+<meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/ceres.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div id="app">
+  <header id="top">
+    <div class="brand"><b>GRAVEYARD SHIFT</b><span>CERES · WORK ORDER SHELTER</span></div>
+    <div id="hud">
+      <span class="h" title="Grid Amps">⚡ <b id="hPwr">0</b>/<i id="hPwrNeed">0</i></span>
+      <span class="h" title="Pierogies &amp; plates">🥟 <b id="hGrub">0</b></span>
+      <span class="h" title="Air &amp; coolant">💨 <b id="hAir">0</b></span>
+      <span class="h" title="Contract Scrip">🔩 <b id="hScrip">0</b></span>
+      <span class="h" title="Crew happiness">😊 <b id="hHappy">100</b>%</span>
+      <span class="h" title="Shift clock">⏱ <b id="hClock">00:00</b></span>
+    </div>
+    <div class="tr">
+      <button class="hb" id="btnSpd" title="Speed">1×</button>
+      <button class="hb" id="btnSnd" title="Sound">🔊</button>
+      <button class="hb" id="btnCodex" title="Crew Codex">📒</button>
+      <button class="hb" id="btnHelp" title="How to play">?</button>
+      <a class="hb" href="../" title="Arcade">⌂</a>
+    </div>
+  </header>
+
+  <div id="stageWrap">
+    <canvas id="cv" width="1100" height="700"></canvas>
+    <div id="bubbles"></div>
+    <div id="toast"></div>
+  </div>
+
+  <aside id="side">
+    <div class="tabs">
+      <button class="tab on" data-t="build">BUILD</button>
+      <button class="tab" data-t="crew">CREW</button>
+      <button class="tab" data-t="orders">ORDERS</button>
+      <button class="tab" data-t="shop">GEAR</button>
+    </div>
+    <div id="panel" class="panel"></div>
+  </aside>
+
+  <footer id="foot">
+    <span id="logLine">Attention crew. Clock in.</span>
+    <span class="fine">Graveyard Shift: Ceres · © 2026 Petecastic Productions LLC · X-COMIX Arcade · Free, no ads</span>
+  </footer>
+</div>
+
+<div id="start">
+  <div class="card">
+    <img class="hero" src="art/station_bg.jpg" alt="Ceres Station">
+    <h1>GRAVEYARD SHIFT<span>CERES</span></h1>
+    <p class="sub">Work Order Shelter · haunted ring-hab cutaway</p>
+    <p class="blurb">Dig dark decks. Keep the grid, grub and air alive. Throw the <b>PORT RICHMOND SUB</b> and invite night-shift visitors from across the Multiverse.</p>
+    <button class="go blink" id="startBtn">TAP TO CLOCK IN</button>
+    <p class="hint">Free · no ads · saves in this browser</p>
+  </div>
+</div>
+
+<div id="modal" hidden><div class="mbox" id="mbox"></div></div>
+<script src="../arcade/common.js"></script>
+<script src="game.js"></script>
+</body></html>

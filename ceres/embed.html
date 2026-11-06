@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<title>Graveyard Shift: Ceres</title>
+<meta name="twitter:card" content="player">
+<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/ceres/embed.html">
+<meta name="twitter:player:width" content="480">
+<meta name="twitter:player:height" content="480">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/ceres.jpg">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head><body class="embed">
+<div id="app">
+  <header id="top">
+    <div class="brand"><b>CERES</b><span>WORK ORDER</span></div>
+    <div id="hud">
+      <span class="h">⚡<b id="hPwr">0</b></span>
+      <span class="h">🥟<b id="hGrub">0</b></span>
+      <span class="h">💨<b id="hAir">0</b></span>
+      <span class="h">🔩<b id="hScrip">0</b></span>
+      <span class="h">😊<b id="hHappy">100</b></span>
+    </div>
+    <div class="tr">
+      <button class="hb" id="btnSpd">1×</button>
+      <button class="hb" id="btnSnd">🔊</button>
+    </div>
+  </header>
+  <div id="stageWrap"><canvas id="cv" width="480" height="360"></canvas><div id="bubbles"></div><div id="toast"></div></div>
+  <aside id="side">
+    <div class="tabs">
+      <button class="tab on" data-t="build">BUILD</button>
+      <button class="tab" data-t="crew">CREW</button>
+      <button class="tab" data-t="orders">ORDERS</button>
+      <button class="tab" data-t="shop">GEAR</button>
+    </div>
+    <div id="panel" class="panel"></div>
+  </aside>
+  <footer id="foot"><span id="logLine">Clock in.</span></footer>
+</div>
+<div id="start"><div class="card">
+  <h1>GRAVEYARD SHIFT<span>CERES</span></h1>
+  <p class="sub">Work Order Shelter</p>
+  <button class="go blink" id="startBtn">TAP TO CLOCK IN</button>
+</div></div>
+<div id="modal" hidden><div class="mbox" id="mbox"></div></div>
+<script src="../arcade/common.js"></script>
+<script src="game.js"></script>
+</body></html>
