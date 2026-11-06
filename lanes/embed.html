@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Midnight Lanes: Three Worlds | X-COMIX Arcade</title>
+<meta name="description" content="Free 2000s-style 5-lane defense game from X-COMIX. Stink Patrol guards the museum, the Old Bay Boys (live blue crabs!) hold Fells Point Pier, and Onigiri Squad! saves the snacks. 3 worlds, 3 bosses, endless mode. No ads.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@PeteCastic">
+<meta name="twitter:title" content="Midnight Lanes: Three Worlds">
+<meta name="twitter:description" content="Free 2000s-style 5-lane defense game from X-COMIX. Stink Patrol guards the museum, the Old Bay Boys (live blue crabs!) hold Fells Point Pier, and Onigiri Squad! saves the snacks. 3 worlds, 3 bosses, endless mode. No ads.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/lanes.jpg">
+<meta name="twitter:image:alt" content="Stanley the skunk and Rexanne the T-rex skeleton in a midnight museum, Big Jimmy the live blue crab on a Baltimore pier, and the Onigiri Squad in a pink convenience store, defending five lanes">
+<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/lanes/embed.html">
+<meta name="twitter:player:width" content="480">
+<meta name="twitter:player:height" content="480">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://petecastic.github.io/xcomix-memory/lanes/embed.html">
+<meta property="og:title" content="Midnight Lanes: Three Worlds">
+<meta property="og:description" content="Free 2000s-style 5-lane defense game from X-COMIX. Stink Patrol guards the museum, the Old Bay Boys (live blue crabs!) hold Fells Point Pier, and Onigiri Squad! saves the snacks. 3 worlds, 3 bosses, endless mode. No ads.">
+<meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/lanes.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css?v=1">
+</head><body class="embed">
+<div id="app">
+<section id="scrTitle" class="scr title">
+ <div class="logo"><span class="k">MIDNIGHT</span><span class="d">LANES</span><span class="s">THREE WORLDS</span></div>
+ <div class="trio">
+  <div class="tw t1"><img src="art/stanley.jpg" alt="Stanley"><img src="art/rexanne.jpg" alt="Rexanne"><b>Stink Patrol</b></div>
+  <div class="tw t2"><img src="art/big-jimmy.jpg" alt="Big Jimmy"><img src="art/lil-sook.jpg" alt="Lil Sook"><b>Old Bay Boys</b></div>
+  <div class="tw t3"><img src="art/pikaru.jpg" alt="Pikaru"><img src="art/tamago-chan.jpg" alt="Tamago-chan"><b>Onigiri Squad!</b></div>
+ </div>
+ <div class="vs"><span>VS</span><img src="art/sir-sucks-a-lot.jpg" alt="Sir Sucks-a-Lot"><img src="art/gully.jpg" alt="Gully"><img src="art/kappa-boss.jpg" alt="Kappa-Boss"></div>
+ <button class="hb big go blink" id="startBtn">TAP TO START</button>
+ <div class="tag">5 lanes &middot; 22 X-COMIX defenders &middot; 3 worlds &middot; 3 bosses &middot; endless mode &middot; no ads, no gems, no timers</div>
+</section>
+<section id="scrMap" class="scr" style="display:none">
+ <div class="top"><div class="logo sm"><span class="k">MIDNIGHT</span><span class="d">LANES</span></div>
+ <div class="tbtn"><button class="hb" id="toAlm">&#128214; ALMANAC</button><button class="hb" id="toHelp">HOW TO</button><button class="hb snd" title="Sound">&#128266;</button></div></div>
+ <div id="worlds"></div>
+</section>
+<section id="scrGame" class="scr" style="display:none">
+ <div id="hud"><span class="en"><i id="energyIco" class="eico"></i><b id="energy">50</b><small id="curName">Crumbs</small></span>
+  <button class="hb sm tool" id="shovel" title="Shovel: dig up a defender (S)">&#9935; DIG</button>
+  <span class="wm"><span id="clock">12:00 AM</span><span id="wmeter"></span></span><span id="stName" class="stn"></span>
+  <span class="hr"><button class="hb sm" id="autoBtn" title="Auto-collect drops">AUTO</button><button class="hb sm" id="spdBtn" title="Speed">1x</button><button class="hb sm" id="pauseBtn" title="Pause (P)">&#10074;&#10074;</button><button class="hb sm snd" title="Sound">&#128266;</button><button class="hb sm" id="menuBtn" title="Menu">&#9776;</button></span></div>
+ <div id="packets"></div>
+ <div id="stage"><canvas id="cv" width="960" height="480"></canvas><div id="banner"></div><div id="bossIntro"></div></div>
+ <div class="rot">&#8635; Tip: turn your phone sideways for a bigger lane grid. Tap a card, then a tile. Tap the drops to collect them, or switch on AUTO.</div>
+</section>
+<section id="scrAlm" class="scr" style="display:none">
+ <div class="top"><button class="hb back">&larr; MAP</button><h2>X-COMIX Suburban Almanac</h2></div>
+ <div id="almBody" class="pan"></div>
+</section>
+<section id="scrHelp" class="scr" style="display:none">
+ <div class="top"><button class="hb back">&larr; MAP</button><h2>How to play</h2></div>
+ <div class="pan"><ul>
+ <li>Raiders walk in from the right along 5 lanes. Don't let them reach the left edge.</li>
+ <li>Tap a <b>card</b> at the top, then tap a tile to place that defender. Each card costs energy and needs to recharge.</li>
+ <li>Tap the glowing drops to collect energy: <b>Vending Crumbs</b> in the museum, <b>Shiny Shells</b> on the pier, <b>Sakura Rice Stars</b> at the Mart. Your producers (Crumbs, Lil Sook, Tamago-chan) make more. Turn on <b>AUTO</b> if tapping is hard on your phone.</li>
+ <li><b>DIG</b> removes a defender and gives back a quarter of its cost.</li>
+ <li>Each lane has one last-ditch sweeper on the left: the <b>Museum Floor Buffer</b>, the <b>Harbor Wave Barrel</b> and the <b>Rolling Bento Cart</b>. They clear the lane once.</li>
+ <li>Watch the flag meter. "A HUGE WAVE IS APPROACHING!" means a big push is coming.</li>
+ <li>Clear stages to unlock new defenders, then the BOSS stage, then ENDLESS.</li>
+ <li>Keys: 1-9 pick a card, S digs, P or Space pauses, Esc cancels.</li></ul>
+ <h3>Timeline notes</h3><ul>
+ <li>Another timeline, all in fun. Nobody gets hurt: raiders get shooed, swept, stuck or sent home.</li>
+ <li>The Old Bay Boys are <b>live blue crabs</b>. Always. The harbor wheel is a made-up googly-eyed wheel.</li>
+ <li>No real brands. Every snack, can and sign is made up.</li></ul></div>
+</section>
+<div id="dlg"><div class="dlgw"><div id="dlgB"></div><div id="dlgBtns"></div></div></div>
+<div class="efoot">Midnight Lanes &middot; &copy; 2026 Petecastic Productions LLC &middot; X-COMIX Arcade &middot; Free, no ads</div>
+</div>
+
+<script src="data.js?v=1"></script>
+<script src="game.js?v=1"></script>
+</body></html>
