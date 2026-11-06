@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Overmind's Rug Loom | X-COMIX Arcade</title>
+<meta name="description" content="A free 2000s-style idle parody: spin fake Cable Lint, lock it in Overmind's glass piggy vault, weave ridiculous cartoon rugs with the X-Comix crew.">
+<meta name="twitter:site" content="@mrpetecastic">
+<meta name="twitter:title" content="Overmind's Rug Loom">
+<meta name="twitter:description" content="Spin fake lint. Lock it in the pig. Weave ridiculous rugs. A free 2000s idle parody with Dkorn, Baby Kilo and the X-Comix crew.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/rug-loom.jpg">
+<meta name="twitter:image:alt" content="A neon loom, a glass piggy vault full of lint, and an apartment floor covered in cartoon rugs">
+<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/rug-loom/embed.html">
+<meta name="twitter:player:width" content="480">
+<meta name="twitter:player:height" content="480">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../arcade/dkorn-vip.css">
+<link rel="stylesheet" href="loom.css">
+<meta name="twitter:card" content="player">
+</head><body class="embed">
+<div class="win" id="app">
+ <div class="tb"><span class="ico"></span><span class="t">Overmind's Rug Loom — Idle Arcade Simulator</span><button class="tbb" id="snd" title="Sound">&#128263;</button></div>
+ <div class="menu"><button class="btn sm" id="mNew">New Game</button><button class="btn sm" id="mHelp">How to Play</button><button class="btn sm" id="mVip">🎟️ Insert VIP Pass (Read-Only Check)</button><button class="btn sm" id="mShare">Share on X</button><span id="lockBadge" style="margin-left:6px"></span><span class="vipslot">🪙 VIP QUARTER SLOT</span></div>
+ <div class="hud">
+  <span class="cell big">🧶 Cable Lint <b id="hLint">0</b></span>
+  <span class="cell"><b id="hLps">0</b>/s</span>
+  <span class="cell">🐷 Locked <b id="hLock">0</b></span>
+  <span class="cell big">🧵 Woven Thread <b id="hThr">0</b></span>
+  <span class="cell"><b id="hTps">0</b>/s</span>
+  <span class="cell">🪙 <b id="hQ">0</b></span>
+  <span class="cell" id="hTasC" style="display:none">✨ Tassels <b id="hTas">0</b></span>
+ </div>
+ <div class="ticker"><span id="tick"></span></div>
+ <div class="main">
+  <div class="left">
+   <div class="scene"><canvas id="cv" width="640" height="360" aria-label="The Neon Sub-Station Loom and Overmind's Glass Piggy Vault. Tap to spin."></canvas></div>
+   <div class="scene room"><span class="cap">🏠 Apartment Floor Showroom</span><canvas id="room" width="640" height="210"></canvas></div>
+  </div>
+  <div class="right">
+   <div class="tabs" id="tabs"></div>
+   <div class="panel" id="panel"></div>
+  </div>
+ </div>
+</div>
+<div class="foot"><span class="credits"><a href="../">&larr; X-COMIX arcade</a> · <a href="../binder/">Card Binder</a> · art from the X-Comix &amp; Dkorn model sheets · progress saves in this browser · </span>
+<span class="legal">100% Free Parody Browser Game · In-game points have zero cash/crypto value · No crypto deposits · Dkorn™ © 2026 Petecastic Productions LLC</span></div>
+<div class="ovl" id="ovl"><div class="win dlg"><div class="tb"><span class="ico"></span><span class="t" id="dT">Notice</span></div><div class="bd" id="dB"></div><div class="btns" id="dBtns"></div></div></div>
+<div id="start"><div class="win dlg"><div class="tb"><span class="ico"></span><span class="t">Overmind's Rug Loom</span></div><div class="bd">
+<div class="hero"><img src="../arcade/art/overmind_head.jpg" alt="Overmind"><img src="../arcade/cards/dk_dkorn.jpg" alt="Dkorn"><img src="../arcade/cards/dk_kilo.jpg" alt="Baby Kilo"></div>
+<h2>OVERMIND'S<br>RUG LOOM</h2>
+<div style="font-weight:bold">Spin lint. Lock it in the pig. Weave ridiculous rugs.</div>
+<div style="font-size:11px;margin-top:4px">A free 2000s-style idle parody. All points are fake. Nothing to buy.</div>
+<span class="go blink">TAP TO START</span>
+</div></div></div>
+<script src="../arcade/common.js"></script>
+<script src="../arcade/dkorn-vip.js"></script>
+<script src="loom.js"></script>
+<script>if(window.DKVIP)DKVIP.badge(document.getElementById('lockBadge'));</script>
+</body></html>

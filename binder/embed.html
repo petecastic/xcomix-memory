@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>X-Comix Multiverse Card Binder | X-COMIX Arcade</title>
+<meta name="description" content="A free 2000s-style trading-card binder: all 100 Dkorn characters plus the X-Comix multiverse crew. Rip a free 5-card pack every day.">
+<meta name="twitter:site" content="@mrpetecastic">
+<meta name="twitter:title" content="X-Comix Multiverse Card Binder">
+<meta name="twitter:description" content="All 100 Dkorn characters plus the X-Comix multiverse crew. Holo cards, 9-pocket binder, a free pack every day.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/binder.jpg">
+<meta name="twitter:image:alt" content="A 9-pocket binder page of holographic X-Comix trading cards featuring Dkorn, Princess Voltia, Baby Kilo and Uncle Krampus">
+<meta name="twitter:card" content="player">
+<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/binder/embed.html">
+<meta name="twitter:player:width" content="480">
+<meta name="twitter:player:height" content="480">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../arcade/dkorn-vip.css">
+<link rel="stylesheet" href="binder.css">
+</head><body class="embed">
+<div class="wrap">
+ <div class="top">
+  <div class="logo"><h1>X-COMIX MULTIVERSE CARD BINDER</h1><div class="sub">100 DKORN SAGA CARDS + THE MULTIVERSE CREW · STAGE: A1gR-APBeVk</div></div>
+  <div class="tbtns">
+   <span class="vipslot" title="VIP Quarter Slot">🪙 VIP QUARTER SLOT</span>
+   <button class="b gold" id="vipBtn">🎟️ Insert VIP Pass (Read-Only Check)</button>
+   <span id="lockBadge"></span>
+  </div>
+ </div>
+ <div class="prog"><span id="progTxt">COLLECTED</span><div class="bar"><i id="progBar" style="width:0"></i></div><button class="b pink" id="ripBtn">📦 Rip Booster<span class="n" id="packN">0</span></button></div>
+ <div class="filters">
+  <input id="q" type="search" placeholder="Search name, power, show…" autocomplete="off">
+  <select id="fU" aria-label="Universe"></select>
+  <select id="fR" aria-label="Rarity"></select>
+  <select id="fB" aria-label="Book" class="opt"></select>
+  <select id="fS" aria-label="Sector" class="opt"></select>
+  <select id="fO" aria-label="Owned" class="opt"></select>
+  <span class="seg" id="viewSeg"><button data-v="binder" class="on">9-Pocket</button><button data-v="grid">Grid</button></span>
+  <span class="cnt" id="cnt"></span>
+ </div>
+ <div id="view"></div>
+ <div class="pager" id="pager"><button class="b" id="prev">◀ Prev</button><span id="pgTxt"></span><button class="b" id="next">Next ▶</button></div>
+ <div class="foot"><span class="credits">One free 5-card pack a day. Earn bonus packs by cashing Arcade Quarters in <a href="../rug-loom/">Overmind's Rug Loom</a>. Your binder saves in this browser. · <a href="../">← X-COMIX Arcade</a> · <a id="shareBtn" target="_blank" rel="noopener" href="#">Share on 𝕏</a></span>
+ <span class="legal">Dkorn™ · © 2026 Petecastic Productions LLC · Fan arcade &amp; comic collectible fun, not financial advice</span></div>
+</div>
+<div class="ovl" id="cardOv"></div>
+<div class="ovl packov" id="packOv"></div>
+<script src="../arcade/common.js"></script>
+<script src="../arcade/dkorn-vip.js"></script>
+<script src="data.js"></script>
+<script src="binder.js"></script>
+</body></html>

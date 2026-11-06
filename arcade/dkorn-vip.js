@@ -11,7 +11,9 @@ var LOCK_PROGRAM='LocpQgucEQHbqNABEYvBvwoxCPsSbG91A1QaQhQQqjn';
 var LOCK_TX='euRKuzJnTVxaPU4SYRViW4WAb5oiiV4LcvKcJJyMuhu1bce281FeH2AoLNaXhMBtfjN3k9DPZjFY99gtqNKP2S9';
 var LOCK_URL='https://lock.jup.ag/escrow/'+ESCROW;
 var SERIAL='A1gR-APBeVk';
-var RPCS=['https://api.mainnet-beta.solana.com','https://solana-rpc.publicnode.com'];
+/* Public mainnet RPCs, tried in order. api.mainnet-beta.solana.com currently answers 403 to browser origins, so CORS-friendly public mirrors go first. */
+var RPCS=['https://public.rpc.solanavibestation.com','https://solana-rpc.publicnode.com','https://api.mainnet-beta.solana.com'];
+var ATA_PROGRAM='ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL';
 var KEY='dkorn-vip';
 function get(){try{if(window.XC)return XC.get(KEY);return JSON.parse(localStorage.getItem('xca-'+KEY))}catch(e){return null}}
 function set(v){try{if(window.XC)XC.set(KEY,v);else localStorage.setItem('xca-'+KEY,JSON.stringify(v))}catch(e){}}
@@ -22,20 +24,29 @@ function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{'&':'&amp
 function short(a){return a?a.slice(0,4)+'…'+a.slice(-4):''}
 function fmt(n){try{return Number(n).toLocaleString('en-US',{maximumFractionDigits:2})}catch(e){return String(n)}}
 function withTimeout(p,ms){return new Promise(function(res,rej){var t=setTimeout(function(){rej(new Error('timeout'))},ms);p.then(function(v){clearTimeout(t);res(v)},function(e){clearTimeout(t);rej(e)})})}
+var BAD={};
 function rpc(method,params){
   var body=JSON.stringify({jsonrpc:'2.0',id:1,method:method,params:params});
   var i=0;
   function attempt(){
-    if(i>=RPCS.length)return Promise.reject(new Error('All public RPC endpoints are busy right now (rate-limited). Try again in a minute.'));
+    while(i<RPCS.length&&BAD[RPCS[i]])i++;
+    if(i>=RPCS.length){BAD={};return Promise.reject(new Error('All public RPC endpoints are busy right now (rate-limited). Try again in a minute.'))}
     var url=RPCS[i++];
     return withTimeout(fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:body}),9000)
       .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json()})
       .then(function(j){if(j.error)throw new Error(j.error.message||'RPC error');return j.result})
-      .catch(function(){return attempt()});
+      .catch(function(e){if(/HTTP 4|forbidden|token|plan/i.test(String(e&&e.message)))BAD[url]=1;return attempt()});
   }
   return attempt();
 }
 function dkornBalance(owner){
+  return byIndex(owner).catch(function(){
+    return ataFor(owner).then(function(ata){return rpc('getAccountInfo',[ata,{encoding:'jsonParsed'}])}).then(function(r){
+      var v=r&&r.value,inf=v&&v.data&&v.data.parsed&&v.data.parsed.info;
+      if(!v)return 0;if(!inf||inf.mint!==MINT||inf.owner!==owner)return 0;return Number(inf.tokenAmount.uiAmountString||0)});
+  });
+}
+function byIndex(owner){
   return rpc('getTokenAccountsByOwner',[owner,{mint:MINT},{encoding:'jsonParsed'}]).then(function(res){
     var tot=0,list=(res&&res.value)||[];
     for(var k=0;k<list.length;k++){var a=list[k].account,inf=a&&a.data&&a.data.parsed&&a.data.parsed.info;
@@ -43,11 +54,29 @@ function dkornBalance(owner){
     return tot;
   });
 }
+
+/* ---- base58 + PDA (used only to compute a public token-account address; no keys involved) ---- */
+var B58='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
+function b58dec(s){var n=BigInt(0);for(var i=0;i<s.length;i++){var k=B58.indexOf(s[i]);if(k<0)throw new Error('bad b58');n=n*BigInt(58)+BigInt(k)}var out=[];while(n>BigInt(0)){out.unshift(Number(n%BigInt(256)));n=n/BigInt(256)}for(i=0;i<s.length&&s[i]==='1';i++)out.unshift(0);while(out.length<32)out.unshift(0);return new Uint8Array(out)}
+function b58enc(b){var n=BigInt(0);for(var i=0;i<b.length;i++)n=n*BigInt(256)+BigInt(b[i]);var s='';while(n>BigInt(0)){s=B58[Number(n%BigInt(58))]+s;n=n/BigInt(58)}for(i=0;i<b.length&&b[i]===0;i++)s='1'+s;return s}
+function mpow(b,e,m){var r=BigInt(1);b%=m;while(e>BigInt(0)){if(e&BigInt(1))r=r*b%m;b=b*b%m;e>>=BigInt(1)}return r}
+function onCurve(bytes){var P=(BigInt(1)<<BigInt(255))-BigInt(19);var y=BigInt(0);for(var i=31;i>=0;i--)y=(y<<BigInt(8))|BigInt(i===31?bytes[i]&127:bytes[i]);var sign=bytes[31]>>7;if(y>=P)return false;
+  var d=(P-BigInt(121665))*mpow(BigInt(121666),P-BigInt(2),P)%P;var y2=y*y%P,u=(y2-BigInt(1)+P)%P,v=(d*y2+BigInt(1))%P;
+  var v3=v*v%P*v%P,x=u*v3%P*mpow(u*v3%P*v3%P*v%P,(P-BigInt(5))/BigInt(8),P)%P;var vx2=v*x%P*x%P;
+  if(vx2!==u&&vx2!==(P-u)%P)return false;if(vx2!==u)x=x*mpow(BigInt(2),(P-BigInt(1))/BigInt(4),P)%P;if(x===BigInt(0)&&sign===1)return false;return true}
+function ataFor(owner){
+  if(!(window.crypto&&crypto.subtle&&typeof BigInt==='function'))return Promise.reject(new Error('no crypto'));
+  var seeds=[b58dec(owner),b58dec(T22),b58dec(MINT)],prog=b58dec(ATA_PROGRAM),tag=new TextEncoder().encode('ProgramDerivedAddress');
+  function tryBump(bump){if(bump<0)return Promise.reject(new Error('no bump'));
+    var buf=new Uint8Array(32*3+1+32+tag.length),o=0;seeds.forEach(function(s){buf.set(s,o);o+=32});buf[o++]=bump;buf.set(prog,o);o+=32;buf.set(tag,o);
+    return crypto.subtle.digest('SHA-256',buf).then(function(h){h=new Uint8Array(h);return onCurve(h)?tryBump(bump-1):b58enc(h)})}
+  return tryBump(255);
+}
 var proof=null,proofP=null;
 function checkLock(){
   if(proofP)return proofP;
-  proofP=Promise.all([rpc('getAccountInfo',[ESCROW,{encoding:'base64',dataSlice:{offset:0,length:0}}]),rpc('getTokenAccountBalance',[ESCROW_VAULT]).catch(function(){return null})])
-   .then(function(r){var v=r[0]&&r[0].value;var bal=r[1]&&r[1].value?Number(r[1].value.uiAmountString):null;
+  proofP=Promise.all([rpc('getAccountInfo',[ESCROW,{encoding:'base64',dataSlice:{offset:0,length:0}}]),rpc('getAccountInfo',[ESCROW_VAULT,{encoding:'jsonParsed'}]).catch(function(){return null})])
+   .then(function(r){var v=r[0]&&r[0].value;var pv=r[1]&&r[1].value&&r[1].value.data&&r[1].value.data.parsed&&r[1].value.data.parsed.info;var bal=pv&&pv.mint===MINT?Number(pv.tokenAmount.uiAmountString):null;
      proof={ok:!!(v&&v.owner===LOCK_PROGRAM),vault:bal};return proof})
    .catch(function(e){proof={ok:false,err:String(e.message||e)};proofP=null;return proof});
   return proofP;

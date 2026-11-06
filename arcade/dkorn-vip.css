@@ -1,4 +1,4 @@
-.dkv-ovl{position:fixed;inset:0;background:rgba(4,6,20,.6);display:none;justify-content:flex-end;z-index:9000;font:13px/1.35 Tahoma,Verdana,sans-serif}
+.dkv-ovl{position:fixed;inset:0;background:rgba(4,6,20,.3);display:none;justify-content:flex-end;z-index:9000;font:13px/1.35 Tahoma,Verdana,sans-serif}
 .dkv-ovl.show{display:flex}
 .dkv-box{width:100%;max-width:400px;height:100%;overflow:auto;background:#0d1330;color:#e8f3ff;border-left:3px solid #2ee6ff;box-shadow:-8px 0 0 #ffd400;animation:dkvIn .18s ease-out}
 @keyframes dkvIn{from{transform:translateX(30px);opacity:0}}
