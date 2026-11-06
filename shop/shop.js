@@ -209,22 +209,32 @@ function markHTML(r){
     case 'torncard':return '<span class="stamp askrosa">ASK ROSA</span>';
     case 'pierogi':return '<span class="stamp" style="color:#2a5a9a;border-color:#2a5a9a">3 AM</span>';
     case 'roastpork':return '<span class="stamp" style="color:#8B1E1E;border-color:#8B1E1E">USUAL</span>';
+    case 'marswheats':return '<span class="stamp" style="color:#2a5a2a;border-color:#2a5a2a;background:#c8e8c855">MARS WHEATS</span>';
+    case 'hollowmill':return '<span class="stamp" style="color:#8B1E1E;border-color:#8B1E1E">HALLOWEEN ONLY</span>';
+    case 'saturday':return '<span class="wax" style="background:radial-gradient(circle at 35% 30%,#ffe066,#c9a24e 55%,#6b3cff);color:#1a1000">THRESHOLD</span>';
+    case 'billiard':return '<span class="eightball" aria-hidden="true"><i>8</i></span>';
+    case 'aetheria':return '<span class="stamp" style="color:#7ad0ff;border-color:#7ad0ff;background:#c45a9a44">47.2 Hz</span>';
+    case 'hfsunday':return '<span class="stamp" style="color:#8B1E1E;border-color:#8B1E1E">SUNDAYS</span>';
+    case 'velloria':return '<span class="stamp" style="color:#c9a24e;border-color:#c9a24e;background:#4a2a6a33">16 PAGES</span>';
+    case 'bananaodyssey':return '<span class="stamp" style="color:#2a5a2a;border-color:#2a5a2a;background:#fff3">WATCH THE PEEL</span>';
   }return '';
 }
 function edLabel(r){
   if(r.collection==='kitchen')return '1-OF-1 RECIPE RELIC · COOK AT HOME · RELIC No. '+r.no;
-  if(r.collection==='press')return '1-OF-1 X ARTICLE / PRESS CLIPPING · RELIC No. '+r.no;
+  if(r.collection==='mrpete_press')return '1-OF-1 @MRPETECASTIC STORY CLIPPING · RELIC No. '+r.no;
+  if(r.collection==='press')return '1-OF-1 @PETECASTIC X ARTICLE · RELIC No. '+r.no;
   if(r.collection==='echoes')return '1-OF-1 LITERARY MANUSCRIPT RELIC · ANSWERING LINE ARCHIVE · RELIC No. '+r.no;
   return '1-OF-1 LITERARY MANUSCRIPT RELIC · HOLLOW DESK ARCHIVE · RELIC No. '+r.no;
 }
 function badgeHTML(r){
   if(r.collection==='kitchen')return '<span class="rbadge kitchen">RECIPE RELIC · COOK AT HOME</span>';
-  if(r.collection==='press')return '<span class="rbadge press">X ARTICLE / PRESS CLIPPING</span>';
+  if(r.collection==='mrpete_press')return '<span class="rbadge mrpete">𝕏 @MRPETECASTIC · STORY CLIPPING</span>';
+  if(r.collection==='press')return '<span class="rbadge press">𝕏 @PETECASTIC · X ARTICLE</span>';
   if(r.collection==='echoes')return '<span class="rbadge echoes">ECHOES OF THE HORIZON</span>';
   return '<span class="rbadge hollow">HOLLOW FILES</span>';
 }
 function relicFace(r){
-  return '<button class="relic p-'+r.sk+(r.collection==='kitchen'?' recipe':'')+(r.collection==='press'?' press':'')+'" data-r="'+r.no+'" data-c="'+esc(r.collection||'')+'" aria-label="Read relic '+r.no+': '+esc(r.title)+'">'+
+  return '<button class="relic p-'+r.sk+(r.collection==='kitchen'?' recipe':'')+(r.collection==='press'||r.collection==='mrpete_press'?' press':'')+'" data-r="'+r.no+'" data-c="'+esc(r.collection||'')+'" aria-label="Read relic '+r.no+': '+esc(r.title)+'">'+
    (r.sk==='switchtag'||r.sk==='emptytag'?'<span class="relgrom grommet"></span>':'')+(r.sk==='hepzibah'?'<span class="tea"></span>':'')+
    (r.sk==='torncard'?'<span class="tear" aria-hidden="true"></span><span class="tape" aria-hidden="true"></span>':'')+
    (r.sk==='orderslip'?'<span class="sugardust" aria-hidden="true"></span>':'')+
@@ -237,10 +247,16 @@ function relicFace(r){
    '<span class="read">'+(r.collection==='kitchen'?'OPEN THE FULL RECIPE ▸':'OPEN THE ARCHIVAL READER ▸')+'</span><span class="mk">'+markHTML(r)+'</span></button>';
 }
 var RFIL='all';
-var RFILTERS=[['all','All 24'],['hollow','Hollow Files (7)'],['echoes','Echoes of the Horizon (6)'],['press','X Articles & Press (5)'],['kitchen','Recipe Box (6)']];
-function renderRFilters(){var f=$('#rpills');if(!f)return;f.innerHTML=RFILTERS.map(function(x){return '<button data-rf="'+x[0]+'" class="'+(x[0]===RFIL?'on':'')+'">'+esc(x[1])+'</button>'}).join('')}
+var RFILTERS=[['all','All 32'],['mrpete','@MrPetecastic (8)'],['press','X Articles & Press (13)'],['kitchen','Recipe Box (6)'],['echoes','Echoes of the Horizon (6)'],['hollow','Hollow Files (7)']];
+function renderRFilters(){var f=$('#rpills');if(!f)return;f.innerHTML=RFILTERS.map(function(x){return '<button data-rf="'+x[0]+'" class="'+(x[0]===RFIL?'on ':'')+(x[0]==='mrpete'?'mrpete':'')+'">'+esc(x[1])+'</button>'}).join('')}
+function matchRFil(r){
+  if(RFIL==='all')return true;
+  if(RFIL==='mrpete')return r.collection==='mrpete_press';
+  if(RFIL==='press')return r.collection==='press'||r.collection==='mrpete_press';
+  return r.collection===RFIL;
+}
 function renderRelics(){
-  var list=D.relics.filter(function(r){return RFIL==='all'||r.collection===RFIL});
+  var list=D.relics.filter(matchRFil);
   $('#relics').innerHTML=list.map(relicFace).join('');
   var e=$('#rempty');if(e)e.hidden=list.length>0;
 }
@@ -270,7 +286,7 @@ function openReader(no){
    '<h3>\u201C'+esc(r.title)+'\u201D</h3><span class="src">'+esc(r.sub)+'</span>'+
    '<div class="body">'+r.paras.map(function(p){return '<p>'+emph(p)+'</p>'}).join('')+'</div>'+
    recipeBlock(r)+
-   '<div class="prov"><b>PROVENANCE</b><br>'+esc(r.src)+' — '+esc(r.where)+' · '+r.words+' words, verbatim<br><b>PAPER STOCK</b><br>'+esc(r.paper)+'<br><b>EDITION</b><br>One of one. Pure literary'+(r.collection==='kitchen'?' / recipe':'')+(r.collection==='press'?' / press':'')+' collectible: the typeset passage is the card face.</div>'+
+   '<div class="prov"><b>PROVENANCE</b><br>'+esc(r.src)+' — '+esc(r.where)+' · '+r.words+' words, verbatim<br><b>PAPER STOCK</b><br>'+esc(r.paper)+'<br><b>EDITION</b><br>One of one. Pure literary'+(r.collection==='kitchen'?' / recipe':'')+(r.collection==='press'||r.collection==='mrpete_press'?' / press':'')+' collectible: the typeset passage is the card face.</div>'+
    '<div class="rtools"><button class="ab ambbtn">'+(amb&&amb.on?'🔊 Sky Ambience: ON':'🔈 Sky Ambience: OFF')+'</button><span class="ab" style="cursor:default">Mood: <span class="skynow"></span></span>'+xbtn+'</div>';
   $('#readOv').classList.add('show');document.body.style.overflow='hidden';$('.x',b).onclick=closeAll;
   var cb=$('#copyRec');if(cb&&r.recipe){cb.onclick=function(){var txt=recipePlain(r.recipe);

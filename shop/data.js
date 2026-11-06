@@ -1,4 +1,4 @@
-/* X-Comix Card & Merch Shop data. Generated from the Series 1 manifest + Words Win relic catalog (Wave 1 + Wave 2). */
+/* X-Comix Card & Merch Shop data. Generated from Series 1 + Words Win Waves 1–3. */
 window.SHOP={
 "collection": "X-Comix Series 1 — Universe Showrunners",
 "cards": [
@@ -1668,6 +1668,225 @@ window.SHOP={
 "note": "He pushed the special away with one finger and pointed at the warmer. Exact change. Total silence. Then he bowed.",
 "bear": "A few bites of plain cooked pork with no seasoning or fat, cooled. Never the sandwich. Never onion, garlic or seasoning for dogs; onion and garlic are toxic to them.",
 "quote": "The Trucker: \"Usual, hon.\""
+}
+},
+{
+"no": "25",
+"title": "The Day Could Wait Five More Minutes",
+"sub": "Tharsis Rise · Mars Wheats Breakfast Log",
+"paras": [
+"A good morning story:",
+"On the dusty plains of the Tharsis Rise, where the sun rises thin and gold through the greenhouse glass, Marcus always started his shift the same way.",
+"He’d climb out of the bunk, stretch the stiffness from a night under low-g, and pad into the kitchen module in his bright yellow work shirt. The hard hat stayed on the hook until after breakfast—house rule—but he still wore it in the photo on the box. Marketing had insisted.",
+"He poured a bowl of Mars Wheats, the little twisted nuggets still somehow crunchy after the long supply run from Earth. A splash of the reconstituted milk, a spoon, and the first bite always made him grin the way the box promised.",
+"A few pieces always escaped. He’d find them later under the table or stuck to the bottom of his boot, little golden reminders that even on another planet you could still make a mess at breakfast.",
+"Marcus took one more spoonful, wiped his beard, and reached for the hard hat. Another morning on Mars. Another bowl of wheats. The day could wait five more minutes."
+],
+"words": 178,
+"src": "@MrPetecastic · Long-form note_tweet",
+"where": "2026-10-13 · Mars Wheats morning story",
+"paper": "Greenhouse log sheet with gold cereal dust and a hard-hat hook silhouette.",
+"sk": "marswheats",
+"mark": "MARS WHEATS",
+"hf": false,
+"collection": "mrpete_press",
+"x_url": "https://x.com/MrPetecastic/status/2109959669590462959",
+"hex": {
+"bg": "#f0d9a8",
+"ink": "#1a1208",
+"accent": "#c45a3a",
+"stamp": "#2a5a2a"
+}
+},
+{
+"no": "26",
+"title": "The Link Was Warm",
+"sub": "Halloween Mill · Hollow Road Field Note",
+"paras": [
+"The old mill on Hollow Road only opened its doors on Halloween, and only after dark. Mara and two friends slipped past the rusted gate with flashlights and a dare between them.",
+"Inside, the air smelled of wet stone and iron. Somewhere above them, chains dragged across floorboards in a slow, uneven rhythm—clink, scrape, pause—as if something heavy were being pulled, then reconsidering.",
+"On the second floor the dragging stopped. In its place came a sharp crack, like leather snapping in the dark. A whip. The sound came again, closer, splitting the quiet so cleanly that one of the flashlights died.",
+"\"Back down,\" Mara said.",
+"They turned. The staircase was gone. In its place hung a curtain of iron links, thick and cold, swaying though there was no wind.",
+"They ran anyway, half-dragged, toward a window that showed the road and the gate and ordinary night. The whip cracked once more, close enough to stir their hair. Then the chains let go.",
+"On the walk home Mara found a single iron link caught in her jacket zipper. It was warm."
+],
+"words": 176,
+"src": "@MrPetecastic · Long-form note_tweet",
+"where": "2026-10-09 · Hollow Road Halloween story",
+"paper": "Rust-flecked mill ledger with iron-link blind emboss and flashlight-beam edge fade.",
+"sk": "hollowmill",
+"mark": "HALLOWEEN ONLY",
+"hf": false,
+"collection": "mrpete_press",
+"x_url": "https://x.com/MrPetecastic/status/2108589057248796955",
+"hex": {
+"bg": "#d8d0c0",
+"ink": "#1a1814",
+"accent": "#4a3a2a",
+"stamp": "#8B1E1E"
+}
+},
+{
+"no": "27",
+"title": "Saturday Was a Promise",
+"sub": "The Last Saturday · Threshold Day Essay",
+"paras": [
+"The Last Saturday",
+"In a quiet town where the clocks ran a little slower on weekends, there lived a boy named Elias who was born on a Saturday. According to the old nursery rhyme his grandmother recited, Saturday’s child “works hard for a living.” But Elias didn’t want to work. He wanted to understand why Saturday felt different—like the day itself was holding its breath.",
+"Every Saturday at dusk, something strange happened. The streetlights flickered purple, and the air smelled faintly of Saturn’s ancient rings: cold iron and distant lightning.",
+"The stranger stood. “One more truth, boy. The best Saturdays are not given. They are made—by choosing rest when the world demands hustle, by telling stories when silence is easier, by dancing when your legs are tired.”",
+"He had learned the secret: Saturday wasn’t just a day. It was a promise—that after every hard week, there is still time to climb rooftops, meet old gods, eat candy, rest deeply, and begin again."
+],
+"words": 168,
+"src": "@MrPetecastic · Long-form note_tweet",
+"where": "2026-05-30 · The Last Saturday",
+"paper": "Weekend cream stationery with purple streetlight wash and a tiny silver scythe watermark.",
+"sk": "saturday",
+"mark": "THRESHOLD",
+"hf": false,
+"collection": "mrpete_press",
+"x_url": "https://x.com/MrPetecastic/status/2060728624467124667",
+"hex": {
+"bg": "#efe6f4",
+"ink": "#1a1020",
+"accent": "#6b3cff",
+"stamp": "#c9a24e"
+}
+},
+{
+"no": "28",
+"title": "The Table Never Lies",
+"sub": "The Last Shot · Billiard Hall Clipping",
+"paras": [
+"🎱 The Last Shot",
+"In the smoky back room of O’Malley’s Billiard Hall, where the green felt glowed under yellow lamps like an old battlefield, sat Eddie “The Ghost” Ramirez. At seventy-two, his hands trembled from decades of late nights and cheap whiskey, but they steadied the moment they gripped a cue.",
+"“Eight in the side,” Eddie called, voice like gravel.",
+"The stroke was pure—smooth as river stone. The white ball kissed the 8 with just enough left English to curve around the blockers, kiss the cushion, and drop the black ball clean into the side pocket with a soft thunk.",
+"Jax laughed in disbelief. “How the hell did you see that?”",
+"Eddie straightened slowly, rubbing his aching shoulder. “Kid, I didn’t see it. I remembered it.”",
+"Because in pool, the table never lies—and every once in a while, it still lets the old legends have one more perfect night."
+],
+"words": 158,
+"src": "@MrPetecastic · Long-form note_tweet",
+"where": "2026-05-29 · The Last Shot",
+"paper": "Green-felt scrap with chalk dust and a yellow lamp circle stain.",
+"sk": "billiard",
+"mark": "8-BALL",
+"hf": false,
+"collection": "mrpete_press",
+"x_url": "https://x.com/MrPetecastic/status/2060448518670594148",
+"hex": {
+"bg": "#2a5a3a",
+"ink": "#f5ecd2",
+"accent": "#c9a24e",
+"stamp": "#1a1810"
+}
+},
+{
+"no": "29",
+"title": "Messy Joy",
+"sub": "AETHERIA Ch. 7 · Harmonic Fracture",
+"paras": [
+"Chapter 7: Harmonic Fracture",
+"The crystals in the Silent colony’s vast central atrium pulsed with a slow, warm violet-teal rhythm, each beat syncing to the guardian circle’s shared heartbeat after their harrowing ride through the Crystal Highways.",
+"Spicy-steam still curled gently from Sunny’s vents, carrying the faint scent of charred cinnamon and hard-won freedom. The Deep Song hummed at a steady 47.2 Hz, vibrating through the living stone and into every bone, reminding them they had not only survived the fracture—they had grown stronger because of it.",
+"They rested briefly, sharing the last warm void-nectar tacos, Lumos splashing teal paw prints everywhere while turning the serious moment into glorious chaos. For precious minutes, they laughed, touched shoulders, reminded one another why they fought: for messy joy in a universe trying to smooth everything flat."
+],
+"words": 142,
+"src": "@MrPetecastic · AETHERIA / Echoes lore note_tweet",
+"where": "2026-05-27 · Chapter 7 Harmonic Fracture",
+"paper": "Violet-teal crystal parchment with Lumos teal paw prints and a FIVE six AETHERIA banner strip.",
+"sk": "aetheria",
+"mark": "47.2 Hz",
+"hf": false,
+"collection": "mrpete_press",
+"x_url": "https://x.com/MrPetecastic/status/2059718039281754409",
+"hex": {
+"bg": "#1a1430",
+"ink": "#e8e4f8",
+"accent": "#7ad0ff",
+"stamp": "#c45a9a"
+}
+},
+{
+"no": "30",
+"title": "Cases They'd Rather You Forgot",
+"sub": "Hollow Files · Sunday Slate Teaser",
+"paras": [
+"11/8, The Haymonth Frost: a hedge-witch is found frozen solid in her chair in the hottest week in forty years.",
+"11/15, Rule Seven: Hettie confesses that the hearth-safety pamphlet she ghostwrote is wrong.",
+"11/22, The Hedge-Hag of Crowmarsh: the papers were right about the poisoner, but wrong about which of them was dead.",
+"11/29, The Marrow Show: the murder suspect out on bail takes second at the village marrow show, and three weeks later the judge is dead."
+],
+"words": 96,
+"src": "@MrPetecastic · Hollow Files schedule note_tweet",
+"where": "2026-11-02 · Sunday case slate",
+"paper": "Concord desk blotter with red twine and a cold-frost rim on the Haymonth line.",
+"sk": "hfsunday",
+"mark": "SUNDAYS",
+"hf": false,
+"collection": "mrpete_press",
+"x_url": "https://x.com/MrPetecastic/status/2117397002510061705",
+"hex": {
+"bg": "#e9e4d6",
+"ink": "#1b2426",
+"accent": "#2F4A4F",
+"stamp": "#8B1E1E"
+}
+},
+{
+"no": "31",
+"title": "No One's Story Gets to Stay Lost",
+"sub": "Velloria · Story-Collector Pitch Card",
+"paras": [
+"She doesn’t sell spells. She collects the stories people are trying to forget.",
+"In the sky-broken land of Velloria, one name left on the shelves can still stop the Hollow King.",
+"16 pages. No one’s story gets to stay lost."
+],
+"words": 48,
+"src": "@MrPetecastic · Comic pitch note",
+"where": "2026-10-15 · Velloria / Hollow King promo",
+"paper": "Sky-broken shelf card with forgotten-name ink blot and a 16-PAGE stamp.",
+"sk": "velloria",
+"mark": "16 PAGES",
+"hf": false,
+"collection": "mrpete_press",
+"x_url": "https://x.com/MrPetecastic/status/2110547075012411757",
+"hex": {
+"bg": "#c8b8d8",
+"ink": "#1a1020",
+"accent": "#4a2a6a",
+"stamp": "#c9a24e"
+}
+},
+{
+"no": "32",
+"title": "Hey! Watch the Peel!",
+"sub": "Banana Odyssey · Chapter 1 Cold Open",
+"paras": [
+"Banana Odyssey — Chapter 1: The Bunch That Changed Everything",
+"My name is Alex Rivera, and I never thought a grocery store banana would ruin my summer.",
+"It started on a boring Tuesday in June. I was thirteen, stuck at my grandparents’ house in Florida while my parents traveled for work. Grandma had sent me to the store for “just a few things.” I grabbed a bunch of yellow bananas, tossed them in the cart, and that’s when it happened.",
+"One banana slipped out, hit the floor, and rolled under the shelf like it had a mind of its own. When I bent down to grab it, I heard a tiny voice.",
+"“Hey! Watch the peel!”",
+"I froze. Bananas don’t talk. Everyone knows that. But this one did. Its little stem wiggled like a mouth.",
+"“Name’s Banny,” it whispered. “And I’ve got a story older than your grandparents’ house.”"
+],
+"words": 142,
+"src": "@MrPetecastic · Long-form note_tweet",
+"where": "2026-05-27 · Banana Odyssey Ch. 1",
+"paper": "Grocery-list index card with banana-peel grease spot and a tiny talking-stem doodle.",
+"sk": "bananaodyssey",
+"mark": "WATCH THE PEEL",
+"hf": false,
+"collection": "mrpete_press",
+"x_url": "https://x.com/MrPetecastic/status/2059660121085534533",
+"hex": {
+"bg": "#f7e8a0",
+"ink": "#1a1808",
+"accent": "#c8a020",
+"stamp": "#2a5a2a"
 }
 }
 ],
