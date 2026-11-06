@@ -260,3 +260,59 @@ body.embed .openfull{display:block}
 @media (prefers-reduced-motion:reduce){.wx,.foilpack,.mcard .holo,.neon,.p-switchtag::after{animation:none!important}.hc .inner{transition:transform .2s}}
 @media (max-width:720px){.skybar{grid-template-columns:1fr}.modes{justify-content:flex-start}.modes button{padding:4px 8px;font-size:11px}.now b{font-size:19px}}
 body.embed .top{padding:6px 8px}body.embed .logo h1{font-size:19px}body.embed .logo .sub{display:none}body.embed .skybar{margin:6px 0;padding:7px 9px}body.embed .shelf{margin-top:8px}
+
+/* ---- Wave 2 Words Win stocks + Shelf 2 filters ---- */
+.rfilters{margin:0 0 10px}.rfilters .fpills button.on{background:linear-gradient(#ffe066,#f2a900)}
+.rbadge{display:inline-block;font:900 9px/1 Tahoma,sans-serif;letter-spacing:.4px;border:2px solid #000;border-radius:6px;padding:2px 6px;margin:0 0 6px;position:relative;z-index:1}
+.rbadge.hollow{background:#efe4c8;color:#1a1714}.rbadge.echoes{background:#1a1300;color:#ffd23a}.rbadge.press{background:#111;color:#7ad0ff;border-color:#7ad0ff}.rbadge.kitchen{background:linear-gradient(#ffe066,#f2a900);color:#000}
+.coin{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font:900 13px Georgia,serif;color:#5a3a10;background:radial-gradient(circle at 35% 30%,#ffe066,#c9a24e 55%,#6a4a10);box-shadow:0 2px 4px #0008,inset 0 0 0 3px #a07818;transform:rotate(-8deg)}
+.askrosa{transform:rotate(-6deg)!important;background:#f5ecd2cc}
+
+/* Echoes */
+.p-loopdust{background:radial-gradient(ellipse at 50% 0,#6b3cff33,transparent 55%),#f3ebe0;color:#1a1308}.p-loopdust::after{content:"";position:absolute;left:10%;right:10%;top:8px;height:10px;background:repeating-linear-gradient(90deg,#6b3cff55 0 6px,transparent 6px 14px);opacity:.55;pointer-events:none}
+.p-workorder{background:#efe6c8;color:#2a2210;border-left:10px solid #5c4a28}.p-workorder .body{font-family:"Courier New",monospace;font-size:13.5px}
+.p-mapedge{background:repeating-linear-gradient(0deg,#d9e2d4 0 22px,#c5d0c0 22px 23px);color:#1a2418;box-shadow:inset 0 0 0 2px #3a6b3a55,0 8px 18px #000a}
+.p-mapedge::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent 92%,#3a6b3a22),repeating-linear-gradient(90deg,transparent 0 39px,#3a6b3a22 39px 40px);opacity:.7}
+.p-emptytag{background:#f7f2e4;color:#1a1300;border:3px solid #000;box-shadow:inset 0 0 0 8px #b3262f,0 8px 18px #000a}.p-emptytag .relgrom{position:absolute;top:12px;right:12px}
+.p-exitnight{background:linear-gradient(#2a2418 0 18px,#e8e0d2 18px);color:#1c1810;box-shadow:inset 0 18px 0 #1c181022,0 8px 18px #000a}
+
+/* Press */
+.p-ringpress{background:linear-gradient(160deg,#0e0e16,#1a1a22 40%,#12121a);color:#e8e4d8;border:2px solid #c9a24e;box-shadow:0 0 0 1px #000,0 0 18px #c9a24e55,0 8px 18px #000a}
+.p-ringpress h3{color:#ffd23a;text-shadow:0 0 8px #c9a24e66}.p-ringpress .ed,.p-ringpress .src{color:#c9a24e}
+.p-leftovers{background:#f0e6d2;color:#22180e;box-shadow:inset 0 0 40px #8B1E1E22,0 8px 18px #000a}
+.p-leftovers::after{content:"";position:absolute;right:18px;bottom:70px;width:54px;height:54px;border-radius:50% 40% 55% 45%;border:3px solid #6b3cff88;transform:rotate(-20deg);pointer-events:none;opacity:.7}
+.p-bristolclock{background:radial-gradient(ellipse at 20% 90%,#3a4a6a33,transparent 40%),#d8d2c0;color:#1a1814;box-shadow:inset 0 0 30px #3a4a6a33,0 8px 18px #000a}
+.p-marswheat{background:linear-gradient(160deg,#e07a4a,#c45a3a 40%,#8a3018);color:#1a0a08;box-shadow:0 0 22px #7ad0ff44,0 8px 18px #000a}
+.p-marswheat h3{color:#0a2030;text-shadow:0 0 6px #7ad0ff88}.p-marswheat .ed,.p-marswheat .src{color:#2a1010}
+.p-wildslate{background:linear-gradient(#d2c4a0,#c9b896);color:#1a1810;border:10px solid #2a5a6a;box-shadow:inset 0 0 0 2px #000,0 8px 18px #000a}
+.p-wildslate::before{content:"";position:absolute;left:50%;top:14px;width:18px;height:18px;border-radius:50%;background:#111;box-shadow:0 0 0 3px #c9b896,0 0 0 5px #2a5a6a;transform:translateX(-50%);pointer-events:none}
+
+/* Kitchen / Recipe Box */
+.p-orderslip{background:#f7f0e0;color:#2a1a10;border:2px dashed #c87828;font-family:"Courier New",monospace}
+.p-orderslip h3{font-family:Georgia,"Times New Roman",serif}.p-orderslip .sugardust{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,#fff9 0 1.5px,transparent 2px);background-size:18px 22px;opacity:.55;mix-blend-mode:screen}
+.p-wokcard{background:#f2e8d0;color:#1a1408;border:2px solid #000;box-shadow:inset 0 0 30px #3a6b2a33,0 8px 18px #000a}
+.p-wokcard::before{content:"";position:absolute;left:12px;top:40%;width:70px;height:50px;border-radius:50%;background:radial-gradient(circle,#8B1E1E44,transparent 70%);pointer-events:none}
+.p-wokcard .fwooomp{position:absolute;right:8px;top:10px;font:900 11px Impact,sans-serif;color:#3a6b2a;background:#b8ff9a99;border:2px solid #3a6b2a;border-radius:10px;padding:3px 6px;transform:rotate(12deg);z-index:2}
+.p-yakionigiri{background:linear-gradient(135deg,#ffe8f0,#e8fff8);color:#1a1014;border:3px solid #2a8a8a;box-shadow:0 0 0 2px #ff9ec0,0 8px 18px #000a}
+.p-yakionigiri::before{content:"";position:absolute;right:16px;bottom:60px;width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;border-bottom:38px solid #2a8a8a44;pointer-events:none}
+.p-torncard{background:#f5ecd2;color:#1e2a40;overflow:visible}
+.p-torncard .tear{position:absolute;left:48%;top:0;bottom:0;width:10px;margin-left:-5px;background:linear-gradient(90deg,transparent,#0002 40%,#0001 60%,transparent);clip-path:polygon(40% 0,70% 4%,35% 8%,75% 12%,30% 18%,80% 24%,25% 30%,78% 38%,32% 46%,72% 54%,28% 62%,76% 70%,34% 78%,70% 86%,40% 92%,65% 100%,0 100%,0 0);background:#efe4c0;box-shadow:inset 0 0 0 1px #0002;z-index:2;pointer-events:none}
+.p-torncard .tape{position:absolute;left:42%;top:42%;width:16%;height:28px;background:linear-gradient(#f7f0c8cc,#e8dca0cc);border:1px solid #0002;transform:rotate(-4deg);z-index:3;pointer-events:none;box-shadow:0 1px 2px #0003}
+.p-pierogi,.p-roastpork{background:#f7f1de;color:#1a1408;border:2px solid #000;box-shadow:0 8px 18px #000a;font-family:Georgia,"Times New Roman",serif}
+.p-pierogi .indexrule,.p-roastpork .indexrule{position:absolute;left:0;right:0;top:0;height:28px;background:#b3262f;border-bottom:2px solid #000;pointer-events:none}
+.p-pierogi::before,.p-roastpork::before{content:"";position:absolute;inset:28px 0 0;background:repeating-linear-gradient(#f7f1de 0 27px,#c5d6ea 27px 28px);pointer-events:none;opacity:.85;z-index:0}
+.p-pierogi > *:not(.indexrule):not(.wx), .p-roastpork > *:not(.indexrule):not(.wx){position:relative;z-index:1}
+.p-pierogi::after{content:"";position:absolute;left:18px;bottom:48px;width:70px;height:40px;border-radius:50%;background:radial-gradient(circle,#c9a24e55,transparent 70%);pointer-events:none;z-index:1}
+.p-roastpork::after{content:"";position:absolute;right:20px;bottom:55px;width:64px;height:64px;border-radius:50%;border:6px solid #8B1E1E44;pointer-events:none;z-index:1}
+.relic.recipe .body,.relic.press .body{font-size:13.5px;line-height:1.4}
+
+/* Recipe reader */
+.recipebox{margin-top:16px;padding:14px;border:2px solid #000;border-radius:10px;background:#fff8e8;color:#1a1408;position:relative;z-index:1}
+.recipebox .rh{font:900 14px Tahoma,sans-serif;letter-spacing:.5px;margin-bottom:4px}
+.recipebox .ryield{font:italic 13px Georgia,serif;margin-bottom:10px;opacity:.85}
+.recipebox .rsec{margin:8px 0}.recipebox .rsec b{display:block;font:900 11px "Courier New",monospace;letter-spacing:1px;margin-bottom:4px}
+.recipebox ul,.recipebox ol{margin:0;padding-left:1.2em}.recipebox li{margin:.25em 0;font:15px/1.45 Georgia,serif}
+.recipebox .rnote{margin-top:10px;padding:8px;border-left:4px solid #c87828;background:#ffe8c8;font:italic 14px Georgia,serif}
+.bearbox{margin-top:12px;padding:10px 12px;border:2px solid #000;border-radius:10px;background:linear-gradient(#fff,#ffe8c8);box-shadow:0 3px 0 #000}
+.bearbox b{display:block;font:900 13px Tahoma,sans-serif;margin-bottom:4px}.bearbox p{margin:0;font:14px/1.45 Georgia,serif}
+.reader.hasrecipe{max-width:820px}

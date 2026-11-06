@@ -1,4 +1,4 @@
-/* X-Comix Card & Merch Shop data. Generated from the Series 1 manifest + Words Win relic catalog. */
+/* X-Comix Card & Merch Shop data. Generated from the Series 1 manifest + Words Win relic catalog (Wave 1 + Wave 2). */
 window.SHOP={
 "collection": "X-Comix Series 1 — Universe Showrunners",
 "cards": [
@@ -926,7 +926,8 @@ window.SHOP={
 "paper": "Rough Coldharrow cream mill-paper, letterpress black ink, faint red UNLICENSED registry stamp.",
 "sk": "coldharrow",
 "mark": "UNLICENSED",
-"hf": true
+"hf": true,
+"collection": "hollow"
 },
 {
 "no": "02",
@@ -946,7 +947,8 @@ window.SHOP={
 "paper": "Cold St. Ilse hospital slate-grey admission card with brass pocket-watch tick marks (1 beat / 4 sec).",
 "sk": "stilse",
 "mark": "1 BEAT / 4 SEC",
-"hf": true
+"hf": true,
+"collection": "hollow"
 },
 {
 "no": "03",
@@ -965,7 +967,8 @@ window.SHOP={
 "paper": "Soot-edged Hearthline Central ash-ledger leaf with a subtle Hob pie-shop grease-ring.",
 "sk": "ashledger",
 "mark": "ASH OFFICE",
-"hf": true
+"hf": true,
+"collection": "hollow"
 },
 {
 "no": "04",
@@ -981,7 +984,8 @@ window.SHOP={
 "paper": "Salt-stained Skerrow parish sheet paired with a stiff Board of Wells form notice.",
 "sk": "skerrow",
 "mark": "BOARD OF WELLS",
-"hf": true
+"hf": true,
+"collection": "hollow"
 },
 {
 "no": "05",
@@ -1000,7 +1004,8 @@ window.SHOP={
 "paper": "Buff Board pay-envelope stock, seal-wax crimson, four-mark coin blind-impression.",
 "sk": "payenv",
 "mark": "IV",
-"hf": true
+"hf": true,
+"collection": "hollow"
 },
 {
 "no": "06",
@@ -1020,7 +1025,8 @@ window.SHOP={
 "paper": "Soot-teal slate-board border, red petition twine, unwarded tea ring.",
 "sk": "hepzibah",
 "mark": "PLAIN",
-"hf": true
+"hf": true,
+"collection": "hollow"
 },
 {
 "no": "07",
@@ -1038,7 +1044,8 @@ window.SHOP={
 "paper": "Brushed tin tape-reel face with valve-amber glow and a NOT AIRED label in two sisters’ handwriting.",
 "sk": "tallow",
 "mark": "NOT AIRED",
-"hf": true
+"hf": true,
+"collection": "hollow"
 },
 {
 "no": "08",
@@ -1056,7 +1063,612 @@ window.SHOP={
 "paper": "Yellow utility switching-tag stock with brass grommet, high-beam sodium amber edge, LOOP violet static.",
 "sk": "switchtag",
 "mark": "LOOP",
-"hf": false
+"hf": false,
+"collection": "echoes"
+},
+{
+"no": "09",
+"title": "Day Shift. Ordinary.",
+"sub": "Second Bowl · Morning Line",
+"paras": [
+"Morning came honest and gray.",
+"Pete woke to Cap already standing at the bedroom door, body aimed at the hall, not crossing. The house smelled like coffee he had not brewed. He lay still and counted breaths until the smell thinned into ordinary dust and last night's soup.",
+"He swung his feet to the floor. Boots waited. He did not put them on yet. Barefoot, he walked to the kitchen line and stopped where Cap stopped.",
+"The second plate was gone from the drainer.",
+"Cabinet open an inch. Inside, the plate sat stacked wrong — his plate, then the second, then a bowl he used for cereal. Order he never used. Warmth gone. Presence remaining.",
+"Purple dust on the sill had drawn itself into a thinner LOOP, letters almost polite.",
+"\"Day shift,\" Pete told the dog. \"Ordinary.\"",
+"Cap did not believe him. Cap's disbelief was a working tool."
+],
+"words": 148,
+"src": "Echoes of the Horizon: The Answering Line",
+"where": "Chapter 2 · Second Bowl",
+"paper": "Bone kitchen-form card stock with coffee-ring halo and a faint violet LOOP dust print along the top edge.",
+"sk": "loopdust",
+"mark": "LOOP",
+"hf": false,
+"collection": "echoes",
+"hex": {
+"bg": "#f3ebe0",
+"ink": "#1a1308",
+"accent": "#6b3cff",
+"stamp": "#4a2a8a"
+}
+},
+{
+"no": "10",
+"title": "Bowl Is a Breaker",
+"sub": "South Yard Files · Margin Religion",
+"paras": [
+"Herrera's margins were a religion of refusals:",
+"*no second thermos*",
+"*tag the open even if blank*",
+"*if double walks — disconnect first, name second*",
+"*Cap would have known — get a dog*",
+"*horizon wants grief closed neat — leave a seam*",
+"Pete laughed once, hurt. Herrera had wanted a dog. Herrera had written Cap's advice before Cap existed. And Herrera had named the horizon's hunger before Pete had language for it.",
+"Near the bottom of the third folder a Polaroid — illegal on company paper, stuck anyway. South yard at dusk. Crystals already there, smaller. A man with Pete's build facing away. On the back, Herrera's hand: *not me. not yet. inventory learns faces.*"
+],
+"words": 126,
+"src": "Echoes of the Horizon: The Answering Line",
+"where": "Chapter 3 · Herrera's Shift",
+"paper": "Yellowed company work-order leaf with purple-gray fingerprint dust and a soft pencil margin column.",
+"sk": "workorder",
+"mark": "DO NOT FEED",
+"hf": false,
+"collection": "echoes",
+"hex": {
+"bg": "#efe6c8",
+"ink": "#2a2210",
+"accent": "#7a6a40",
+"stamp": "#5c4a28"
+}
+},
+{
+"no": "11",
+"title": "The Diagram Did Not End",
+"sub": "South Yard One-Line · Pencil Past the Paper",
+"paras": [
+"The diagram did not end where the paper ended.",
+"Pete traced the feeder with a finger. Substation. Lateral. The dead yard. The open disconnect he had tagged. Beyond that, on the real maps, nothing but county line and the black water of the old washout. On this diagram, pencil continued past the margin — faint, fresh, the slope almost his — into geography that was not geography. A shoreline. A table drawn as a rectangle with three circles for places. Willows suggested by vertical ticks that somehow looked neon even in graphite.",
+"He lifted the plastic. The pencil marks were under it and over it at once, like a fault that refused a single layer.",
+"\"Kid,\" Pete said.",
+"Quiet kid came in. Looked. Went pale under the new hat. \"That wasn't there yesterday. I swear I looked yesterday.\"",
+"\"Nothing. Paper's having an episode. We believe ground.\""
+],
+"words": 155,
+"src": "Echoes of the Horizon: The Answering Line",
+"where": "Chapter 4 · The Map Edge",
+"paper": "Blueprint vellum over yellowed one-line diagram, storm-magnet rash at the corners, graphite that crawls past the trim.",
+"sk": "mapedge",
+"mark": "BELIEVE GROUND",
+"hf": false,
+"collection": "echoes",
+"hex": {
+"bg": "#d9e2d4",
+"ink": "#1a2418",
+"accent": "#3a6b3a",
+"stamp": "#c9a24e"
+}
+},
+{
+"no": "12",
+"title": "NOT YOURS · OPEN SEAM",
+"sub": "Empty Chair · Tremor Proof",
+"paras": [
+"The scare is not that the Double comes to the kitchen.",
+"The scare is that you have been feeding the doorway for chapters — and that Cap already knows to watch the rear glass instead of the porch.",
+"Pete staged the religion at dusk like an outage plan.",
+"Gloves on the hall table. Disconnect stick within reach of the kitchen line. Blank company tag and a pen that wrote. Second bowl locked in the garage bin with the red breaker lock. Spoon in a drawer alone — controlled. Kitchen breaker panel note still taped: DO NOT CLOSE WITHOUT TREMOR CHECK. Empty chair tipped a finger-width off square, waiting for a tag that would prove which Pete was writing.",
+"He set the blank tag on the empty chair's backrest and wrote with the cold tremor exaggerated — name, date, NOT YOURS, OPEN SEAM — letters shaking honest as a meter in a storm. Proof the hand was his. Not the Double's clean slope."
+],
+"words": 168,
+"src": "Echoes of the Horizon: The Answering Line",
+"where": "Chapter 7 · The Empty Tag",
+"paper": "Blank company lockout tag card with brass grommet, red breaker-lock stripe, tremor handwriting sample.",
+"sk": "emptytag",
+"mark": "OPEN SEAM",
+"hf": false,
+"collection": "echoes",
+"hex": {
+"bg": "#f7f2e4",
+"ink": "#1a1300",
+"accent": "#b3262f",
+"stamp": "#ffd23a"
+}
+},
+{
+"no": "13",
+"title": "Cap Never Fetched the Leash",
+"sub": "Unfinished Homework · Exit Night",
+"paras": [
+"The quiet kid went to the yard after dark because unfinished religion feels like unfinished homework to the young.",
+"Pete found out from Cap.",
+"Cap stood at the front door with the leash in his mouth — Cap never fetched the leash — and growled south. Pete checked the phone. Missed texts from the kid: *hat dust again* and *I can hang the tags right* and *maps still lit* and then nothing. Timestamp twenty minutes old.",
+"Pete drove with Cap already deciding this was an exit night. Cap's veto flexibility was a tool Pete had not wanted to learn: Cap refused gates that fed the Double, and Cap exited when someone could still be bought back. Exception that proved the religion had hinges."
+],
+"words": 132,
+"src": "Echoes of the Horizon: The Answering Line",
+"where": "Chapter 6 · Inventory",
+"paper": "Night-callout clipboard card with leash-clip shadow and south-gate grit along the bottom edge.",
+"sk": "exitnight",
+"mark": "HOLD",
+"hf": false,
+"collection": "echoes",
+"hex": {
+"bg": "#e8e0d2",
+"ink": "#1c1810",
+"accent": "#3a2a1a",
+"stamp": "#6b3cff"
+}
+},
+{
+"no": "14",
+"title": "Somebody Has to Keep the Lights On",
+"sub": "Crossed Wires · Ring Catwalk Broadsheet",
+"paras": [
+"There is a place between every timeline, and somebody has to keep the lights on there.",
+"It doesn't look like much. Black sky, more stars than anyone needs, and one ring the size of a city, humming the way a transformer hums on a cold night.",
+"That's the Portal Ring. Every world X-COMIX has ever shown you hangs off it like a house on a feeder line.",
+"Krampus Kornelius walks its catwalk once a night, at 12:49, because that's when the clock says to and nobody has ever argued with that clock.",
+"He wears the hard hat. He wears the vest. He carries a wrench, a soft pretzel with mustard, and a chain that runs from his collar to a short orange tabby who would like you to know it is hers.",
+"Tonight was supposed to be routine.",
+"Linemen say that a lot. It's never once been true."
+],
+"words": 152,
+"src": "X-COMIX Crossover Event #1: Crossed Wires",
+"where": "X Article opening · @PeteCastic",
+"paper": "Night-black broadsheet proof with transformer-hum foil line and 12:49 mill-clock blind stamp.",
+"sk": "ringpress",
+"mark": "12:49",
+"hf": false,
+"collection": "press",
+"x_url": "https://x.com/PeteCastic/article/2111868549740249184",
+"hex": {
+"bg": "#1a1a22",
+"ink": "#e8e4d8",
+"accent": "#c9a24e",
+"stamp": "#ffd23a"
+}
+},
+{
+"no": "15",
+"title": "LOTS of Things Have Hooves",
+"sub": "Leftovers · Mars Diner Column Proof",
+"paras": [
+"Krampus has walked the Ring at 12:49 for longer than he can remember, and it has never once smelled like food.",
+"Tonight the Ring smelled like a diner at closing time. Rice steaming. Onions going sweet on a flat-top. Somebody's nonna yelling about it.",
+"Then a rice ball rolled out of a crack in the middle of nowhere and fell off the edge of the universe.",
+"He went in after it.",
+"Krampus had seen a lot of tools in his life. He knew those cutters the second they closed in the red light. Ratchet cable cutters. The heavy kind. And in the frost, plain as a signature, a print with a split hoof.",
+"\"LOTS of things have hooves,\" she said, in a voice that would have stopped a truck.",
+"He loved her for it. He didn't say so."
+],
+"words": 148,
+"src": "X-COMIX Crossover Event #3: Leftovers",
+"where": "X Article · @PeteCastic",
+"paper": "Warm diner newsprint with rice-steam fog and a violet frost hoof-print in the margin.",
+"sk": "leftovers",
+"mark": "LET 'EM LOOK",
+"hf": false,
+"collection": "press",
+"x_url": "https://x.com/PeteCastic/status/2115204357952029138",
+"hex": {
+"bg": "#f0e6d2",
+"ink": "#22180e",
+"accent": "#8B1E1E",
+"stamp": "#6b3cff"
+}
+},
+{
+"no": "16",
+"title": "Then I Write It Down",
+"sub": "The Night the Clock Stopped · 1931 Field Note",
+"paras": [
+"Every kid in Bristol knows the story.",
+"The night the mill clock stopped, there was a storm like the end of the world. Lightning hit the tower at 12:49. In the morning the hands were still on 12:49, and nobody ever got it going again. Not the mill men, not the clock man from Philadelphia, not the electric company.",
+"Nobody wrote it up. The story says that's because nobody could explain it.",
+"Krampus stood in the tavern doorway with his chain humming on his shoulder and watched the minute hand across the canal creep toward the moment.",
+"\"Then I write it down,\" he said.",
+"And then, from the far side of the glowing clock face, someone knocked.",
+"Three times."
+],
+"words": 138,
+"src": "X-COMIX Crossover Event #4: The Night the Clock Stopped",
+"where": "X Article · @PeteCastic",
+"paper": "Rain-warped 1931 mill gazette clipping with canal black-water stain and a stopped-pendulum blind emboss.",
+"sk": "bristolclock",
+"mark": "12:49",
+"hf": false,
+"collection": "press",
+"x_url": "https://x.com/PeteCastic/status/2117758977433797037",
+"hex": {
+"bg": "#d8d2c0",
+"ink": "#1a1814",
+"accent": "#3a4a6a",
+"stamp": "#c9a24e"
+}
+},
+{
+"no": "17",
+"title": "Nobody Here Has Ever Seen a Real Horizon",
+"sub": "Echoes of the Red Horizon · Ep 1 Cold Open",
+"paras": [
+"ECHOES OF THE RED HORIZON, Ep 1: Mars Wheats",
+"Mars. 2387. Nobody here has ever seen a real horizon.",
+"At 2:13 AM, Pete Castic gave up on sleep, swiped Dad's grid badge, and walked out the airlock toward the Red Spires.",
+"Something out there was waiting.",
+"An old mill clock read 12:49. Salt's fur went wild.",
+"Then a dog made of blue-white light stepped out of the red, onto the greenhouse floor.",
+"\"Woof.\"",
+"Aria's violet eyes caught the clock. \"It's not the past, Pete. It's happening right now.\""
+],
+"words": 98,
+"src": "Echoes of the Red Horizon",
+"where": "Episode 1 · Mars Wheats (live X comic cold open)",
+"paper": "Red-dust greenhouse log sheet with airlock-badge stripe and a blue-white Glowhound paw glow.",
+"sk": "marswheat",
+"mark": "2387",
+"hf": false,
+"collection": "press",
+"x_url": "https://x.com/PeteCastic/status/2111611791432355860",
+"hex": {
+"bg": "#c45a3a",
+"ink": "#1a0a08",
+"accent": "#7ad0ff",
+"stamp": "#2a1010"
+}
+},
+{
+"no": "18",
+"title": "Don't Put Your Face Near Him",
+"sub": "Wild Files · Mantis Shrimp Field Dispatch",
+"paras": [
+"WILD FILES, ep. 1: The Mantis Shrimp",
+"Lembeh Strait, Indonesia. 9 a.m. Water like warm tea.",
+"I'd come to film a legend that lives in a hole.",
+"My boat pilot, Dewi, gave me one piece of advice.",
+"\"Don't put your face near him, Mister.\"",
+"I put my face near him."
+],
+"words": 58,
+"src": "Wild Files",
+"where": "Episode 1 · The Mantis Shrimp (@PeteCastic)",
+"paper": "Salt-warped documentary slate card with tea-colored water wash and a tiny punched camera-lens hole.",
+"sk": "wildslate",
+"mark": "REMARKABLE",
+"hf": false,
+"collection": "press",
+"x_url": "https://x.com/PeteCastic/status/2111464773913379135",
+"hex": {
+"bg": "#c9b896",
+"ink": "#1a1810",
+"accent": "#2a5a6a",
+"stamp": "#8B1E1E"
+}
+},
+{
+"no": "19",
+"title": "Bury in Powdered Sugar",
+"sub": "Midnight Kitchen Ep 1 · Exact Change · Order Slip",
+"paras": [
+"NEW ORLEANS-STYLE BEIGNETS · makes ~24",
+"Warm water, yeast, sugar, egg, evaporated milk, melted butter, salt, flour. Oil for frying. Powdered sugar for weather.",
+"1. Foam the yeast. Whisk the wet. Stir in flour to a soft sticky dough; knead smooth.",
+"2. Rise 1–2 hours (or chill overnight). Roll 1/4\" thick. Cut 2½\" squares.",
+"3. Fry at 350°F, ~1 minute a side, until puffed and golden. Drain. Bury in powdered sugar. Eat hot.",
+"CAFÉ AU LAIT · 2 mugs — pour strong hot coffee and steaming milk into the mug at the same time.",
+"Gus: \"don't tell anybody.\""
+],
+"words": 118,
+"src": "Midnight Kitchen",
+"where": "Episode 1 · Exact Change",
+"paper": "Grease-spotted diner order slip with powdered-sugar snowfall and a $4.09 exact-change coin circle.",
+"sk": "orderslip",
+"mark": "$4.09",
+"hf": false,
+"collection": "kitchen",
+"reader": "Full beignets + café au lait + Bear's bite (one dry-pan scrambled egg, cooled; no sugar/yeast dough for dogs) from /workspace/xcomix/midnightkitchen/ep01-exact-change/story.md",
+"hex": {
+"bg": "#f7f0e0",
+"ink": "#2a1a10",
+"accent": "#c87828",
+"stamp": "#8B1E1E"
+},
+"recipe": {
+"name": "New Orleans-Style Beignets + Café au Lait",
+"yield": "Beignets make ~24 · Café au lait makes 2 mugs",
+"ingredients": [
+"3/4 cup warm water (110°F)",
+"1 packet (2¼ tsp) active dry yeast",
+"¼ cup sugar",
+"1 large egg, beaten",
+"½ cup evaporated milk",
+"2 tbsp butter, melted",
+"½ tsp salt",
+"3 to 3½ cups all-purpose flour",
+"Oil for frying (about 2 qt)",
+"Powdered sugar",
+"1 cup strong hot coffee",
+"1 cup whole milk"
+],
+"steps": [
+"Stir the yeast and a pinch of the sugar into the warm water. Wait 5–10 minutes until foamy.",
+"Whisk in the rest of the sugar, the egg, evaporated milk, melted butter and salt.",
+"Stir in flour a cup at a time to a soft, slightly sticky dough. Knead 3–4 minutes until smooth.",
+"Put in a greased bowl, cover, and let rise 1–2 hours until doubled (or chill overnight).",
+"Roll ¼ inch thick on a floured counter. Cut into 2½ inch squares.",
+"Heat 2–3 inches of oil to 350°F in a heavy pot. Fry 3–4 at a time, about 1 minute per side, until puffed and golden.",
+"Drain on a rack. Bury in powdered sugar. Eat hot. Never leave hot oil unattended.",
+"Café au lait: heat the milk until steaming, not boiling. Pour coffee and milk into the mug at the same time. Sugar to taste."
+],
+"note": "Gus: \"don't tell anybody.\"",
+"bear": "One egg scrambled in a dry nonstick pan with no butter, salt or seasoning. Cool before serving; small portion. No beignets, sugar or raw yeast dough for dogs.",
+"quote": "Gus: \"don't tell anybody.\""
+}
+},
+{
+"no": "20",
+"title": "MORE Garlic",
+"sub": "Midnight Kitchen Ep 2 · Whatever's Left · Wok Card",
+"paras": [
+"GARLIC FRIDGE FRIED RICE · serves 2–3 · ~20 min",
+"3 cups cold day-old rice · smoked sausage · ½ onion · 6 cloves garlic · frozen peas · 2 eggs · soy · sesame · scallions · hot sauce.",
+"1. Brown the sausage. Soften the onion. Add garlic until light gold — don't burn it.",
+"2. Add rice. Press flat. Crisp. Toss. Repeat.",
+"3. Peas in. Eggs scrambled in the gap and folded through. Season. Scallions. Hot sauce.",
+"Nonna (after the FWOOOMP): \"...Marcus. MORE garlic.\"",
+"Cold rice fries. Fresh rice turns mushy. Tip from Marcus's grandmother: *Well. Whatever's left.*"
+],
+"words": 112,
+"src": "Midnight Kitchen",
+"where": "Episode 2 · Whatever's Left in the Fridge",
+"paper": "Sauce-splattered 3×5 index card with wok-smoke halo and a green FWOOOMP cloud retreated to the corner.",
+"sk": "wokcard",
+"mark": "MORE GARLIC",
+"hf": false,
+"collection": "kitchen",
+"reader": "Full Garlic Fridge Fried Rice + Bear's bite (plain rice + plain peas) from ep02 story.md",
+"hex": {
+"bg": "#f2e8d0",
+"ink": "#1a1408",
+"accent": "#3a6b2a",
+"stamp": "#8B1E1E"
+},
+"recipe": {
+"name": "Garlic Fridge Fried Rice",
+"yield": "Serves 2–3 · about 20 minutes",
+"ingredients": [
+"3 cups cold cooked rice (day-old)",
+"2 tbsp vegetable or peanut oil, divided",
+"1 smoked sausage or andouille link (about 4 oz), diced",
+"½ onion, diced",
+"6 cloves garlic, minced",
+"1 cup frozen peas (or peas and carrots)",
+"2 large eggs, beaten",
+"2 tbsp soy sauce",
+"1 tsp sesame oil (optional)",
+"3 scallions, sliced",
+"Black pepper and hot sauce to finish"
+],
+"steps": [
+"Heat 1 tbsp oil in a large skillet or wok over medium-high. Brown the sausage 3–4 minutes.",
+"Add the onion and cook 2–3 minutes until soft.",
+"Add the garlic and stir 30–60 seconds until fragrant and light gold. Don't let it burn.",
+"Add the remaining oil and the rice. Break up clumps. Press it flat, leave it 1–2 minutes to crisp, then toss. Repeat 2–3 times.",
+"Stir in the peas and cook 2 minutes until hot.",
+"Push the rice to one side, scramble the eggs in the gap until just set, then fold them through.",
+"Add the soy sauce and sesame oil and toss 1 minute. Season with pepper, top with scallions and hot sauce."
+],
+"note": "Cold rice fries; fresh rice turns mushy. If you only have fresh rice, spread it on a sheet pan and chill 30 minutes. Refrigerate leftover rice within an hour of cooking and use it within 3–4 days. Tip from Marcus's grandmother: Well. Whatever's left.",
+"bear": "2 tbsp plain cooked rice plus 1 tbsp plain cooked peas, with no oil, salt or soy sauce. Never give dogs garlic or onion. Ask your vet before adding new foods.",
+"quote": "Nonna (after the FWOOOMP): \"...Marcus. MORE garlic.\""
+}
+},
+{
+"no": "21",
+"title": "Press, Don't Squeeze the Love Out",
+"sub": "Leftovers X Article · Midnight Yaki Onigiri",
+"paras": [
+"NONNA'S MIDNIGHT YAKI ONIGIRI · grilled rice balls · makes 6",
+"3 cups warm short-grain rice · ½ tsp kosher salt · 2 tbsp soy · 1 tsp mirin · 1 tsp sugar · 1 tsp sesame or neutral oil.",
+"1. Stir soy, mirin, sugar — that's your glaze.",
+"2. Wet hands, salt the palms, press ½ cup rice into a firm 1\" triangle. Press, don't squeeze the love out. Make 6.",
+"3. Medium skillet, oil on. 3–4 minutes a side until golden. Brush glaze, flip 1 min, brush and flip again until they shine.",
+"Serve hot. Feed the skinny one first.",
+"\"The rice held. Nonna said it would.\""
+],
+"words": 128,
+"src": "X-COMIX Crossover Event #3: Leftovers / Midnight Kitchen",
+"where": "Published X Article recipe block",
+"paper": "Pink-teal neon diner index card with rice-triangle emboss and a low-gravity optional footnote.",
+"sk": "yakionigiri",
+"mark": "THE RICE HELD",
+"hf": false,
+"collection": "kitchen",
+"x_url": "https://x.com/PeteCastic/status/2115204357952029138",
+"hex": {
+"bg": "#ffe8f0",
+"ink": "#1a1014",
+"accent": "#2a8a8a",
+"stamp": "#c87828"
+},
+"recipe": {
+"name": "Nonna's Midnight Yaki Onigiri (Grilled Rice Balls)",
+"yield": "Makes 6 · low gravity optional",
+"ingredients": [
+"3 cups cooked short-grain (sushi) rice, still warm",
+"½ teaspoon kosher salt",
+"2 tablespoons soy sauce",
+"1 teaspoon mirin",
+"1 teaspoon sugar",
+"1 teaspoon sesame oil or neutral oil for the pan"
+],
+"steps": [
+"Stir the soy sauce, mirin and sugar together in a small bowl. That's your glaze.",
+"Wet your hands, rub a pinch of salt on your palms, and press about ½ cup of rice into a firm triangle about 1 inch thick. Press, don't squeeze the love out. Make 6.",
+"Heat the oil in a nonstick or cast-iron skillet over medium heat. Cook the rice balls 3 to 4 minutes per side without moving them, until golden and crisp.",
+"Brush the tops with glaze, flip and cook 1 minute. Brush and flip again for 1 more minute until they shine. Serve hot. Feed the skinny one first."
+],
+"note": "\"The rice held. Nonna said it would.\" In Japan, people used to paste paper doors together with cooked rice. In South Philly, Nonna said, it held her whole kitchen together for forty years.",
+"bear": "2–3 tbsp plain warm short-grain rice, cooled, with no soy glaze, salt, mirin or oil. Never the glazed rice balls. Ask your vet before adding new foods.",
+"quote": "\"The rice held. Nonna said it would.\""
+}
+},
+{
+"no": "22",
+"title": "One Card. One Pot. Go.",
+"sub": "Midnight Kitchen Ep 20 · The Card · Torn Index Relic",
+"paras": [
+"NOKEDLI · Hungarian egg dumplings · serves 4 as a side",
+"3 cups flour · 3 large eggs · 1 tsp salt · ~1 cup cold water · butter to finish.",
+"Celeste had the ingredients half. Margit had the method half. Butter stains. Mama's slanted handwriting. Tear lined up perfect when Nonna slid them together.",
+"1. Whisk eggs, salt, most of the water. Stir in flour. Splash until thick and sticky.",
+"2. Rest 10 min. Rolling boil of salted water.",
+"3. Press through a colander (Mama's dented side). Done 1–2 min after they float. Drain. Butter. Serve under paprikash.",
+"Nonna: \"One card. One pot. Go.\"",
+"Bottom line across the tear: *ask Rosa.*"
+],
+"words": 132,
+"src": "Midnight Kitchen",
+"where": "Episode 20 · The Card",
+"paper": "Two butter-stained index-card halves taped into one relic, blue fountain ink, jagged tear down the spine.",
+"sk": "torncard",
+"mark": "ASK ROSA",
+"hf": false,
+"collection": "kitchen",
+"reader": "Full nokedli recipe + Bear's bite (1–2 plain unsalted dumplings, no butter/sauce; never paprikash — onion toxic to dogs) from scripts/2026-11-05/midnightkitchen.md",
+"hex": {
+"bg": "#f5ecd2",
+"ink": "#1e2a40",
+"accent": "#8B1E1E",
+"stamp": "#c9a24e"
+},
+"recipe": {
+"name": "Nokedli (Hungarian Egg Dumplings)",
+"yield": "Serves 4 as a side",
+"ingredients": [
+"3 cups (about 375 g) all-purpose flour",
+"3 large eggs",
+"1 tsp salt",
+"about 1 cup cold water",
+"For the pot: a big pot of water plus 1 tbsp salt",
+"To finish: 2 tbsp butter"
+],
+"steps": [
+"Whisk eggs, salt and most of the water. Stir in the flour.",
+"Add water a splash at a time until the batter is thick and sticky: it should drop slowly off a spoon, not pour.",
+"Rest it 10 min. Bring the salted water to a rolling boil.",
+"Press the batter through a nokedli maker or a colander with big holes (or scrape thin strips off a wet board) straight into the water.",
+"Stir once. They're done 1–2 min after they float.",
+"Drain, toss with butter. Serve under paprikash."
+],
+"note": "Nonna: \"One card. One pot. Go.\" Bottom line across the tear: ask Rosa.",
+"bear": "One or two plain dumplings, cooked with no salt in the water, no butter, no sauce, cooled. A small treat only. Never with paprikash: onion is toxic to dogs.",
+"quote": "Nonna: \"One card. One pot. Go.\""
+}
+},
+{
+"no": "23",
+"title": "You Don't Cook for the Critic",
+"sub": "Midnight Kitchen Ep 12 · Nana & Nonna · 3×5 Recipe Card",
+"paras": [
+"POTATO & CHEESE PIEROGIES · about 36",
+"Dough: flour, salt, egg, sour cream, warm water, melted butter. Filling: russet potatoes, sharp cheddar, onion, butter, salt, pepper.",
+"1. Mix dough. Rest 30 min. Boil and mash the potatoes. Brown onion; fold half into the mash with cheddar.",
+"2. Roll ⅛\". Cut 3\" circles. Fill, fold, pinch tight.",
+"3. Boil till they float + 2 min. Pan-fry in butter with the rest of the onions. Sour cream on the side.",
+"Nana: \"You don't cook for a critic, hon. You cook for whoever's hungry at 3 AM.\""
+],
+"words": 94,
+"src": "Midnight Kitchen",
+"where": "Episode 12 · Nana & Nonna",
+"paper": "Classic red/blue ruled 3×5 kitchen recipe index card with a flour-dusted thumb smudge and a caramelized butter-onion ring.",
+"sk": "pierogi",
+"mark": "3 AM",
+"hf": false,
+"collection": "kitchen",
+"hex": {
+"bg": "#f7f1de",
+"ink": "#1a1408",
+"accent": "#b3262f",
+"stamp": "#2a5a9a"
+},
+"recipe": {
+"name": "Potato & Cheese Pierogies",
+"yield": "About 36 pierogies",
+"ingredients": [
+"Dough: 3 cups flour, 1 tsp salt, 1 large egg, ½ cup sour cream, ½ cup warm water, 2 tbsp melted butter",
+"Filling: 1½ lb russet potatoes, 1 cup sharp cheddar shredded, 1 small onion diced, 2 tbsp butter, salt, pepper",
+"To finish: butter, remaining onions, sour cream"
+],
+"steps": [
+"Mix dough until smooth, knead 3 min. Wrap; rest 30 min.",
+"Peel and boil potatoes until tender, 15–20 min. Drain and mash.",
+"Cook onion in butter until golden, 8–10 min. Stir half into the potatoes with cheddar, salt and pepper. Cool.",
+"Roll dough ⅛ inch thick. Cut 3-inch circles.",
+"Spoon 1 tbsp filling in the center. Fold, pinch the edges tight. (Wet the edge if it won't seal.)",
+"Boil in salted water in batches until they float, then 2 more minutes. Drain.",
+"Pan-fry in butter with the rest of the onions until golden on both sides.",
+"Serve with sour cream. Tip: freeze extras on a tray, then bag them. Boil from frozen."
+],
+"note": "Nana: \"You don't cook for a critic, hon. You cook for whoever's hungry at 3 AM.\"",
+"bear": "A spoonful of plain mashed potato, no butter, no salt. Never onion, garlic or seasoning for dogs; onion and garlic are toxic to them.",
+"quote": "Nana: \"You don't cook for a critic, hon. You cook for whoever's hungry at 3 AM.\""
+}
+},
+{
+"no": "24",
+"title": "Usual, Hon.",
+"sub": "Midnight Kitchen Ep 13 · 3 AM · South Philly Index Card",
+"paras": [
+"ROAST PORK, BROCCOLI RABE & SHARP PROVOLONE · 6 sandwiches",
+"Pork shoulder rubbed with garlic, rosemary, fennel, salt, pepper. Broccoli rabe, red pepper flakes, sharp provolone, seeded Italian rolls.",
+"1. Rub the pork. Roast covered at 325°F with broth, 3–3½ hours, until fork-tender. Rest 20 min. Slice thin; keep warm in the juices.",
+"2. Blanch the rabe. Sauté with garlic and pepper flakes.",
+"3. Pile pork on rolls, spoon on juice, add rabe and provolone. Broil 1 min to melt.",
+"The Trucker: \"Usual, hon.\""
+],
+"words": 84,
+"src": "Midnight Kitchen",
+"where": "Episode 13 · 3 AM",
+"paper": "Ruled 3×5 South Philly kitchen index card with a provolone/jus drip ring and a faint seeded-roll crumb trail.",
+"sk": "roastpork",
+"mark": "USUAL",
+"hf": false,
+"collection": "kitchen",
+"hex": {
+"bg": "#f4ecd8",
+"ink": "#1a1408",
+"accent": "#5a3a1a",
+"stamp": "#8B1E1E"
+},
+"recipe": {
+"name": "Roast Pork, Broccoli Rabe & Sharp Provolone",
+"yield": "6 sandwiches",
+"ingredients": [
+"3 lb boneless pork shoulder",
+"8 garlic cloves (5 minced, 3 sliced)",
+"2 tbsp chopped rosemary",
+"1 tbsp fennel seed, crushed",
+"2 tsp salt, 1 tsp pepper",
+"3 tbsp olive oil",
+"2 cups chicken broth",
+"1 bunch broccoli rabe",
+"pinch red pepper flakes",
+"12 slices sharp provolone",
+"6 seeded Italian rolls"
+],
+"steps": [
+"Heat oven to 325°F. Rub pork with minced garlic, rosemary, fennel, salt, pepper and 2 tbsp oil.",
+"Roast in a pan with the broth, covered, 3–3½ hours, until fork-tender (well above the 145°F safe minimum). Rest 20 min. Slice thin and keep warm in the pan juices.",
+"Trim rabe. Boil 2 min in salted water, drain, chop. Sauté with sliced garlic, pepper flakes and 1 tbsp oil, 3–4 min.",
+"Pile pork on rolls, spoon on juice, add rabe and provolone. Broil 1 min to melt."
+],
+"note": "He pushed the special away with one finger and pointed at the warmer. Exact change. Total silence. Then he bowed.",
+"bear": "A few bites of plain cooked pork with no seasoning or fat, cooled. Never the sandwich. Never onion, garlic or seasoning for dogs; onion and garlic are toxic to them.",
+"quote": "The Trucker: \"Usual, hon.\""
+}
 }
 ],
 "motion": [

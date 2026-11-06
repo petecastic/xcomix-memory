@@ -193,29 +193,90 @@ function markHTML(r){
     case 'hepzibah':return '<span class="wax" style="background:radial-gradient(circle at 35% 30%,#3f6a70,#2F4A4F 60%,#1b2b2e)">PLAIN</span>';
     case 'tallow':return '<span class="blind">WICK<br>ROW</span>';
     case 'switchtag':return '<span class="blind" style="color:#1a130033">LOOP</span>';
+    case 'loopdust':return '<span class="stamp" style="color:#4a2a8a;border-color:#4a2a8a">LOOP</span>';
+    case 'workorder':return '<span class="stamp" style="color:#5c4a28;border-color:#5c4a28">DO NOT FEED</span>';
+    case 'mapedge':return '<span class="stamp" style="color:#3a6b3a;border-color:#3a6b3a">BELIEVE GROUND</span>';
+    case 'emptytag':return '<span class="stamp" style="color:#b3262f;border-color:#b3262f;background:#ffd23a33">OPEN SEAM</span>';
+    case 'exitnight':return '<span class="stamp" style="color:#6b3cff;border-color:#6b3cff">HOLD</span>';
+    case 'ringpress':return '<span class="wax" style="background:radial-gradient(circle at 35% 30%,#ffe066,#c9a24e 55%,#6a4a10);color:#1a1000">12:49</span>';
+    case 'leftovers':return '<span class="stamp" style="color:#6b3cff;border-color:#6b3cff">LET \u2019EM LOOK</span>';
+    case 'bristolclock':return '<span class="wax" style="background:radial-gradient(circle at 35% 30%,#ffe066,#c9a24e 55%,#3a4a6a);color:#1a1814">12:49</span>';
+    case 'marswheat':return '<span class="stamp" style="color:#1a0a08;border-color:#1a0a08;background:#7ad0ff55">2387</span>';
+    case 'wildslate':return '<span class="stamp" style="color:#8B1E1E;border-color:#8B1E1E">REMARKABLE</span>';
+    case 'orderslip':return '<span class="coin">$4.09</span>';
+    case 'wokcard':return '<span class="stamp" style="color:#8B1E1E;border-color:#8B1E1E">MORE GARLIC</span>';
+    case 'yakionigiri':return '<span class="stamp" style="color:#c87828;border-color:#c87828">THE RICE HELD</span>';
+    case 'torncard':return '<span class="stamp askrosa">ASK ROSA</span>';
+    case 'pierogi':return '<span class="stamp" style="color:#2a5a9a;border-color:#2a5a9a">3 AM</span>';
+    case 'roastpork':return '<span class="stamp" style="color:#8B1E1E;border-color:#8B1E1E">USUAL</span>';
   }return '';
 }
+function edLabel(r){
+  if(r.collection==='kitchen')return '1-OF-1 RECIPE RELIC · COOK AT HOME · RELIC No. '+r.no;
+  if(r.collection==='press')return '1-OF-1 X ARTICLE / PRESS CLIPPING · RELIC No. '+r.no;
+  if(r.collection==='echoes')return '1-OF-1 LITERARY MANUSCRIPT RELIC · ANSWERING LINE ARCHIVE · RELIC No. '+r.no;
+  return '1-OF-1 LITERARY MANUSCRIPT RELIC · HOLLOW DESK ARCHIVE · RELIC No. '+r.no;
+}
+function badgeHTML(r){
+  if(r.collection==='kitchen')return '<span class="rbadge kitchen">RECIPE RELIC · COOK AT HOME</span>';
+  if(r.collection==='press')return '<span class="rbadge press">X ARTICLE / PRESS CLIPPING</span>';
+  if(r.collection==='echoes')return '<span class="rbadge echoes">ECHOES OF THE HORIZON</span>';
+  return '<span class="rbadge hollow">HOLLOW FILES</span>';
+}
 function relicFace(r){
-  var ed='1-OF-1 LITERARY MANUSCRIPT RELIC · RELIC No. '+r.no+(r.hf?' · HOLLOW DESK ARCHIVE':' · ANSWERING LINE ARCHIVE');
-  return '<button class="relic p-'+r.sk+'" data-r="'+r.no+'" aria-label="Read relic '+r.no+': '+esc(r.title)+'">'+
-   (r.sk==='switchtag'?'<span class="relgrom grommet"></span>':'')+(r.sk==='hepzibah'?'<span class="tea"></span>':'')+
-   '<span class="ed">'+ed+'</span>'+(r.sk==='tallow'?'<span class="label">NOT AIRED <span>not aired</span></span>':'')+
+  return '<button class="relic p-'+r.sk+(r.collection==='kitchen'?' recipe':'')+(r.collection==='press'?' press':'')+'" data-r="'+r.no+'" data-c="'+esc(r.collection||'')+'" aria-label="Read relic '+r.no+': '+esc(r.title)+'">'+
+   (r.sk==='switchtag'||r.sk==='emptytag'?'<span class="relgrom grommet"></span>':'')+(r.sk==='hepzibah'?'<span class="tea"></span>':'')+
+   (r.sk==='torncard'?'<span class="tear" aria-hidden="true"></span><span class="tape" aria-hidden="true"></span>':'')+
+   (r.sk==='orderslip'?'<span class="sugardust" aria-hidden="true"></span>':'')+
+   (r.sk==='wokcard'?'<span class="fwooomp" aria-hidden="true">FWOOOMP</span>':'')+
+   (r.sk==='pierogi'||r.sk==='roastpork'?'<span class="indexrule" aria-hidden="true"></span>':'')+
+   badgeHTML(r)+
+   '<span class="ed">'+edLabel(r)+'</span>'+(r.sk==='tallow'?'<span class="label">NOT AIRED <span>not aired</span></span>':'')+
    '<h3>\u201C'+esc(r.title)+'\u201D</h3><span class="src">'+esc(r.src)+' — '+esc(r.where)+'</span>'+
    '<span class="body">'+r.paras.map(function(p){return '<p>'+emph(p)+'</p>'}).join('')+'</span>'+
-   '<span class="read">OPEN THE ARCHIVAL READER ▸</span><span class="mk">'+markHTML(r)+'</span></button>';
+   '<span class="read">'+(r.collection==='kitchen'?'OPEN THE FULL RECIPE ▸':'OPEN THE ARCHIVAL READER ▸')+'</span><span class="mk">'+markHTML(r)+'</span></button>';
 }
-$('#relics').innerHTML=D.relics.map(relicFace).join('');
+var RFIL='all';
+var RFILTERS=[['all','All 24'],['hollow','Hollow Files (7)'],['echoes','Echoes of the Horizon (6)'],['press','X Articles & Press (5)'],['kitchen','Recipe Box (6)']];
+function renderRFilters(){var f=$('#rpills');if(!f)return;f.innerHTML=RFILTERS.map(function(x){return '<button data-rf="'+x[0]+'" class="'+(x[0]===RFIL?'on':'')+'">'+esc(x[1])+'</button>'}).join('')}
+function renderRelics(){
+  var list=D.relics.filter(function(r){return RFIL==='all'||r.collection===RFIL});
+  $('#relics').innerHTML=list.map(relicFace).join('');
+  var e=$('#rempty');if(e)e.hidden=list.length>0;
+}
+renderRFilters();renderRelics();
+$('#rpills')&&$('#rpills').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;RFIL=b.dataset.rf;renderRFilters();renderRelics()});
 $('#relics').addEventListener('click',function(e){var b=e.target.closest('.relic');if(b)openReader(b.dataset.r)});
+function recipeBlock(r){
+  var rec=r.recipe;if(!rec)return '';
+  return '<div class="recipebox"><div class="rh">🍳 FULL COOK-AT-HOME RECIPE</div><div class="ryield">'+esc(rec.yield)+'</div>'+
+   '<div class="rsec"><b>INGREDIENTS</b><ul>'+rec.ingredients.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul></div>'+
+   '<div class="rsec"><b>STEPS</b><ol>'+rec.steps.map(function(s){return '<li>'+esc(s)+'</li>'}).join('')+'</ol></div>'+
+   (rec.note?'<div class="rnote">'+esc(rec.note)+'</div>':'')+
+   '<div class="bearbox"><b>🐾 Bear\u2019s Dog-Safe Bite</b><p>'+esc(rec.bear)+'</p></div>'+
+   '<div class="rtools"><button class="ab" id="copyRec">🖨️ Print / Copy Recipe</button></div></div>';
+}
+function recipePlain(rec){
+  return [rec.name,rec.yield,'','INGREDIENTS'].concat(rec.ingredients.map(function(i){return '• '+i})).concat(['','STEPS']).concat(rec.steps.map(function(s,i){return (i+1)+'. '+s})).concat(rec.note?['','NOTE',rec.note]:[]).concat(['','BEAR\'S DOG-SAFE BITE',rec.bear,'','(From the X-Comix Card & Merch Shop · petecastic.github.io/xcomix-memory/shop/)']).join('\n');
+}
 function openReader(no){
   var r=D.relics.filter(function(x){return x.no===no})[0];if(!r)return;var b=$('#readBox');
-  b.className='ovbox reader relic p-'+r.sk;b.style.aspectRatio='auto';b.style.cursor='default';
-  b.innerHTML='<div class="wx"></div><button class="x" aria-label="Close">✕</button>'+(r.sk==='switchtag'?'<span class="relgrom grommet"></span>':'')+
-   '<span class="ed">1-OF-1 LITERARY MANUSCRIPT RELIC · RELIC No. '+r.no+'</span>'+(r.sk==='tallow'?'<span class="label">NOT AIRED <span>not aired</span></span>':'')+
+  b.className='ovbox reader relic p-'+r.sk+(r.collection==='kitchen'?' hasrecipe':'');b.style.aspectRatio='auto';b.style.cursor='default';
+  var xbtn=r.x_url?'<a class="ab sol" href="'+esc(r.x_url)+'" target="_blank" rel="noopener">𝕏 Read Original on X ↗</a>':'';
+  b.innerHTML='<div class="wx"></div><button class="x" aria-label="Close">✕</button>'+(r.sk==='switchtag'||r.sk==='emptytag'?'<span class="relgrom grommet"></span>':'')+
+   (r.sk==='torncard'?'<span class="tear" aria-hidden="true"></span><span class="tape" aria-hidden="true"></span>':'')+
+   badgeHTML(r)+
+   '<span class="ed">'+edLabel(r)+'</span>'+(r.sk==='tallow'?'<span class="label">NOT AIRED <span>not aired</span></span>':'')+
    '<h3>\u201C'+esc(r.title)+'\u201D</h3><span class="src">'+esc(r.sub)+'</span>'+
    '<div class="body">'+r.paras.map(function(p){return '<p>'+emph(p)+'</p>'}).join('')+'</div>'+
-   '<div class="prov"><b>PROVENANCE</b><br>'+esc(r.src)+' — '+esc(r.where)+' · '+r.words+' words, verbatim<br><b>PAPER STOCK</b><br>'+esc(r.paper)+'<br><b>EDITION</b><br>One of one. Pure literary collectible: the typeset passage is the card face.</div>'+
-   '<div class="rtools"><button class="ab ambbtn">'+(amb&&amb.on?'🔊 Sky Ambience: ON':'🔈 Sky Ambience: OFF')+'</button><span class="ab" style="cursor:default">Mood: <span class="skynow"></span></span></div>';
-  $('#readOv').classList.add('show');document.body.style.overflow='hidden';$('.x',b).onclick=closeAll;apply();
+   recipeBlock(r)+
+   '<div class="prov"><b>PROVENANCE</b><br>'+esc(r.src)+' — '+esc(r.where)+' · '+r.words+' words, verbatim<br><b>PAPER STOCK</b><br>'+esc(r.paper)+'<br><b>EDITION</b><br>One of one. Pure literary'+(r.collection==='kitchen'?' / recipe':'')+(r.collection==='press'?' / press':'')+' collectible: the typeset passage is the card face.</div>'+
+   '<div class="rtools"><button class="ab ambbtn">'+(amb&&amb.on?'🔊 Sky Ambience: ON':'🔈 Sky Ambience: OFF')+'</button><span class="ab" style="cursor:default">Mood: <span class="skynow"></span></span>'+xbtn+'</div>';
+  $('#readOv').classList.add('show');document.body.style.overflow='hidden';$('.x',b).onclick=closeAll;
+  var cb=$('#copyRec');if(cb&&r.recipe){cb.onclick=function(){var txt=recipePlain(r.recipe);
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(txt).then(function(){cb.textContent='\u2714 Copied \u2014 paste into Notes / print';setTimeout(function(){cb.textContent='🖨️ Print / Copy Recipe'},2200)}).catch(function(){window.prompt('Copy recipe:',txt)});
+    else window.prompt('Copy recipe:',txt)}}
+  apply();
 }
 
 /* ---------------- Shelf 3: motion cards ---------------- */
