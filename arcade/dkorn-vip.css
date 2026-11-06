@@ -15,7 +15,10 @@
 .dkv-msg{margin:10px 0;min-height:18px;font-size:12px}.dkv-msg.ok{color:#7dff8a}.dkv-msg.warn{color:#ffd166}.dkv-msg.bad{color:#ff8a8a}
 .dkv-spin{display:inline-block;width:10px;height:10px;border:2px solid #2ee6ff;border-right-color:transparent;border-radius:50%;animation:dkvS .7s linear infinite;vertical-align:-1px}
 @keyframes dkvS{to{transform:rotate(360deg)}}
-.dkv-pass{margin-top:10px;padding:8px;border-radius:8px;background:linear-gradient(135deg,#ffd400,#ff9f1c);color:#000;font:900 15px Impact,sans-serif;letter-spacing:1px;border:2px solid #000}
+.dkv-pass{margin-top:10px;padding:8px;border-radius:8px;background:linear-gradient(135deg,#ffd400,#ff9f1c);color:#000;font:900 15px/1.25 Impact,sans-serif;letter-spacing:1px;border:2px solid #000}
+.dkv-pass.herd{background:linear-gradient(115deg,#ffe6fb,#e7fff4 38%,#d9ecff 68%,#fff3c4);color:#24143a;letter-spacing:.3px;font-size:14px}
+.dkv-pass.dual{background:linear-gradient(115deg,#ffd400,#7ef3ff 46%,#e7c6ff);color:#140c22;letter-spacing:.3px;font-size:14px}
+.dkv-salute{margin-top:10px;padding:8px;border:1px dashed #e7b6ff;border-radius:8px;background:#1a1038;color:#f6e9ff;font-size:11px;line-height:1.45}
 .dkv-pass.off{background:#1b2244;color:#9fb3d9;border-color:#334}
 .dkv-pass small{display:block;font:11px Tahoma,sans-serif;letter-spacing:0}
 .dkv-perks{margin:6px 0 0 18px;padding:0;font-size:12px;color:#bff}
