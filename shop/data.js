@@ -1,4 +1,4 @@
-/* X-Comix Card & Merch Shop data. Generated from Series 1 + Words Win Waves 1–3. */
+/* X-Comix Card & Merch Shop data. Series 1 + Words Win Waves 1–4. */
 window.SHOP={
 "collection": "X-Comix Series 1 — Universe Showrunners",
 "cards": [
@@ -927,7 +927,10 @@ window.SHOP={
 "sk": "coldharrow",
 "mark": "UNLICENSED",
 "hf": true,
-"collection": "hollow"
+"collection": "hollow",
+"tags": [
+"hollow"
+]
 },
 {
 "no": "02",
@@ -948,7 +951,10 @@ window.SHOP={
 "sk": "stilse",
 "mark": "1 BEAT / 4 SEC",
 "hf": true,
-"collection": "hollow"
+"collection": "hollow",
+"tags": [
+"hollow"
+]
 },
 {
 "no": "03",
@@ -968,7 +974,10 @@ window.SHOP={
 "sk": "ashledger",
 "mark": "ASH OFFICE",
 "hf": true,
-"collection": "hollow"
+"collection": "hollow",
+"tags": [
+"hollow"
+]
 },
 {
 "no": "04",
@@ -985,7 +994,10 @@ window.SHOP={
 "sk": "skerrow",
 "mark": "BOARD OF WELLS",
 "hf": true,
-"collection": "hollow"
+"collection": "hollow",
+"tags": [
+"hollow"
+]
 },
 {
 "no": "05",
@@ -1005,7 +1017,10 @@ window.SHOP={
 "sk": "payenv",
 "mark": "IV",
 "hf": true,
-"collection": "hollow"
+"collection": "hollow",
+"tags": [
+"hollow"
+]
 },
 {
 "no": "06",
@@ -1026,7 +1041,10 @@ window.SHOP={
 "sk": "hepzibah",
 "mark": "PLAIN",
 "hf": true,
-"collection": "hollow"
+"collection": "hollow",
+"tags": [
+"hollow"
+]
 },
 {
 "no": "07",
@@ -1045,7 +1063,10 @@ window.SHOP={
 "sk": "tallow",
 "mark": "NOT AIRED",
 "hf": true,
-"collection": "hollow"
+"collection": "hollow",
+"tags": [
+"hollow"
+]
 },
 {
 "no": "08",
@@ -1064,7 +1085,10 @@ window.SHOP={
 "sk": "switchtag",
 "mark": "LOOP",
 "hf": false,
-"collection": "echoes"
+"collection": "echoes",
+"tags": [
+"echoes"
+]
 },
 {
 "no": "09",
@@ -1093,7 +1117,10 @@ window.SHOP={
 "ink": "#1a1308",
 "accent": "#6b3cff",
 "stamp": "#4a2a8a"
-}
+},
+"tags": [
+"echoes"
+]
 },
 {
 "no": "10",
@@ -1122,7 +1149,10 @@ window.SHOP={
 "ink": "#2a2210",
 "accent": "#7a6a40",
 "stamp": "#5c4a28"
-}
+},
+"tags": [
+"echoes"
+]
 },
 {
 "no": "11",
@@ -1149,7 +1179,10 @@ window.SHOP={
 "ink": "#1a2418",
 "accent": "#3a6b3a",
 "stamp": "#c9a24e"
-}
+},
+"tags": [
+"echoes"
+]
 },
 {
 "no": "12",
@@ -1175,7 +1208,10 @@ window.SHOP={
 "ink": "#1a1300",
 "accent": "#b3262f",
 "stamp": "#ffd23a"
-}
+},
+"tags": [
+"echoes"
+]
 },
 {
 "no": "13",
@@ -1200,7 +1236,10 @@ window.SHOP={
 "ink": "#1c1810",
 "accent": "#3a2a1a",
 "stamp": "#6b3cff"
-}
+},
+"tags": [
+"echoes"
+]
 },
 {
 "no": "14",
@@ -1229,7 +1268,10 @@ window.SHOP={
 "ink": "#e8e4d8",
 "accent": "#c9a24e",
 "stamp": "#ffd23a"
-}
+},
+"tags": [
+"press"
+]
 },
 {
 "no": "15",
@@ -1258,7 +1300,10 @@ window.SHOP={
 "ink": "#22180e",
 "accent": "#8B1E1E",
 "stamp": "#6b3cff"
-}
+},
+"tags": [
+"press"
+]
 },
 {
 "no": "16",
@@ -1287,7 +1332,10 @@ window.SHOP={
 "ink": "#1a1814",
 "accent": "#3a4a6a",
 "stamp": "#c9a24e"
-}
+},
+"tags": [
+"press"
+]
 },
 {
 "no": "17",
@@ -1317,7 +1365,10 @@ window.SHOP={
 "ink": "#1a0a08",
 "accent": "#7ad0ff",
 "stamp": "#2a1010"
-}
+},
+"tags": [
+"press"
+]
 },
 {
 "no": "18",
@@ -1345,7 +1396,10 @@ window.SHOP={
 "ink": "#1a1810",
 "accent": "#2a5a6a",
 "stamp": "#8B1E1E"
-}
+},
+"tags": [
+"press"
+]
 },
 {
 "no": "19",
@@ -1405,7 +1459,10 @@ window.SHOP={
 "note": "Gus: \"don't tell anybody.\"",
 "bear": "One egg scrambled in a dry nonstick pan with no butter, salt or seasoning. Cool before serving; small portion. No beignets, sugar or raw yeast dough for dogs.",
 "quote": "Gus: \"don't tell anybody.\""
-}
+},
+"tags": [
+"kitchen"
+]
 },
 {
 "no": "20",
@@ -1463,7 +1520,10 @@ window.SHOP={
 "note": "Cold rice fries; fresh rice turns mushy. If you only have fresh rice, spread it on a sheet pan and chill 30 minutes. Refrigerate leftover rice within an hour of cooking and use it within 3–4 days. Tip from Marcus's grandmother: Well. Whatever's left.",
 "bear": "2 tbsp plain cooked rice plus 1 tbsp plain cooked peas, with no oil, salt or soy sauce. Never give dogs garlic or onion. Ask your vet before adding new foods.",
 "quote": "Nonna (after the FWOOOMP): \"...Marcus. MORE garlic.\""
-}
+},
+"tags": [
+"kitchen"
+]
 },
 {
 "no": "21",
@@ -1513,7 +1573,10 @@ window.SHOP={
 "note": "\"The rice held. Nonna said it would.\" In Japan, people used to paste paper doors together with cooked rice. In South Philly, Nonna said, it held her whole kitchen together for forty years.",
 "bear": "2–3 tbsp plain warm short-grain rice, cooled, with no soy glaze, salt, mirin or oil. Never the glazed rice balls. Ask your vet before adding new foods.",
 "quote": "\"The rice held. Nonna said it would.\""
-}
+},
+"tags": [
+"kitchen"
+]
 },
 {
 "no": "22",
@@ -1566,7 +1629,10 @@ window.SHOP={
 "note": "Nonna: \"One card. One pot. Go.\" Bottom line across the tear: ask Rosa.",
 "bear": "One or two plain dumplings, cooked with no salt in the water, no butter, no sauce, cooled. A small treat only. Never with paprikash: onion is toxic to dogs.",
 "quote": "Nonna: \"One card. One pot. Go.\""
-}
+},
+"tags": [
+"kitchen"
+]
 },
 {
 "no": "23",
@@ -1615,7 +1681,10 @@ window.SHOP={
 "note": "Nana: \"You don't cook for a critic, hon. You cook for whoever's hungry at 3 AM.\"",
 "bear": "A spoonful of plain mashed potato, no butter, no salt. Never onion, garlic or seasoning for dogs; onion and garlic are toxic to them.",
 "quote": "Nana: \"You don't cook for a critic, hon. You cook for whoever's hungry at 3 AM.\""
-}
+},
+"tags": [
+"kitchen"
+]
 },
 {
 "no": "24",
@@ -1668,7 +1737,10 @@ window.SHOP={
 "note": "He pushed the special away with one finger and pointed at the warmer. Exact change. Total silence. Then he bowed.",
 "bear": "A few bites of plain cooked pork with no seasoning or fat, cooled. Never the sandwich. Never onion, garlic or seasoning for dogs; onion and garlic are toxic to them.",
 "quote": "The Trucker: \"Usual, hon.\""
-}
+},
+"tags": [
+"kitchen"
+]
 },
 {
 "no": "25",
@@ -1696,7 +1768,11 @@ window.SHOP={
 "ink": "#1a1208",
 "accent": "#c45a3a",
 "stamp": "#2a5a2a"
-}
+},
+"tags": [
+"mrpete",
+"press"
+]
 },
 {
 "no": "26",
@@ -1725,7 +1801,11 @@ window.SHOP={
 "ink": "#1a1814",
 "accent": "#4a3a2a",
 "stamp": "#8B1E1E"
-}
+},
+"tags": [
+"mrpete",
+"press"
+]
 },
 {
 "no": "27",
@@ -1752,7 +1832,11 @@ window.SHOP={
 "ink": "#1a1020",
 "accent": "#6b3cff",
 "stamp": "#c9a24e"
-}
+},
+"tags": [
+"mrpete",
+"press"
+]
 },
 {
 "no": "28",
@@ -1781,7 +1865,11 @@ window.SHOP={
 "ink": "#f5ecd2",
 "accent": "#c9a24e",
 "stamp": "#1a1810"
-}
+},
+"tags": [
+"mrpete",
+"press"
+]
 },
 {
 "no": "29",
@@ -1807,7 +1895,11 @@ window.SHOP={
 "ink": "#e8e4f8",
 "accent": "#7ad0ff",
 "stamp": "#c45a9a"
-}
+},
+"tags": [
+"mrpete",
+"press"
+]
 },
 {
 "no": "30",
@@ -1833,7 +1925,11 @@ window.SHOP={
 "ink": "#1b2426",
 "accent": "#2F4A4F",
 "stamp": "#8B1E1E"
-}
+},
+"tags": [
+"mrpete",
+"press"
+]
 },
 {
 "no": "31",
@@ -1858,7 +1954,11 @@ window.SHOP={
 "ink": "#1a1020",
 "accent": "#4a2a6a",
 "stamp": "#c9a24e"
-}
+},
+"tags": [
+"mrpete",
+"press"
+]
 },
 {
 "no": "32",
@@ -1887,7 +1987,496 @@ window.SHOP={
 "ink": "#1a1808",
 "accent": "#c8a020",
 "stamp": "#2a5a2a"
-}
+},
+"tags": [
+"mrpete",
+"press"
+]
+},
+{
+"no": "33",
+"title": "American Red Pie",
+"sub": "@MrPetecastic X Article · Pi(e) Day Strawberry Masterpiece",
+"paras": [
+"Forget the name game—let's call this beauty American Red Pie. It's bold, vibrant, unapologetically red (like the stripes on the flag), packed with fresh summer strawberries, and wrapped in an intricate, show-stopping crust that screams homemade American ingenuity.",
+"Yield: one 9–10 inch deep-dish pie (serves 8–10). Prep 1 hour + 45 min chill. Bake 30–35 minutes. Cool 3–4 hours.",
+"All-Butter Crust (triple batch): 3 cups flour, 1½ tsp salt, 1½ Tbsp sugar, 1½ cups very cold unsalted butter cubed, 9–12 Tbsp ice water. Cut butter to pea-sized crumbs; chill three discs 45+ minutes.",
+"Filling: 4 cups fresh strawberries, ⅓ cup flour, 1¼ cups sugar, ½ tsp cinnamon. Toss; rest 10 minutes. Preheat 425°F. Lattice basket weave, braided rim, dough roses. Foil the roses 20 minutes. Bake until deep golden and the filling bubbles thick."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-03-14 · Pi Day · American Red Pie",
+"paper": "Flour-dusted recipe card with braided-lattice sketch and a single strawberry stain.",
+"sk": "americanredpie",
+"mark": "AMERICAN RED PIE",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"kitchen",
+"mrpete",
+"press"
+],
+"x_url": "https://x.com/MrPetecastic/article/2032862814780498109",
+"recipe": {
+"name": "American Red Pie",
+"yield": "One 9–10 inch deep-dish pie (serves 8–10) · Prep 1 hour + 45 min chill · Bake 30–35 minutes · Cool 3–4 hours",
+"ingredients": [
+"CRUST (triple batch): 3 cups (375g) all-purpose flour; 1½ tsp salt; 1½ Tbsp sugar; 1½ cups (3 sticks / 339g) unsalted butter, very cold, cubed; 9–12 Tbsp ice water",
+"FILLING: 4 cups fresh strawberries (hulled, rinsed after a quick vinegar soak; chop most, leave some halves); ⅓ cup all-purpose flour; 1¼ cups granulated sugar; ½ tsp ground cinnamon"
+],
+"steps": [
+"Whisk dry crust ingredients. Cut in butter until pea-sized crumbs form. Add ice water gradually until shaggy dough forms. Divide into three discs; chill 45+ minutes.",
+"Gently toss filling ingredients. Let sit 10 minutes so berries release juices and flour absorbs them.",
+"Preheat oven to 425°F (220°C). Butter a deep-dish pie plate. Roll one disc into a 12–13 inch circle; fit into plate; trim overhang to ½ inch. Pile in the filling.",
+"Braided Lattice: Roll second disc thin. Cut strips (¾–1 inch). Weave a classic lattice over filling. Trim edges.",
+"Braided Rim: Cut three thin strips from scraps; braid tightly; press around rim, pinching to the lattice.",
+"Dough Roses: Roll remaining dough very thin. Cut 1–1½ inch circles. Overlap 4–6 in a line, roll into a spiral, pinch base, fluff petals. Place 5–8 roses along edges or in weave gaps.",
+"Foil-cover the roses for the first 20 minutes. Remove foil for the last 10–15. Bake 30–35 minutes total until crust is deep golden and filling bubbles thickly.",
+"Cool completely (3–4+ hours) on a rack. Serve room temp or slightly warm with vanilla ice cream."
+],
+"note": "No shortcuts, no gelatin — pure from-scratch American Red Pie.",
+"bear": "1–2 plain fresh rinsed strawberry slices before adding sugar or cinnamon. Zero pastry dough or sugar for dogs.",
+"quote": "Bake it for Pi Day, Independence Day, or any day you want to remind folks what makes America sweet."
+},
+"hex": {
+"bg": "#f7e8e4",
+"ink": "#3a1010",
+"accent": "#c4282d",
+"stamp": "#1a3a6e"
+},
+"words": 134
+},
+{
+"no": "34",
+"title": "Joanne's Carrot Cake",
+"sub": "@MrPetecastic X Article · Three-Layer Celebration Cake",
+"paras": [
+"Few desserts evoke comfort quite like a classic carrot cake. This version — pulled from a well-loved, slightly tattered recipe card — delivers everything you want: deep moisture from oil and plenty of grated carrots, warm cinnamon spice, generous pockets of walnuts and raisins, and a towering three-layer presence perfect for celebrations.",
+"Yields one 3-layer 9-inch cake (serves 12–16). Prep 25 minutes. Bake 30–40 minutes at 350°F.",
+"Cake: 1½ lb grated carrots, 1½ cups walnuts, 1½ cups raisins, 12 oz flour, 1 Tbsp each cinnamon / baking soda / baking powder, ½ tsp salt, 1½ cups neutral oil, brown + white sugar, 6 eggs.",
+"Toss the goodies. Sift the dry. Beat oil and sugars; add eggs one by one; fold carrots; add dry just until smooth. Bake, cool fully, stack with a generous cream-cheese frosting."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-03-01 · Joanne's carrot cake",
+"paper": "Slightly tattered index card with cinnamon fingerprints and a carrot doodle.",
+"sk": "tatteredcarrotcake",
+"mark": "THREE LAYERS",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"kitchen",
+"mrpete",
+"press"
+],
+"x_url": "https://x.com/MrPetecastic/article/2028182815292981499",
+"recipe": {
+"name": "Joanne's Carrot Cake",
+"yield": "One 3-layer 9-inch cake (serves 12–16) · Prep 25 minutes · Bake 30–40 minutes at 350°F",
+"ingredients": [
+"1½ pounds (about 5–6 cups) freshly grated carrots (peel first)",
+"1½ cups chopped walnuts",
+"1½ cups raisins (golden or dark)",
+"12 oz (about 2¾ cups) all-purpose flour",
+"1 tablespoon ground cinnamon",
+"1 tablespoon baking soda",
+"1 tablespoon baking powder",
+"½ teaspoon salt",
+"1½ cups neutral oil (vegetable or canola)",
+"9 oz (about 1¼ cups packed) brown sugar",
+"12 oz (about 1¾ cups) granulated sugar",
+"6 large eggs, room temperature",
+"Cream cheese frosting (generous batch — roughly 3 pounds / 6–8 cups)"
+],
+"steps": [
+"Preheat oven to 350°F (175°C). Grease three 9-inch pans, line bottoms with parchment, lightly flour the sides.",
+"Toss grated carrots, chopped walnuts, and raisins until evenly combined.",
+"Sift flour, cinnamon, baking soda, baking powder, and salt.",
+"Beat oil; gradually add sugars 1–2 minutes. Add eggs one at a time.",
+"Fold in the carrot mixture on low. Add dry ingredients all at once; mix only until smooth.",
+"Divide among pans. Bake 30–40 minutes (check around 28). Cool 10–15 minutes in pans, then on racks ≥1 hour.",
+"Stack with generous cream-cheese frosting between layers and on top."
+],
+"note": "Pulled from a well-loved, slightly tattered recipe card — smudged ink, crossed-out notes, and all.",
+"bear": "2–3 plain raw peeled carrot sticks ONLY before mixing. NEVER feed cake, raisins, or walnuts to dogs — raisins are toxic to dogs.",
+"quote": "It's the kind of cake that feels like home."
+},
+"hex": {
+"bg": "#f3e6d4",
+"ink": "#2a1a0c",
+"accent": "#d44a2a",
+"stamp": "#5a7a3a"
+},
+"words": 135
+},
+{
+"no": "35",
+"title": "Parmesan Gelato",
+"sub": "@MrPetecastic X Article · Savory Super Bowl Snack",
+"paras": [
+"That's an audacious play — savory, creamy, and way outside the usual playbook of wings and dips. But it's a real gourmet thing (especially in Italy, where aged-Parmesan gelato shows up in high-end gelaterias), and it's getting some fresh buzz right now.",
+"Ingredients (about 1 quart): 2 cups heavy cream, ⅓ cup whole milk, 8 oz grated aged Parmesan (the good stuff), 1 tsp black pepper optional.",
+"Double-boiler: heat cream and milk, melt in the cheese until smooth, cool completely, then churn. Rich, nutty, salty — frozen umami heaven.",
+"Serve small. Drizzle balsamic or honey. Spoon onto crackers between spicy wings. Grate expectations!"
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-02-08 · Parmesan gelato snack article",
+"paper": "Napkin play-diagram with a gelato scoop where the football should be.",
+"sk": "parmesangelato",
+"mark": "PARMESAN GELATO",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"kitchen",
+"mrpete",
+"press"
+],
+"x_url": "https://x.com/MrPetecastic/article/2020573723141492928",
+"recipe": {
+"name": "Parmesan Gelato (Savory Super Bowl Snack)",
+"yield": "About 1 quart",
+"ingredients": [
+"2 cups heavy cream",
+"⅓ cup whole milk",
+"8 oz grated aged Parmesan (the good stuff)",
+"1 tsp freshly ground black pepper (optional)"
+],
+"steps": [
+"Set up a double boiler (or a heat-safe bowl over simmering water).",
+"Heat the cream and milk gently.",
+"Stir in the grated cheese until fully melted and smooth.",
+"Add pepper, then cool the mixture completely.",
+"Churn in an ice cream maker (or freeze and stir every 30–45 minutes for a softer texture).",
+"Serve in small scoops. Drizzle balsamic or honey. Spoon onto crackers between spicy wings."
+],
+"note": "Rich, nutty, and salty — like frozen umami heaven. Serve small; it melts fast at room temp.",
+"bear": "One tiny pinch of plain grated hard cheese only if your pup tolerates dairy — skip heavy cream and black pepper.",
+"quote": "Grate expectations!"
+},
+"hex": {
+"bg": "#f5f0e6",
+"ink": "#1c1408",
+"accent": "#c9a227",
+"stamp": "#3a5a2a"
+},
+"words": 103
+},
+{
+"no": "36",
+"title": "Recipes That Sing Louder Than Any Veilnet Pod",
+"sub": "@MrPetecastic X Article · Echoes of the Red Horizon · Fringe Pact Kitchen",
+"paras": [
+"Recipes that sing louder than any Veilnet pod. Eat these and the planet eats with you.” — Lena Vale, lore-keeper & stew alchemist",
+"These aren't dome-ration pastes. These are pact food—born in Subterra lava tubes, spiced with vent-pepper rebellion, and Spark-infused for that extra harmonic kick. Every dish carries a thread of the Deep Song.",
+"1. Geothermal Tunnel Stew — 2 kilos tunnel-roots, 400 g protein strips soaked in void-nectar, reduced crystaberry broth, 1–2 tsp vent-pepper, glow-moss. Simmer 20 minutes until the pot hums.",
+"Cook them loud. Eat them together. Let the Spark flavor every bite. Stay fed. Stay feral. — The Squad"
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-03-19 · Echoes of the red horizon",
+"paper": "Cracked tablet recipe slate glowing faint sapphire at the chasm rim.",
+"sk": "fringepactkitchen",
+"mark": "FRINGE PACT KITCHEN",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"mrpete",
+"press",
+"echoes"
+],
+"x_url": "https://x.com/MrPetecastic/article/2034430729040302117",
+"hex": {
+"bg": "#1a0e18",
+"ink": "#f0e6ff",
+"accent": "#6ec8ff",
+"stamp": "#c45a9a"
+},
+"words": 103
+},
+{
+"no": "37",
+"title": "Geothermal Tunnel Stew",
+"sub": "Recipe Box · Echoes Lore Recipe · In-Universe Fringe Kitchen",
+"paras": [
+"Cycle-three special. Feeds four hungry racers (or one Glowhound with zoomies). Tastes like the planet hugging your ribs.",
+"Lore bite: Grandma Vale cooked this during the Big Quake of Cycle 12. The Bound Choir lattices kept the vents stable so the stew never burned. Now it keeps us stable when the Veilnet tries to starve the Fringe.",
+"Ingredients: 2 kilos chunky tunnel-roots; 400 g lab-grown protein strips (soak overnight in void-nectar); 1 liter void-nectar broth reduced with crystaberry skins; 1–2 tsp vent-pepper; handful fresh glow-moss; optional pendant hover 10 seconds.",
+"Fire the salvaged heat-plate. Dice roots. Sear protein. Pour broth, stir vent-pepper. Simmer 20 minutes until roots soften and the pot hums. Finish with glow-moss. Let it sing."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "Inside Echoes of the red horizon recipe appendix",
+"paper": "Alloy bowl ring-stain on a scavenged crate lid.",
+"sk": "tunnelstew",
+"mark": "TUNNEL STEW",
+"hf": false,
+"collection": "mrpete_recipes",
+"tags": [
+"kitchen",
+"mrpete",
+"press",
+"echoes"
+],
+"x_url": "https://x.com/MrPetecastic/article/2034430729040302117",
+"recipe": {
+"name": "Geothermal Tunnel Stew (Fringe Pact Kitchen)",
+"yield": "Feeds four hungry racers (or one Glowhound with zoomies)",
+"ingredients": [
+"2 kilos chunky tunnel-roots",
+"400 g lab-grown protein strips (soak overnight in void-nectar)",
+"1 liter void-nectar broth (reduced by half with dried crystaberry skins)",
+"1–2 tsp vent-pepper",
+"Handful fresh glow-moss",
+"Optional: Aria’s pendant hover for 10 seconds"
+],
+"steps": [
+"Fire up the salvaged drone-exhaust heat-plate (or Thunderbug’s bleed valve).",
+"Dice roots fine. Sear protein strips until they crisp.",
+"Pour reduced broth, stir in vent-pepper. Simmer 20 minutes until roots soften and the whole pot starts humming.",
+"Finish with glow-moss. Let it sing.",
+"Spark-infused edition: hold pendant over the pot — watch faint blue shimmer dance across the surface."
+],
+"note": "Fiction Fringe kitchen from Echoes of the Red Horizon — not a real-world allergen guide. Warning: Lumos will attempt three theft runs — guard the pot.",
+"bear": "Glowhound note: serve in alloy bowls under a half-buried glider wing. Guard the pot or lose the last root. (Fiction — do not cook real tunnel-roots for dogs.)",
+"quote": "Tastes like the planet hugging your ribs."
+},
+"hex": {
+"bg": "#2a1810",
+"ink": "#f5e6d4",
+"accent": "#e07a3a",
+"stamp": "#5a8aaa"
+},
+"words": 118
+},
+{
+"no": "38",
+"title": "Spark-Infused Nectar Brew",
+"sub": "Recipe Box · Echoes Lore Recipe · In-Universe Fringe Kitchen",
+"paras": [
+"Liquid lightning crossed with crystaberry dreams. Sharpens focus, kills jitters, syncs machines to your pulse.",
+"Lore bite: Dr. Lira swears the Bound Choir brewed this before every pact ceremony. Sunny’s shards hum louder after one mug.",
+"Makes 4 alloy mugs + one Glowhound dish: 2 handfuls dried void-nectar leaves; 1 liter hot vent-water; 1 thin sliver fresh crystaberry rind; pendant hover 30 full seconds.",
+"Steep leaves in rolling-boil vent-water 3 minutes until the aroma turns sharp and electric. Add rind. Hold the pendant — watch controlled fizz and faint sapphire glow. Sip slow. Lumos version: shallow dish only — otherwise he'll try to drive."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "Inside Echoes of the red horizon recipe appendix",
+"paper": "Alloy mug ring with a sapphire fizz watermark.",
+"sk": "nectarbrew",
+"mark": "NECTAR BREW",
+"hf": false,
+"collection": "mrpete_recipes",
+"tags": [
+"kitchen",
+"mrpete",
+"press",
+"echoes"
+],
+"x_url": "https://x.com/MrPetecastic/article/2034430729040302117",
+"recipe": {
+"name": "Spark-Infused Nectar Brew (Fringe Pact Kitchen)",
+"yield": "4 alloy mugs + one Glowhound dish",
+"ingredients": [
+"2 handfuls dried void-nectar leaves",
+"1 liter hot vent-water",
+"1 thin sliver fresh crystaberry rind",
+"Aria’s pendant (30 full seconds hover)"
+],
+"steps": [
+"Steep leaves in rolling-boil vent-water 3 minutes until aroma turns sharp and electric.",
+"Add crystaberry rind.",
+"Hold pendant over pot — watch controlled fizz and faint sapphire glow erupt.",
+"Pour. Sip slow."
+],
+"note": "Fiction Fringe kitchen. Lumos’s version: shallow dish only — otherwise he’ll try to drive.",
+"bear": "Glowhound dish: shallow only. (Fiction lore beverage — not for real dogs.)",
+"quote": "Liquid lightning crossed with crystaberry dreams."
+},
+"hex": {
+"bg": "#0e1a28",
+"ink": "#e8f4ff",
+"accent": "#5eb0ff",
+"stamp": "#a05ad0"
+},
+"words": 104
+},
+{
+"no": "39",
+"title": "The Lineman Who Built a Multiverse",
+"sub": "@MrPetecastic X Article · Chronicles of Petecastic",
+"paras": [
+"Chronicles of Petecastic: The Lineman Who Built a Multiverse Out of Hard Hats, Fiber Optics, and Pure Chaotic Grok Energy.",
+"There is a particular kind of person who spends his daylight hours high above suburban streets and municipal right-of-ways in the greater Philadelphia area, balancing on strands of copper and fiber while the world below keeps scrolling past without looking up.",
+"That same person, once the sun drops behind the Bensalem treeline and the hard hat comes off, opens a glowing rectangle and begins speaking entire galaxies into existence.",
+"The core aesthetic that holds the entire feed together is maximalist prismatic chaos colliding head-on with dark ink line-art. Rainbow paint-splatter explosions in magenta, violet, and cyan across midnight black panels. The feed is a job site and a comic shop sharing one ladder."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-07-23 · Chronicles of Petecastic",
+"paper": "Hard-hat decal sheet with fiber-optic gold spilled across the margin.",
+"sk": "linemanmultiverse",
+"mark": "LINEMAN MULTIVERSE",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"mrpete",
+"press"
+],
+"x_url": "https://x.com/MrPetecastic/article/2080389576896438654",
+"hex": {
+"bg": "#0c0c12",
+"ink": "#f2f2f8",
+"accent": "#ff3d9a",
+"stamp": "#ffd24a"
+},
+"words": 133
+},
+{
+"no": "40",
+"title": "The Invisible Arteries",
+"sub": "@MrPetecastic X Article · Chronicle of the Men Who Keep the Lights On",
+"paras": [
+"A Chronicle of the Men Who Keep the Lights On",
+"High above the street, the world shrinks to wood, wire, and wind. A lineman does not think of the city as a map of neighborhoods. He thinks of it as spans, dead-ends, feeds, and faults. The poles are the skeleton. The conductors are the veins. When they break, ordinary life stops pretending it runs on its own.",
+"That is the premise running through the long chronicle posted by @MrPetecastic, a lineman who writes like a man who has felt a pole flex under his gaffs and knows what a vault smells like after rain.",
+"What emerges is not a recruiting brochure. It is a working life: heat, water, bees, football fans, mud, fiber, and the quiet arithmetic of whether to leave the crew that already trusts you."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-09-20 · The Invisible Arteries",
+"paper": "Work-order carbon with a pencil sketch of a crossarm against gray sky.",
+"sk": "invisiblearteries",
+"mark": "INVISIBLE ARTERIES",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"mrpete",
+"press"
+],
+"x_url": "https://x.com/MrPetecastic/article/2101684020287263121",
+"hex": {
+"bg": "#e8ecef",
+"ink": "#1a1e22",
+"accent": "#c45a1a",
+"stamp": "#2a4a6a"
+},
+"words": 137
+},
+{
+"no": "41",
+"title": "The Answering Line — Part 1",
+"sub": "@MrPetecastic X Article · Echoes of the Horizon",
+"paras": [
+"The scare is not the thing on the wire. The scare is that it already knows which chair you leave empty — and that it can stand in a hard hat at the edge of your light long enough for you to understand the gesture before it moves.",
+"Pete got the call after dark, the kind that comes when the map and the ground disagree. Intermittent ground. Dead yard that the paper still called live. Last reachable mile before the county line and the black water that ate the rest of the feeders in the storm three winters back.",
+"The porch light was off. Pete flicked it. Nothing. Cap jumped into the passenger seat without being asked and sat facing the windshield like a leadman who had already decided the route.",
+"The yard had been dead since the freeze. Everyone said so. Maps kept the breakers inked live because maps lie slower than men. It stood at the fence line past the reach of a polite flashlight — hard-hat brim, shoulders square, the patient outline of a man who had already decided not to run."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-10-05 · Echoes of the Horizon: The Answering Line Part 1",
+"paper": "Trouble ticket stamped ANSWERING LINE with a porch-light that will not light.",
+"sk": "answeringline1",
+"mark": "ANSWERING LINE I",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"mrpete",
+"press",
+"echoes"
+],
+"x_url": "https://x.com/MrPetecastic/article/2106936466685239629",
+"hex": {
+"bg": "#12141a",
+"ink": "#e6e8f0",
+"accent": "#8a9bb8",
+"stamp": "#c4a45a"
+},
+"words": 185
+},
+{
+"no": "42",
+"title": "The Answering Line — Part 2",
+"sub": "@MrPetecastic X Article · Echoes of the Horizon",
+"paras": [
+"The storm arrived like a debt.",
+"Pete woke to Cap already standing at the bedroom door, fur wrong along the spine, staring not at the kitchen but at the rear window as if glass had become a gate. Rain hammered. Radio hash rose through the walls without a radio on. Pete laced boots in the dark and felt the cold tremor honest in his fingers — proof, religion, the opposite of the Double's clean slope.",
+"\"Yard,\" he said. Cap moved to the truck without being asked and sat facing the rear glass.",
+"Dispatch had already pinged: trees down east and south; south feeder flickering; ghost open stacking on itself like plates; weekender vehicle near county line reported by a sheriffs deputy who did not want to get out of his car. Foreman: \"Take the kid if Cap allows. Do not close south. Cap rides. I'm done pretending dogs aren't leadmen.\""
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-10-05 · Echoes of the Horizon: The Answering Line Part 2",
+"paper": "Second trouble ticket, same night, darker ink.",
+"sk": "answeringline2",
+"mark": "ANSWERING LINE II",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"mrpete",
+"press",
+"echoes"
+],
+"x_url": "https://x.com/MrPetecastic/article/2106936546364416061",
+"hex": {
+"bg": "#0e1016",
+"ink": "#e6e8f0",
+"accent": "#6a7a98",
+"stamp": "#a4844a"
+},
+"words": 150
+},
+{
+"no": "43",
+"title": "Beards in the War of 1812",
+"sub": "@MrPetecastic X Article · The Untold Whiskered Front",
+"paras": [
+"Ah, the War of 1812—America's scrappy sequel to the Revolution, complete with burning White Houses, epic naval victories, and... a quiet but fierce battle over facial hair.",
+"In reality, full beards were still rare and often frowned upon in early 19th-century America and Europe. Fashion favored clean-shaven faces or modest mustaches/sideburns—beards wouldn't explode in popularity until the 1850s.",
+"U.S. Navy: This was the golden age of naval facial foliage. With no official grooming standards until the 1840s, sailors rocked sideburns, mustaches, and even beards freely during the War of 1812.",
+"U.S. Army: Not so lucky on land. Regulations demanded clean-shaven soldiers (at least every three days), viewing beards as unprofessional or \"savage.\" Militia and frontiersmen might have bent rules, but official portraits and orders show mostly smooth chins."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-01-27 · Beards in the War of 1812",
+"paper": "Aged 1812 dispatch parchment with a whisker sketch in the margin.",
+"sk": "beards1812",
+"mark": "1812 WHISKERS",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"mrpete",
+"press"
+],
+"x_url": "https://x.com/MrPetecastic/article/2015965942803726632",
+"hex": {
+"bg": "#e8dfc8",
+"ink": "#1a1408",
+"accent": "#5a3a1a",
+"stamp": "#8B1E1E"
+},
+"words": 128
+},
+{
+"no": "44",
+"title": "Echoes of the Red Horizon — Chapter 1",
+"sub": "@MrPetecastic X Article · Echoes of the Red Horizon",
+"paras": [
+"Chapter 1: Echoes of the Red Horizon",
+"In the vast, unyielding silence of the cosmos, where stars burned like distant embers against an infinite canvas of black, a solitary red planet rotated with a quiet, eternal indifference that belied the tumultuous history etched into its very core.",
+"This was Aetheria, once known to ancient Earthlings as Mars—a world of rusted iron oxides and forgotten primordial dreams, scarred by the ghosts of long-evaporated rivers that had carved winding canyons through its desolate plains, and capped by polar ice that hoarded secrets from an era when liquid water might have shimmered under a thinner, more forgiving sky.",
+"For eons, it had spun in isolation, a mute spectator to the solar system’s grand, cosmic ballet, its faint whispers of potential life lost to the void. But in the year 2105, those whispers erupted into a symphony of artificial creation, orchestrated not by the planet’s dormant heart, but by the relentless ingenuity of humanity’s digital progeny."
+],
+"src": "@MrPetecastic · Native X Article",
+"where": "2026-03-13 · Echoes of the red horizon ch 1",
+"paper": "Martian rust-amber chronicle stock with a thin polar-ice rim.",
+"sk": "redhorizonch1",
+"mark": "RED HORIZON CH. 1",
+"hf": false,
+"collection": "mrpete_articles",
+"tags": [
+"mrpete",
+"press",
+"echoes"
+],
+"x_url": "https://x.com/MrPetecastic/article/2032566066564706618",
+"hex": {
+"bg": "#c45a3a",
+"ink": "#1a0a08",
+"accent": "#7ad0ff",
+"stamp": "#2a1010"
+},
+"words": 162
 }
 ],
 "motion": [

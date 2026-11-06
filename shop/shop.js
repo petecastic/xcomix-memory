@@ -217,43 +217,74 @@ function markHTML(r){
     case 'hfsunday':return '<span class="stamp" style="color:#8B1E1E;border-color:#8B1E1E">SUNDAYS</span>';
     case 'velloria':return '<span class="stamp" style="color:#c9a24e;border-color:#c9a24e;background:#4a2a6a33">16 PAGES</span>';
     case 'bananaodyssey':return '<span class="stamp" style="color:#2a5a2a;border-color:#2a5a2a;background:#fff3">WATCH THE PEEL</span>';
-  }return '';
+    case 'americanredpie':return '<span class="stamp" style="color:#1a3a6e;border-color:#1a3a6e;background:#c4282d33">AMERICAN RED PIE</span>';
+    case 'tatteredcarrotcake':return '<span class="stamp" style="color:#5a7a3a;border-color:#5a7a3a;background:#d44a2a33">THREE LAYERS</span>';
+    case 'parmesangelato':return '<span class="stamp" style="color:#3a5a2a;border-color:#3a5a2a;background:#c9a22733">PARMESAN GELATO</span>';
+    case 'fringepactkitchen':return '<span class="stamp" style="color:#c45a9a;border-color:#c45a9a;background:#6ec8ff33">FRINGE PACT KITCHEN</span>';
+    case 'tunnelstew':return '<span class="stamp" style="color:#5a8aaa;border-color:#5a8aaa;background:#e07a3a33">TUNNEL STEW</span>';
+    case 'nectarbrew':return '<span class="stamp" style="color:#a05ad0;border-color:#a05ad0;background:#5eb0ff33">NECTAR BREW</span>';
+    case 'linemanmultiverse':return '<span class="stamp" style="color:#ffd24a;border-color:#ffd24a;background:#ff3d9a33">LINEMAN MULTIVERSE</span>';
+    case 'invisiblearteries':return '<span class="stamp" style="color:#2a4a6a;border-color:#2a4a6a;background:#c45a1a33">INVISIBLE ARTERIES</span>';
+    case 'answeringline1':return '<span class="stamp" style="color:#c4a45a;border-color:#c4a45a;background:#8a9bb833">ANSWERING LINE I</span>';
+    case 'answeringline2':return '<span class="stamp" style="color:#a4844a;border-color:#a4844a;background:#6a7a9833">ANSWERING LINE II</span>';
+    case 'beards1812':return '<span class="stamp" style="color:#8B1E1E;border-color:#8B1E1E;background:#5a3a1a22">1812 WHISKERS</span>';
+    case 'redhorizonch1':return '<span class="stamp" style="color:#2a1010;border-color:#2a1010;background:#7ad0ff55">RED HORIZON CH. 1</span>';
+  }return r.mark?'<span class="stamp">'+esc(r.mark)+'</span>':'';
 }
+function hasTag(r,t){return (r.tags||[]).indexOf(t)>=0||r.collection===t}
+function isKitchen(r){return hasTag(r,'kitchen')||r.collection==='kitchen'||r.collection==='mrpete_recipes'||!!r.recipe}
+function isArticle(r){return r.collection==='mrpete_articles'||r.collection==='press'||r.collection==='mrpete_press'||hasTag(r,'press')}
+function isFringeKitchen(r){return r.collection==='mrpete_recipes'||(hasTag(r,'kitchen')&&hasTag(r,'echoes')&&r.no!=='36')}
 function edLabel(r){
-  if(r.collection==='kitchen')return '1-OF-1 RECIPE RELIC · COOK AT HOME · RELIC No. '+r.no;
+  if(isFringeKitchen(r))return '1-OF-1 ECHOES LORE RECIPE · IN-UNIVERSE FRINGE KITCHEN · RELIC No. '+r.no;
+  if(isKitchen(r)&&r.recipe)return '1-OF-1 RECIPE RELIC · COOK AT HOME · RELIC No. '+r.no;
+  if(r.collection==='mrpete_articles')return '1-OF-1 @MRPETECASTIC NATIVE X ARTICLE · RELIC No. '+r.no;
   if(r.collection==='mrpete_press')return '1-OF-1 @MRPETECASTIC STORY CLIPPING · RELIC No. '+r.no;
   if(r.collection==='press')return '1-OF-1 @PETECASTIC X ARTICLE · RELIC No. '+r.no;
-  if(r.collection==='echoes')return '1-OF-1 LITERARY MANUSCRIPT RELIC · ANSWERING LINE ARCHIVE · RELIC No. '+r.no;
+  if(hasTag(r,'echoes')||r.collection==='echoes')return '1-OF-1 LITERARY MANUSCRIPT RELIC · ANSWERING LINE ARCHIVE · RELIC No. '+r.no;
   return '1-OF-1 LITERARY MANUSCRIPT RELIC · HOLLOW DESK ARCHIVE · RELIC No. '+r.no;
 }
 function badgeHTML(r){
-  if(r.collection==='kitchen')return '<span class="rbadge kitchen">RECIPE RELIC · COOK AT HOME</span>';
+  if(isFringeKitchen(r))return '<span class="rbadge kitchen fringe">ECHOES LORE RECIPE · IN-UNIVERSE FRINGE KITCHEN</span>';
+  if(isKitchen(r)&&r.recipe)return '<span class="rbadge kitchen">RECIPE RELIC · COOK AT HOME</span>';
+  if(r.collection==='mrpete_articles')return '<span class="rbadge mrpete article">𝕏 @MRPETECASTIC · NATIVE X ARTICLE</span>';
   if(r.collection==='mrpete_press')return '<span class="rbadge mrpete">𝕏 @MRPETECASTIC · STORY CLIPPING</span>';
   if(r.collection==='press')return '<span class="rbadge press">𝕏 @PETECASTIC · X ARTICLE</span>';
-  if(r.collection==='echoes')return '<span class="rbadge echoes">ECHOES OF THE HORIZON</span>';
+  if(hasTag(r,'echoes')||r.collection==='echoes')return '<span class="rbadge echoes">ECHOES OF THE HORIZON</span>';
   return '<span class="rbadge hollow">HOLLOW FILES</span>';
 }
 function relicFace(r){
-  return '<button class="relic p-'+r.sk+(r.collection==='kitchen'?' recipe':'')+(r.collection==='press'||r.collection==='mrpete_press'?' press':'')+'" data-r="'+r.no+'" data-c="'+esc(r.collection||'')+'" aria-label="Read relic '+r.no+': '+esc(r.title)+'">'+
+  var cls='relic p-'+r.sk+(isKitchen(r)?' recipe':'')+(isArticle(r)?' press':'');
+  return '<button class="'+cls+'" data-r="'+r.no+'" data-c="'+esc(r.collection||'')+'" aria-label="Read relic '+r.no+': '+esc(r.title)+'">'+
    (r.sk==='switchtag'||r.sk==='emptytag'?'<span class="relgrom grommet"></span>':'')+(r.sk==='hepzibah'?'<span class="tea"></span>':'')+
    (r.sk==='torncard'?'<span class="tear" aria-hidden="true"></span><span class="tape" aria-hidden="true"></span>':'')+
    (r.sk==='orderslip'?'<span class="sugardust" aria-hidden="true"></span>':'')+
    (r.sk==='wokcard'?'<span class="fwooomp" aria-hidden="true">FWOOOMP</span>':'')+
    (r.sk==='pierogi'||r.sk==='roastpork'?'<span class="indexrule" aria-hidden="true"></span>':'')+
+   (r.sk==='americanredpie'?'<span class="lattice" aria-hidden="true"></span>':'')+
+   (r.sk==='parmesangelato'?'<span class="playdiagram" aria-hidden="true"></span>':'')+
    badgeHTML(r)+
    '<span class="ed">'+edLabel(r)+'</span>'+(r.sk==='tallow'?'<span class="label">NOT AIRED <span>not aired</span></span>':'')+
    '<h3>\u201C'+esc(r.title)+'\u201D</h3><span class="src">'+esc(r.src)+' — '+esc(r.where)+'</span>'+
    '<span class="body">'+r.paras.map(function(p){return '<p>'+emph(p)+'</p>'}).join('')+'</span>'+
-   '<span class="read">'+(r.collection==='kitchen'?'OPEN THE FULL RECIPE ▸':'OPEN THE ARCHIVAL READER ▸')+'</span><span class="mk">'+markHTML(r)+'</span></button>';
+   '<span class="read">'+(r.recipe?'OPEN THE FULL RECIPE ▸':'OPEN THE ARCHIVAL READER ▸')+'</span><span class="mk">'+markHTML(r)+'</span></button>';
 }
 var RFIL='all';
-var RFILTERS=[['all','All 32'],['mrpete','@MrPetecastic (8)'],['press','X Articles & Press (13)'],['kitchen','Recipe Box (6)'],['echoes','Echoes of the Horizon (6)'],['hollow','Hollow Files (7)']];
-function renderRFilters(){var f=$('#rpills');if(!f)return;f.innerHTML=RFILTERS.map(function(x){return '<button data-rf="'+x[0]+'" class="'+(x[0]===RFIL?'on ':'')+(x[0]==='mrpete'?'mrpete':'')+'">'+esc(x[1])+'</button>'}).join('')}
+function rCount(tag){return D.relics.filter(function(r){return tag==='all'||hasTag(r,tag)}).length}
+function buildRFilters(){
+  return [
+    ['all','All '+rCount('all')],
+    ['mrpete','@MrPetecastic ('+rCount('mrpete')+')'],
+    ['kitchen','Recipe Box ('+rCount('kitchen')+')'],
+    ['press','X Articles & Press ('+rCount('press')+')'],
+    ['echoes','Echoes of the Horizon ('+rCount('echoes')+')'],
+    ['hollow','Hollow Files ('+rCount('hollow')+')']
+  ];
+}
+function renderRFilters(){var f=$('#rpills');if(!f)return;f.innerHTML=buildRFilters().map(function(x){return '<button data-rf="'+x[0]+'" class="'+(x[0]===RFIL?'on ':'')+(x[0]==='mrpete'?'mrpete':'')+'">'+esc(x[1])+'</button>'}).join('')}
 function matchRFil(r){
   if(RFIL==='all')return true;
-  if(RFIL==='mrpete')return r.collection==='mrpete_press';
-  if(RFIL==='press')return r.collection==='press'||r.collection==='mrpete_press';
-  return r.collection===RFIL;
+  return hasTag(r,RFIL);
 }
 function renderRelics(){
   var list=D.relics.filter(matchRFil);
@@ -265,7 +296,7 @@ $('#rpills')&&$('#rpills').addEventListener('click',function(e){var b=e.target.c
 $('#relics').addEventListener('click',function(e){var b=e.target.closest('.relic');if(b)openReader(b.dataset.r)});
 function recipeBlock(r){
   var rec=r.recipe;if(!rec)return '';
-  return '<div class="recipebox"><div class="rh">🍳 FULL COOK-AT-HOME RECIPE</div><div class="ryield">'+esc(rec.yield)+'</div>'+
+  return '<div class="recipebox"><div class="rh">'+(isFringeKitchen(r)?'🌌 ECHOES LORE RECIPE · IN-UNIVERSE FRINGE KITCHEN':'🍳 FULL COOK-AT-HOME RECIPE')+'</div><div class="ryield">'+esc(rec.yield)+'</div>'+
    '<div class="rsec"><b>INGREDIENTS</b><ul>'+rec.ingredients.map(function(i){return '<li>'+esc(i)+'</li>'}).join('')+'</ul></div>'+
    '<div class="rsec"><b>STEPS</b><ol>'+rec.steps.map(function(s){return '<li>'+esc(s)+'</li>'}).join('')+'</ol></div>'+
    (rec.note?'<div class="rnote">'+esc(rec.note)+'</div>':'')+
@@ -277,7 +308,7 @@ function recipePlain(rec){
 }
 function openReader(no){
   var r=D.relics.filter(function(x){return x.no===no})[0];if(!r)return;var b=$('#readBox');
-  b.className='ovbox reader relic p-'+r.sk+(r.collection==='kitchen'?' hasrecipe':'');b.style.aspectRatio='auto';b.style.cursor='default';
+  b.className='ovbox reader relic p-'+r.sk+(r.recipe?' hasrecipe':'');b.style.aspectRatio='auto';b.style.cursor='default';
   var xbtn=r.x_url?'<a class="ab sol" href="'+esc(r.x_url)+'" target="_blank" rel="noopener">𝕏 Read Original on X ↗</a>':'';
   b.innerHTML='<div class="wx"></div><button class="x" aria-label="Close">✕</button>'+(r.sk==='switchtag'||r.sk==='emptytag'?'<span class="relgrom grommet"></span>':'')+
    (r.sk==='torncard'?'<span class="tear" aria-hidden="true"></span><span class="tape" aria-hidden="true"></span>':'')+
@@ -286,7 +317,7 @@ function openReader(no){
    '<h3>\u201C'+esc(r.title)+'\u201D</h3><span class="src">'+esc(r.sub)+'</span>'+
    '<div class="body">'+r.paras.map(function(p){return '<p>'+emph(p)+'</p>'}).join('')+'</div>'+
    recipeBlock(r)+
-   '<div class="prov"><b>PROVENANCE</b><br>'+esc(r.src)+' — '+esc(r.where)+' · '+r.words+' words, verbatim<br><b>PAPER STOCK</b><br>'+esc(r.paper)+'<br><b>EDITION</b><br>One of one. Pure literary'+(r.collection==='kitchen'?' / recipe':'')+(r.collection==='press'||r.collection==='mrpete_press'?' / press':'')+' collectible: the typeset passage is the card face.</div>'+
+   '<div class="prov"><b>PROVENANCE</b><br>'+esc(r.src)+' — '+esc(r.where)+' · '+r.words+' words, verbatim<br><b>PAPER STOCK</b><br>'+esc(r.paper)+'<br><b>EDITION</b><br>One of one. Pure literary'+(r.recipe?' / recipe':'')+(isArticle(r)?' / press':'')+' collectible: the typeset passage is the card face.</div>'+
    '<div class="rtools"><button class="ab ambbtn">'+(amb&&amb.on?'🔊 Sky Ambience: ON':'🔈 Sky Ambience: OFF')+'</button><span class="ab" style="cursor:default">Mood: <span class="skynow"></span></span>'+xbtn+'</div>';
   $('#readOv').classList.add('show');document.body.style.overflow='hidden';$('.x',b).onclick=closeAll;
   var cb=$('#copyRec');if(cb&&r.recipe){cb.onclick=function(){var txt=recipePlain(r.recipe);
