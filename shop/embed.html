@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>X-Comix Card &amp; Merch Shop · Series 1 Living Holo Cards | X-COMIX Arcade</title>
+<meta name="theme-color" content="#0b0a18">
+<meta name="description" content="A 2000s comic-and-card shop at 3 AM: 29 flippable Series 1 Universe Showrunners holo cards (Genesis 000 live on Solana), 8 Words Win 1-of-1 manuscript relics, gold motion cards, a free daily pack counter and print-on-demand gear (coming soon). Every card shares one live Creator's Sky.">
+<meta name="twitter:site" content="@mrpetecastic">
+<meta name="twitter:card" content="player">
+<meta name="twitter:title" content="X-Comix Card &amp; Merch Shop · Series 1 Living Holo Cards">
+<meta name="twitter:description" content="29 flippable Series 1 holo cards, 8 Words Win manuscript relics, gold motion cards and a free daily pack. Every card shares one live Creator&#39;s Sky.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/shop.jpg">
+<meta name="twitter:image:alt" content="The X-Comix Card and Merch Shop: holographic Series 1 trading cards on a neon shelf under a shared living sky">
+<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/shop/embed.html">
+<meta name="twitter:player:width" content="480"><meta name="twitter:player:height" content="480">
+<meta property="og:type" content="website"><meta property="og:url" content="https://petecastic.github.io/xcomix-memory/shop/">
+<meta property="og:title" content="X-Comix Card &amp; Merch Shop">
+<meta property="og:description" content="29 flippable Series 1 holo cards, 8 Words Win manuscript relics, gold motion cards and a free daily pack. One shared Creator&#39;s Sky.">
+<meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/shop.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="675">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../arcade/dkorn-vip.css">
+<link rel="stylesheet" href="shop.css">
+</head><body class="embed" data-wx="night">
+<canvas id="sky" aria-hidden="true"></canvas><div class="flash" id="flash" aria-hidden="true"></div>
+<div class="wrap">
+ <header class="top">
+  <a class="home" href="../">◀ X-COMIX ARCADE</a>
+  <div class="logo"><h1>X-COMIX <span>CARD &amp; MERCH</span> SHOP</h1><div class="sub">SERIES 1 · UNIVERSE SHOWRUNNERS · OPEN ALL NIGHT · 3 AM VALLEY</div></div>
+  <div class="tbtns"><button class="pill gold" id="vipBtn">🎟️ VIP Pass (Read-Only Check)</button><span id="lockBadge"></span><a class="pill cy" href="../vault-clock/">⏳ 2126 Clock</a><a class="pill pink" href="../binder/">📒 Card Binder</a></div>
+ </header>
+
+ <section class="skybar" id="skybar" aria-label="Creator's Sky">
+  <div class="skyread">
+   <div class="loc">Creator's Sky — wherever Pete is today <em id="wxSrc">CHECKING…</em></div>
+   <div class="now"><b id="wxCond">Reading the sky…</b><span id="wxTemp">--s °F</span><span id="wxUpd">updated --</span></div>
+  </div>
+  <div class="modes" id="modes" role="tablist" aria-label="Sky preview">
+   <button data-m="live" class="on">📡 Creator's Sky</button><button data-m="rain">🌧️ Rain</button><button data-m="snow">❄️ Snow</button><button data-m="storm">⚡ Storm</button><button data-m="day">☀️ Clear Day</button><button data-m="night">🌙 Night Shift</button>
+  </div>
+  <div class="skynote">One shared sky for every visitor and every living card, set once a day by the creator. No location prompts, no tracking, no weather lookups from your device.</div>
+ </section>
+
+ <section class="hero">
+  <div class="sign"><span class="neon">OPEN</span><span class="neon2">COMICS · CARDS · RELICS</span></div>
+  <p>Walk in, flip anything. 29 Series 1 holo cards, 8 one-of-one manuscript relics, gold motion cards and the free pack counter. Nothing here costs a cent today.</p>
+  <nav class="jump"><a href="#s1">🃏 Series 1</a><a href="#s2">📜 Words Win</a><a href="#s3">🎞️ Motion</a><a href="#s4">🎁 Free Pack &amp; Gear</a></nav>
+ </section>
+
+ <section class="shelf" id="s1">
+  <h2><span class="tag">SHELF 1</span> SERIES 1 · UNIVERSE SHOWRUNNERS <small>29 LIVING HOLO CARDS · 000–028 · TILT, TAP TO FLIP</small></h2>
+  <div class="filters"><div class="fpills" id="fpills"></div><input id="q" type="search" placeholder="Search name, show, quote…" autocomplete="off" aria-label="Search cards"></div>
+  <div class="cards" id="cards"></div>
+  <a class="openfull pill gold" href="./" target="_blank" rel="noopener">Open the full Card &amp; Merch Shop ↗</a>
+  <div class="empty" id="empty" hidden>No cards on this shelf match. Try another pill.</div>
+ </section>
+
+ <section class="shelf" id="s2">
+  <h2><span class="tag">SHELF 2</span> “WORDS WIN” · 1-OF-1 MANUSCRIPT RELICS <small>8 STORY RELICS · THE TYPE IS THE ART · TAP TO READ</small></h2>
+  <div class="relics" id="relics"></div>
+ </section>
+
+ <section class="shelf" id="s3">
+  <h2><span class="tag">SHELF 3</span> MOTION HEIST &amp; BROADCAST CARDS <small>1-OF-1 GOLD HOLO VIDEO FRAMES · ALREADY-AIRED CUTS · TAP FOR THEATER</small></h2>
+  <div class="motion" id="motion"></div>
+ </section>
+
+ <section class="shelf" id="s4">
+  <h2><span class="tag">SHELF 4</span> THE COUNTER <small>FREE DAILY PACK · PHYSICAL GEAR</small></h2>
+  <div class="counters">
+   <a class="counter free" href="../binder/">
+    <div class="ctag">COUNTER 1 · $0 FOREVER</div>
+    <div class="packart" aria-hidden="true"><span class="pk p1"></span><span class="pk p2"></span><span class="pk p3"></span></div>
+    <h3>Rip Your Free Daily 5-Card Foil Pack</h3>
+    <p>100% Free Forever, Zero Lootboxes. One pack a day in the Multiverse Card Binder, saved in your own browser.</p>
+    <div class="cstats"><span><b>155</b> CARDS IN THE BINDER</span><span><b>5</b> CARDS A DAY</span><span><b>$0</b> ALWAYS</span></div>
+    <div class="crow"><span class="vipchip">🎟️ VIP Pass skins inside</span><span class="go">OPEN THE BINDER ▶</span></div>
+   </a>
+   <div class="counter gear">
+    <div class="ctag soon">PHYSICAL PRINT-ON-DEMAND GEAR &amp; FOIL PACKS · COMING SOON</div>
+    <div class="merch">
+     <figure><img src="assets/merch/shirt.jpg" alt="X-Comix tee mockup" loading="lazy" width="640" height="640"><figcaption>X-Comix Tee</figcaption></figure>
+     <figure><img src="assets/merch/mug.jpg" alt="X-Comix mug mockup" loading="lazy" width="640" height="640"><figcaption>3 AM Mug</figcaption></figure>
+     <figure class="foilfig"><div class="foilpack" aria-hidden="true"><b>X-COMIX</b><i>SERIES 1</i><small>5 FOIL CARDS</small></div><figcaption>Foil Collector Pack</figcaption></figure>
+    </div>
+    <p>Print-on-demand shirts, mugs and sealed physical foil packs are on the drawing table. No preorders, no payments taken here.</p>
+   </div>
+  </div>
+ </section>
+
+ <footer class="foot">
+  <p class="notice">X-Comix Digital &amp; Physical Collectibles by Petecastic Productions LLC. Pure comic art, animation &amp; literary collectibles — zero investment, yield, or profit promises. Free mystery packs are always $0.</p>
+  <p class="links"><a href="../">← X-COMIX Arcade</a> · <a href="../binder/">Card Binder</a> · <a href="../vault-clock/">2126 Clock</a> · <a href="https://x.com/PeteCastic" target="_blank" rel="noopener">𝕏 PeteCastic</a></p>
+  <p class="legal">Dkorn™ · © 2026 Petecastic Productions LLC · Fan arcade &amp; comic collectible fun, not financial advice</p>
+ </footer>
+</div>
+
+<div class="ovl" id="insOv" role="dialog" aria-modal="true" aria-label="Living Card Inspector"><div class="ovbox ins" id="insBox"></div></div>
+<div class="ovl" id="readOv" role="dialog" aria-modal="true" aria-label="Archival Reader"><div class="ovbox reader" id="readBox"></div></div>
+<div class="ovl" id="thOv" role="dialog" aria-modal="true" aria-label="Motion Theater"><div class="ovbox theater" id="thBox"></div></div>
+
+<script src="../arcade/dkorn-vip.js"></script>
+<script src="data.js"></script>
+<script src="shop.js"></script>
+</body></html>
