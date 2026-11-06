@@ -1,9 +1,9 @@
-/* Sub-Station 13 · 2066 Time-Capsule Clock & Lockup High Scores.
+/* Sub-Station 13 · 2126 Century Time-Capsule Clock & Lockup High Scores.
    Read-only: reads public Jupiter Lock escrow accounts via Solana RPC. Never signs, never builds transactions. */
 (function(){
 'use strict';
 var MINT='A1gRAicaLnYRmKQwRbQCaEEp6iYfu5q5X5gTFAPBeVk',PROGRAM='LocpQgucEQHbqNABEYvBvwoxCPsSbG91A1QaQhQQqjn';
-var DISC=[244,119,183,4,73,116,135,195],YEAR=31536000,MASTER_FALLBACK=3055372413; /* 2066-10-27T02:33:33Z */
+var DISC=[244,119,183,4,73,116,135,195],YEAR=31536000,MASTER_FALLBACK=4949607960; /* 2126-11-06T03:06:00Z */
 var RPCS=['https://solana-rpc.publicnode.com','https://public.rpc.solanavibestation.com'];
 var SITE='https://petecastic.github.io/xcomix-memory/vault-clock/';
 var EMBED=document.body.classList.contains('embed');
@@ -40,9 +40,12 @@ function nextUnlock(L,now){if(!(L.numberOfPeriod>0)||!L.frequency)return L.cliff
 function years(L,now){return Math.max(0,(L.finalUnlock-now)/YEAR)}
 function score(L,now){var y=years(L,now);return Math.round(Math.sqrt(L.remainingLocked)*100*(1+Math.pow(y,1.35))*(L.cancelMode===0?2:1))}
 function tier(L,now){var yr=new Date(L.finalUnlock*1000).getUTCFullYear(),y=years(L,now);
-  if(yr>=2066)return['⚡ 2066 CIRCUIT IMMORTAL','t6'];if(yr>=2056)return['👑 2056 SUB-STATION LEGEND','t5'];if(yr>=2046)return['🛡️ 2046 IRON SPOOL KEEPER','t4'];
+  if(yr>=2120||y>=90)return['🪐 2126 CENTURY TIME-LORD','t7'];if(yr>=2066)return['⚡ 2066 CIRCUIT IMMORTAL','t6'];if(yr>=2056)return['👑 2056 SUB-STATION LEGEND','t5'];if(yr>=2046)return['🛡️ 2046 IRON SPOOL KEEPER','t4'];
   if(yr>=2036)return['📚 10-BOOK SAGA GUARDIAN','t3'];if(y>=1)return['🔧 DROP-LINE APPRENTICE','t2'];return['🕹️ QUARTER IN THE SLOT','t1']}
-function parts(sec){sec=Math.max(0,Math.floor(sec));var y=Math.floor(sec/YEAR);sec-=y*YEAR;var d=Math.floor(sec/86400);sec-=d*86400;var h=Math.floor(sec/3600);sec-=h*3600;var m=Math.floor(sec/60);return[y,d,h,m,sec-m*60]}
+/* calendar-true YY: whole UTC calendar years first, then days/hours/minutes/seconds */
+function addY(t,y){var d=new Date(t*1000);d.setUTCFullYear(d.getUTCFullYear()+y);return d.getTime()/1000}
+function parts(sec){sec=Math.max(0,Math.floor(sec));var t0=Math.floor(now()),T=t0+sec,y=Math.floor(sec/31557600);
+  while(y>0&&addY(t0,y)>T)y--;while(addY(t0,y+1)<=T)y++;sec=T-addY(t0,y);var d=Math.floor(sec/86400);sec-=d*86400;var h=Math.floor(sec/3600);sec-=h*3600;var m=Math.floor(sec/60);return[y,d,h,m,sec-m*60]}
 function clockStr(sec){var p=parts(sec);return pad(p[0],2)+':'+pad(p[1],3)+':'+pad(p[2],2)+':'+pad(p[3],2)+':'+pad(p[4],2)}
 function utc(t){return new Date(t*1000).toISOString().replace('T',' ').slice(0,16)+' UTC'}
 function now(){return Date.now()/1000}
@@ -77,6 +80,7 @@ function renderBoard(){
   var tot=0;seed.forEach(function(L){if(L.label==='DKORN CREATOR')tot+=L.remainingLocked});
   if($('tLocked'))$('tLocked').textContent=fmt(tot,2);
   if($('tCount'))$('tCount').textContent=list.length;
+  if($('tVaults'))$('tVaults').textContent=seed.filter(function(L){return L.label==='DKORN CREATOR'}).length;
 }
 function tick(){var t=now(),T=masterTarget(),p=parts(T-t),ids=['cY','cD','cH','cM','cS'],w=[2,3,2,2,2];
   for(var i=0;i<5;i++){var e=$(ids[i]);if(e)e.textContent=pad(p[i],w[i])}
@@ -103,7 +107,7 @@ function keyFrom(s){var m=String(s||'').match(/[1-9A-HJ-NP-Za-km-z]{32,44}/g);re
 function msg(cls,t){var m=$('vMsg');m.className='msg '+cls;m.innerHTML=t}
 function shareURL(L){return SITE+'?lock='+L.escrow+'&tag='+encodeURIComponent(ini(L.tag))}
 function intent(L){var t=now(),tr=tier(L,t);
-  var text='My $DKORN Time-Capsule scored '+fmt(score(L,t))+' CAPSULE PTS on the Sub-Station 13 2066 Clock! '+tr[0]+' · unlocks in '+clockStr(L.finalUnlock-t)+' (YY:DDD:HH:MM:SS). Arcade bragging rights only @PeteCastic '+shareURL(L)+' See you in another timeline.';
+  var text='My $DKORN Time-Capsule scored '+fmt(score(L,t))+' CAPSULE PTS on the Sub-Station 13 2126 Century Clock! '+tr[0]+' · unlocks in '+clockStr(L.finalUnlock-t)+' (YY:DDD:HH:MM:SS). Arcade bragging rights only @PeteCastic '+shareURL(L)+' See you in another timeline.';
   return 'https://x.com/intent/post?text='+encodeURIComponent(text)}
 function showResult(L){var t=now(),tr=tier(L,t);
   $('vResult').innerHTML='<div class="crt"><div class="clab">CAPSULE '+esc(ini(L.tag))+' · '+short(L.escrow)+'</div>'+

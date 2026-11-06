@@ -16,7 +16,7 @@ h1{margin:4px 0 2px;text-align:center;font:900 34px/1 Impact,"Arial Black",sans-
 .clab{text-align:center;font:bold 12px "Courier New",monospace;color:#7dff8a;letter-spacing:2px}
 .master{display:flex;justify-content:center;align-items:flex-end;gap:4px;margin:8px 0 2px;font-family:"Courier New",monospace;font-weight:900}
 .master .u{display:flex;flex-direction:column;align-items:center}
-.master .d{font-size:clamp(30px,8.5vw,84px);line-height:1;color:#39ff9c;text-shadow:0 0 6px #39ff9c,0 0 22px #39ff9caa;letter-spacing:2px;font-variant-numeric:tabular-nums}
+.master .d{font-size:clamp(28px,8vw,80px);line-height:1;color:#39ff9c;text-shadow:0 0 6px #39ff9c,0 0 22px #39ff9caa;letter-spacing:2px;font-variant-numeric:tabular-nums}
 .master .c{font-size:clamp(26px,7vw,70px);color:#39ff9c88;line-height:1.05;padding-bottom:16px}
 .master .l{font-size:10px;color:#7dff8a;letter-spacing:2px;margin-top:2px}
 .target{text-align:center;font:bold 12px "Courier New",monospace;color:#ffd400;margin-top:6px}
@@ -38,6 +38,7 @@ h2{font:900 22px Impact,sans-serif;color:#ffd400;-webkit-text-stroke:1px #000;te
 .info b{color:#fff;font-family:Tahoma,sans-serif;font-size:13px}.info small{display:block;color:#9fb3d9;font-size:11px}
 .badge{display:inline-block;margin-top:3px;padding:1px 7px;border-radius:9px;font:900 11px Impact,sans-serif;letter-spacing:.5px;background:#26304f;color:#cfe}
 .badge.t6{background:linear-gradient(90deg,#ffd400,#2ee6ff,#ffd400);background-size:200% 100%;animation:sh 3s linear infinite;color:#000}
+.badge.t7{background:linear-gradient(115deg,#5b2bff,#c77dff 25%,#ffd700 50%,#c77dff 75%,#5b2bff);background-size:300% 100%;animation:sh 4s linear infinite;color:#fff;text-shadow:0 0 4px #2a0060,0 1px 0 #000;box-shadow:0 0 10px #b26bffcc,0 0 18px #ffd70066}
 .badge.t5{background:#7b2ff7;color:#fff}.badge.t4{background:#c0c0c0;color:#000}.badge.t3{background:#2ee6ff;color:#000}.badge.t2{background:#ff9a3c;color:#000}
 @keyframes sh{to{background-position:200% 0}}
 .mini{font:bold 15px "Courier New",monospace;color:#39ff9c;font-variant-numeric:tabular-nums;white-space:nowrap}.mini small{display:block;font-size:10px;color:#9fb3d9;white-space:normal}

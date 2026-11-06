@@ -5,6 +5,15 @@ const RPC = process.env.SOLANA_RPC || 'https://api.mainnet-beta.solana.com';
 const PROGRAM = 'LocpQgucEQHbqNABEYvBvwoxCPsSbG91A1QaQhQQqjn';
 const MINT = 'A1gRAicaLnYRmKQwRbQCaEEp6iYfu5q5X5gTFAPBeVk';
 const DISC = [244, 119, 183, 4, 73, 116, 135, 195];
+const CREATOR = '631dUrPhrXGXJJ38BQGubuCuj5s18HnpxssH8c1D8Q8C';
+// Creator vault metadata (titles + funding tx). New locks from the creator wallet are tagged PET automatically.
+const META = {
+  ubsQ1M34RdLFwDgydiRRTctpvYKeYCF76weWk7QfUVa: { name: 'Vault 1 · 10-Year Book Saga Lock', tx: 'euRKuzJnTVxaPU4SYRViW4WAb5oiiV4LcvKcJJyMuhu1bce281FeH2AoLNaXhMBtfjN3k9DPZjFY99gtqNKP2S9' },
+  '7G65aFzB7eK31GTuhieZArHXmw8PNf8HrSfEZE91D3RL': { name: 'Vault 2 · 20-Year Legacy Vault', tx: 'Q3VfaVxRFhaRh7EQ8iPKxRE6uZbu3ghiSBEeX5Qkf5pBrxGfuuhuwyizz1RZ4EP3iUScVRKPabgbUB5Vc3PUgXj' },
+  '9Y7mbo36s8KXEE5sfZriHbAcye54364GBwAZTn3Y31bh': { name: 'Vault 3 · 30-Year Legacy Vault', tx: 'vicLMyHd43Bek9p2Dp7WuFFfXMjndUEZMRGE5p6g6Wtg8EgcrGQtxzwDpCw23mjeQdLDQdj6JLdFr8HPomS357x' },
+  '5UF9En4LtRkGSeDFVdMWjGDnjaHhGKYh5jpUSWRs8Aiv': { name: 'Vault 4 · 40-Year Legacy Vault', tx: '5g3xySboWTTGEi472ZhJGroer66ukwhjDqKJNRBV8fFjoWv1rxcWDvxqV5dh4GrQDrZjP8wEYw9XhrT6s1GKHwLg' },
+  C1UmdjhMgoBL7No8CvbinBuUckjWiBXHMp5qG5ZvaZqr: { name: 'Vault 5 · 100-Year Century Vault (2126)', tx: '62YNTcME12edRbg1WVCRaU7Y1HSuMYkESX7doYp54Tv83LscshmY45Zfnxsc9HNzLurnTaM2NbBeLrYG3fbAqJye' }
+};
 const FILE = new URL('../vault-clock/locks.json', import.meta.url);
 const B58 = '123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';
 function b58(bytes) { let n = 0n; for (const b of bytes) n = n * 256n + BigInt(b); let s = ''; while (n > 0n) { s = B58[Number(n % 58n)] + s; n /= 58n; } for (const b of bytes) { if (b) break; s = '1' + s; } return s; }
@@ -32,7 +41,13 @@ const found = j.result.map(a => parse(a.pubkey, a.account.data[0])).filter(Boole
 const cur = JSON.parse(fs.readFileSync(FILE, 'utf8'));
 const byEsc = Object.fromEntries(cur.locks.map(l => [l.escrow, l]));
 let added = 0;
-const locks = found.map(f => { const old = byEsc[f.escrow]; if (!old) added++; return { ...(old || { name: 'Fan Time-Capsule', tag: 'FAN', label: 'COMMUNITY CAPSULE' }), ...f }; });
+const locks = found.map(f => {
+  const old = byEsc[f.escrow]; if (!old) added++;
+  const creator = f.creator === CREATOR && f.recipient === CREATOR;
+  const base = old || (creator ? { name: 'Creator Time-Capsule', tag: 'PET', label: 'DKORN CREATOR' } : { name: 'Fan Time-Capsule', tag: 'FAN', label: 'COMMUNITY CAPSULE' });
+  const meta = META[f.escrow] ? { ...META[f.escrow], tag: 'PET', label: 'DKORN CREATOR', pinned: true } : {};
+  return { ...base, ...meta, ...f };
+});
 for (const l of cur.locks) if (!locks.find(x => x.escrow === l.escrow) && l.pinned) locks.push(l);
 locks.sort((a, b) => b.finalUnlock - a.finalUnlock || b.remainingLocked - a.remainingLocked);
 const out = { ...cur, locks };

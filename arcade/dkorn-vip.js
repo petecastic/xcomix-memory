@@ -10,14 +10,15 @@ var ESCROW_VAULT='9RGmTA3PVTAwWvzQZaCbfs4zJQ5qzJyDtm7XFTdfu7PR';
 var LOCK_PROGRAM='LocpQgucEQHbqNABEYvBvwoxCPsSbG91A1QaQhQQqjn';
 var LOCK_TX='euRKuzJnTVxaPU4SYRViW4WAb5oiiV4LcvKcJJyMuhu1bce281FeH2AoLNaXhMBtfjN3k9DPZjFY99gtqNKP2S9';
 var LOCK_URL='https://lock.jup.ag/escrow/'+ESCROW;
-/* All four finalized, non-cancelable Jupiter Locks (LOCK_RECEIPT.md). Facts only. */
+/* All five finalized, non-cancelable Jupiter Locks (LOCK_RECEIPT.md). Facts only. */
 var LOCKS=[
  {n:'Vault 1 · 10-Year Book Saga Lock',when:'2027–2036 · 2.6M per year, Books 1–10',amt:26000000,esc:ESCROW,tx:LOCK_TX},
  {n:'Vault 2 · 20-Year Legacy Vault',when:'Unlocks 2046',amt:18925456.434061,esc:'7G65aFzB7eK31GTuhieZArHXmw8PNf8HrSfEZE91D3RL',tx:'Q3VfaVxRFhaRh7EQ8iPKxRE6uZbu3ghiSBEeX5Qkf5pBrxGfuuhuwyizz1RZ4EP3iUScVRKPabgbUB5Vc3PUgXj'},
  {n:'Vault 3 · 30-Year Legacy Vault',when:'Unlocks 2056',amt:18925456.434061,esc:'9Y7mbo36s8KXEE5sfZriHbAcye54364GBwAZTn3Y31bh',tx:'vicLMyHd43Bek9p2Dp7WuFFfXMjndUEZMRGE5p6g6Wtg8EgcrGQtxzwDpCw23mjeQdLDQdj6JLdFr8HPomS357x'},
- {n:'Vault 4 · 40-Year Legacy Vault',when:'Unlocks 2066',amt:18925456.434062,esc:'5UF9En4LtRkGSeDFVdMWjGDnjaHhGKYh5jpUSWRs8Aiv',tx:'5g3xySboWTTGEi472ZhJGroer66ukwhjDqKJNRBV8fFjoWv1rxcWDvxqV5dh4GrQDrZjP8wEYw9XhrT6s1GKHwLg'}
+ {n:'Vault 4 · 40-Year Legacy Vault',when:'Unlocks 2066',amt:18925456.434062,esc:'5UF9En4LtRkGSeDFVdMWjGDnjaHhGKYh5jpUSWRs8Aiv',tx:'5g3xySboWTTGEi472ZhJGroer66ukwhjDqKJNRBV8fFjoWv1rxcWDvxqV5dh4GrQDrZjP8wEYw9XhrT6s1GKHwLg'},
+ {n:'Vault 5 · 100-Year Century Vault (2126)',when:'Unlocks Nov 5, 2126',amt:420069,esc:'C1UmdjhMgoBL7No8CvbinBuUckjWiBXHMp5qG5ZvaZqr',tx:'62YNTcME12edRbg1WVCRaU7Y1HSuMYkESX7doYp54Tv83LscshmY45Zfnxsc9HNzLurnTaM2NbBeLrYG3fbAqJye'}
 ];
-var LOCK_TOTAL='82,776,369.30';
+var LOCK_TOTAL='83,196,438.30',LOCK_THRU='2126';
 var SERIAL='A1gR-APBeVk';
 /* Public mainnet RPCs, tried in order. api.mainnet-beta.solana.com currently answers 403 to browser origins, so CORS-friendly public mirrors go first. */
 var RPCS=['https://solana-rpc.publicnode.com','https://public.rpc.solanavibestation.com','https://api.mainnet-beta.solana.com'];
@@ -122,12 +123,12 @@ function connectPhantom(){
   },function(){msg('Connection cancelled. Nothing was shared.','warn')});
 }
 function lockHTML(){
-  var st=proof?(proof.ok?'<b class="dkv-led on"></b>ON-CHAIN ESCROW VERIFIED · 4/4 vaults'+(proof.vault!=null?' · '+fmt(proof.vault)+' DKORN held':''):'<b class="dkv-led '+(proof.n?'wait':'off')+'"></b>'+(proof.n?proof.n+'/4 vaults verified live':'Live check unavailable (public RPC busy)')):'<b class="dkv-led wait"></b>Checking Solana mainnet…';
+  var st=proof?(proof.ok?'<b class="dkv-led on"></b>ON-CHAIN ESCROW VERIFIED · '+LOCKS.length+'/'+LOCKS.length+' vaults'+(proof.vault!=null?' · '+fmt(proof.vault)+' DKORN held':''):'<b class="dkv-led '+(proof.n?'wait':'off')+'"></b>'+(proof.n?proof.n+'/'+LOCKS.length+' vaults verified live':'Live check unavailable (public RPC busy)')):'<b class="dkv-led wait"></b>Checking Solana mainnet…';
   var rows=LOCKS.map(function(L,i){var e=proof&&proof.each&&proof.each[i];return '<li><b class="dkv-led '+(e?(e.ok?'on':'off'):'wait')+'"></b><b>'+L.n+'</b><br><span>'+fmt(L.amt)+' DKORN · '+L.when+'</span><br><code>'+short(L.esc)+'</code> · <a href="https://lock.jup.ag/escrow/'+L.esc+'" target="_blank" rel="noopener">Jupiter Lock ↗</a> · <a href="https://solscan.io/tx/'+L.tx+'" target="_blank" rel="noopener">Tx ↗</a></li>'}).join('');
-  return '<div class="dkv-lock"><div class="dkv-lt">🔒 Real Anti-Rug Proof: '+LOCK_TOTAL+' DKORN Locked in 4 Non-Cancelable Vaults (through 2066)</div>'+
+  return '<div class="dkv-lock"><div class="dkv-lt">🔒 Real Anti-Rug Proof: '+LOCK_TOTAL+' DKORN Locked in '+LOCKS.length+' Non-Cancelable Vaults (through '+LOCK_THRU+')</div>'+
    '<div class="dkv-ls">'+st+'</div><ul class="dkv-vaults">'+rows+'</ul>'+
    '<div class="dkv-lx">Jupiter Lock V2 · cancel and recipient-change permissions set to none. Comic-saga lore proof only.</div>'+
-   '<a class="dkv-b" style="display:inline-block;margin-top:8px;text-decoration:none" href="'+CLOCK_URL+'">⏳ Open the 2066 Time-Capsule Clock</a></div>';
+   '<a class="dkv-b" style="display:inline-block;margin-top:8px;text-decoration:none" href="'+CLOCK_URL+'">⏳ Open the 2126 Century Time-Capsule Clock</a></div>';
 }
 function render(){
   if(!drawer)return;var s=get();
@@ -165,7 +166,7 @@ function open(){
 function close(){if(drawer)drawer.classList.remove('show')}
 function badge(el){
   if(!el)return;
-  var paint=function(){el.innerHTML='<a class="dkv-badge'+(proof&&proof.ok?' ok':'')+'" href="'+CLOCK_URL+'" title="Real Anti-Rug Proof: '+LOCK_TOTAL+' DKORN locked in 4 non-cancelable Jupiter Lock vaults through 2066"><b class="dkv-led '+(proof?(proof.ok?'on':'off'):'wait')+'"></b>Anti-Rug Saga Lock Proof<small>'+(proof&&proof.ok?'4/4 ESCROWS VERIFIED':'4 vaults · 82.78M DKORN · to 2066')+'</small></a>';};
+  var paint=function(){el.innerHTML='<a class="dkv-badge'+(proof&&proof.ok?' ok':'')+'" href="'+CLOCK_URL+'" title="Real Anti-Rug Proof: '+LOCK_TOTAL+' DKORN locked in '+LOCKS.length+' non-cancelable Jupiter Lock vaults through '+LOCK_THRU+'"><b class="dkv-led '+(proof?(proof.ok?'on':'off'):'wait')+'"></b>Anti-Rug Saga Lock Proof<small>'+(proof&&proof.ok?LOCKS.length+'/'+LOCKS.length+' ESCROWS VERIFIED':LOCKS.length+' vaults · 83.20M DKORN · to '+LOCK_THRU)+'</small></a>';};
   paint();checkLock().then(paint);
 }
 window.DKVIP={open:open,close:close,badge:badge,status:get,isVip:function(){var s=get();return !!(s&&s.verified)},onChange:function(f){subs.push(f)},checkLock:checkLock,LOCKS:LOCKS,capsule:capsule,CLOCK_URL:CLOCK_URL,rpc:rpc,refresh:emit,
