@@ -4,7 +4,11 @@
 (function(){
 'use strict';
 var MINT='A1gRAicaLnYRmKQwRbQCaEEp6iYfu5q5X5gTFAPBeVk';
+var FOUNDER='2gMmnUrxeRkZLA47NyKSGBs1aPFVSfEWruwyTKo7UUyH';
+var UFD='eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump';
 var T22='TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb';
+var TOKENKEG='TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
+var SALUTE='Independent community crossover salute by Petecastic Productions LLC for $UFD (eL5fUx…pump) holders — not affiliated with, sponsored, or endorsed by UFD Holdings LLC or @BasementRon. Free comic & art perks only; zero financial or price promises.';
 var ESCROW='ubsQ1M34RdLFwDgydiRRTctpvYKeYCF76weWk7QfUVa';
 var ESCROW_VAULT='9RGmTA3PVTAwWvzQZaCbfs4zJQ5qzJyDtm7XFTdfu7PR';
 var LOCK_PROGRAM='LocpQgucEQHbqNABEYvBvwoxCPsSbG91A1QaQhQQqjn';
@@ -20,10 +24,13 @@ var LOCKS=[
 ];
 var LOCK_TOTAL='83,196,438.30',LOCK_THRU='2126';
 var SERIAL='A1gR-APBeVk';
-/* Public mainnet RPCs, tried in order. api.mainnet-beta.solana.com currently answers 403 to browser origins, so CORS-friendly public mirrors go first. */
-var RPCS=['https://solana-rpc.publicnode.com','https://public.rpc.solanavibestation.com','https://api.mainnet-beta.solana.com'];
-/* publicnode refuses indexed queries (token accounts by owner) without a key, so those start at the next mirror */
+/* Public mainnet RPCs. Solana Vibe Station is primary: mint-filtered getTokenAccountsByOwner
+   returns HTTP 200 with Access-Control-Allow-Origin: *. publicnode and api.mainnet-beta.solana.com
+   return HTTP 403 on anonymous indexed getTokenAccountsByOwner, so those hosts are skipped for indexed calls.
+   Non-indexed reads (getAccountInfo / getMultipleAccounts) may still try every host. */
+var RPCS=['https://public.rpc.solanavibestation.com','https://solana-rpc.publicnode.com','https://api.mainnet-beta.solana.com'];
 var INDEXED={getTokenAccountsByOwner:1,getProgramAccounts:1};
+var INDEX_BLOCK={'https://solana-rpc.publicnode.com':1,'https://api.mainnet-beta.solana.com':1};
 var BASE=(function(){try{var sc=document.currentScript&&document.currentScript.src;return sc?sc.replace(/arcade\/dkorn-vip\.js.*$/,''):''}catch(e){return ''}})();
 var CLOCK_URL=BASE+'vault-clock/';
 var ATA_PROGRAM='ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL';
@@ -40,9 +47,9 @@ function withTimeout(p,ms){return new Promise(function(res,rej){var t=setTimeout
 var BAD={};
 function rpc(method,params){
   var body=JSON.stringify({jsonrpc:'2.0',id:1,method:method,params:params});
-  var i=INDEXED[method]?1:0;
+  var i=0;
   function attempt(){
-    while(i<RPCS.length&&BAD[RPCS[i]+'|'+method])i++;
+    while(i<RPCS.length&&(BAD[RPCS[i]+'|'+method]||(INDEXED[method]&&INDEX_BLOCK[RPCS[i]])))i++;
     if(i>=RPCS.length){BAD={};return Promise.reject(new Error('All public RPC endpoints are busy right now (rate-limited). Try again in a minute.'))}
     var url=RPCS[i++];
     return withTimeout(fetch(url,{method:'POST',headers:{'content-type':'application/json'},body:body}),9000)
@@ -52,20 +59,27 @@ function rpc(method,params){
   }
   return attempt();
 }
-function dkornBalance(owner){
-  return byIndex(owner).catch(function(){
-    return ataFor(owner).then(function(ata){return rpc('getAccountInfo',[ata,{encoding:'jsonParsed'}])}).then(function(r){
+function dkornBalance(owner){return tokenBalance(owner,MINT,T22)}
+function tokenBalance(owner,mint,programId){
+  return byMint(owner,mint,programId).catch(function(){
+    return ataForProgram(owner,mint,programId).then(function(ata){return rpc('getAccountInfo',[ata,{encoding:'jsonParsed',commitment:'confirmed'}])}).then(function(r){
       var v=r&&r.value,inf=v&&v.data&&v.data.parsed&&v.data.parsed.info;
-      if(!v)return 0;if(!inf||inf.mint!==MINT||inf.owner!==owner)return 0;return Number(inf.tokenAmount.uiAmountString||0)});
+      if(!v)return 0;if(!inf||inf.mint!==mint||inf.owner!==owner)return 0;
+      if(programId&&v.owner&&v.owner!==programId)return 0;
+      return Number(inf.tokenAmount.uiAmountString||0)});
   });
 }
-function byIndex(owner){
-  return rpc('getTokenAccountsByOwner',[owner,{mint:MINT},{encoding:'jsonParsed'}]).then(function(res){
+function byMint(owner,mint,programId){
+  return rpc('getTokenAccountsByOwner',[owner,{mint:mint},{encoding:'jsonParsed',commitment:'confirmed'}]).then(function(res){
     var tot=0,list=(res&&res.value)||[];
     for(var k=0;k<list.length;k++){var a=list[k].account,inf=a&&a.data&&a.data.parsed&&a.data.parsed.info;
-      if(inf&&inf.mint===MINT&&a.owner===T22)tot+=Number(inf.tokenAmount.uiAmountString||inf.tokenAmount.uiAmount||0)}
+      if(inf&&inf.mint===mint&&(!programId||a.owner===programId))tot+=Number(inf.tokenAmount.uiAmountString||inf.tokenAmount.uiAmount||0)}
     return tot;
   });
+}
+function holderBalances(owner){
+  return Promise.all([tokenBalance(owner,MINT,T22),tokenBalance(owner,FOUNDER,T22),tokenBalance(owner,UFD,TOKENKEG)])
+    .then(function(r){return {dkorn:r[0],founder:r[1],ufd:r[2]}});
 }
 
 /* ---- base58 + PDA (used only to compute a public token-account address; no keys involved) ---- */
@@ -77,9 +91,10 @@ function onCurve(bytes){var P=(BigInt(1)<<BigInt(255))-BigInt(19);var y=BigInt(0
   var d=(P-BigInt(121665))*mpow(BigInt(121666),P-BigInt(2),P)%P;var y2=y*y%P,u=(y2-BigInt(1)+P)%P,v=(d*y2+BigInt(1))%P;
   var v3=v*v%P*v%P,x=u*v3%P*mpow(u*v3%P*v3%P*v%P,(P-BigInt(5))/BigInt(8),P)%P;var vx2=v*x%P*x%P;
   if(vx2!==u&&vx2!==(P-u)%P)return false;if(vx2!==u)x=x*mpow(BigInt(2),(P-BigInt(1))/BigInt(4),P)%P;if(x===BigInt(0)&&sign===1)return false;return true}
-function ataFor(owner){
+function ataFor(owner){return ataForProgram(owner,MINT,T22)}
+function ataForProgram(owner,mint,programId){
   if(!(window.crypto&&crypto.subtle&&typeof BigInt==='function'))return Promise.reject(new Error('no crypto'));
-  var seeds=[b58dec(owner),b58dec(T22),b58dec(MINT)],prog=b58dec(ATA_PROGRAM),tag=new TextEncoder().encode('ProgramDerivedAddress');
+  var seeds=[b58dec(owner),b58dec(programId),b58dec(mint)],prog=b58dec(ATA_PROGRAM),tag=new TextEncoder().encode('ProgramDerivedAddress');
   function tryBump(bump){if(bump<0)return Promise.reject(new Error('no bump'));
     var buf=new Uint8Array(32*3+1+32+tag.length),o=0;seeds.forEach(function(s){buf.set(s,o);o+=32});buf[o++]=bump;buf.set(prog,o);o+=32;buf.set(tag,o);
     return crypto.subtle.digest('SHA-256',buf).then(function(h){h=new Uint8Array(h);return onCurve(h)?tryBump(bump-1):b58enc(h)})}
@@ -102,15 +117,31 @@ function checkLock(){
 function capsule(){try{return window.XC?XC.get('dkorn-capsule'):JSON.parse(localStorage.getItem('xca-dkorn-capsule'))}catch(e){return null}}
 /* ---------- UI ---------- */
 var drawer=null;
-function save(mode,address,balance){var s={verified:true,mode:mode,address:address||'',balance:balance||0,skin:true,ts:Date.now()};set(s);emit();return s}
+function save(mode,address,balance){
+  var dk=0,fd=0,uf=0;
+  if(balance&&typeof balance==='object'){dk=Number(balance.dkorn)||0;fd=Number(balance.founder)||0;uf=Number(balance.ufd)||0}
+  else dk=Number(balance)||0;
+  var s={verified:true,mode:mode,address:address||'',balance:dk,dkorn:dk,founder:fd,ufd:uf,skin:true,ts:Date.now()};
+  set(s);emit();return s;
+}
+function tierHTML(s){
+  if(!s||!s.verified)return '';
+  if(s.mode==='serial')return '<div class="dkv-pass">🪖 VIP PASS ACTIVE <small>collector serial preview</small></div>';
+  var dk=Number(s.dkorn!=null?s.dkorn:(s.balance||0)),fd=Number(s.founder||0),uf=Number(s.ufd||0);
+  var circuit=dk>0||fd>0,herd=uf>0,head,sub,cls='';
+  if(circuit&&herd){head='⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD';sub='$DKORN '+fmt(dk)+' · Founder #000 '+fmt(fd)+' · $UFD '+fmt(uf);cls=' dual'}
+  else if(herd){head='✨ DUSTER HERD GUEST PASS · '+fmt(uf)+' $UFD';sub=esc(short(s.address))+' · read-only public balance';cls=' herd'}
+  else{head='🪖 VIP PASS ACTIVE';sub=esc(short(s.address))+' · '+fmt(dk)+' $DKORN'+(fd>0?' · Founder #000 '+fmt(fd):'')+' (read-only)';}
+  return '<div class="dkv-pass'+cls+'">'+head+'<small>'+sub+'</small></div>';
+}
 function msg(t,cls){var m=drawer&&drawer.querySelector('.dkv-msg');if(m){m.className='dkv-msg '+(cls||'');m.innerHTML=t}}
 function verifyAddress(addr,mode){
   addr=(addr||'').trim();
   if(!isAddr(addr)){msg('That doesn\'t look like a Solana public address (32–44 letters/numbers).','bad');return}
-  msg('Reading public balance… <span class="dkv-spin"></span>');
-  dkornBalance(addr).then(function(b){
-    if(b>0){save(mode,addr,b);msg('✔ VIP PASS ACCEPTED for '+esc(short(addr))+'. Golden Hard-Hat HUD on. Read-only check — tokens never leave your wallet.','ok');render()}
-    else msg('No $DKORN found at '+esc(short(addr))+'. No problem — every game stays 100% free. Try the collector serial for the cosmetic preview.','warn');
+  msg('Reading public balances ($DKORN, Founder #000, $UFD)… <span class="dkv-spin"></span>');
+  holderBalances(addr).then(function(b){
+    if(b.dkorn>0||b.founder>0||b.ufd>0){save(mode,addr,b);msg('✔ VIP PASS ACCEPTED for '+esc(short(addr))+'. Cosmetic gate only — tokens never leave your wallet.','ok');render()}
+    else msg('No $DKORN, Founder #000, or $UFD found at '+esc(short(addr))+'. No problem — every game stays 100% free. Try the collector serial for the cosmetic preview.','warn');
   },function(e){msg(esc(e.message||e),'bad')});
 }
 function connectPhantom(){
@@ -133,8 +164,8 @@ function lockHTML(){
 function render(){
   if(!drawer)return;var s=get();
   drawer.querySelector('.dkv-state').innerHTML=s&&s.verified?
-   '<div class="dkv-pass">🪖 VIP PASS ACTIVE <small>'+(s.mode==='serial'?'collector serial preview':esc(short(s.address))+' · '+fmt(s.balance)+' DKORN (read-only)')+'</small></div><ul class="dkv-perks"><li>Golden Hard-Hat / Cyan Arc HUD skin</li><li>Secret Boss Wave unlocked</li><li>VIP Quarter Slot badge</li></ul><button class="dkv-b ghost" data-a="off">Remove pass from this browser</button>':
-   '<div class="dkv-pass off">NO PASS INSERTED <small>Everything is free and fully playable without one.</small></div>';
+   tierHTML(s)+'<ul class="dkv-perks"><li>Golden Hard-Hat / Cyan Arc HUD skin</li><li>Secret Boss Wave unlocked</li><li>VIP Quarter Slot badge</li></ul><button class="dkv-b ghost" data-a="off">Remove pass from this browser</button>':
+   '<div class="dkv-pass off">NO PASS INSERTED <small>Everything is free and fully playable without one. $DKORN, Founder #000, or $UFD (Duster Herd Guest Pass) unlocks this gate.</small></div>';
   var cp=capsule();drawer.querySelector('.dkv-state').innerHTML+=(cp&&cp.escrow?'<div class="dkv-pass foil">⏳ 2066 TIME-TRAVELER FOIL BADGE <small>'+esc(cp.tag||'')+' · capsule '+esc(short(cp.escrow))+' · '+fmt(cp.score||0)+' CAPSULE PTS</small></div>':'');
   drawer.querySelector('.dkv-lockwrap').innerHTML=lockHTML();
 }
@@ -142,13 +173,14 @@ function open(){
   if(!drawer){
     drawer=document.createElement('div');drawer.className='dkv-ovl';
     drawer.innerHTML='<div class="dkv-box" role="dialog" aria-label="VIP Pass"><div class="dkv-tb"><span>🎟️ Insert VIP Pass (Read-Only Check)</span><button class="dkv-x" data-a="close" aria-label="Close">✕</button></div><div class="dkv-bd">'+
-     '<div class="dkv-note">Read-only check — tokens never leave your wallet. We only read a <b>public</b> address. Nothing is signed, sent, deposited or approved. The pass is purely cosmetic.</div>'+
+     '<div class="dkv-note">Read-only check — tokens never leave your wallet. A public address holding <b>$DKORN</b>, <b>Founder #000</b>, or <b>$UFD</b> (Duster Herd Guest Pass) unlocks this cosmetic VIP gate. Nothing is signed, sent, deposited or approved, and a seed phrase is never requested.</div>'+
+     '<div class="dkv-salute">'+SALUTE+'</div>'+
      '<div class="dkv-state"></div>'+
      '<div class="dkv-h">1 · Phantom (public key only)</div><button class="dkv-b" data-a="phantom">Connect Phantom (Read-Only Pubkey)</button>'+
      '<div class="dkv-h">2 · Or paste any public Solana address</div><div class="dkv-row"><input class="dkv-in" id="dkvAddr" placeholder="Public wallet address" autocomplete="off" autocapitalize="off" spellcheck="false"><button class="dkv-b" data-a="addr">Check</button></div>'+
      '<div class="dkv-h">3 · Or enter the collector serial</div><div class="dkv-row"><input class="dkv-in" id="dkvSer" placeholder="STAGE serial on any card" autocomplete="off" autocapitalize="characters" spellcheck="false"><button class="dkv-b" data-a="serial">Preview</button></div>'+
      '<div class="dkv-msg"></div><div class="dkv-lockwrap"></div>'+
-     '<div class="dkv-fine">Dkorn™ · © 2026 Petecastic Productions LLC · Fan arcade &amp; comic collectible fun, not financial advice</div></div></div>';
+     '<div class="dkv-fine">Dkorn™ · © 2026 Petecastic Productions LLC · Fan arcade &amp; comic collectible fun, not financial advice. <a href="https://solscan.io/token/'+UFD+'" target="_blank" rel="noopener">$UFD on Solscan</a></div></div></div>';
     document.body.appendChild(drawer);
     drawer.addEventListener('click',function(e){
       if(e.target===drawer){close();return}
@@ -170,6 +202,6 @@ function badge(el){
   paint();checkLock().then(paint);
 }
 window.DKVIP={open:open,close:close,badge:badge,status:get,isVip:function(){var s=get();return !!(s&&s.verified)},onChange:function(f){subs.push(f)},checkLock:checkLock,LOCKS:LOCKS,capsule:capsule,CLOCK_URL:CLOCK_URL,rpc:rpc,refresh:emit,
-  MINT:MINT,ESCROW:ESCROW,LOCK_URL:LOCK_URL,SERIAL:SERIAL};
+  MINT:MINT,FOUNDER:FOUNDER,UFD:UFD,T22:T22,TOKENKEG:TOKENKEG,tokenBalance:tokenBalance,holderBalances:holderBalances,ESCROW:ESCROW,LOCK_URL:LOCK_URL,SERIAL:SERIAL,SALUTE:SALUTE};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',emit);else emit();
 })();
