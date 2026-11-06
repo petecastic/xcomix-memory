@@ -1,0 +1,32 @@
+.dkv-ovl{position:fixed;inset:0;background:rgba(4,6,20,.6);display:none;justify-content:flex-end;z-index:9000;font:13px/1.35 Tahoma,Verdana,sans-serif}
+.dkv-ovl.show{display:flex}
+.dkv-box{width:100%;max-width:400px;height:100%;overflow:auto;background:#0d1330;color:#e8f3ff;border-left:3px solid #2ee6ff;box-shadow:-8px 0 0 #ffd400;animation:dkvIn .18s ease-out}
+@keyframes dkvIn{from{transform:translateX(30px);opacity:0}}
+.dkv-tb{display:flex;align-items:center;justify-content:space-between;gap:6px;background:linear-gradient(90deg,#000080,#1084d0);font-weight:bold;padding:6px 8px;position:sticky;top:0}
+.dkv-x{background:#c0c0c0;border:2px solid;border-color:#fff #404040 #404040 #fff;min-width:24px;cursor:pointer;font:inherit}
+.dkv-bd{padding:10px}
+.dkv-note{background:#ffffe1;color:#111;border:1px solid #808080;padding:6px 8px;font-size:12px}
+.dkv-h{margin:12px 0 4px;font-weight:bold;color:#ffd400;font-size:12px;text-transform:uppercase;letter-spacing:.5px}
+.dkv-row{display:flex;gap:4px}
+.dkv-in{flex:1;min-width:0;padding:6px;font:12px "Courier New",monospace;border:2px solid;border-color:#808080 #fff #fff #808080;background:#fff;color:#000}
+.dkv-b{background:linear-gradient(#ffe066,#f2b600);color:#000;border:2px solid #000;border-radius:6px;padding:6px 10px;font-weight:bold;cursor:pointer;box-shadow:0 3px 0 #000;font:bold 12px Tahoma,sans-serif}
+.dkv-b:active{transform:translateY(2px);box-shadow:0 1px 0 #000}
+.dkv-b.ghost{background:#26304f;color:#cfe;border-color:#556;box-shadow:none;font-weight:normal;margin-top:6px}
+.dkv-msg{margin:10px 0;min-height:18px;font-size:12px}.dkv-msg.ok{color:#7dff8a}.dkv-msg.warn{color:#ffd166}.dkv-msg.bad{color:#ff8a8a}
+.dkv-spin{display:inline-block;width:10px;height:10px;border:2px solid #2ee6ff;border-right-color:transparent;border-radius:50%;animation:dkvS .7s linear infinite;vertical-align:-1px}
+@keyframes dkvS{to{transform:rotate(360deg)}}
+.dkv-pass{margin-top:10px;padding:8px;border-radius:8px;background:linear-gradient(135deg,#ffd400,#ff9f1c);color:#000;font:900 15px Impact,sans-serif;letter-spacing:1px;border:2px solid #000}
+.dkv-pass.off{background:#1b2244;color:#9fb3d9;border-color:#334}
+.dkv-pass small{display:block;font:11px Tahoma,sans-serif;letter-spacing:0}
+.dkv-perks{margin:6px 0 0 18px;padding:0;font-size:12px;color:#bff}
+.dkv-lock{margin-top:12px;border:2px solid #2ee6ff;border-radius:8px;padding:8px;background:#071028}
+.dkv-lt{font-weight:bold;color:#fff}.dkv-ls{margin:6px 0;font:bold 12px "Courier New",monospace;color:#7dff8a;display:flex;align-items:center;gap:6px}
+.dkv-lx{font-size:11px;color:#9fb3d9}.dkv-lx a,.dkv-lock a{color:#2ee6ff}.dkv-lx code{color:#ffd400}
+.dkv-led{display:inline-block;width:10px;height:10px;border-radius:50%;background:#666;flex:none;vertical-align:middle;margin-right:5px}
+.dkv-led.on{background:#3dff6e;box-shadow:0 0 8px #3dff6e;animation:dkvP 1.6s ease-in-out infinite}.dkv-led.off{background:#ff5555}.dkv-led.wait{background:#ffd400;animation:dkvP .8s infinite}
+@keyframes dkvP{50%{opacity:.45}}
+.dkv-fine{margin-top:14px;font-size:10px;color:#7f8db0;text-align:center}
+.dkv-badge{display:inline-flex;align-items:center;flex-wrap:wrap;gap:0 4px;padding:3px 9px;border-radius:14px;background:#071028;border:2px solid #2ee6ff;color:#fff;text-decoration:none;font:bold 11px Tahoma,sans-serif;white-space:nowrap}
+.dkv-badge small{font:10px "Courier New",monospace;color:#7dff8a;margin-left:2px}
+.dkv-badge.ok{box-shadow:0 0 10px #2ee6ff88}
+@media(max-width:420px){.dkv-box{max-width:100%;border-left:0}}
