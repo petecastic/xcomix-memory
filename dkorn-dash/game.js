@@ -104,19 +104,13 @@ function step(dt){
   const spd=(st.speed+(st.mustard>0?90:0))*(vipVerified()?1.05:1);
   st.scroll+=spd*dt;st.dist+=spd*dt;
 
-  // recycle poles
-  while(st.poles.length&&st.poles[0].x-st.scroll<-80){
-    st.poles.shift();st.lines.shift();
+  // recycle poles far behind camera
+  while(st.poles.length&&st.poles[0].x<st.scroll-100){
+    st.poles.shift();
   }
-  const lastX=st.poles.length?st.poles[st.poles.length-1].x:st.scroll;
-  while(st.poles.length<7)addPole(lastX+150+Math.random()*40+(st.poles.length?0:0));
-  // fix: use absolute x; addPole already uses absolute. Need last absolute
-  // Actually poles keep absolute x. Rebuild carefully:
-  if(st.poles.length){
-    let mx=st.poles[0].x;
-    for(const p of st.poles)mx=Math.max(mx,p.x);
-    while(st.poles.length<8)addPole(mx+140+Math.random()*50),mx=st.poles[st.poles.length-1].x;
-  }
+  st.lines=st.lines.filter(L=>L.x>st.scroll-100);
+  let mx=st.poles.reduce((m,p)=>Math.max(m,p.x),st.scroll+200);
+  while(st.poles.length<8){mx+=140+Math.random()*50;addPole(mx);mx=st.poles[st.poles.length-1].x}
 
   st.speed=140+Math.min(160,st.dist/40);
 
@@ -167,7 +161,7 @@ function step(dt){
       if(it.k==='key'){st.zip={x:st.x+80,y:st.y-40,t:4};XC.sfx(1000,.15,'triangle');st.msg='Fuse-Core Key — Zip-Line!';st.msgT=1.4}
     }
   }
-  st.items=st.items.filter(it=>it.x>st.scroll-100&&!it.got||it.x>st.scroll-100);
+  st.items=st.items.filter(it=>!it.got&&it.x>st.scroll-100);
 
   // zip boost
   if(st.zip){st.zip.t-=dt;st.x+=280*dt;st.y+=(st.zip.y-st.y)*3*dt;if(st.zip.t<=0)st.zip=null}
@@ -336,6 +330,6 @@ XC.title($('#stage'),{
   img:A+'dkorn_face.jpg',
   how:'Hold to latch cyan drop-lines on timber poles. Release to launch. Spool double-jump in air. Grab pretzels, dodge transformers & drones. Perfect drone catch = Quiet bonus.',
   best:XC.get('dkorn-dash'),
-  extra:'<p style="font-size:11px;color:#2ee6ff">ZERO green pipes · ZERO ? blocks · Pole #A1gR-APBeVk</p>',
+  extra:'<p style="font-size:11px;color:#2ee6ff">Timber poles · cyan drop-lines · Pole #A1gR-APBeVk</p>',
   start
 });
