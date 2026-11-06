@@ -132,6 +132,7 @@ function init(){
   var sw=$('#shareBtn');if(sw)sw.href=shareURL('The X-Comix Multiverse Card Binder is open: 155 cards, all 100 Dkorn characters plus the multiverse crew. Rip a free pack every day:');
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){$('#cardOv').classList.remove('show')}if(e.key==='ArrowRight'&&st.view==='binder'){st.page++;render()}if(e.key==='ArrowLeft'&&st.view==='binder'){st.page--;render()}});
   var lastW=window.innerWidth;window.addEventListener('resize',function(){if((lastW<=1020)!==(window.innerWidth<=1020)){lastW=window.innerWidth;render()}});
+  if(/vip|lock/i.test(location.hash)&&window.DKVIP)DKVIP.open();
   render();
   window.__binder={S:S,C:C,render:render,openCard:openCard,rip:rip,st:st};
 }
