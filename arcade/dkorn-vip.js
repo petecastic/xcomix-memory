@@ -139,8 +139,8 @@ function verifyAddress(addr,mode){
   if(!isAddr(addr)){msg('That doesn\'t look like a Solana public address (32–44 letters/numbers).','bad');return}
   msg('Reading public balances ($DKORN, Founder #000, $UFD)… <span class="dkv-spin"></span>');
   holderBalances(addr).then(function(b){
-    if(b.dkorn>0||b.founder>0||b.ufd>0){save(mode,addr,b);msg('✔ VIP PASS ACCEPTED for '+esc(short(addr))+'. Cosmetic gate only — tokens never leave your wallet.','ok');render()}
-    else msg('No $DKORN, Founder #000, or $UFD found at '+esc(short(addr))+'. No problem — every game stays 100% free. Try the collector serial for the cosmetic preview.','warn');
+    if(b.dkorn>0||b.founder>0||b.ufd>0){save(mode,addr,b);msg('✔ Read-only check recorded for '+esc(short(addr))+'. Tokens never leave your wallet.','ok');render()}
+    else msg('No $DKORN, Founder #000, or $UFD found at '+esc(short(addr))+'. Every game stays fully playable.','warn');
   },function(e){msg(esc(e.message||e),'bad')});
 }
 function connectPhantom(){
@@ -152,26 +152,18 @@ function connectPhantom(){
     verifyAddress(a,'wallet');
   },function(){msg('Connection cancelled. Nothing was shared.','warn')});
 }
-function lockHTML(){
-  var st=proof?(proof.ok?'<b class="dkv-led on"></b>ON-CHAIN ESCROW VERIFIED · '+LOCKS.length+'/'+LOCKS.length+' vaults'+(proof.vault!=null?' · '+fmt(proof.vault)+' DKORN held':''):'<b class="dkv-led '+(proof.n?'wait':'off')+'"></b>'+(proof.n?proof.n+'/'+LOCKS.length+' vaults verified live':'Live check unavailable (public RPC busy)')):'<b class="dkv-led wait"></b>Checking Solana mainnet…';
-  var rows=LOCKS.map(function(L,i){var e=proof&&proof.each&&proof.each[i];return '<li><b class="dkv-led '+(e?(e.ok?'on':'off'):'wait')+'"></b><b>'+L.n+'</b><br><span>'+fmt(L.amt)+' DKORN · '+L.when+'</span><br><code>'+short(L.esc)+'</code> · <a href="https://solscan.io/tx/'+L.tx+'" target="_blank" rel="noopener">Solscan ↗</a></li>'}).join('');
-  return '<div class="dkv-lock"><div class="dkv-lt">🔒 Real Anti-Rug Proof: '+LOCK_TOTAL+' DKORN Locked in '+LOCKS.length+' Non-Cancelable Vaults (through '+LOCK_THRU+')</div>'+
-   '<div class="dkv-ls">'+st+'</div><ul class="dkv-vaults">'+rows+'</ul>'+
-   '<div class="dkv-lx">Jupiter Lock V2 · cancel and recipient-change permissions set to none. Comic-saga lore proof only.</div>'+
-   '<a class="dkv-b" style="display:inline-block;margin-top:8px;text-decoration:none" href="'+CLOCK_URL+'">⏳ Open the 2126 Century Clock</a></div>';
-}
 function render(){
   if(!drawer)return;var s=get();
   drawer.querySelector('.dkv-state').innerHTML=s&&s.verified?
-   tierHTML(s)+'<ul class="dkv-perks"><li>Golden Hard-Hat / Cyan Arc HUD skin</li><li>Secret Boss Wave unlocked</li><li>VIP Quarter Slot badge</li></ul><button class="dkv-b ghost" data-a="off">Remove pass from this browser</button>':
-   '<div class="dkv-pass off">NO PASS INSERTED <small>Everything is free and fully playable without one. $DKORN, Founder #000, or $UFD (Duster Herd Guest Pass) unlocks this gate.</small></div>';
-  drawer.querySelector('.dkv-lockwrap').innerHTML=lockHTML();
+   tierHTML(s)+'<button class="dkv-b ghost" data-a="off">Remove pass from this browser</button>':
+   '<div class="dkv-pass off">NO PASS INSERTED <small>Every game stays fully playable.</small></div>';
+  var wrap=drawer.querySelector('.dkv-lockwrap');if(wrap)wrap.innerHTML='';
 }
 function open(){
   if(!drawer){
     drawer=document.createElement('div');drawer.className='dkv-ovl';
     drawer.innerHTML='<div class="dkv-box" role="dialog" aria-label="VIP Pass"><div class="dkv-tb"><span>🎟️ Insert VIP Pass (Read-Only Check)</span><button class="dkv-x" data-a="close" aria-label="Close">✕</button></div><div class="dkv-bd">'+
-     '<div class="dkv-note">Read-only check — tokens never leave your wallet. A public address holding <b>$DKORN</b>, <b>Founder #000</b>, or <b>$UFD</b> (Duster Herd Guest Pass) unlocks this cosmetic VIP gate. Nothing is signed, sent, deposited or approved, and a seed phrase is never requested.</div>'+
+     '<div class="dkv-note">Read-only check — tokens never leave your wallet. Nothing is signed, sent, deposited or approved, and a seed phrase is never requested.</div>'+
      '<div class="dkv-salute">'+SALUTE+'</div>'+
      '<div class="dkv-state"></div>'+
      '<div class="dkv-h">1 · Phantom (public key only)</div><button class="dkv-b" data-a="phantom">Connect Phantom (Read-Only Pubkey)</button>'+
@@ -187,11 +179,11 @@ function open(){
       else if(a==='phantom')connectPhantom();
       else if(a==='addr')verifyAddress(drawer.querySelector('#dkvAddr').value,'address');
       else if(a==='serial'){var v=drawer.querySelector('#dkvSer').value.trim().toUpperCase().replace(/^STAGE:?\s*/,'').replace(/^POLE\s*#?/,'');
-        if(v===SERIAL.toUpperCase()){save('serial','',0);msg('✔ Collector serial accepted. Cosmetic VIP HUD preview is on.','ok');render()}else msg('Serial not recognized. Look for the STAGE stamp printed on every card.','warn')}
+        if(v===SERIAL.toUpperCase()){save('serial','',0);msg('✔ Collector serial accepted.','ok');render()}else msg('Serial not recognized. Look for the STAGE stamp printed on every card.','warn')}
       else if(a==='off'){set(null);emit();render();msg('Pass removed.','')}
     });
   }
-  drawer.classList.add('show');render();checkLock().then(render);
+  drawer.classList.add('show');render();
 }
 function close(){if(drawer)drawer.classList.remove('show')}
 function badge(el){

@@ -15,7 +15,7 @@ var S=load();function save(){if(window.XC)XC.set('binder',S)}save();
 function bonus(){return (window.XC&&XC.get('binder-packs'))|0}
 function setBonus(n){if(window.XC)XC.set('binder-packs',Math.max(0,n))}
 function dailyLeft(){return S.day!==today()?1:0}
-function bossLeft(){return window.DKVIP&&DKVIP.isVip()&&S.boss!==today()?1:0}
+function bossLeft(){return S.boss!==today()?1:0}
 var st={q:'',u:'All',r:'All',b:'All',s:'All',o:'All',view:EMBED?'binder':'binder',page:0,newIds:{}};
 function filt(){var q=st.q.toLowerCase();return C.filter(function(c){
   if(st.u!=='All'&&c.shows.indexOf(st.u)<0)return false;

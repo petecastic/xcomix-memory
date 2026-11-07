@@ -1,8 +1,9 @@
 /* X-Comix Crew Backroom — /shop/ add-on
    Petecastic Productions LLC · READ-ONLY BY DESIGN
-   - Posters, dossier, sky shimmer, and lore poll are open to everyone.
+   - Crew poster, dossier, sky shimmer, and lore poll are open to everyone.
+   - The Founder #000 poster keeps the original holder gate: $DKORN, Founder #000, or $UFD, plus Demo Preview.
    - Never builds, signs, or sends a transaction. Never asks for a seed phrase or private key.
-   - An optional check reads a PUBLIC address and asks public Solana RPC for balances. It does not gate the perks.
+   - An optional check reads a PUBLIC address and asks public Solana RPC for balances.
    - Optional free signMessage (plain text, not a transaction) for the Lore Poll vote proof.
    - Works with Phantom, Solflare and Backpack (incl. hardware-wallet accounts used through those wallets),
      plus a "Paste any Solana public address (read-only)" box for any wallet.
@@ -157,6 +158,7 @@ function onClick(e) {
   if (a === 'close') close();
   else if (a === 'connect') connect(t.getAttribute('data-w'));
   else if (a === 'paste') { var v = ($('#xcbAddr').value || '').trim(); if (isAddr(v)) lookup(v, 'Pasted public address (read-only)'); else { st.err = 'That is not a Solana public address. NEVER paste a seed phrase anywhere.'; render(); } }
+  else if (a === 'demo') { st.demo = !st.demo; render(); }
   else if (a === 'sky') { st.sky = !st.sky; render(); }
   else if (a === 'vote') vote(t.getAttribute('data-o'));
   else if (a === 'forget') { st = { addr: null, via: null, dkorn: null, founder: null, ufd: null, nfts: [], demo: false, sky: false, err: null, loading: false }; try { localStorage.removeItem('xcb-last'); } catch (x) {} render(); }
@@ -192,31 +194,36 @@ function ensureSky() {
 function render() {
   var box = $('#xcbBox'); if (!box) return;
   var h = '<button class="x" data-a="close" aria-label="Close">✕</button><h2>Crew Backroom</h2>' +
-    '<small>Posters, the Season 1 dossier, the sky shimmer, and the lore poll are open to everyone. The address check is optional and read-only. This page never asks you to sign a transaction, never moves funds, and never asks for a seed phrase.</small>';
+    '<small>The crew poster, the Season 1 dossier, the sky shimmer, and the lore poll are open to everyone. The Founder #000 poster keeps its holder gate. The address check is optional and read-only. This page never asks you to sign a transaction, never moves funds, and never asks for a seed phrase.</small>';
   h += '<div class="card"><b>1 · Show a public address</b><br>';
   var pv = providers();
   pv.forEach(function (p) { h += '<button data-a="connect" data-w="' + esc(p[0]) + '">🔌 Connect ' + esc(p[0]) + ' (Read-Only)</button>'; });
   if (!pv.length) h += '<span class="m">No browser wallet detected. </span>';
-  h += '<br><input id="xcbAddr" placeholder="Paste any Solana public address (read-only)" autocomplete="off" spellcheck="false"> <button data-a="paste">Check</button>';
+  h += '<br><input id="xcbAddr" placeholder="Paste any Solana public address (read-only)" autocomplete="off" spellcheck="false"> <button data-a="paste">Check</button>' +
+    ' <button data-a="demo" class="g">' + (st.demo ? '👁️ Exit Demo Preview' : '👁️ Demo Preview') + '</button>';
   if (st.loading) h += '<div class="m">Reading public Solana mainnet ($DKORN, Founder #000, $UFD)…</div>';
   if (st.err) h += '<div class="err">' + esc(st.err) + '</div>';
-  if (st.addr) {
+  if (st.addr && !st.demo) {
     var circuit = isCircuit(), herd = st.ufd > 0;
-    h += '<div class="m">Address ' + esc(short(st.addr)) + ' via ' + esc(st.via) +
+    h += '<div class="' + (isHolder() ? 'ok' : 'm') + '">Address ' + esc(short(st.addr)) + ' via ' + esc(st.via) +
       ' · $DKORN: <b>' + fmt(st.dkorn) + '</b> · Founder #000: <b>' + fmt(st.founder) + '</b> · $UFD: <b>' + fmt(st.ufd) + '</b>' +
-      (circuit ? ' · Circuit 13' : '') + '</div>';
-    if (circuit && herd) h += '<div class="badge dual">⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD</div>';
+      (circuit ? ' · 🏆 Circuit 13' : '') + (isHolder() ? ' · ✅ Founder #000 poster unlocked' : ' · Not a holder yet — $DKORN, Founder #000, or $UFD unlocks the Founder #000 poster') + '</div>';
+    if (circuit && herd) h += '<div class="badge dual">⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD</div><div class="m">$DKORN <b>' + fmt(st.dkorn) + '</b> · Founder #000 <b>' + fmt(st.founder) + '</b> · $UFD <b>' + fmt(st.ufd) + '</b></div>';
     else if (herd) h += '<div class="badge guest">✨ DUSTER HERD GUEST PASS · ' + fmt(st.ufd) + ' $UFD</div>';
     h += ' <button data-a="forget">Forget</button>';
   }
+  if (st.demo) h += '<div class="m">Demo Preview: showing the backroom as a holder would see it. No wallet read. Rainbow Stardust Sky can be toggled here.</div>';
   h += '</div>';
+  var founderLock = isHolder() ? '' : ' lock';
+  h += '<div class="card' + founderLock + '"><h3>🖼️ Founder #000 Poster</h3>' +
+    link(BASE + 'assets/backroom/poster-founder-000.png', 'Founder #000 Poster') + '</div>';
   h += '<div class="card"><b>✨ Rainbow Stardust Sky</b><br><span class="m">Switch the shimmer off or on. It does not catch clicks.</span><br>' +
     '<button data-a="sky" class="g" aria-pressed="' + (st.sky ? 'true' : 'false') + '">' + (st.sky ? '✨ Rainbow Stardust Sky: ON' : '✨ Rainbow Stardust Sky: OFF') + '</button>';
   if (st.sky) h += '<div class="skyline">' + SKY_LINE + '</div>';
   h += '</div>';
   h += '<div class="card salute">' + esc(SALUTE) + '</div>';
   h += '<div class="card"><h3>🖼️ Printable Posters (hi-res)</h3>' +
-    link(BASE + 'assets/backroom/poster-founder-000.png', 'Founder #000 Poster') + link(BASE + 'assets/backroom/poster-dkorn-crew.jpg', 'Dkorn Crew Poster') +
+    link(BASE + 'assets/backroom/poster-dkorn-crew.jpg', 'Dkorn Crew Poster') +
     '<h3>📁 Season 1 Director’s Cut Dossier</h3>' + link(BASE + 'assets/backroom/answering-line-dkorn-s1-dossier.pdf', 'The Answering Line × Dkorn — S1 Lore Dossier') +
     '<div class="m">Open to everyone.</div>' +
     '<h3>🚀 Mars Game Cosmetic Unlock Pass (preview)</h3><div class="m">Cosmetic skins & lore codex only — no gameplay advantage, no token rewards, no yield.</div></div>';
