@@ -119,7 +119,7 @@ function cardFace(c,big){
     '<div class="bq">'+esc(c.quote)+'</div><div class="perks"><b>COLLECTOR PERKS</b>'+esc(PERKS)+'</div><div class="foil"></div><div class="wx"></div></div>'+
   '</div></div></div>';
 }
-function statusHTML(c){return c.minted?'<div class="status minted">LIVE MINTED ON SOLANA · GENESIS #000</div>':'<div class="status">SERIES 1 WAVE 1 · RESERVE / COMING TO MAGIC EDEN &amp; TENSOR</div>'}
+function statusHTML(c){return c.minted?'<div class="status minted">LIVE MINTED ON SOLANA · GENESIS #000</div>':'<div class="status">SERIES 1 WAVE 1</div>'}
 function actsHTML(c){
   return '<div class="acts"><button class="ab flipbtn" data-n="'+c.n+'">Flip Card ↻</button><button class="ab insbtn" data-n="'+c.n+'">🔍 Inspect</button>'+
    (c.minted?'<a class="ab sol" href="'+SOLSCAN+c.mint+'" target="_blank" rel="noopener">View on Solscan ↗</a>':'<button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist')+'</button>')+
@@ -165,7 +165,7 @@ function openIns(n){
   CUR=n;var c=D.cards[n],b=$('#insBox');
   b.className='ovbox ins'+(NFT?' nft':'');
   b.innerHTML='<button class="x" aria-label="Close">✕</button>'+
-   '<div class="stage"><div class="nftframe"><div class="nfthead"><i></i> Wallet preview · Phantom / Magic Eden / Tensor · animation_url</div></div><div class="slotbig">'+cardFace(c,true)+'</div><div class="nftframe nftfoot">This is how the standalone living HTML card would render inside a wallet: it reads the same public Creator\u2019s Sky file every holder\u2019s copy reads, so every copy of #'+c.num+' shares one sky together. Display only. Nothing to sign.<code>animation_url → '+SITE+'?card='+c.num+'&amp;living=1</code></div></div>'+
+   '<div class="stage"><div class="nftframe"><div class="nfthead"><i></i> Living card preview · animation_url</div></div><div class="slotbig">'+cardFace(c,true)+'</div><div class="nftframe nftfoot">This is how the standalone living HTML card would render: it reads the same public Creator\u2019s Sky file every copy reads, so every copy of #'+c.num+' shares one sky together. Display only. Nothing to sign.<code>animation_url → '+SITE+'?card='+c.num+'&amp;living=1</code></div></div>'+
    '<div class="side"><h3>#'+c.num+' '+esc(c.name)+'</h3><div class="ttl">'+esc(c.title)+'</div>'+statusHTML(c)+
    '<div class="q">'+esc(c.quote)+'</div><div class="meta">Show: <b>'+esc(c.show)+'</b> · Category: '+esc(c.cat)+'<br>'+c.stats.map(function(s){return esc(s[0])+' '+s[1]}).join(' / ')+'</div>'+
    '<div class="perk">🎬 Collector Perks: '+esc(PERKS)+'</div>'+

@@ -1,7 +1,8 @@
-/* X-Comix Holder VIP Backroom + Vault Verifier — /shop/ add-on
+/* X-Comix Crew Backroom — /shop/ add-on
    Petecastic Productions LLC · READ-ONLY BY DESIGN
+   - Posters, dossier, sky shimmer, and lore poll are open to everyone.
    - Never builds, signs, or sends a transaction. Never asks for a seed phrase or private key.
-   - Only reads a PUBLIC address (wallet connect or pasted address) and asks public Solana RPC for balances.
+   - An optional check reads a PUBLIC address and asks public Solana RPC for balances. It does not gate the perks.
    - Optional free signMessage (plain text, not a transaction) for the Lore Poll vote proof.
    - Works with Phantom, Solflare and Backpack (incl. hardware-wallet accounts used through those wallets),
      plus a "Paste any Solana public address (read-only)" box for any wallet.
@@ -103,7 +104,6 @@ function lookup(addr, via) {
       st.dkorn = r[0]; st.founder = r[1]; st.ufd = r[2];
       st.nfts = XCOMIX_NFTS.filter(function (m) { return m === FOUNDER ? st.founder > 0 : false; });
       st.loading = false;
-      st.sky = st.ufd > 0;
       try { localStorage.setItem('xcb-last', JSON.stringify({ addr: addr, via: via, at: Date.now() })); } catch (e) {}
       render();
     }).catch(function (e) { st.loading = false; st.err = e.message; render(); });
@@ -145,7 +145,7 @@ var CSS = '.xcb-ovl{position:fixed;inset:0;z-index:60;background:#05040ce6;displ
 function css() { if ($('#xcbCss')) return; var s = document.createElement('style'); s.id = 'xcbCss'; s.textContent = CSS; document.head.appendChild(s); }
 function ensure() {
   css(); var o = $('#xcbOv'); if (o) return o;
-  o = document.createElement('div'); o.className = 'xcb-ovl'; o.id = 'xcbOv'; o.setAttribute('role', 'dialog'); o.setAttribute('aria-modal', 'true'); o.setAttribute('aria-label', 'Holder VIP Backroom');
+  o = document.createElement('div'); o.className = 'xcb-ovl'; o.id = 'xcbOv'; o.setAttribute('role', 'dialog'); o.setAttribute('aria-modal', 'true'); o.setAttribute('aria-label', 'Crew Backroom');
   o.innerHTML = '<div class="xcb" id="xcbBox"></div>'; document.body.appendChild(o);
   o.addEventListener('click', function (e) { if (e.target === o) close(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
@@ -157,16 +157,14 @@ function onClick(e) {
   if (a === 'close') close();
   else if (a === 'connect') connect(t.getAttribute('data-w'));
   else if (a === 'paste') { var v = ($('#xcbAddr').value || '').trim(); if (isAddr(v)) lookup(v, 'Pasted public address (read-only)'); else { st.err = 'That is not a Solana public address. NEVER paste a seed phrase anywhere.'; render(); } }
-  else if (a === 'demo') { st.demo = !st.demo; if (!st.demo && !(st.ufd > 0)) st.sky = false; render(); }
-  else if (a === 'sky') { if (!isHolder()) return; st.sky = !st.sky; render(); }
+  else if (a === 'sky') { st.sky = !st.sky; render(); }
   else if (a === 'vote') vote(t.getAttribute('data-o'));
   else if (a === 'forget') { st = { addr: null, via: null, dkorn: null, founder: null, ufd: null, nfts: [], demo: false, sky: false, err: null, loading: false }; try { localStorage.removeItem('xcb-last'); } catch (x) {} render(); }
 }
 function link(u, t) { return '<a class="b" href="' + esc(u) + '" target="_blank" rel="noopener">' + t + '</a>'; }
 function syncSky() {
   ensureSky();
-  var on = !!(st.sky && isHolder());
-  if (!on) st.sky = false;
+  var on = !!st.sky;
   document.documentElement.classList.toggle('ufd-stardust', on);
   var banner = $('#ufdSkyBanner');
   if (banner) banner.hidden = !on;
@@ -193,46 +191,42 @@ function ensureSky() {
 }
 function render() {
   var box = $('#xcbBox'); if (!box) return;
-  var h = '<button class="x" data-a="close" aria-label="Close">✕</button><h2>🔐 Holder VIP Backroom</h2>' +
-    '<small>Holders of <b>$DKORN</b>, <b>Founder #000</b>, or <b>$UFD</b> (Duster Herd Guest Pass) can unlock this backroom. Read-only. This page never asks you to sign a transaction, never moves funds, and never asks for a seed phrase. Holding is not an investment — everything here is free comic &amp; lore perks.</small>';
+  var h = '<button class="x" data-a="close" aria-label="Close">✕</button><h2>Crew Backroom</h2>' +
+    '<small>Posters, the Season 1 dossier, the sky shimmer, and the lore poll are open to everyone. The address check is optional and read-only. This page never asks you to sign a transaction, never moves funds, and never asks for a seed phrase.</small>';
   h += '<div class="card"><b>1 · Show a public address</b><br>';
   var pv = providers();
   pv.forEach(function (p) { h += '<button data-a="connect" data-w="' + esc(p[0]) + '">🔌 Connect ' + esc(p[0]) + ' (Read-Only)</button>'; });
   if (!pv.length) h += '<span class="m">No browser wallet detected. </span>';
-  h += '<br><input id="xcbAddr" placeholder="Paste any Solana public address (read-only)" autocomplete="off" spellcheck="false"> <button data-a="paste">Check</button>' +
-    ' <button data-a="demo" class="g">' + (st.demo ? '👁️ Exit Demo Preview' : '👁️ Demo Preview') + '</button>';
+  h += '<br><input id="xcbAddr" placeholder="Paste any Solana public address (read-only)" autocomplete="off" spellcheck="false"> <button data-a="paste">Check</button>';
   if (st.loading) h += '<div class="m">Reading public Solana mainnet ($DKORN, Founder #000, $UFD)…</div>';
   if (st.err) h += '<div class="err">' + esc(st.err) + '</div>';
-  if (st.addr && !st.demo) {
+  if (st.addr) {
     var circuit = isCircuit(), herd = st.ufd > 0;
-    h += '<div class="' + (isHolder() ? 'ok' : 'm') + '">Wallet ' + esc(short(st.addr)) + ' via ' + esc(st.via) +
+    h += '<div class="m">Address ' + esc(short(st.addr)) + ' via ' + esc(st.via) +
       ' · $DKORN: <b>' + fmt(st.dkorn) + '</b> · Founder #000: <b>' + fmt(st.founder) + '</b> · $UFD: <b>' + fmt(st.ufd) + '</b>' +
-      (circuit ? ' · 🏆 Circuit 13' : '') + (isHolder() ? ' · ✅ Backroom unlocked' : ' · Not a holder yet — $DKORN, Founder #000, or $UFD unlocks the perks below') + '</div>';
-    if (circuit && herd) h += '<div class="badge dual">⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD</div><div class="m">$DKORN <b>' + fmt(st.dkorn) + '</b> · Founder #000 <b>' + fmt(st.founder) + '</b> · $UFD <b>' + fmt(st.ufd) + '</b></div>';
+      (circuit ? ' · Circuit 13' : '') + '</div>';
+    if (circuit && herd) h += '<div class="badge dual">⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD</div>';
     else if (herd) h += '<div class="badge guest">✨ DUSTER HERD GUEST PASS · ' + fmt(st.ufd) + ' $UFD</div>';
     h += ' <button data-a="forget">Forget</button>';
   }
-  if (st.demo) h += '<div class="m">Demo Preview: showing the backroom as a holder would see it. No wallet read. Rainbow Stardust Sky can be toggled here.</div>';
   h += '</div>';
-  if (isHolder()) {
-    h += '<div class="card"><b>✨ Rainbow Stardust Sky</b><br><span class="m">Turns on by itself for a $UFD or Dual Alliance unlock. Switch it off or on anytime in this unlocked backroom, including Demo Preview. The shimmer does not catch clicks.</span><br>' +
-      '<button data-a="sky" class="g" aria-pressed="' + (st.sky ? 'true' : 'false') + '">' + (st.sky ? '✨ Rainbow Stardust Sky: ON' : '✨ Rainbow Stardust Sky: OFF') + '</button>';
-    if (st.sky) h += '<div class="skyline">' + SKY_LINE + '</div>';
-    h += '</div>';
-  }
+  h += '<div class="card"><b>✨ Rainbow Stardust Sky</b><br><span class="m">Switch the shimmer off or on. It does not catch clicks.</span><br>' +
+    '<button data-a="sky" class="g" aria-pressed="' + (st.sky ? 'true' : 'false') + '">' + (st.sky ? '✨ Rainbow Stardust Sky: ON' : '✨ Rainbow Stardust Sky: OFF') + '</button>';
+  if (st.sky) h += '<div class="skyline">' + SKY_LINE + '</div>';
+  h += '</div>';
   h += '<div class="card salute">' + esc(SALUTE) + '</div>';
-  var lock = isHolder() ? '' : ' lock';
-  h += '<div class="card' + lock + '"><h3>🖼️ Printable Posters (hi-res)</h3>' +
+  h += '<div class="card"><h3>🖼️ Printable Posters (hi-res)</h3>' +
     link(BASE + 'assets/backroom/poster-founder-000.png', 'Founder #000 Poster') + link(BASE + 'assets/backroom/poster-dkorn-crew.jpg', 'Dkorn Crew Poster') +
     '<h3>📁 Season 1 Director’s Cut Dossier</h3>' + link(BASE + 'assets/backroom/answering-line-dkorn-s1-dossier.pdf', 'The Answering Line × Dkorn — S1 Lore Dossier') +
+    '<div class="m">Open to everyone.</div>' +
     '<h3>🚀 Mars Game Cosmetic Unlock Pass (preview)</h3><div class="m">Cosmetic skins & lore codex only — no gameplay advantage, no token rewards, no yield.</div></div>';
-  h += '<div class="card' + lock + '"><h3>🗳️ Holder Lore Poll — ' + esc(POLL.q) + '</h3><div class="m">Free signature (plain text). Not a transaction. Moves no funds.</div>';
+  h += '<div class="card"><h3>🗳️ Lore Poll — ' + esc(POLL.q) + '</h3><div class="m">Free signature (plain text). Not a transaction. Moves no funds.</div>';
   var mine = null; try { mine = JSON.parse(localStorage.getItem('xcb-vote-' + POLL.id)); } catch (e) {}
   POLL.opts.forEach(function (o) { h += '<button data-a="vote" data-o="' + esc(o) + '">' + (mine && mine.vote === o ? '✅ ' : '') + esc(o) + '</button>'; });
   if (mine) h += '<div class="m">Your vote: ' + esc(mine.vote) + ' · proof: ' + esc(String(mine.sig).slice(0, 24)) + '…</div>';
   h += '</div>';
   h += '<div class="card"><h3>⛓️ On-Chain Vault &amp; Permanent Arweave Proof</h3><ul>';
-  LOCKS.forEach(function (l) { h += '<li>' + esc(l[0]) + ' — ' + link('https://lock.jup.ag/escrow/' + l[1], 'Jupiter Lock') + link('https://solscan.io/account/' + l[1], 'Solscan') + '</li>'; });
+  LOCKS.forEach(function (l) { h += '<li>' + esc(l[0]) + ' — ' + link('https://solscan.io/account/' + l[1], 'Solscan') + '</li>'; });
   h += '</ul>Founder #000: ' + link('https://solscan.io/token/' + FOUNDER, 'Solscan mint') +
     '<br><b>Permanent Irys / Arweave storage</b> <span class="m">(paid once, stored permanently)</span><ul>' +
     Object.keys(ARWEAVE).map(function (k) { var a = ARWEAVE[k]; return '<li>' + esc(a.label) + ' — ' + link(IRYS + a.id, 'Irys gateway') + link(AR + a.ar, 'arweave.net mirror') + '</li>'; }).join('') + '</ul>' +
@@ -249,9 +243,9 @@ function open() { ensure().classList.add('show'); document.body.style.overflow =
 function close() { var o = $('#xcbOv'); if (o) o.classList.remove('show'); document.body.style.overflow = ''; }
 function mountButton(sel) {
   var host = document.querySelector(sel || '.tbtns'); if (!host || $('#xcbBtn')) return;
-  var b = document.createElement('button'); b.className = 'pill gold'; b.id = 'xcbBtn'; b.type = 'button'; b.textContent = '🔐 Holder Backroom (Read-Only)';
+  var b = document.createElement('button'); b.className = 'pill gold'; b.id = 'xcbBtn'; b.type = 'button'; b.textContent = '✨ Crew Backroom';
   b.onclick = open; host.insertBefore(b, host.children[1] || null);
 }
-window.XCBACKROOM = { open: open, close: close, lookup: lookup, mountButton: mountButton, state: function () { return st; }, setSky: function (on) { st.sky = !!on && isHolder(); syncSky(); render(); }, MINTS: { DKORN: DKORN, FOUNDER: FOUNDER, UFD: UFD, T22: T22, TOKENKEG: TOKENKEG }, SALUTE: SALUTE, ARWEAVE: ARWEAVE };
+window.XCBACKROOM = { open: open, close: close, lookup: lookup, mountButton: mountButton, state: function () { return st; }, setSky: function (on) { st.sky = !!on; syncSky(); render(); }, MINTS: { DKORN: DKORN, FOUNDER: FOUNDER, UFD: UFD, T22: T22, TOKENKEG: TOKENKEG }, SALUTE: SALUTE, ARWEAVE: ARWEAVE };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { mountButton(); }); else mountButton();
 })();

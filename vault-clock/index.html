@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>2126 Century Time-Capsule Clock · Sub-Station 13 Lockup High Scores · X-Comix Arcade</title>
-<meta name="description" content="A retro CRT countdown to Nov 5, 2126 and a high-score table of on-chain $DKORN Jupiter Lock time-capsules, verified live on Solana. Arcade bragging rights & X-Comix lore only.">
-<meta property="og:title" content="2126 Century Time-Capsule Clock · Sub-Station 13">
-<meta property="og:description" content="YY:DDD:HH:MM:SS to 2126. Paste your Jupiter Lock, get your CAPSULE PTS, claim the Time-Traveler Foil Badge.">
+<title>2126 Century Clock · Sub-Station 13 · X-Comix Arcade</title>
+<meta name="description" content="A retro CRT countdown to Nov 5, 2126. Fictional Sub-Station 13 cabinet clock from the X-Comix arcade.">
+<meta property="og:title" content="2126 Century Clock · Sub-Station 13">
+<meta property="og:description" content="YY:DDD:HH:MM:SS until Nov 5, 2126. A fictional cabinet clock.">
 <meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/vault-clock.jpg">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/vault-clock.jpg">
 <link rel="icon" href="data:,">
@@ -12,11 +12,11 @@
 <link rel="stylesheet" href="clock.css">
 </head><body>
 <div class="wrap">
- <div class="top"><a class="home" href="../">◀ X-COMIX ARCADE</a><span class="sp"></span><a class="capslot" href="#paste">⏳ 2066 TIME-TRAVELER FOIL</a><button class="b cy" id="vipBtn" style="padding:5px 10px">🎟️ VIP Pass (Read-Only Check)</button></div>
- <h1>⏳ 2126 CENTURY TIME-CAPSULE CLOCK</h1>
- <div class="sub">SUB-STATION 13 · LOCKUP HIGH SCORES · THROUGH NOV 5, 2126 · STAGE A1gR-APBeVk</div>
+ <div class="top"><a class="home" href="../">◀ X-COMIX ARCADE</a><span class="sp"></span><button class="b cy" id="vipBtn" style="padding:5px 10px">🎟️ VIP Pass (Read-Only Check)</button></div>
+ <h1>⏳ 2126 CENTURY CLOCK</h1>
+ <div class="sub">SUB-STATION 13 · FICTIONAL CABINET COUNTDOWN · NOV 5, 2126</div>
  <div class="cab"><div class="crt">
-  <div class="clab">▼ MASTER COUNTDOWN TO THE 2126 CENTURY VAULT · NOV 5, 2126 ▼</div>
+  <div class="clab">▼ COUNTDOWN TO NOV 5, 2126 ▼</div>
   <div class="master">
    <div class="u"><div class="d" id="cY">00</div><div class="l">YY</div></div><div class="c">:</div>
    <div class="u"><div class="d" id="cD">000</div><div class="l">DDD</div></div><div class="c">:</div>
@@ -24,39 +24,18 @@
    <div class="u"><div class="d" id="cM">00</div><div class="l">MM</div></div><div class="c">:</div>
    <div class="u"><div class="d" id="cS">00</div><div class="l">SS</div></div>
   </div>
-  <div class="target">FINAL UNLOCK · 2126-11-06 03:06:00 UTC (Nov 5, 2126 · 10:06 PM EST)</div>
+  <div class="target">NOV 5, 2126 · 10:06 PM EST</div>
   <div class="status" id="status"><span class="led"></span>BOOTING CRT…</div>
-  <div class="totals"><div><b id="tLocked">83,196,438.30</b>DKORN IN <span id="tVaults">5</span> CREATOR VAULTS</div><div><b id="tCount">5</b>CAPSULES ON THE BOARD</div><div><b>0</b>CANCEL PERMISSIONS</div></div>
  </div></div>
 
- <h2>🏆 LOCKUP HIGH SCORES</h2>
- <div class="board" id="board"></div>
- <div class="note" style="margin-top:6px">CAPSULE PTS = √(DKORN still locked) × 100 × (1 + years remaining<sup>1.35</sup>) × 2 if non-cancelable. Arcade bragging rights only. Every row links its public lock.jup.ag escrow proof.</div>
- <div class="tiers hide-embed"><span class="badge t7">🪐 2126 CENTURY TIME-LORD</span><span class="badge t6">⚡ 2066 CIRCUIT IMMORTAL</span><span class="badge t5">👑 2056 SUB-STATION LEGEND</span><span class="badge t4">🛡️ 2046 IRON SPOOL KEEPER</span><span class="badge t3">📚 10-BOOK SAGA GUARDIAN</span><span class="badge t2">🔧 DROP-LINE APPRENTICE</span><span class="badge">🕹️ QUARTER IN THE SLOT</span></div>
-
- <div class="panel hide-embed" id="paste">
-  <h2 style="margin-top:0">📼 INSERT YOUR TIME-CAPSULE</h2>
-  <div class="note" style="margin-bottom:6px">Paste a <b>lock.jup.ag/escrow/…</b> link or escrow address and your 3 initials. The cabinet reads it live from Solana (read-only: no wallet, no signature, no seed phrase, ever).</div>
-  <div class="frm"><input id="vKey" placeholder="https://lock.jup.ag/escrow/… or escrow address" autocomplete="off" spellcheck="false"><input id="vTag" class="ini3" maxlength="3" placeholder="AAA" autocomplete="off"><button class="b" id="vGo">▶ VERIFY LIVE</button></div>
-  <div class="msg" id="vMsg"></div>
-  <div class="result" id="vResult"></div>
+ <div class="panel" style="text-align:center">
+  <p class="note">This cabinet is a fictional countdown.</p>
+  <a class="b" href="../rug-loom/">🧶 Rug Loom</a> <a class="b" href="../binder/">📒 Card Binder</a> <a class="b" href="../shop/">🛍️ Card Shop</a> <a class="b" href="../">🕹️ All games</a>
  </div>
-
- <details class="panel drawer hide-embed">
-  <summary><h2 style="margin:0">🔐 Lock Your Own Time-Capsule on Jupiter ($0 Fee) ▾</h2></summary>
-  <div class="note" style="margin:6px 0">Optional lore side-quest. You do it yourself on Jupiter with your own wallet. This site never touches your tokens. Jupiter Lock charges no protocol fee; Solana's small network rent still applies.</div>
-  <div class="steps">
-   <div class="step"><b class="n">1</b><h4>Open the Lock Lab</h4>Go to <a href="https://lock.jup.ag" target="_blank" rel="noopener">lock.jup.ag ↗</a> and connect your own wallet there. Set the <b>recipient to your own wallet</b>; the capsule stays self-custodied.</div>
-   <div class="step"><b class="n">2</b><h4>Pick the token & a date</h4>Choose the $DKORN mint (copy below), pick an unlock date in the far future, and set cancel to <b>none</b> for the 2× non-cancelable multiplier.<div class="ca"><code>A1gRAicaLnYRmKQwRbQCaEEp6iYfu5q5X5gTFAPBeVk</code><button class="b cy" id="cpCA" style="padding:4px 8px">Copy CA</button></div></div>
-   <div class="step"><b class="n">3</b><h4>Paste it back here</h4>Copy your lock.jup.ag escrow link, paste it into the cabinet with your initials, and claim the ⏳ 2066 Time-Traveler Foil Badge for Rug Loom & the Binder.</div>
-  </div>
- </details>
-
- <div class="panel hide-embed" style="text-align:center"><span id="lockBadge"></span> <a class="b" href="../rug-loom/">🧶 Rug Loom</a> <a class="b" href="../binder/">📒 Card Binder</a> <a class="b" href="../">🕹️ All games</a></div>
- <div class="legal">Sub-Station 13 Time-Capsule High Scores are for arcade bragging rights &amp; X-Comix lore only. $DKORN is a collectible fan meme token with no expectation of profit. Jupiter Locks are self-custodied on Solana (lock.jup.ag). Dkorn™ · © 2026 Petecastic Productions LLC</div>
+ <div class="legal">Sub-Station 13 century clock. Arcade fiction from the X-Comix cabinet. Dkorn™ · © 2026 Petecastic Productions LLC</div>
 </div>
 <script src="../arcade/common.js"></script>
 <script src="../arcade/dkorn-vip.js"></script>
 <script src="clock.js"></script>
-<script>try{DKVIP.badge(document.getElementById('lockBadge'));document.getElementById('vipBtn').onclick=function(){DKVIP.open()}}catch(e){}</script>
+<script>try{document.getElementById('vipBtn').onclick=function(){DKVIP.open()}}catch(e){}</script>
 </body></html>
