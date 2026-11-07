@@ -7,23 +7,11 @@ const imgs={};['kilo_face','dkorn_face','voltia_face','krampus_face','ep01_thumb
 
 let st,raf,last=0,mode='endless',vipOn=false,rng=Math.random;
 
-function vipData(){try{return XC.get('dkorn-vip')||null}catch(e){return null}}
-function vipVerified(){const v=vipData();return !!(v&&v.verified)||vipOn}
+function vipVerified(){return false}
 function refreshVip(){
-  const ok=vipVerified();
-  $('#vipTag').textContent=ok?'★ VIP SKIN':'';
-  document.body.classList.toggle('vipskin',ok);
-  $('#vipPill').textContent=ok?'VIP Skin ON · Golden Hard-Hat':'VIP Skin / Toy Code';
-}
-function promptVip(){
-  const code=window.prompt('Enter toy serial for VIP cosmetic skin (or open binder/#vip).\nTry: A1gR-APBeVk','');
-  if(!code)return;
-  if(code.trim().toUpperCase().replace(/\s/g,'')==='A1GR-APBEVK'||code.trim()==='A1gR-APBeVk'){
-    vipOn=true;
-    try{XC.set('dkorn-vip',{verified:true,skin:true,source:'toy-code',at:Date.now()})}catch(e){}
-    refreshVip();
-    XC.sfx(990,.2,'triangle');
-  }else alert('That serial did not match Pole #A1gR-APBeVk. Game is fully playable either way!');
+  const tag=$('#vipTag'); if(tag) tag.textContent='';
+  document.body.classList.remove('vipskin');
+  const pill=$('#vipPill'); if(pill) pill.remove();
 }
 
 function sleepEmoji(s){return s>=70?'😴':s>=35?'😊':'😭'}
@@ -140,7 +128,7 @@ function draw(){
   if(st&&st.missFlash>0){c.fillStyle='rgba(255,46,99,'+(st.missFlash*1.5)+')';c.fillRect(0,0,W,H)}
   // stage stamp
   c.fillStyle='#ffffff55';c.font='bold 9px monospace';c.textAlign='left';
-  c.fillText('STAGE: A1gR-APBeVk',8,14);
+  c.fillText('STAGE: CIRCUIT-13',8,14);
   if(vip){c.fillStyle='#ffd400';c.fillText('★ VIP GOLDEN HARD-HAT',8,26)}
 }
 
@@ -160,7 +148,7 @@ function end(){
   XC.over({
     img:A+'ep01_cover.jpg',
     title:'BABY KILO IS AWAKE',
-    stats:`YOU EAT THE SPOOL!<br>Score <b>${st.score}</b> · Best streak ${st.bestStreak}`+(rec?' · NEW BEST!':` · Best ${best}`)+`<br><small>Family hugs Kilo anyway. Pole #A1gR-APBeVk.</small>`,
+    stats:`YOU EAT THE SPOOL!<br>Score <b>${st.score}</b> · Best streak ${st.bestStreak}`+(rec?' · NEW BEST!':` · Best ${best}`)+`<br><small>Family hugs Kilo anyway. Pole #CIRCUIT-13.</small>`,
     text:`I kept Baby Kilo asleep for ${st.score} points in Don't Wake Baby Kilo! (${st.daily?'Daily '+XC.today():'Endless Night'}). Can you hush the grid?`,
     path:'dkorn-quiet/',
     againLabel:'Replay hush',
@@ -182,7 +170,6 @@ document.querySelectorAll('.gestures button').forEach(b=>{
 });
 $('#mEndless').onclick=()=>{mode='endless';$('#mEndless').classList.add('on');$('#mDaily').classList.remove('on')};
 $('#mDaily').onclick=()=>{mode='daily';$('#mDaily').classList.add('on');$('#mEndless').classList.remove('on')};
-$('#vipPill').onclick=e=>{e.stopPropagation();promptVip()};
 addEventListener('keydown',e=>{
   const map={Digit1:'shh',Digit2:'lasso',Digit3:'pretzel',Digit4:'coffee',KeyQ:'shh',KeyW:'lasso',KeyE:'pretzel',KeyR:'coffee'};
   if(map[e.code]){e.preventDefault();gesture(map[e.code])}
@@ -195,6 +182,6 @@ XC.title($('#stage'),{
   img:A+'kilo_face.jpg',
   how:'Noise hazards drift toward the crib. Tap Finger-Shh / Cyan Lasso / Pretzel / Coffee Steam to match them. Misses wake Kilo. Keys 1–4.',
   best:XC.get('dkorn-quiet'),
-  extra:`<p style="font-size:11px;color:#2ee6ff">STAGE: A1gR-APBeVk · PG family arcade</p>`,
+  extra:`<p style="font-size:11px;color:#2ee6ff">STAGE: CIRCUIT-13 · PG family arcade</p>`,
   start
 });

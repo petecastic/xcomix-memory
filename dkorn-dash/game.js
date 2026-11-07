@@ -7,22 +7,11 @@ const CREW=[
 const imgs={};CREW.forEach(p=>{const i=new Image();i.src=A+p.img+'.jpg';imgs[p.id]=i});
 let st,raf,last=0,holding=false,skin='dkorn',vipOn=false,unlocked={dkorn:true};
 
-function vipData(){try{return XC.get('dkorn-vip')||null}catch(e){return null}}
-function vipVerified(){const v=vipData();return !!(v&&v.verified)||vipOn}
+function vipVerified(){return false}
 function refreshVip(){
-  const ok=vipVerified();
-  $('#vipTag').textContent=ok?'★ VIP CYAN ARC':'';
-  $('#vipPill').textContent=ok?'VIP Skin ON · Cyan Arc HUD':'VIP Skin / Toy Code';
-  if(ok)unlocked.gold=true;
+  const tag=$('#vipTag'); if(tag) tag.textContent='';
+  const pill=$('#vipPill'); if(pill) pill.remove();
   renderSkins();
-}
-function promptVip(){
-  const code=window.prompt('Toy serial for VIP cosmetic skin (Pole stamp):\nA1gR-APBeVk','');
-  if(!code)return;
-  if(code.trim().replace(/\s/g,'')==='A1gR-APBeVk'||code.trim().toUpperCase()==='A1GR-APBEVK'){
-    vipOn=true;try{XC.set('dkorn-vip',{verified:true,skin:true,source:'toy-code',at:Date.now()})}catch(e){}
-    refreshVip();XC.sfx(990,.2,'triangle');
-  }else alert('Serial did not match. Fully playable without VIP!');
 }
 function renderSkins(){
   const el=$('#skins');el.innerHTML='';
@@ -267,7 +256,7 @@ function draw(){
   }
 
   c.fillStyle='#fff';c.font='bold 10px monospace';c.textAlign='left';
-  c.fillText('POLE #A1gR-APBeVk · 3 AM VALLEY',8,14);
+  c.fillText('POLE #CIRCUIT-13 · 3 AM VALLEY',8,14);
   c.fillText('♥'.repeat(Math.max(0,st?st.hp:0)),8,28);
   if(st?.msgT>0){c.fillStyle='#ffd400';c.font='bold 14px Impact,sans-serif';c.textAlign='center';c.fillText(st.msg,W/2,40)}
   if(vip){c.fillStyle='#2ee6ff';c.font='bold 10px monospace';c.textAlign='right';c.fillText('★ CYAN ARC VIP',W-8,14)}
@@ -290,7 +279,7 @@ function end(){
     img:A+'dkorn_face.jpg',
     title:rec?'NEW HI-SCORE!':'LINE DOWN!',
     stats:`Score <b>${s}</b> · ${st.tokens} pretzels · ${Math.floor(st.dist/10)}m`+(rec?' · NEW BEST!':` · Best ${best}`),
-    text:`I scored ${s} in 3 AM Drop-Line Dash — ${st.tokens} lightning pretzels on Pole #A1gR-APBeVk. Beat me!`,
+    text:`I scored ${s} in 3 AM Drop-Line Dash — ${st.tokens} lightning pretzels on Pole #CIRCUIT-13. Beat me!`,
     path:'dkorn-dash/',
     again:()=>{reset();last=0;loop(performance.now())}
   });
@@ -321,7 +310,6 @@ addEventListener('keydown',e=>{
 });
 addEventListener('keyup',e=>{if(e.code==='Space'||e.code==='ArrowUp'){holding=false;release()}});
 
-$('#vipPill').onclick=e=>{e.stopPropagation();promptVip()};
 try{const u=XC.get('dkorn-dash-unlocks');if(u)Object.assign(unlocked,u)}catch(e){}
 XC.muteBtn();refreshVip();renderSkins();
 $('#hi').textContent=XC.get('dkorn-dash')??'—';
@@ -330,6 +318,6 @@ XC.title($('#stage'),{
   img:A+'dkorn_face.jpg',
   how:'Hold to latch cyan drop-lines on timber poles. Release to launch. Spool double-jump in air. Grab pretzels, dodge transformers & drones. Perfect drone catch = Quiet bonus.',
   best:XC.get('dkorn-dash'),
-  extra:'<p style="font-size:11px;color:#2ee6ff">Timber poles · cyan drop-lines · Pole #A1gR-APBeVk</p>',
+  extra:'<p style="font-size:11px;color:#2ee6ff">Timber poles · cyan drop-lines · Pole #CIRCUIT-13</p>',
   start
 });

@@ -1,10 +1,8 @@
-/* X-Comix Card & Merch Shop · living cards + Creator's Sky engine (read-only, no wallet, no payments) */
+/* X-Comix Card & Merch Shop · living cards + Creator's Sky engine. Free to browse. No payments. */
 (function(){
 'use strict';
 var D=window.SHOP,$=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 var SITE='https://petecastic.github.io/xcomix-memory/shop/';
-var SOLSCAN='https://solscan.io/token/';
-var PERKS="Owner Roll Call in Binder + 1 Director's Chair background prop cameo";
 function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
 function emph(s){return esc(s).replace(/\*([^*]+)\*/g,'<em>$1</em>')}
 function ls(k,v){try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'null');localStorage.setItem(k,JSON.stringify(v))}catch(e){return null}}
@@ -104,7 +102,7 @@ function toggleAmb(btn){
 }
 
 /* ---------------- Shelf 1: Series 1 holo cards ---------------- */
-var FILTERS=[['all','All 29'],['genesis','Minted Genesis (#000)'],['night','Night Shift'],['action','Action / Sci-Fi'],['critters','Critters & Dogs'],['mystery','Mystery & Lore'],['comedy','Comedy & Slice-of-Life'],['wish','★ My Wishlist']];
+var FILTERS=[['all','All 29'],['genesis','Card #000'],['night','Night Shift'],['action','Action / Sci-Fi'],['critters','Critters & Dogs'],['mystery','Mystery & Lore'],['comedy','Comedy & Slice-of-Life'],['wish','★ My Wishlist']];
 var FIL='all',Q='';
 function wish(){return ls('xcs-wish')||[]}
 function isWish(n){return wish().indexOf(n)>=0}
@@ -116,13 +114,13 @@ function cardFace(c,big){
    '<div class="face back"><div class="bimg"><img src="'+c.back+'" alt="'+esc(c.name)+' character sheet" loading="lazy"></div>'+
     '<div class="bname">'+esc(c.name)+'<small>'+esc(c.show)+'</small></div>'+
     '<div class="stats">'+c.stats.map(function(s){return '<div class="st"><span>'+esc(s[0])+'</span><i><b style="width:'+s[1]+'%"></b></i><span>'+s[1]+'</span></div>'}).join('')+'</div>'+
-    '<div class="bq">'+esc(c.quote)+'</div><div class="perks"><b>COLLECTOR PERKS</b>'+esc(PERKS)+'</div><div class="foil"></div><div class="wx"></div></div>'+
+    '<div class="bq">'+esc(c.quote)+'</div><div class="foil"></div><div class="wx"></div></div>'+
   '</div></div></div>';
 }
-function statusHTML(c){return c.minted?'<div class="status minted">LIVE MINTED ON SOLANA · GENESIS #000</div>':'<div class="status">SERIES 1 WAVE 1 · RESERVE / COMING TO MAGIC EDEN &amp; TENSOR</div>'}
+function statusHTML(c){return '<div class="status">SERIES 1 · CARD #'+esc(c.num)+'</div>'}
 function actsHTML(c){
   return '<div class="acts"><button class="ab flipbtn" data-n="'+c.n+'">Flip Card ↻</button><button class="ab insbtn" data-n="'+c.n+'">🔍 Inspect</button>'+
-   (c.minted?'<a class="ab sol" href="'+SOLSCAN+c.mint+'" target="_blank" rel="noopener">View on Solscan ↗</a>':'<button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist')+'</button>')+
+   '<button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist')+'</button>'+
    '<a class="ab" href="'+shareURL(c)+'" target="_blank" rel="noopener">𝕏 Share</a></div>';
 }
 function renderFilters(){var f=$('#fpills');f.innerHTML=FILTERS.map(function(x){return '<button data-f="'+x[0]+'" class="'+(x[0]===FIL?'on ':'')+(x[0]==='genesis'?'gen':'')+'">'+esc(x[1])+'</button>'}).join('');}
@@ -160,22 +158,18 @@ document.addEventListener('keydown',function(e){
 });
 
 /* inspector */
-var CUR=0,NFT=false;
+var CUR=0;
 function openIns(n){
   CUR=n;var c=D.cards[n],b=$('#insBox');
-  b.className='ovbox ins'+(NFT?' nft':'');
+  b.className='ovbox ins';
   b.innerHTML='<button class="x" aria-label="Close">✕</button>'+
-   '<div class="stage"><div class="nftframe"><div class="nfthead"><i></i> Wallet preview · Phantom / Magic Eden / Tensor · animation_url</div></div><div class="slotbig">'+cardFace(c,true)+'</div><div class="nftframe nftfoot">This is how the standalone living HTML card would render inside a wallet: it reads the same public Creator\u2019s Sky file every holder\u2019s copy reads, so every copy of #'+c.num+' shares one sky together. Display only. Nothing to sign.<code>animation_url → '+SITE+'?card='+c.num+'&amp;living=1</code></div></div>'+
+   '<div class="stage"><div class="slotbig">'+cardFace(c,true)+'</div></div>'+
    '<div class="side"><h3>#'+c.num+' '+esc(c.name)+'</h3><div class="ttl">'+esc(c.title)+'</div>'+statusHTML(c)+
    '<div class="q">'+esc(c.quote)+'</div><div class="meta">Show: <b>'+esc(c.show)+'</b> · Category: '+esc(c.cat)+'<br>'+c.stats.map(function(s){return esc(s[0])+' '+s[1]}).join(' / ')+'</div>'+
-   '<div class="perk">🎬 Collector Perks: '+esc(PERKS)+'</div>'+
-   '<label class="tog"><input type="checkbox" id="nftTog"'+(NFT?' checked':'')+'><span>Standalone Living HTML NFT (<code>animation_url</code>) Preview</span></label>'+
-   '<div class="row"><button class="ab flipbtn" data-n="'+c.n+'">Flip Card ↻</button>'+(c.minted?'<a class="ab sol" href="'+SOLSCAN+c.mint+'" target="_blank" rel="noopener">View Genesis #000 on Solscan ↗</a>':'<button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist on My Device')+'</button>')+'<a class="ab" href="'+shareURL(c)+'" target="_blank" rel="noopener">𝕏 Share Card</a><button class="ab ambbtn">'+(amb&&amb.on?'🔊 Sky Ambience: ON':'🔈 Sky Ambience: OFF')+'</button></div>'+
+   '<div class="row"><button class="ab flipbtn" data-n="'+c.n+'">Flip Card ↻</button><button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist on My Device')+'</button><a class="ab" href="'+shareURL(c)+'" target="_blank" rel="noopener">𝕏 Share Card</a><button class="ab ambbtn">'+(amb&&amb.on?'🔊 Sky Ambience: ON':'🔈 Sky Ambience: OFF')+'</button></div>'+
    '<div class="meta">Sky right now: <b class="skynow"></b>. Try the sky pills: the card reacts live.</div>'+
    '<div class="nav2"><button class="ab" id="insPrev">◀ Prev</button><button class="ab" id="insNext">Next ▶</button></div></div>';
-  var hs=$('.slotbig',b);hs.insertBefore($('.nftframe',b),hs.firstChild);
   $('#insOv').classList.add('show');document.body.style.overflow='hidden';apply();updNow();
-  $('#nftTog').onchange=function(e){NFT=e.target.checked;b.classList.toggle('nft',NFT)};
   $('#insPrev').onclick=function(){openIns((CUR+28)%29)};$('#insNext').onclick=function(){openIns((CUR+1)%29)};
   $('.x',b).onclick=closeAll;
 }
@@ -341,12 +335,9 @@ $('#motion').addEventListener('click',function(e){var c=e.target.closest('.mcard
 function closeAll(){$$('.ovl.show').forEach(function(o){o.classList.remove('show');var v=$('video',o);if(v)v.pause();if(o.id==='thOv')o.querySelector('.ovbox').innerHTML=''});document.body.style.overflow=''}
 $$('.ovl').forEach(function(o){o.addEventListener('click',function(e){if(e.target===o)closeAll()})});
 
-/* VIP + escrow proof badge (read-only) */
-try{if(window.DKVIP){DKVIP.badge($('#lockBadge'));$('#vipBtn').onclick=function(){DKVIP.open()}}}catch(e){}
-
 /* boot */
 renderFilters();renderCards();apply();loadSky();setInterval(loadSky,30*60*1000);
 var qs=new URLSearchParams(location.search),qc=qs.get('card'),qr=qs.get('relic');
-if(qc!==null&&/^\d{1,3}$/.test(qc)&&+qc<29){if(qs.get('living')==='1')NFT=true;openIns(+qc)}
+if(qc!==null&&/^\d{1,3}$/.test(qc)&&+qc<29)openIns(+qc)
 else if(qr&&/^\d{2}$/.test(qr))openReader(qr);
 })();

@@ -2,19 +2,10 @@ const $=XC.$,cv=$('#cv'),c=cv.getContext('2d'),W=400,H=360,A='../arcade/dkorn-ar
 const imgs={};['dkorn_face','voltia_face','krampus_face','kilo_face','boss_phantom_outage'].forEach(n=>{const i=new Image();i.src=A+n+'.jpg';imgs[n]=i});
 let st,raf,last=0,keys={},vipOn=false,hold=false;
 
-function vipVerified(){try{const v=XC.get('dkorn-vip');return !!(v&&v.verified)||vipOn}catch(e){return vipOn}}
+function vipVerified(){return false}
 function refreshVip(){
-  const ok=vipVerified();
-  $('#vipTag').textContent=ok?'★ VIP ENCORE':'';
-  $('#vipPill').textContent=ok?'VIP Skin ON · Secret Encore':'VIP Skin / Toy Code';
-}
-function promptVip(){
-  const code=window.prompt('Toy serial for VIP Secret Encore Phase 4:\nA1gR-APBeVk','');
-  if(!code)return;
-  if(code.trim().replace(/\s/g,'')==='A1gR-APBeVk'||code.trim().toUpperCase()==='A1GR-APBEVK'){
-    vipOn=true;try{XC.set('dkorn-vip',{verified:true,skin:true,source:'toy-code',at:Date.now()})}catch(e){}
-    refreshVip();XC.sfx(990,.2,'triangle');
-  }else alert('Serial mismatch. Fully playable without VIP!');
+  const tag=$('#vipTag'); if(tag) tag.textContent='';
+  const pill=$('#vipPill'); if(pill) pill.remove();
 }
 
 function setPlayer(p){
@@ -155,12 +146,10 @@ function stepP3(dt){
   // ambient
   if(Math.random()<dt*.4){/* spark */}
   if(st.boss<=0){
-    if(vipVerified()){
-      st.phase=4;st.encore=true;st.shadow=100;st.player=1;setPlayer(1);
-      msg('VIP SECRET ENCORE — Shadow Outage!',2.5);$('#ph').textContent='4';
-      $('#quip').textContent='Encore Phase 4: finish the Shadow Outage with the whole family!';
-      XC.sfx(200,.4,'sawtooth');
-    }else win();
+    st.phase=4;st.encore=true;st.shadow=100;st.player=1;setPlayer(1);
+    msg('Shadow Outage!',2.5);$('#ph').textContent='4';
+    $('#quip').textContent='Phase 4: finish the Shadow Outage with the whole family!';
+    XC.sfx(200,.4,'sawtooth');
   }
   // boss counterattack
   if(Math.random()<dt*.35 && st.steam<=0){
@@ -197,8 +186,8 @@ function win(){
   XC.over({
     img:A+'dkorn_family_arcade_hero.jpg',
     title:'STORM-HEAD CLEARED!',
-    stats:`Pole #A1gR-APBeVk · Phase ${st.encore?4:3}<br>♥ left ${st.hp}`+(rec?' · NEW BEST CLEAR!':''),
-    text:`Cleared Storm-Head on Pole #A1gR-APBeVk — See you in another timeline.`,
+    stats:`Pole #CIRCUIT-13 · Phase ${st.encore?4:3}<br>♥ left ${st.hp}`+(rec?' · NEW BEST CLEAR!':''),
+    text:`Cleared Storm-Head on Pole #CIRCUIT-13 — See you in another timeline.`,
     path:'dkorn-rescue/',
     again:()=>{reset();last=0;loop(performance.now())}
   });
@@ -208,7 +197,7 @@ function lose(){
     img:A+'boss_phantom_outage.jpg',
     title:'OUTAGE WINS… FOR NOW',
     stats:`Made it to Phase ${st.phase} on Storm-Head Tower`,
-    text:`Phantom Outage pushed us back on Pole #A1gR-APBeVk. Rematch?`,
+    text:`Phantom Outage pushed us back on Pole #CIRCUIT-13. Rematch?`,
     path:'dkorn-rescue/',
     again:()=>{reset();last=0;loop(performance.now())}
   });
@@ -230,7 +219,7 @@ function draw(){
     c.beginPath();c.moveTo(baseX-30+(H-y)*.05,y);c.lineTo(baseX+30-(H-y)*.05,y);c.stroke();
   }
   c.fillStyle='#ffd400';c.font='bold 9px monospace';c.textAlign='center';
-  c.fillText('POLE #A1gR-APBeVk',baseX,28);
+  c.fillText('POLE #CIRCUIT-13',baseX,28);
 
   if(!st)return;
 
@@ -325,7 +314,6 @@ addEventListener('keydown',e=>{
 });
 addEventListener('keyup',e=>{keys[e.key]=0;keys[e.code]=0;if(e.code==='Space')hold=false});
 document.querySelectorAll('#chips button').forEach(b=>b.addEventListener('pointerdown',e=>{e.preventDefault();e.stopPropagation();setPlayer(+b.dataset.p)}));
-$('#vipPill').onclick=e=>{e.stopPropagation();promptVip()};
 
 XC.muteBtn();refreshVip();
 XC.title($('#stage'),{
@@ -333,6 +321,6 @@ XC.title($('#stage'),{
   img:A+'krampus_face.jpg',
   how:'3 phases on Storm-Head Tower: Dkorn spool-bridges → Voltia prism cores → Krampus steam vs Phantom Outage. Tap chips or keys 1/2/3 to tag-team. Local hotseat friendly.',
   best:XC.get('dkorn-rescue'),
-  extra:'<p style="font-size:11px;color:#7dff5a">Share: Cleared Storm-Head on Pole #A1gR-APBeVk</p>',
+  extra:'<p style="font-size:11px;color:#7dff5a">Share: Cleared Storm-Head on Pole #CIRCUIT-13</p>',
   start
 });
