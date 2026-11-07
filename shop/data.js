@@ -8,7 +8,7 @@ window.SHOP={
 "id": "pete-castic-bear",
 "name": "Pete Castic & Bear",
 "title": "MULTIVERSE CREATOR · DROP-LINE TECH",
-"show": "Founder 000",
+"show": "Series 1",
 "cat": "Genesis",
 "front": "assets/fronts/000_pete-castic-bear.jpg",
 "back": "assets/backs/000_pete-castic-bear_back.jpg",
@@ -27,8 +27,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"I wire the block by day and draw the Multiverse by night.\"",
-"minted": true,
-"mint": "2gMmnUrxeRkZLA47NyKSGBs1aPFVSfEWruwyTKo7UUyH",
 "groups": [
 "genesis"
 ]
@@ -58,8 +56,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Same time tomorrow, hon.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "critters",
 "comedy"
@@ -90,8 +86,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"don't tell anybody\"",
-"minted": false,
-"mint": null,
 "groups": [
 "night"
 ]
@@ -121,8 +115,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Nobody beats me in here.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "action"
 ]
@@ -152,8 +144,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Patrol never sleeps.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "critters"
 ]
@@ -183,8 +173,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Lady, you don't have a head.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "night",
 "action"
@@ -215,8 +203,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Naptime is forever.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "mystery"
 ]
@@ -246,8 +232,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Keep the horizon red.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "action"
 ]
@@ -277,8 +261,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Charts are just vibes, bro.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "comedy"
 ]
@@ -308,8 +290,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"If the signal's gone, we go find it.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "action",
 "mystery"
@@ -340,8 +320,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"And here… the creature awaits.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "mystery"
 ]
@@ -371,8 +349,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Pull up a stool, it's 1777.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "night",
 "mystery"
@@ -403,8 +379,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Blue side never folds.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "action"
 ]
@@ -434,8 +408,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Mangia! You're too skinny.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "night",
 "comedy"
@@ -466,8 +438,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Just one more thing...\"",
-"minted": false,
-"mint": null,
 "groups": [
 "night",
 "mystery"
@@ -498,8 +468,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"This just in from the alley.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "critters",
 "comedy"
@@ -530,8 +498,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"My blade decides.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "action"
 ]
@@ -561,8 +527,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Squad up — rice first!\"",
-"minted": false,
-"mint": null,
 "groups": [
 "critters"
 ]
@@ -592,8 +556,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"See y'all in the next verse.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "comedy"
 ]
@@ -623,8 +585,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Okay. Okay. I'm right here.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "night"
 ]
@@ -654,8 +614,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"*stares from the URGENT pile*\"",
-"minted": false,
-"mint": null,
 "groups": [
 "critters",
 "comedy"
@@ -686,8 +644,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Shall we consult the manual?\"",
-"minted": false,
-"mint": null,
 "groups": [
 "comedy"
 ]
@@ -717,8 +673,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"Stability before beauty.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "night"
 ]
@@ -748,8 +702,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"You wake the baby, you eat the spool.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "night",
 "critters"
@@ -780,8 +732,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"The file was never empty.\"",
-"minted": false,
-"mint": null,
 "groups": [
 "mystery"
 ]
@@ -811,8 +761,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"*boof* — we're done here\"",
-"minted": false,
-"mint": null,
 "groups": [
 "critters"
 ]
@@ -822,28 +770,26 @@ window.SHOP={
 "num": "026",
 "id": "hopium",
 "name": "Hopium",
-"title": "CHART ROOM ETERNAL BULL",
+"title": "CHART ROOM DESK ANCHOR",
 "show": "Chart Room",
-"cat": "Market Desk Comedy",
+"cat": "Night Shift Comedy",
 "front": "assets/fronts/026_hopium.jpg",
 "back": "assets/backs/026_hopium_back.jpg",
 "stats": [
 [
-"HYPE",
+"GRIN",
 99
 ],
 [
-"COPE",
+"HOPE",
 85
 ],
 [
-"VIBES",
+"NOISE",
 97
 ]
 ],
-"quote": "\"Bro it's so over → wait it's so back.\"",
-"minted": false,
-"mint": null,
+"quote": "\"Every blackout is just the lights taking a breath.\"",
 "groups": [
 "comedy"
 ]
@@ -873,8 +819,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"…wit' mustard?\"",
-"minted": false,
-"mint": null,
 "groups": [
 "mystery"
 ]
@@ -904,8 +848,6 @@ window.SHOP={
 ]
 ],
 "quote": "\"See you in another timeline!\"",
-"minted": false,
-"mint": null,
 "groups": [
 "comedy"
 ]

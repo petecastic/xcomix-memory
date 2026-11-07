@@ -3,9 +3,9 @@
 var D=window.BINDER_DATA, C=D.cards, BY={};C.forEach(function(c){BY[c.id]=c});
 var $=function(s,r){return (r||document).querySelector(s)};
 var EMBED=document.body.classList.contains('embed');
-var SER='STAGE: A1gR-APBeVk';
+var SER='STAGE: CIRCUIT-13';
 var SICON=['','☔','⚡','🪜','🥨','🎄','🕳️','🌩️','👑','⚙️','🚧','❄️','📍'];
-var UCLS={'Dkorn Saga':'','Multiverse Core':'u-ms','Line Life':'u-ll','Krampus':'u-kr','Pump & Dump':'u-pd','Old Bay Boys':'u-ob','Echoes of the Red Horizon':'u-eh','Domino & Pickle':'u-dp','Trail Trouble':'u-tt'};
+var UCLS={'Dkorn Saga':'','Multiverse Core':'u-ms','Line Life':'u-ll','Krampus':'u-kr','Old Bay Boys':'u-ob','Echoes of the Red Horizon':'u-eh','Domino & Pickle':'u-dp','Trail Trouble':'u-tt'};
 var RCLS={'Common':'','Foil':'holo','Boss':'holo r-boss','10-Book Relic':'holo r-relic'};
 var RW={'Common':66,'Foil':24,'Boss':7,'10-Book Relic':3};
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -15,7 +15,7 @@ var S=load();function save(){if(window.XC)XC.set('binder',S)}save();
 function bonus(){return (window.XC&&XC.get('binder-packs'))|0}
 function setBonus(n){if(window.XC)XC.set('binder-packs',Math.max(0,n))}
 function dailyLeft(){return S.day!==today()?1:0}
-function bossLeft(){return window.DKVIP&&DKVIP.isVip()&&S.boss!==today()?1:0}
+function bossLeft(){return 0}
 var st={q:'',u:'All',r:'All',b:'All',s:'All',o:'All',view:EMBED?'binder':'binder',page:0,newIds:{}};
 function filt(){var q=st.q.toLowerCase();return C.filter(function(c){
   if(st.u!=='All'&&c.shows.indexOf(st.u)<0)return false;
@@ -67,10 +67,10 @@ function openCard(id){
    '<p>'+esc(c.bio)+'</p><dl>'+(c.look?'<dt>Look</dt><dd>'+esc(c.look)+'</dd>':'')+'<dt>Power</dt><dd>'+esc(c.power)+(c.powerTxt?' — '+esc(c.powerTxt):'')+'</dd>'+
    (c.book?'<dt>Book</dt><dd>Book '+c.book+': '+esc(c.bookTitle)+'</dd><dt>Sector</dt><dd>'+SICON[c.sector]+' '+c.sector+' · '+esc(D.sectors[c.sector-1])+'</dd>':'<dt>Show</dt><dd>'+esc(c.shows.join(', '))+'</dd>')+
    '<dt>Stats</dt><dd>HP '+c.stats[0]+' · ARC '+c.stats[1]+' · WIT '+c.stats[2]+'</dd></dl>'+
-   '<span class="stamp">'+SER+'</span><br><span class="mx">◆ Series 1 Metaplex Core Card Ready</span></div>';
+   '<span class="stamp">'+SER+'</span></div>';
   ov.innerHTML='<div class="cm"><div class="tilt"><div class="tiltin" id="tiltin"><div class="flip" id="flip"><div class="face f big">'+cardHTML(c,true)+'</div><div class="face b">'+back+'</div></div></div></div>'+
    '<div class="side"><h2>'+esc(c.name)+'</h2><p style="color:#2ee6ff;font-weight:bold">'+c.no+' · '+esc(c.rarity)+(own?' · in your binder x'+own:' · not pulled yet')+'</p><p>'+esc(c.bio)+'</p>'+
-   '<p style="font:bold 12px \'Courier New\';color:#ff7aa8">'+SER+'</p><span class="mx">◆ Series 1 Metaplex Core Card Ready</span>'+
+   '<p style="font:bold 12px \'Courier New\';color:#ff7aa8">'+SER+'</p>'+
    '<div class="row"><button class="b cy" id="flipBtn">↻ Flip card</button><button class="b" id="closeCard">Close</button><a class="b pink" style="text-decoration:none" target="_blank" rel="noopener" href="'+shareURL('I just pulled '+c.name+' ('+c.no+') in the X-Comix Multiverse Card Binder. Free to collect:')+'">Share on 𝕏</a></div>'+
    '<p style="font-size:11px;color:#8b98c4;margin-top:10px">Collector card fun only. Cards are free browser collectibles saved on this device.</p></div></div>';
   ov.classList.add('show');
@@ -114,7 +114,7 @@ function rip(){
 /* wire up */
 function opts(sel,arr){sel.innerHTML=arr.map(function(a){return '<option value="'+esc(a[0])+'">'+esc(a[1])+'</option>'}).join('')}
 function init(){
-  opts($('#fU'),[['All','All Universes'],['Dkorn Saga','Dkorn Saga (100)'],['Multiverse Core','Multiverse Core'],['Line Life','Line Life'],['Krampus','Krampus'],['Pump & Dump','Pump & Dump'],['Old Bay Boys','Old Bay Boys'],['Echoes of the Red Horizon','Echoes of the Red Horizon'],['Domino & Pickle','Domino & Pickle'],['Trail Trouble','Trail Trouble']]);
+  opts($('#fU'),[['All','All Universes'],['Dkorn Saga','Dkorn Saga (100)'],['Multiverse Core','Multiverse Core'],['Line Life','Line Life'],['Krampus','Krampus'],['Old Bay Boys','Old Bay Boys'],['Echoes of the Red Horizon','Echoes of the Red Horizon'],['Domino & Pickle','Domino & Pickle'],['Trail Trouble','Trail Trouble']]);
   opts($('#fR'),[['All','All Rarities'],['Common','Common'],['Foil','Foil'],['Boss','Boss'],['10-Book Relic','10-Book Relic']]);
   var b=[['All','All Books']];for(var i=1;i<=10;i++)b.push([String(i),'Book '+i+': '+D.books[i]]);opts($('#fB'),b);
   var s=[['All','All Sectors']];for(i=1;i<=12;i++)s.push([String(i),SICON[i]+' '+i+' · '+D.sectors[i-1]]);opts($('#fS'),s);
@@ -127,12 +127,9 @@ function init(){
   $('#cardOv').addEventListener('click',function(e){if(e.target===this)this.classList.remove('show')});
   $('#packOv').addEventListener('click',function(e){if(e.target===this){this.classList.remove('show');render()}});
   $('#ripBtn').onclick=rip;
-  $('#vipBtn').onclick=function(){if(window.DKVIP)DKVIP.open()};
-  if(window.DKVIP){DKVIP.badge($('#lockBadge'));DKVIP.onChange(render)}
-  var sw=$('#shareBtn');if(sw)sw.href=shareURL('The X-Comix Multiverse Card Binder is open: 155 cards, all 100 Dkorn characters plus the multiverse crew. Rip a free pack every day:');
+  var sw=$('#shareBtn');if(sw)sw.href=shareURL('The X-Comix Multiverse Card Binder is open: 152 cards, all 100 Dkorn characters plus the multiverse crew. Rip a free pack every day:');
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){$('#cardOv').classList.remove('show')}if(e.key==='ArrowRight'&&st.view==='binder'){st.page++;render()}if(e.key==='ArrowLeft'&&st.view==='binder'){st.page--;render()}});
   var lastW=window.innerWidth;window.addEventListener('resize',function(){if((lastW<=1020)!==(window.innerWidth<=1020)){lastW=window.innerWidth;render()}});
-  if(/vip|lock/i.test(location.hash)&&window.DKVIP)DKVIP.open();
   render();
   window.__binder={S:S,C:C,render:render,openCard:openCard,rip:rip,st:st};
 }

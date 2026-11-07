@@ -96,10 +96,8 @@ a{color:#7fe8ff}
 .num{position:absolute;top:2.5cqw;left:2.5cqw;font:900 5cqw/1 Impact,sans-serif;background:#000c;color:#ffd400;border-radius:2cqw;padding:1cqw 2cqw;z-index:3}
 .flipme{position:absolute;bottom:2.5cqw;right:2.5cqw;z-index:3;font:900 4.5cqw/1 Tahoma,sans-serif;background:#000c;color:#fff;border-radius:3cqw;padding:1.4cqw 2.4cqw;border:1px solid #fff5}
 .status{font:900 10px/1.2 Tahoma,sans-serif;letter-spacing:.2px;text-align:center;border:2px solid #000;border-radius:8px;padding:4px 5px;background:linear-gradient(#2a2050,#1a1238);color:#c9c2ff}
-.status.minted{background:linear-gradient(135deg,#0f8a5f,#1fd18a 45%,#ffd400);color:#000;box-shadow:0 0 12px #1fd18a88}
 .acts{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
 .ab{border:2px solid #000;border-radius:14px;padding:3px 8px;font:900 11px Tahoma,sans-serif;background:linear-gradient(#fff,#cfd8ff);color:#000;cursor:pointer;text-decoration:none;box-shadow:0 2px 0 #000;white-space:nowrap}
-.ab.sol{background:linear-gradient(#b8ffd9,#19c37d)}
 .ab.star.on{background:linear-gradient(#ffe066,#f2a900)}
 .ab:active{transform:translateY(2px);box-shadow:none}
 
@@ -214,16 +212,8 @@ body[data-wx="clear"][data-day="0"] .wx{background:radial-gradient(circle,#fff 0
 @media (max-width:640px){.ins{grid-template-columns:1fr;padding:12px;width:100%}.ins .stage{max-width:300px;margin:0 auto;width:100%}}
 .stage{width:100%}
 .ins .hc{width:100%}
-.nftframe{display:none}
-.ins.nft .nftframe{display:block}
-.ins.nft .slotbig{border:3px solid #000;border-radius:22px;background:#1c1b2e;padding:10px 10px 12px;box-shadow:0 0 0 2px #7a5cff}
 .reader.relic:hover{transform:none}
-.nfthead{display:flex;align-items:center;gap:6px;font:bold 11px Tahoma,sans-serif;color:#cfc8ff;margin-bottom:8px}
-.nfthead i{width:9px;height:9px;border-radius:50%;background:#7a5cff;display:inline-block}
-.nftfoot{margin-top:8px;font:11px/1.35 Tahoma,sans-serif;color:#cfc8ff}
-.nftfoot code{display:block;font:10px "Courier New",monospace;color:#7dff5a;word-break:break-all;margin-top:3px}
 .skyhud{position:absolute;left:3cqw;right:3cqw;bottom:3cqw;z-index:4;font:900 4.2cqw/1.2 "Courier New",monospace;color:#fff;background:#000b;border:1px solid #fff4;border-radius:2cqw;padding:1.5cqw 2.5cqw;display:none}
-.ins.nft .skyhud{display:block}
 .side h3{margin:0;font:900 26px/1.05 Impact,sans-serif;color:#ffd400;text-shadow:2px 2px 0 #000}
 .side .ttl{font:bold 11px "Courier New",monospace;color:#2ee6ff;margin:4px 0 8px}
 .side .q{font:italic 15px Georgia,serif;color:#f6e9c8;margin:8px 0}
@@ -395,29 +385,3 @@ body.embed .top{padding:6px 8px}body.embed .logo h1{font-size:19px}body.embed .l
 
 .p-redhorizonch1{background:radial-gradient(ellipse at 50% 0,#7ad0ff33,transparent 40%),linear-gradient(160deg,#c45a3a,#a04028 50%,#6a2010);color:#1a0a08;box-shadow:0 0 22px #7ad0ff44,0 8px 18px #000a}
 .p-redhorizonch1 h3{color:#0a2030;text-shadow:0 0 6px #7ad0ff88}.p-redhorizonch1 .ed,.p-redhorizonch1 .src{color:#2a1010}
-
-/* Rainbow Stardust Sky — pastel aurora + drifting dust. Sits behind .wrap so type stays sharp. pointer-events none. */
-#ufdSky{display:none}
-html.ufd-stardust #ufdSky{display:block;position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-html.ufd-stardust #ufdSky .aurora{position:absolute;border-radius:50%;filter:blur(18px);opacity:.9;will-change:transform}
-html.ufd-stardust #ufdSky .aurora.a1{left:-18%;top:-22%;width:78vw;height:62vh;background:radial-gradient(circle,rgba(255,186,224,.72),rgba(255,186,224,0) 68%);animation:ufdAurora 18s ease-in-out infinite alternate}
-html.ufd-stardust #ufdSky .aurora.a2{right:-20%;top:-12%;width:68vw;height:58vh;background:radial-gradient(circle,rgba(160,230,255,.68),rgba(196,255,186,0) 70%);animation:ufdAurora 24s ease-in-out infinite alternate-reverse}
-html.ufd-stardust #ufdSky .dust{position:absolute;left:-8%;top:-20%;width:120%;height:160%;background-image:
- radial-gradient(circle,rgba(255,255,255,.95) 0 1.1px,transparent 1.8px),
- radial-gradient(circle,rgba(255,206,240,.9) 0 1.3px,transparent 2.1px),
- radial-gradient(circle,rgba(176,236,255,.85) 0 1.1px,transparent 1.9px),
- radial-gradient(circle,rgba(210,255,186,.8) 0 1.2px,transparent 2px);
- background-size:170px 210px,230px 250px,140px 180px,200px 230px;background-repeat:repeat;animation:ufdDust 32s linear infinite;opacity:.85}
-html.ufd-stardust #ufdSky .dust.b{animation-duration:46s;animation-direction:reverse;opacity:.55;background-position:60px 40px,20px 90px,80px 10px,30px 70px}
-html.ufd-stardust body{background:
- radial-gradient(ellipse 50% 38% at 10% -8%,rgba(255,176,220,.55),transparent 62%),
- radial-gradient(ellipse 48% 36% at 92% 0,rgba(150,225,255,.5),transparent 64%),
- radial-gradient(ellipse 55% 32% at 50% 108%,rgba(196,255,186,.4),transparent 62%),
- #0b0a18!important}
-@keyframes ufdAurora{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(5%,7%,0) scale(1.1)}}
-@keyframes ufdDust{from{transform:translate3d(0,-6%,0)}to{transform:translate3d(-7%,14%,0)}}
-.stardust-banner{position:relative;z-index:2;margin:10px 0 0;padding:8px 12px;border:2px solid #000;border-radius:12px;background:#160e28;color:#ffe9ff;font:800 13px/1.35 Tahoma,Verdana,sans-serif;text-align:center;box-shadow:3px 3px 0 #e7b6ff}
-.stardust-banner[hidden]{display:none!important}
-@media (prefers-reduced-motion:reduce){
- html.ufd-stardust #ufdSky .aurora,html.ufd-stardust #ufdSky .dust{animation:none}
-}

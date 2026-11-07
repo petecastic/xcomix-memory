@@ -40,19 +40,10 @@ const imgs={};['dkorn_face','voltia_face','krampus_face','kilo_face'].forEach(n=
 
 let st,raf,last=0,sel=null,placeId=null,mode='norm',vipOn=false,paused=false;
 
-function vipVerified(){try{const v=XC.get('dkorn-vip');return !!(v&&v.verified)||vipOn}catch(e){return vipOn}}
+function vipVerified(){return false}
 function refreshVip(){
-  const ok=vipVerified();
-  $('#vipTag').textContent=ok?'★ VIP / SECRET WAVE':'';
-  $('#vipPill').textContent=ok?'VIP Skin ON':'VIP Skin / Toy Code';
-}
-function promptVip(){
-  const code=window.prompt('Toy serial for VIP cosmetic + Secret Boss Wave:\nA1gR-APBeVk','');
-  if(!code)return;
-  if(code.trim().replace(/\s/g,'')==='A1gR-APBeVk'||code.trim().toUpperCase()==='A1GR-APBEVK'){
-    vipOn=true;try{XC.set('dkorn-vip',{verified:true,skin:true,source:'toy-code',at:Date.now()})}catch(e){}
-    refreshVip();XC.sfx(990,.2,'triangle');
-  }else alert('Serial mismatch. Game fully playable without VIP!');
+  const tag=$('#vipTag'); if(tag) tag.textContent='';
+  const pill=$('#vipPill'); if(pill) pill.remove();
 }
 
 function pathPixels(){
@@ -99,8 +90,8 @@ function buildShop(){
 function startWave(){
   if(!st||st.waveActive)return;
   let n=st.wave+1;
-  if(mode==='norm'&&n>12&&!(st.cleared12||vipVerified())){return}
-  if(mode==='norm'&&n===13&&!(vipVerified()||st.cleared12)){n=13}
+  if(mode==='norm'&&n>12&&!st.cleared12){return}
+  if(mode==='norm'&&n===13&&!st.cleared12){n=13}
   if(mode==='norm'&&st.cleared12&&n===13){/* secret */}
   if(mode==='norm'&&n>13){win();return}
   if(mode==='end'&&n>12){/* endless scales */}
@@ -257,7 +248,7 @@ function step(dt){
     if(st.wave===12){st.cleared12=true;if(st.kilo.happy>=50){/* eligible win */} }
     if(mode==='norm'&&st.wave===12){
       if(st.kilo.happy>=50){
-        if(vipVerified()||st.secretReady){$('#next').textContent='SECRET WAVE 13 ▶';st.secretReady=true}
+        if(st.secretReady||st.cleared12){$('#next').textContent='WAVE 13 ▶';st.secretReady=true}
         else {win();return}
       } else {lose('Kilo Happy under 50%');return}
     }
@@ -272,7 +263,7 @@ function win(){
   const{best,rec}=XC.best('dkorn-spool',st.wave*1000+st.pretzels+st.lives*10);
   XC.over({img:A+'dkorn_family_arcade_hero.jpg',title:'GRID HELD!',
     stats:`Wave ${st.wave} cleared · Kilo ${kiloEmoji(st.kilo)} Happy ${Math.round(st.kilo.happy)}%<br>Pretzels left ${st.pretzels}`+(rec?' · NEW BEST!':''),
-    text:`I held Sub-Station 13 through Wave ${st.wave} in Spool Toss TD — Kilo stayed happy on STAGE:A1gR-APBeVk. See you in another timeline.`,
+    text:`I held Sub-Station 13 through Wave ${st.wave} in Spool Toss TD — Kilo stayed happy on STAGE:CIRCUIT-13. See you in another timeline.`,
     path:'dkorn-spool/',again:()=>{reset();bootTitle()}});
 }
 function lose(why){
@@ -340,7 +331,7 @@ function draw(){
   try{if(imgs.kilo_face.complete)c.drawImage(imgs.kilo_face,8,H-48,40,40)}catch(e){}
   if(st){c.font='20px serif';c.fillText(kiloEmoji(st.kilo),52,H-20)}
   c.fillStyle='#ffffff66';c.font='bold 10px monospace';c.textAlign='left';
-  c.fillText('POLE #A1gR-APBeVk'+(vip?' ★ VIP':''),8,14);
+  c.fillText('POLE #CIRCUIT-13'+(vip?' ★ VIP':''),8,14);
   if(st&&!st.on&&!st.won){/* title covers */}
 }
 
@@ -377,7 +368,6 @@ $('#pretzelBtn').onclick=()=>hush('pretzel');
 $('#coffeeBtn').onclick=()=>hush('coffee');
 $('#mNorm').onclick=()=>{mode='norm';$('#mNorm').classList.add('on');$('#mEnd').classList.remove('on');reset()};
 $('#mEnd').onclick=()=>{mode='end';$('#mEnd').classList.add('on');$('#mNorm').classList.remove('on');reset()};
-$('#vipPill').onclick=e=>{e.stopPropagation();promptVip()};
 
 function loop(now){
   if(!last)last=now;const dt=Math.min(0.05,(now-last)/1000);last=now;
@@ -403,7 +393,7 @@ function bootTitle(){
   const t=document.createElement('div');t.className='titleov';
   t.innerHTML=`<div class="tbox"><img src="${A}dkorn_face.jpg" alt=""><h2>SPOOL TOSS TD</h2>
   <p>Place Spool / Lasso / Steam towers along the cul-de-sac. Quiet Mode + Baby Kilo meter. Clear Wave 12 with Kilo Happy ≥ 50%.</p>
-  <p style="color:#2ee6ff;font-size:11px">Flat cable spools only · STAGE: A1gR-APBeVk</p>
+  <p style="color:#2ee6ff;font-size:11px">Flat cable spools only · STAGE: CIRCUIT-13</p>
   <div class="ctp">TAP TO START</div></div>`;
   stage.appendChild(t);
   const go=e=>{if(e.target.closest('button'))return;e.preventDefault();t.remove();st.on=true;last=0};

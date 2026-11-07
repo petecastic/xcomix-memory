@@ -1,5 +1,5 @@
 /* Overmind's Rug Loom — Idle Arcade Simulator. 100% free parody browser game.
-   Every number here is a fake arcade point saved in this browser. No wallet, no deposits, no transactions. */
+   Every number here is a fake arcade point saved in this browser. */
 (function(){
 'use strict';
 var $=function(s){return document.querySelector(s)};
@@ -24,7 +24,7 @@ var UPG=[
  {id:'amber',n:'Amber Insulator Bobbins',d:'Each tap also spins +3% of your Lint/sec',c:8e5,k:'clickPct',v:.03},
  {id:'coil',n:'12:49 AM Arc Coil',d:'All crew x2',c:5e6,k:'crew',v:2},
  {id:'vat',n:'Golden Mustard Vat Lube',d:'All crew x2',c:2e8,k:'crew',v:2},
- {id:'pole',n:'Pole #A1gR-APBeVk Spindle',d:'All crew x2, taps x3',c:5e10,k:'both',v:2}
+ {id:'pole',n:'Circuit 13 Spindle',d:'All crew x2, taps x3',c:5e10,k:'both',v:2}
 ];
 var RUGS=[
  {id:'mat',n:'Welcome Mat of Regret',d:'+5% Lint/sec per level',c:25},
@@ -56,17 +56,16 @@ var ACH=[
  ['crew50','Union Rep','Hire 50 crew total',function(){return crewTotal()>=50},2],
  ['crewall','The Whole Multiverse Shift','Hire every crew type',function(){return S.crew.every(function(n){return n>0})},3],
  ['combo','Static Cling','Reach a x2.0 tap combo',function(){return S.maxCombo>=50},1],
- ['prest','Rolled Up','Roll Up the Rugs once',function(){return S.rolls>=1},3],
- ['vip','Hard-Hat Drip','Insert a VIP Pass (cosmetic)',function(){return window.DKVIP&&DKVIP.isVip()},1]
+ ['prest','Rolled Up','Roll Up the Rugs once',function(){return S.rolls>=1},3]
 ];
 var TICK=[
- 'HOPIUM: The Welcome Mat is going VERTICAL, folks!  TAPE: It\'s a mat. It\'s horizontal by design.',
- 'HOPIUM: Thread count is UP four thousand percent!  TAPE: It went from one thread to forty.',
+ 'HOPIUM: The Welcome Mat is standing up, folks!  TAPE: It\'s a mat. It lies down. That is the job.',
+ 'HOPIUM: Thread count just doubled!  TAPE: It went from one thread to two.',
  'HOPIUM: Experts say this shag is the shag of the century!  TAPE: Experts are Bear. Bear is chewing it.',
- 'HOPIUM: Breaking: Overmind promises the Piggy Vault is "totally legit."  TAPE: The pig is see-through. It\'s full of lint.',
- 'HOPIUM: The Oriental Rug has never been more Oriental!  TAPE: Krampus spilled coffee on it again.',
+ 'HOPIUM: Breaking: Overmind says the pig is full.  TAPE: The pig is see-through. It\'s full of lint.',
+ 'HOPIUM: The hallway runner has never looked longer!  TAPE: Krampus spilled coffee on it again.',
  'HOPIUM: Tassels! Tassels as far as the eye can see!  TAPE: Marjorie says they\'re 0.2 inches out of code.',
- 'HOPIUM: I\'m calling it: the Bathmat of Bensalem is the next big thing!  TAPE: It\'s damp, Hopium.',
+ 'HOPIUM: I\'m calling it: the Bathmat of Bensalem is tonight\'s star!  TAPE: It\'s damp, Hopium.',
  'MARJORIE: This runner is 4 feet 2 inches. The HOA allows 4 feet. You\'re getting a citation.',
  'OVERMIND: Your Lint is SAFE in my vault. Forever. In Dimensions 1–12. No take-backs.',
  'BABY KILO: *static fuzz giggle*   DKORN: Shhh. The grid can wait. The baby cannot.',
@@ -129,7 +128,7 @@ function drawBG(){
   for(i=0;i<4;i++){g.beginPath();g.moveTo(0,300+i*i*5);g.lineTo(W,300+i*i*5);g.stroke()}
   // neon sign
   g.save();g.font='bold 22px Impact,Arial Black,sans-serif';g.textAlign='center';g.shadowColor='#ff2ee6';g.shadowBlur=14+4*Math.sin(time*5);g.fillStyle='#ffd1fb';
-  g.fillText("OVERMIND'S RUG LOOM",320,30);g.font='bold 10px Courier New,monospace';g.shadowBlur=6;g.shadowColor='#2ee6ff';g.fillStyle='#bff';g.fillText('IDLE ARCADE SIMULATOR · ALL POINTS FAKE · STAGE: A1gR-APBeVk',320,45);g.restore();
+  g.fillText("OVERMIND'S RUG LOOM",320,30);g.font='bold 10px Courier New,monospace';g.shadowBlur=6;g.shadowColor='#2ee6ff';g.fillStyle='#bff';g.fillText('IDLE ARCADE SIMULATOR · ALL POINTS FAKE · STAGE: CIRCUIT-13',320,45);g.restore();
 }
 function drawLoom(){
   var x=LOOM.x,y=LOOM.y,r=LOOM.r,col=vip()?'#ffd400':'#2ee6ff';
@@ -177,7 +176,7 @@ function drawPig(){
   [[-55,1],[-20,0],[25,0],[60,1]].forEach(function(l){g.fillStyle='rgba(200,240,255,.35)';g.fillRect(x+l[0],y+56,16,24);g.strokeRect(x+l[0],y+56,16,24)});
   g.fillStyle='#000';g.fillRect(x-22,y-66,44,5);
   g.fillStyle='#fff';g.font='bold 11px Tahoma';g.textAlign='center';g.fillText('TOTALLY-LEGIT GLASS PIGGY VAULT',x,y+98);
-  g.fillStyle='#ff9ad5';g.font='bold 8px Courier New';g.fillText('LOCKED FOREVER IN DIMENSIONS 1–12 · NO REFUNDS, ONLY RUGS',x,y+110);
+  g.fillStyle='#ff9ad5';g.font='bold 8px Courier New';g.fillText('LINT IN THE PIG DRIPS THREAD FOR RUGS',x,y+110);
   g.font='bold 13px Courier New';g.strokeStyle='#000';g.lineWidth=4;g.strokeText(fmt(S.locked)+' LINT LOCKED',x,y+6);g.fillStyle='#ffd400';g.fillText(fmt(S.locked)+' LINT LOCKED',x,y+6);
   // thread drips
   if(S.locked>0){for(i=0;i<3;i++){var ph=(time*0.8+i/3)%1;g.strokeStyle=['#ff2ee6','#2ee6ff','#ffd400'][i];g.lineWidth=2;g.beginPath();g.moveTo(x+104,y+16+ph*60);g.lineTo(x+104,y+26+ph*60);g.stroke()}
@@ -321,10 +320,10 @@ function rebuild(){
     var upShown=0;UPG.forEach(function(u){if(S.up[u.id]||(S.all<u.c*.3&&upShown>=1))return;upShown++;h+='<div class="row"><span class="av">🧶</span><div class="nm"><b>'+u.n+'</b><small>'+u.d+'</small></div><div class="buy"><button class="btn go" data-up="'+u.id+'">Buy '+fmt(u.c)+'</button></div></div>'});
     var got=UPG.filter(function(u){return S.up[u.id]}).map(function(u){return u.n});if(got.length)h+='<div class="note">Installed: '+got.join(', ')+'</div>';
   } else if(tab==='vault'){
-    h+='<h3>Overmind\'s Totally-Legit Glass Piggy Vault</h3><div class="grid2"><div>Locked Lint<br><span class="vbig" id="vLocked">'+fmt(S.locked)+'</span></div><div>Woven Thread drip<br><span class="vbig" id="vTps">'+fmt(tps())+'/s</span></div></div>';
-    h+='<p style="margin:6px 0">Lock fake Cable Lint in the cartoon pig. It drips <b>'+(dripRate()*100).toFixed(3)+'%</b> of the locked pile as Woven Thread every second, which you weave into rugs. <span class="fine" title="LOCKED FOREVER IN DIMENSIONS 1–12 — NO REFUNDS, ONLY RUGS. Overmind\'s lawyers are also toasters.">*Fine print</span></p>';
+    h+='<h3>Overmind\'s Glass Pig</h3><div class="grid2"><div>Lint in the pig<br><span class="vbig" id="vLocked">'+fmt(S.locked)+'</span></div><div>Woven Thread drip<br><span class="vbig" id="vTps">'+fmt(tps())+'/s</span></div></div>';
+    h+='<p style="margin:6px 0">Put fake Cable Lint in the cartoon pig. It drips <b>'+(dripRate()*100).toFixed(3)+'%</b> of that pile as Woven Thread every second, which you weave into rugs.</p>';
     h+='<div style="display:flex;gap:4px;flex-wrap:wrap"><button class="btn go" data-lock=".25">Lock 25%</button><button class="btn go" data-lock=".5">Lock 50%</button><button class="btn go" data-lock="1">Lock ALL</button><button class="btn'+(S.auto?' on':'')+'" id="autoBtn">Auto-lock 10% of crew spin: '+(S.auto?'ON':'OFF')+'</button></div>';
-    h+='<div class="note"><b>OVERMIND:</b> "Locked Lint stays in my pig. Forever. In Dimensions 1–12. NO REFUNDS, ONLY RUGS." <span class="fine" title="The Glass Piggy Vault is a cartoon. Lint is fake. Thread is fake. The rugs are, tragically, real (in the game).">*Even finer print</span></div>';
+    h+='<div class="note"><b>OVERMIND:</b> "Lint in my pig stays in my pig. That is how a pig works." The lint, thread, and rugs are cartoon points in this browser.</div>';
     h+='<h3>🪙 Arcade Quarter Slot</h3><p style="margin:4px 0">Arcade Quarters: <b id="vQ">'+S.q+'</b>. Catch Golden Lint Bunnies and earn trophies to collect them.</p>';
     h+='<div style="display:flex;gap:4px;flex-wrap:wrap;align-items:center"><button class="btn go" id="packBtn"'+(S.q<5?' disabled':'')+'>Trade 5 Quarters → 1 Card Binder Booster Pack</button><a href="../binder/" class="btn sm" style="text-decoration:none">Open Card Binder ↗</a></div>';
     h+='<p style="font-size:11px;margin:4px 0">Bonus packs waiting in your binder: <b>'+((window.XC&&XC.get('binder-packs'))|0)+'</b></p>';
@@ -340,9 +339,8 @@ function rebuild(){
     var pos=tasselsPossible(),gn=Math.max(0,pos-S.tassels);
     h+='<h3>✨ Roll Up the Rugs (Prestige)</h3><p>Roll up every rug, send the crew home, and the pig keeps its lint (forever, obviously). In exchange you earn <b>Golden Tassels</b>: each one is a permanent <b>+5%</b> to everything.</p>';
     h+='<p>Golden Tassels: <b>'+S.tassels+'</b> · available from this run: <b>'+gn+'</b><br><small>Tassels are based on all-time Cable Lint (1 at 100M, 2 at 800M, 3 at 2.7B…).</small></p><button class="btn go" id="rollBtn"'+(gn<1?' disabled':'')+'>Roll Up the Rugs for +'+gn+' Golden Tassel'+(gn===1?'':'s')+'</button>';
-    h+='<h3>🪖 VIP Pass Extras (cosmetic)</h3>';
-    if(vip()){var cd=Math.max(0,600-(Date.now()-(S.moth||0))/1000);h+='<p>VIP Pass active: Golden Hard-Hat / Cyan Arc HUD skin is on.</p><button class="btn go" id="mothBtn"'+(cd>0?' disabled':'')+'>Summon Secret Boss Wave: The Hum Moths'+(cd>0?' ('+fmtT(cd)+')':'')+'</button><p style="font-size:11px">Static Siren\'s moth choir swarms the loom. Tap moths for Woven Thread before they flutter off.</p>'}
-    else h+='<p>Optional: insert a VIP Pass to get the Golden Hard-Hat HUD skin and a Secret Boss Wave. It\'s a read-only check (or use the collector serial). The game is 100% playable without it.</p><button class="btn" id="vipBtn2">🎟️ Insert VIP Pass (Read-Only Check)</button>';
+    var cd=Math.max(0,600-(Date.now()-(S.moth||0))/1000);
+    h+='<h3>The Hum Moths</h3><p>Static Siren\'s moth choir can swarm the loom. Tap moths for Woven Thread before they flutter off.</p><button class="btn go" id="mothBtn"'+(cd>0?' disabled':'')+'>Summon the Hum Moths'+(cd>0?' ('+fmtT(cd)+')':'')+'</button>';
     h+='<h3>Save</h3><p style="font-size:11px">Progress saves in this browser only. <button class="btn sm" id="resetBtn">Wipe save</button></p>';
   }
   $('#panel').innerHTML=h;refresh();
@@ -368,18 +366,16 @@ $('#panel').addEventListener('click',function(e){
   else if(b.id==='autoBtn'){S.auto=!S.auto;rebuild()}
   else if(b.id==='packBtn'){if(S.q>=5){S.q-=5;if(window.XC)XC.set('binder-packs',((XC.get('binder-packs'))|0)+1);toast('📦 Booster Pack sent to your Card Binder!');rebuild()}}
   else if(b.id==='rollBtn'){var gn=tasselsPossible()-S.tassels;if(gn>=1)confirmDlg('Roll Up the Rugs?','All crew, upgrades, rugs, Lint and Thread reset. The Piggy Vault empties too (Overmind "reallocates" it). You keep Trophies, Quarters and gain <b>+'+gn+' Golden Tassel'+(gn===1?'':'s')+'</b> (+5% everything each).',function(){var keep={tassels:S.tassels+gn,rolls:S.rolls+1,q:S.q,ach:S.ach,all:S.all,threadAll:S.threadAll,clicks:S.clicks,bunnies:S.bunnies,maxCombo:S.maxCombo,started:S.started,moth:S.moth};S=fresh();for(var k in keep)S[k]=keep[k];save();toast('✨ Rugs rolled up! +'+gn+' Golden Tassels');rebuild()})}
-  else if(b.id==='vipBtn2'){if(window.DKVIP)DKVIP.open()}
-  else if(b.id==='mothBtn'){S.moth=Date.now();for(var m=0;m<12;m++)moths.push({x:-30-m*45,y:90+Math.random()*170,vx:90+Math.random()*50,k:m*1.7});toast('SECRET BOSS WAVE: THE HUM MOTHS!');rebuild()}
+  else if(b.id==='mothBtn'){S.moth=Date.now();for(var m=0;m<12;m++)moths.push({x:-30-m*45,y:90+Math.random()*170,vx:90+Math.random()*50,k:m*1.7});toast('The Hum Moths!');rebuild()}
   else if(b.id==='resetBtn'){confirmDlg('Wipe save?','This erases your Rug Loom progress in this browser.',function(){S=fresh();save();rebuild()})}
 });
 $('#tabs').addEventListener('click',function(e){var b=e.target.closest('[data-t]');if(b){tab=b.getAttribute('data-t');rebuild();sfx(440,.03)}});
 /* ---------- dialogs ---------- */
 function dlg(title,body,btns){$('#dT').textContent=title;$('#dB').innerHTML=body;var bb=$('#dBtns');bb.innerHTML='';btns.forEach(function(b){var e=document.createElement('button');e.className='btn'+(b.go?' go':'');e.textContent=b.t;e.onclick=function(){$('#ovl').classList.remove('show');if(b.f)b.f()};bb.appendChild(e)});$('#ovl').classList.add('show')}
 function confirmDlg(t,b,f){dlg(t,b,[{t:'Cancel'},{t:'Do it',go:1,f:f}])}
-function help(){dlg("How to play Overmind's Rug Loom",'<ol style="padding-left:18px;margin:0"><li><b>Tap the Neon Loom</b> to spin fake Cable Lint. Fast taps build a combo (up to x2).</li><li><b>Hire X-Comix crew</b> to spin Lint for you, even while you\'re away (up to 8 hours).</li><li><b>Lock Lint in the Glass Piggy Vault.</b> It never comes back out (NO REFUNDS, ONLY RUGS), but it drips Woven Thread every second.</li><li><b>Weave rugs</b> with Thread. Each rug gives a bonus and shows up in your Apartment Floor Showroom.</li><li><b>Catch Golden Lint Bunnies</b> for bursts, frenzies and Arcade Quarters. Trade 5 Quarters for a free Card Binder pack.</li><li><b>Roll Up the Rugs</b> later for permanent Golden Tassels.</li></ol><div class="note">100% free parody browser game. In-game points have zero cash/crypto value. No crypto deposits. Nothing to buy, ever.</div>',[{t:'Got it',go:1}])}
+function help(){dlg("How to play Overmind's Rug Loom",'<ol style="padding-left:18px;margin:0"><li><b>Tap the Neon Loom</b> to spin fake Cable Lint. Fast taps build a combo (up to x2).</li><li><b>Hire X-Comix crew</b> to spin Lint for you, even while you\'re away (up to 8 hours).</li><li><b>Put Lint in the glass pig.</b> The pig keeps it and drips Woven Thread every second.</li><li><b>Weave rugs</b> with Thread. Each rug gives a bonus and shows up in your Apartment Floor Showroom.</li><li><b>Catch Golden Lint Bunnies</b> for bursts, frenzies and Arcade Quarters. Trade 5 Quarters for a free Card Binder pack.</li><li><b>Roll Up the Rugs</b> later for permanent Golden Tassels.</li></ol><div class="note">100% free cartoon game. Scores and lint stay in this browser. Nothing to buy.</div>',[{t:'Got it',go:1}])}
 $('#mHelp')&&($('#mHelp').onclick=help);
 $('#mNew')&&($('#mNew').onclick=function(){confirmDlg('New game?','Start over from zero? (Trophies reset too.)',function(){S=fresh();save();rebuild()})});
-$('#mVip')&&($('#mVip').onclick=function(){if(window.DKVIP)DKVIP.open()});
 var SHARE='https://x.com/intent/post?text='+encodeURIComponent("I'm weaving literal cartoon rugs in Overmind's Rug Loom, a free 2000s-style idle game in the X-COMIX arcade. All points are fake, the rugs are ridiculous: https://petecastic.github.io/xcomix-memory/rug-loom/ See you in another timeline.");
 $('#mShare')&&($('#mShare').onclick=function(){window.open(SHARE,'_blank','noopener')});
 var snd=$('#snd');function sndU(){if(snd)snd.innerHTML=window.XC&&XC.muted?'&#128263;':'&#128266;'}sndU();if(snd)snd.onclick=function(){XC.muted=!XC.muted;XC.set('muted',XC.muted);sndU();sfx(660)};
@@ -402,7 +398,6 @@ setInterval(function(){refresh();checkAch()},250);
 setInterval(save,5000);
 document.addEventListener('visibilitychange',function(){if(document.hidden)save();else{offline();rebuild()}});
 window.addEventListener('pagehide',save);
-if(window.DKVIP)DKVIP.onChange(function(){rebuild()});
 rebuild();requestAnimationFrame(frame);requestAnimationFrame(tkLoop);
 window.__loom={S:function(){return S},set:function(o){for(var k in o)S[k]=o[k];rebuild()},rebuild:rebuild,tab:function(t){tab=t;rebuild()},bunny:function(){nextBunny=0},start:start,lps:lps,tps:tps};
 })();
