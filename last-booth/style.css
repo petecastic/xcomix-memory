@@ -1,0 +1,25 @@
+.stage{max-width:520px}
+.stage canvas{aspect-ratio:480/220;background:#100824}
+#play{max-width:520px;margin:8px auto 0}
+.fare{display:flex;gap:6px}
+.fare span{flex:1;background:#000;border:3px solid #000;box-shadow:inset 0 0 0 2px #ffd400;border-radius:10px;padding:6px 4px;text-align:center;font:900 11px "Courier New",monospace}
+.fare b{display:block;color:#ffd400;font-size:18px;margin-top:2px}
+.fare span:last-child b{color:#7dff5a;font-size:22px}
+.trayline{margin:6px 0;background:#1b1b2b;border:3px solid #000;border-radius:10px;padding:6px 8px;font:900 13px "Courier New",monospace;min-height:34px}
+.trayline b{color:#ffd400}
+#chips{color:#fff;font:700 12px system-ui,sans-serif}
+.coins{display:flex;gap:6px}
+.coins button{flex:1;min-height:52px;padding:6px 2px;font:900 15px Impact,sans-serif;background:linear-gradient(#fff,#d9d2b8);color:#000;line-height:1.05}
+.coins button small{display:block;font:700 10px "Courier New",monospace;color:#333}
+.pad{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
+.pad button{flex:1;min-height:46px;font:900 14px Impact,sans-serif;padding:8px 6px}
+#hand{background:linear-gradient(#7dff5a,#1fae1f);color:#000;flex:1.4}
+#shoo{background:linear-gradient(#ff8a8a,#ff2e63);color:#fff;flex-basis:100%}
+.quip{min-height:2.4em;margin:8px 2px 0;font-size:14px;text-align:center;color:#ddd}
+body.embed #play{margin-top:4px}
+body.embed .fare b{font-size:15px}
+body.embed .fare span:last-child b{font-size:18px}
+body.embed .coins button{min-height:42px;font-size:14px;padding:4px 2px}
+body.embed .pad button{min-height:38px;padding:6px}
+body.embed .quip{min-height:1.2em;font-size:12px;margin:4px}
+body.embed .stage{max-width:none}
