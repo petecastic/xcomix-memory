@@ -1,0 +1,14 @@
+.stage{max-width:520px}
+.stage canvas{aspect-ratio:8/5;background:#120a28}
+.pad{display:flex;gap:8px;max-width:520px;margin:8px auto}
+.pad button{flex:1;font:900 18px Impact,sans-serif;letter-spacing:.5px;padding:12px 8px;min-height:48px}
+#hook{background:linear-gradient(#7dff5a,#1fae1f);color:#000}
+#canbtn{background:linear-gradient(#ffe066,#f2a900);color:#000}
+.quip{min-height:2.4em;margin:8px 2px 0;font-size:14px;text-align:center;color:#ddd}
+.quip b{color:#ff5c8a}
+.hint{text-align:center;color:#9a93b0;font-size:12px;margin:4px auto 0;max-width:520px;line-height:1.35}
+body.embed .hint{display:none}
+body.embed .pad{margin:4px auto}
+body.embed .pad button{padding:8px;font-size:16px;min-height:40px}
+body.embed .quip{min-height:1.2em;margin:4px;font-size:12px}
+body.embed .stage{max-width:none;width:min(100%,520px)}

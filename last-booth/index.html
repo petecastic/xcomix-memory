@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Last Booth · X-COMIX Arcade</title>
+<meta name="theme-color" content="#14102a">
+<meta name="description" content="Toll booth night shift. Gus makes exact change, Pixel prints heart receipts, and Doug the Goose keeps getting in the lane.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@mrpetecastic">
+<meta name="twitter:title" content="Last Booth · X-COMIX Arcade">
+<meta name="twitter:description" content="Make exact change at the last human booth. Shoo Doug. Pixel prints the receipt.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/last-booth.jpg">
+<meta name="twitter:image:alt" content="Gus and Pixel working the last toll booth while Doug the Goose stands in the lane">
+<meta name="twitter:player" content="https://petecastic.github.io/xcomix-memory/last-booth/embed.html">
+<meta name="twitter:player:width" content="480">
+<meta name="twitter:player:height" content="480">
+<meta property="og:title" content="Last Booth · X-COMIX Arcade">
+<meta property="og:description" content="Make exact change at the last human booth. Shoo Doug. Pixel prints the receipt.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://petecastic.github.io/xcomix-memory/last-booth/">
+<meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/last-booth.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ff2e63'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../arcade/common.css">
+<link rel="stylesheet" href="../arcade/retro.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="retro">
+<a class="back" href="../">← Arcade</a>
+<div class="wrap">
+  <h1>LAST <span>BOOTH</span></h1>
+  <p class="sub">Night shift. Gus makes change. Pixel prints the receipt. Doug the Goose has other plans.</p>
+  <div class="bhud">
+    <span>SCORE <b id="sc">0</b></span>
+    <span>CARS <b id="cars">0</b></span>
+    <span>STREAK <b id="sk">0</b></span>
+    <span>CONES <b id="cones">0/3</b></span>
+    <span>HI <b id="hi">—</b></span>
+  </div>
+  <div class="stage" id="stage"><canvas id="cv" width="480" height="220"></canvas></div>
+  <div id="play" hidden>
+    <div class="fare">
+      <span>FARE <b id="fare">$0.00</b></span>
+      <span>PAID <b id="paid">$0.00</b></span>
+      <span>CHANGE <b id="due">$0.00</b></span>
+    </div>
+    <div class="trayline">TRAY <b id="tray">$0.00</b> <span id="chips"></span></div>
+    <div class="coins" id="coins">
+      <button type="button" data-c="100">$1 <small>1</small></button>
+      <button type="button" data-c="25">25¢ <small>2</small></button>
+      <button type="button" data-c="10">10¢ <small>3</small></button>
+      <button type="button" data-c="5">5¢ <small>4</small></button>
+      <button type="button" data-c="1">1¢ <small>5</small></button>
+    </div>
+    <div class="pad">
+      <button type="button" id="undo">UNDO</button>
+      <button type="button" id="clear">CLEAR</button>
+      <button type="button" id="hand">HAND IT OVER</button>
+      <button type="button" id="shoo" hidden>SHOO DOUG</button>
+    </div>
+  </div>
+  <p class="quip" id="quip">Exact change. Keys 1–5 drop coins. Enter hands it over. Space shoos the goose.</p>
+  <footer>X-COMIX MULTIVERSE by <a href="https://x.com/PeteCastic" target="_blank" rel="noopener">@PeteCastic</a> · #XCOMIX · “X-COMIX, we never close.”</footer>
+</div>
+<script src="../arcade/common.js"></script>
+<script src="game.js"></script>
+</body>
+</html>

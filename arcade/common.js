@@ -18,3 +18,10 @@ XC.title=function(host,o){const t=document.createElement('div');t.className='tit
 
 XC.fit=function(){if(!XC.embed||document.querySelector('canvas'))return;var w=document.querySelector('.wrap');if(!w)return;w.style.zoom=1;var h=w.scrollHeight+12,ww=w.scrollWidth+12,vh=window.innerHeight,vw=window.innerWidth;if(!vh||!vw)return;var z=Math.min(1,vh/h,vw/ww);w.style.zoom=z};
 window.addEventListener('resize',function(){XC.fit()});window.addEventListener('load',function(){XC.fit();setTimeout(XC.fit,300)});
+(function(){
+  if(document.body.classList.contains('embed'))return;
+  if(!document.querySelector('a.back, a.bk')&&document.body.dataset.xcbar!=='on')return;
+  var s=document.currentScript;if(!s)return;
+  var src=s.src.replace(/common\.js(\?.*)?$/,'chrome.js');
+  document.write('<script src="'+src+'"><\/script>');
+})();
