@@ -5,7 +5,7 @@ var $=function(s,r){return (r||document).querySelector(s)};
 var EMBED=document.body.classList.contains('embed');
 var SER='STAGE: A1gR-APBeVk';
 var SICON=['','☔','⚡','🪜','🥨','🎄','🕳️','🌩️','👑','⚙️','🚧','❄️','📍'];
-var UCLS={'Dkorn Saga':'','Multiverse Core':'u-ms','Line Life':'u-ll','Krampus':'u-kr','Pump & Dump':'u-pd','Old Bay Boys':'u-ob','Echoes of the Red Horizon':'u-eh','Domino & Pickle':'u-dp','Trail Trouble':'u-tt'};
+var UCLS={'Dkorn Saga':'','Multiverse Core':'u-ms','Line Life':'u-ll','Krampus':'u-kr','Rainbow Herd':'u-pd','Old Bay Boys':'u-ob','Echoes of the Red Horizon':'u-eh','Domino & Pickle':'u-dp','Trail Trouble':'u-tt'};
 var RCLS={'Common':'','Foil':'holo','Boss':'holo r-boss','10-Book Relic':'holo r-relic'};
 var RW={'Common':66,'Foil':24,'Boss':7,'10-Book Relic':3};
 function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
@@ -15,7 +15,7 @@ var S=load();function save(){if(window.XC)XC.set('binder',S)}save();
 function bonus(){return (window.XC&&XC.get('binder-packs'))|0}
 function setBonus(n){if(window.XC)XC.set('binder-packs',Math.max(0,n))}
 function dailyLeft(){return S.day!==today()?1:0}
-function bossLeft(){return window.DKVIP&&DKVIP.isVip()&&S.boss!==today()?1:0}
+function bossLeft(){return S.boss!==today()?1:0}
 var st={q:'',u:'All',r:'All',b:'All',s:'All',o:'All',view:EMBED?'binder':'binder',page:0,newIds:{}};
 function filt(){var q=st.q.toLowerCase();return C.filter(function(c){
   if(st.u!=='All'&&c.shows.indexOf(st.u)<0)return false;
@@ -114,7 +114,7 @@ function rip(){
 /* wire up */
 function opts(sel,arr){sel.innerHTML=arr.map(function(a){return '<option value="'+esc(a[0])+'">'+esc(a[1])+'</option>'}).join('')}
 function init(){
-  opts($('#fU'),[['All','All Universes'],['Dkorn Saga','Dkorn Saga (100)'],['Multiverse Core','Multiverse Core'],['Line Life','Line Life'],['Krampus','Krampus'],['Pump & Dump','Pump & Dump'],['Old Bay Boys','Old Bay Boys'],['Echoes of the Red Horizon','Echoes of the Red Horizon'],['Domino & Pickle','Domino & Pickle'],['Trail Trouble','Trail Trouble']]);
+  opts($('#fU'),[['All','All Universes'],['Dkorn Saga','Dkorn Saga (100)'],['Multiverse Core','Multiverse Core'],['Line Life','Line Life'],['Krampus','Krampus'],['Rainbow Herd','Rainbow Herd'],['Old Bay Boys','Old Bay Boys'],['Echoes of the Red Horizon','Echoes of the Red Horizon'],['Domino & Pickle','Domino & Pickle'],['Trail Trouble','Trail Trouble']]);
   opts($('#fR'),[['All','All Rarities'],['Common','Common'],['Foil','Foil'],['Boss','Boss'],['10-Book Relic','10-Book Relic']]);
   var b=[['All','All Books']];for(var i=1;i<=10;i++)b.push([String(i),'Book '+i+': '+D.books[i]]);opts($('#fB'),b);
   var s=[['All','All Sectors']];for(i=1;i<=12;i++)s.push([String(i),SICON[i]+' '+i+' · '+D.sectors[i-1]]);opts($('#fS'),s);

@@ -4,7 +4,6 @@
 (function(){
 'use strict';
 var MINT='A1gRAicaLnYRmKQwRbQCaEEp6iYfu5q5X5gTFAPBeVk';
-var FOUNDER='2gMmnUrxeRkZLA47NyKSGBs1aPFVSfEWruwyTKo7UUyH';
 var UFD='eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump';
 var T22='TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb';
 var TOKENKEG='TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
@@ -13,7 +12,6 @@ var ESCROW='ubsQ1M34RdLFwDgydiRRTctpvYKeYCF76weWk7QfUVa';
 var ESCROW_VAULT='9RGmTA3PVTAwWvzQZaCbfs4zJQ5qzJyDtm7XFTdfu7PR';
 var LOCK_PROGRAM='LocpQgucEQHbqNABEYvBvwoxCPsSbG91A1QaQhQQqjn';
 var LOCK_TX='euRKuzJnTVxaPU4SYRViW4WAb5oiiV4LcvKcJJyMuhu1bce281FeH2AoLNaXhMBtfjN3k9DPZjFY99gtqNKP2S9';
-var LOCK_URL='https://lock.jup.ag/escrow/'+ESCROW;
 /* All five finalized, non-cancelable Jupiter Locks (LOCK_RECEIPT.md). Facts only. */
 var LOCKS=[
  {n:'Vault 1 · 10-Year Book Saga Lock',when:'2027–2036 · 2.6M per year, Books 1–10',amt:26000000,esc:ESCROW,tx:LOCK_TX},
@@ -78,8 +76,8 @@ function byMint(owner,mint,programId){
   });
 }
 function holderBalances(owner){
-  return Promise.all([tokenBalance(owner,MINT,T22),tokenBalance(owner,FOUNDER,T22),tokenBalance(owner,UFD,TOKENKEG)])
-    .then(function(r){return {dkorn:r[0],founder:r[1],ufd:r[2]}});
+  return Promise.all([tokenBalance(owner,MINT,T22),tokenBalance(owner,UFD,TOKENKEG)])
+    .then(function(r){return {dkorn:r[0],founder:0,ufd:r[1]}});
 }
 
 /* ---- base58 + PDA (used only to compute a public token-account address; no keys involved) ---- */
@@ -127,21 +125,21 @@ function save(mode,address,balance){
 function tierHTML(s){
   if(!s||!s.verified)return '';
   if(s.mode==='serial')return '<div class="dkv-pass">🪖 VIP PASS ACTIVE <small>collector serial preview</small></div>';
-  var dk=Number(s.dkorn!=null?s.dkorn:(s.balance||0)),fd=Number(s.founder||0),uf=Number(s.ufd||0);
-  var circuit=dk>0||fd>0,herd=uf>0,head,sub,cls='';
-  if(circuit&&herd){head='⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD';sub='$DKORN '+fmt(dk)+' · Founder #000 '+fmt(fd)+' · $UFD '+fmt(uf);cls=' dual'}
+  var dk=Number(s.dkorn!=null?s.dkorn:(s.balance||0)),uf=Number(s.ufd||0);
+  var circuit=dk>0,herd=uf>0,head,sub,cls='';
+  if(circuit&&herd){head='⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD';sub='$DKORN '+fmt(dk)+' · $UFD '+fmt(uf);cls=' dual'}
   else if(herd){head='✨ DUSTER HERD GUEST PASS · '+fmt(uf)+' $UFD';sub=esc(short(s.address))+' · read-only public balance';cls=' herd'}
-  else{head='🪖 VIP PASS ACTIVE';sub=esc(short(s.address))+' · '+fmt(dk)+' $DKORN'+(fd>0?' · Founder #000 '+fmt(fd):'')+' (read-only)';}
+  else{head='🪖 VIP PASS ACTIVE';sub=esc(short(s.address))+' · '+fmt(dk)+' $DKORN (read-only)';}
   return '<div class="dkv-pass'+cls+'">'+head+'<small>'+sub+'</small></div>';
 }
 function msg(t,cls){var m=drawer&&drawer.querySelector('.dkv-msg');if(m){m.className='dkv-msg '+(cls||'');m.innerHTML=t}}
 function verifyAddress(addr,mode){
   addr=(addr||'').trim();
   if(!isAddr(addr)){msg('That doesn\'t look like a Solana public address (32–44 letters/numbers).','bad');return}
-  msg('Reading public balances ($DKORN, Founder #000, $UFD)… <span class="dkv-spin"></span>');
+  msg('Reading public balances ($DKORN, $UFD)… <span class="dkv-spin"></span>');
   holderBalances(addr).then(function(b){
-    if(b.dkorn>0||b.founder>0||b.ufd>0){save(mode,addr,b);msg('✔ VIP PASS ACCEPTED for '+esc(short(addr))+'. Cosmetic gate only — tokens never leave your wallet.','ok');render()}
-    else msg('No $DKORN, Founder #000, or $UFD found at '+esc(short(addr))+'. No problem — every game stays 100% free. Try the collector serial for the cosmetic preview.','warn');
+    if(b.dkorn>0||b.ufd>0){save(mode,addr,b);msg('✔ Read-only check recorded for '+esc(short(addr))+'. Tokens never leave your wallet.','ok');render()}
+    else msg('No $DKORN or $UFD found at '+esc(short(addr))+'. Every game stays fully playable.','warn');
   },function(e){msg(esc(e.message||e),'bad')});
 }
 function connectPhantom(){
@@ -153,27 +151,18 @@ function connectPhantom(){
     verifyAddress(a,'wallet');
   },function(){msg('Connection cancelled. Nothing was shared.','warn')});
 }
-function lockHTML(){
-  var st=proof?(proof.ok?'<b class="dkv-led on"></b>ON-CHAIN ESCROW VERIFIED · '+LOCKS.length+'/'+LOCKS.length+' vaults'+(proof.vault!=null?' · '+fmt(proof.vault)+' DKORN held':''):'<b class="dkv-led '+(proof.n?'wait':'off')+'"></b>'+(proof.n?proof.n+'/'+LOCKS.length+' vaults verified live':'Live check unavailable (public RPC busy)')):'<b class="dkv-led wait"></b>Checking Solana mainnet…';
-  var rows=LOCKS.map(function(L,i){var e=proof&&proof.each&&proof.each[i];return '<li><b class="dkv-led '+(e?(e.ok?'on':'off'):'wait')+'"></b><b>'+L.n+'</b><br><span>'+fmt(L.amt)+' DKORN · '+L.when+'</span><br><code>'+short(L.esc)+'</code> · <a href="https://lock.jup.ag/escrow/'+L.esc+'" target="_blank" rel="noopener">Jupiter Lock ↗</a> · <a href="https://solscan.io/tx/'+L.tx+'" target="_blank" rel="noopener">Tx ↗</a></li>'}).join('');
-  return '<div class="dkv-lock"><div class="dkv-lt">🔒 Real Anti-Rug Proof: '+LOCK_TOTAL+' DKORN Locked in '+LOCKS.length+' Non-Cancelable Vaults (through '+LOCK_THRU+')</div>'+
-   '<div class="dkv-ls">'+st+'</div><ul class="dkv-vaults">'+rows+'</ul>'+
-   '<div class="dkv-lx">Jupiter Lock V2 · cancel and recipient-change permissions set to none. Comic-saga lore proof only.</div>'+
-   '<a class="dkv-b" style="display:inline-block;margin-top:8px;text-decoration:none" href="'+CLOCK_URL+'">⏳ Open the 2126 Century Time-Capsule Clock</a></div>';
-}
 function render(){
   if(!drawer)return;var s=get();
   drawer.querySelector('.dkv-state').innerHTML=s&&s.verified?
-   tierHTML(s)+'<ul class="dkv-perks"><li>Golden Hard-Hat / Cyan Arc HUD skin</li><li>Secret Boss Wave unlocked</li><li>VIP Quarter Slot badge</li></ul><button class="dkv-b ghost" data-a="off">Remove pass from this browser</button>':
-   '<div class="dkv-pass off">NO PASS INSERTED <small>Everything is free and fully playable without one. $DKORN, Founder #000, or $UFD (Duster Herd Guest Pass) unlocks this gate.</small></div>';
-  var cp=capsule();drawer.querySelector('.dkv-state').innerHTML+=(cp&&cp.escrow?'<div class="dkv-pass foil">⏳ 2066 TIME-TRAVELER FOIL BADGE <small>'+esc(cp.tag||'')+' · capsule '+esc(short(cp.escrow))+' · '+fmt(cp.score||0)+' CAPSULE PTS</small></div>':'');
-  drawer.querySelector('.dkv-lockwrap').innerHTML=lockHTML();
+   tierHTML(s)+'<button class="dkv-b ghost" data-a="off">Remove pass from this browser</button>':
+   '<div class="dkv-pass off">NO PASS INSERTED <small>Every game stays fully playable.</small></div>';
+  var wrap=drawer.querySelector('.dkv-lockwrap');if(wrap)wrap.innerHTML='';
 }
 function open(){
   if(!drawer){
     drawer=document.createElement('div');drawer.className='dkv-ovl';
     drawer.innerHTML='<div class="dkv-box" role="dialog" aria-label="VIP Pass"><div class="dkv-tb"><span>🎟️ Insert VIP Pass (Read-Only Check)</span><button class="dkv-x" data-a="close" aria-label="Close">✕</button></div><div class="dkv-bd">'+
-     '<div class="dkv-note">Read-only check — tokens never leave your wallet. A public address holding <b>$DKORN</b>, <b>Founder #000</b>, or <b>$UFD</b> (Duster Herd Guest Pass) unlocks this cosmetic VIP gate. Nothing is signed, sent, deposited or approved, and a seed phrase is never requested.</div>'+
+     '<div class="dkv-note">Read-only check — tokens never leave your wallet. Nothing is signed, sent, deposited or approved, and a seed phrase is never requested.</div>'+
      '<div class="dkv-salute">'+SALUTE+'</div>'+
      '<div class="dkv-state"></div>'+
      '<div class="dkv-h">1 · Phantom (public key only)</div><button class="dkv-b" data-a="phantom">Connect Phantom (Read-Only Pubkey)</button>'+
@@ -189,19 +178,18 @@ function open(){
       else if(a==='phantom')connectPhantom();
       else if(a==='addr')verifyAddress(drawer.querySelector('#dkvAddr').value,'address');
       else if(a==='serial'){var v=drawer.querySelector('#dkvSer').value.trim().toUpperCase().replace(/^STAGE:?\s*/,'').replace(/^POLE\s*#?/,'');
-        if(v===SERIAL.toUpperCase()){save('serial','',0);msg('✔ Collector serial accepted. Cosmetic VIP HUD preview is on.','ok');render()}else msg('Serial not recognized. Look for the STAGE stamp printed on every card.','warn')}
+        if(v===SERIAL.toUpperCase()){save('serial','',0);msg('✔ Collector serial accepted.','ok');render()}else msg('Serial not recognized. Look for the STAGE stamp printed on every card.','warn')}
       else if(a==='off'){set(null);emit();render();msg('Pass removed.','')}
     });
   }
-  drawer.classList.add('show');render();checkLock().then(render);
+  drawer.classList.add('show');render();
 }
 function close(){if(drawer)drawer.classList.remove('show')}
 function badge(el){
   if(!el)return;
-  var paint=function(){el.innerHTML='<a class="dkv-badge'+(proof&&proof.ok?' ok':'')+'" href="'+CLOCK_URL+'" title="Real Anti-Rug Proof: '+LOCK_TOTAL+' DKORN locked in '+LOCKS.length+' non-cancelable Jupiter Lock vaults through '+LOCK_THRU+'"><b class="dkv-led '+(proof?(proof.ok?'on':'off'):'wait')+'"></b>Anti-Rug Saga Lock Proof<small>'+(proof&&proof.ok?LOCKS.length+'/'+LOCKS.length+' ESCROWS VERIFIED':LOCKS.length+' vaults · 83.20M DKORN · to '+LOCK_THRU)+'</small></a>';};
-  paint();checkLock().then(paint);
+  el.innerHTML='';
 }
 window.DKVIP={open:open,close:close,badge:badge,status:get,isVip:function(){var s=get();return !!(s&&s.verified)},onChange:function(f){subs.push(f)},checkLock:checkLock,LOCKS:LOCKS,capsule:capsule,CLOCK_URL:CLOCK_URL,rpc:rpc,refresh:emit,
-  MINT:MINT,FOUNDER:FOUNDER,UFD:UFD,T22:T22,TOKENKEG:TOKENKEG,tokenBalance:tokenBalance,holderBalances:holderBalances,ESCROW:ESCROW,LOCK_URL:LOCK_URL,SERIAL:SERIAL,SALUTE:SALUTE};
+  MINT:MINT,UFD:UFD,T22:T22,TOKENKEG:TOKENKEG,tokenBalance:tokenBalance,holderBalances:holderBalances,ESCROW:ESCROW,SERIAL:SERIAL,SALUTE:SALUTE};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',emit);else emit();
 })();

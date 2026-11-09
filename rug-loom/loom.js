@@ -57,7 +57,7 @@ var ACH=[
  ['crewall','The Whole Multiverse Shift','Hire every crew type',function(){return S.crew.every(function(n){return n>0})},3],
  ['combo','Static Cling','Reach a x2.0 tap combo',function(){return S.maxCombo>=50},1],
  ['prest','Rolled Up','Roll Up the Rugs once',function(){return S.rolls>=1},3],
- ['vip','Hard-Hat Drip','Insert a VIP Pass (cosmetic)',function(){return window.DKVIP&&DKVIP.isVip()},1]
+ ['vip','Hard-Hat Drip','The loom wears the hard hat',function(){return true},1]
 ];
 var TICK=[
  'HOPIUM: The Welcome Mat is going VERTICAL, folks!  TAPE: It\'s a mat. It\'s horizontal by design.',
@@ -146,8 +146,7 @@ function drawLoom(){
   var yr=18+Math.min(26,Math.log10(1+S.lint)*3);g.fillStyle='#d9c27a';g.beginPath();g.arc(0,0,yr,0,7);g.fill();
   g.strokeStyle='#a8893d';g.lineWidth=1;for(i=0;i<6;i++){g.beginPath();g.arc(0,0,yr-i*3,i,i+2.4);g.stroke()}
   g.restore();
-  // hub hard hat (VIP)
-  if(vip()){g.fillStyle='#ffd400';g.beginPath();g.ellipse(x,y-r-14,26,14,0,Math.PI,0);g.fill();g.fillRect(x-32,y-r-15,64,5);g.fillStyle='#000';g.font='bold 8px Courier New';g.textAlign='center';g.fillText('VIP',x,y-r-18)}
+  g.fillStyle='#ffd400';g.beginPath();g.ellipse(x,y-r-14,26,14,0,Math.PI,0);g.fill();g.fillRect(x-32,y-r-15,64,5);
   // thread from wheel to spool
   g.strokeStyle='#d9c27a';g.lineWidth=2;g.beginPath();g.moveTo(x+r-4,y-10);g.quadraticCurveTo(x+r+40,y-60+Math.sin(time*4)*6,PIG.x-90,PIG.y-40);g.stroke();
   // tap hint
@@ -340,9 +339,9 @@ function rebuild(){
     var pos=tasselsPossible(),gn=Math.max(0,pos-S.tassels);
     h+='<h3>✨ Roll Up the Rugs (Prestige)</h3><p>Roll up every rug, send the crew home, and the pig keeps its lint (forever, obviously). In exchange you earn <b>Golden Tassels</b>: each one is a permanent <b>+5%</b> to everything.</p>';
     h+='<p>Golden Tassels: <b>'+S.tassels+'</b> · available from this run: <b>'+gn+'</b><br><small>Tassels are based on all-time Cable Lint (1 at 100M, 2 at 800M, 3 at 2.7B…).</small></p><button class="btn go" id="rollBtn"'+(gn<1?' disabled':'')+'>Roll Up the Rugs for +'+gn+' Golden Tassel'+(gn===1?'':'s')+'</button>';
-    h+='<h3>🪖 VIP Pass Extras (cosmetic)</h3>';
-    if(vip()){var cd=Math.max(0,600-(Date.now()-(S.moth||0))/1000);h+='<p>VIP Pass active: Golden Hard-Hat / Cyan Arc HUD skin is on.</p><button class="btn go" id="mothBtn"'+(cd>0?' disabled':'')+'>Summon Secret Boss Wave: The Hum Moths'+(cd>0?' ('+fmtT(cd)+')':'')+'</button><p style="font-size:11px">Static Siren\'s moth choir swarms the loom. Tap moths for Woven Thread before they flutter off.</p>'}
-    else h+='<p>Optional: insert a VIP Pass to get the Golden Hard-Hat HUD skin and a Secret Boss Wave. It\'s a read-only check (or use the collector serial). The game is 100% playable without it.</p><button class="btn" id="vipBtn2">🎟️ Insert VIP Pass (Read-Only Check)</button>';
+    h+='<h3>🪖 Hard hat</h3><p>The golden hard hat is on the loom for every player.</p>';
+    if(vip()){var cd=Math.max(0,600-(Date.now()-(S.moth||0))/1000);h+='<button class="btn go" id="mothBtn"'+(cd>0?' disabled':'')+'>Summon the Hum Moths'+(cd>0?' ('+fmtT(cd)+')':'')+'</button><p style="font-size:11px">Static Siren\'s moth choir swarms the loom. Tap moths for Woven Thread before they flutter off.</p>'}
+    else h+='<button class="btn" id="vipBtn2">🎟️ Insert VIP Pass (Read-Only Check)</button>';
     h+='<h3>Save</h3><p style="font-size:11px">Progress saves in this browser only. <button class="btn sm" id="resetBtn">Wipe save</button></p>';
   }
   $('#panel').innerHTML=h;refresh();

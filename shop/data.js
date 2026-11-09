@@ -8,8 +8,8 @@ window.SHOP={
 "id": "pete-castic-bear",
 "name": "Pete Castic & Bear",
 "title": "MULTIVERSE CREATOR · DROP-LINE TECH",
-"show": "Founder 000",
-"cat": "Genesis",
+"show": "Shop window",
+"cat": "Display",
 "front": "assets/fronts/000_pete-castic-bear.jpg",
 "back": "assets/backs/000_pete-castic-bear_back.jpg",
 "stats": [
@@ -27,11 +27,9 @@ window.SHOP={
 ]
 ],
 "quote": "\"I wire the block by day and draw the Multiverse by night.\"",
-"minted": true,
-"mint": "2gMmnUrxeRkZLA47NyKSGBs1aPFVSfEWruwyTKo7UUyH",
-"groups": [
-"genesis"
-]
+"minted": false,
+"mint": null,
+"groups": []
 },
 {
 "n": 1,

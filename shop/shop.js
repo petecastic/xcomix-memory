@@ -104,7 +104,7 @@ function toggleAmb(btn){
 }
 
 /* ---------------- Shelf 1: Series 1 holo cards ---------------- */
-var FILTERS=[['all','All 29'],['genesis','Minted Genesis (#000)'],['night','Night Shift'],['action','Action / Sci-Fi'],['critters','Critters & Dogs'],['mystery','Mystery & Lore'],['comedy','Comedy & Slice-of-Life'],['wish','★ My Wishlist']];
+var FILTERS=[['all','All 29'],['night','Night Shift'],['action','Action / Sci-Fi'],['critters','Critters & Dogs'],['mystery','Mystery & Lore'],['comedy','Comedy & Slice-of-Life'],['wish','★ My Wishlist']];
 var FIL='all',Q='';
 function wish(){return ls('xcs-wish')||[]}
 function isWish(n){return wish().indexOf(n)>=0}
@@ -116,13 +116,18 @@ function cardFace(c,big){
    '<div class="face back"><div class="bimg"><img src="'+c.back+'" alt="'+esc(c.name)+' character sheet" loading="lazy"></div>'+
     '<div class="bname">'+esc(c.name)+'<small>'+esc(c.show)+'</small></div>'+
     '<div class="stats">'+c.stats.map(function(s){return '<div class="st"><span>'+esc(s[0])+'</span><i><b style="width:'+s[1]+'%"></b></i><span>'+s[1]+'</span></div>'}).join('')+'</div>'+
-    '<div class="bq">'+esc(c.quote)+'</div><div class="perks"><b>COLLECTOR PERKS</b>'+esc(PERKS)+'</div><div class="foil"></div><div class="wx"></div></div>'+
+    '<div class="bq">'+esc(c.quote)+'</div>'+(displayOnly(c)?'<div class="perks"><b>DISPLAY ONLY</b>Not for sale.</div>':'<div class="perks"><b>COLLECTOR PERKS</b>'+esc(PERKS)+'</div>')+'<div class="foil"></div><div class="wx"></div></div>'+
   '</div></div></div>';
 }
-function statusHTML(c){return c.minted?'<div class="status minted">LIVE MINTED ON SOLANA · GENESIS #000</div>':'<div class="status">SERIES 1 WAVE 1 · RESERVE / COMING TO MAGIC EDEN &amp; TENSOR</div>'}
+function displayOnly(c){return c&&c.id==='pete-castic-bear'}
+function statusHTML(c){
+  if(displayOnly(c)) return '<div class="status">Not for sale. Display only.</div>';
+  return '<div class="status">SERIES 1 WAVE 1</div>';
+}
 function actsHTML(c){
+  var extra=displayOnly(c)?'':'<button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist')+'</button>';
   return '<div class="acts"><button class="ab flipbtn" data-n="'+c.n+'">Flip Card ↻</button><button class="ab insbtn" data-n="'+c.n+'">🔍 Inspect</button>'+
-   (c.minted?'<a class="ab sol" href="'+SOLSCAN+c.mint+'" target="_blank" rel="noopener">View on Solscan ↗</a>':'<button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist')+'</button>')+
+   extra+
    '<a class="ab" href="'+shareURL(c)+'" target="_blank" rel="noopener">𝕏 Share</a></div>';
 }
 function renderFilters(){var f=$('#fpills');f.innerHTML=FILTERS.map(function(x){return '<button data-f="'+x[0]+'" class="'+(x[0]===FIL?'on ':'')+(x[0]==='genesis'?'gen':'')+'">'+esc(x[1])+'</button>'}).join('');}
@@ -163,19 +168,22 @@ document.addEventListener('keydown',function(e){
 var CUR=0,NFT=false;
 function openIns(n){
   CUR=n;var c=D.cards[n],b=$('#insBox');
+  if(displayOnly(c)) NFT=false;
   b.className='ovbox ins'+(NFT?' nft':'');
+  var ownBtn=displayOnly(c)?'':'<button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist on My Device')+'</button>';
+  var nftTog=displayOnly(c)?'':'<label class="tog"><input type="checkbox" id="nftTog"'+(NFT?' checked':'')+'><span>Standalone Living HTML NFT (<code>animation_url</code>) Preview</span></label>';
   b.innerHTML='<button class="x" aria-label="Close">✕</button>'+
-   '<div class="stage"><div class="nftframe"><div class="nfthead"><i></i> Wallet preview · Phantom / Magic Eden / Tensor · animation_url</div></div><div class="slotbig">'+cardFace(c,true)+'</div><div class="nftframe nftfoot">This is how the standalone living HTML card would render inside a wallet: it reads the same public Creator\u2019s Sky file every holder\u2019s copy reads, so every copy of #'+c.num+' shares one sky together. Display only. Nothing to sign.<code>animation_url → '+SITE+'?card='+c.num+'&amp;living=1</code></div></div>'+
+   '<div class="stage"><div class="nftframe"><div class="nfthead"><i></i> Living card preview · animation_url</div></div><div class="slotbig">'+cardFace(c,true)+'</div><div class="nftframe nftfoot">'+(displayOnly(c)?'Not for sale. Display only. The portrait can show the public Creator\u2019s Sky. Nothing to sign.':('This is how the standalone living HTML card would render: it reads the same public Creator\u2019s Sky file every copy reads, so every copy of #'+c.num+' shares one sky together. Display only. Nothing to sign.<code>animation_url → '+SITE+'?card='+c.num+'&amp;living=1</code>'))+'</div></div>'+
    '<div class="side"><h3>#'+c.num+' '+esc(c.name)+'</h3><div class="ttl">'+esc(c.title)+'</div>'+statusHTML(c)+
    '<div class="q">'+esc(c.quote)+'</div><div class="meta">Show: <b>'+esc(c.show)+'</b> · Category: '+esc(c.cat)+'<br>'+c.stats.map(function(s){return esc(s[0])+' '+s[1]}).join(' / ')+'</div>'+
-   '<div class="perk">🎬 Collector Perks: '+esc(PERKS)+'</div>'+
-   '<label class="tog"><input type="checkbox" id="nftTog"'+(NFT?' checked':'')+'><span>Standalone Living HTML NFT (<code>animation_url</code>) Preview</span></label>'+
-   '<div class="row"><button class="ab flipbtn" data-n="'+c.n+'">Flip Card ↻</button>'+(c.minted?'<a class="ab sol" href="'+SOLSCAN+c.mint+'" target="_blank" rel="noopener">View Genesis #000 on Solscan ↗</a>':'<button class="ab star'+(isWish(c.n)?' on':'')+'" data-n="'+c.n+'">'+(isWish(c.n)?'★ Wishlisted':'☆ Wishlist on My Device')+'</button>')+'<a class="ab" href="'+shareURL(c)+'" target="_blank" rel="noopener">𝕏 Share Card</a><button class="ab ambbtn">'+(amb&&amb.on?'🔊 Sky Ambience: ON':'🔈 Sky Ambience: OFF')+'</button></div>'+
+   (displayOnly(c)?'':'<div class="perk">🎬 Collector Perks: '+esc(PERKS)+'</div>')+
+   nftTog+
+   '<div class="row"><button class="ab flipbtn" data-n="'+c.n+'">Flip Card ↻</button>'+ownBtn+'<a class="ab" href="'+shareURL(c)+'" target="_blank" rel="noopener">𝕏 Share Card</a><button class="ab ambbtn">'+(amb&&amb.on?'🔊 Sky Ambience: ON':'🔈 Sky Ambience: OFF')+'</button></div>'+
    '<div class="meta">Sky right now: <b class="skynow"></b>. Try the sky pills: the card reacts live.</div>'+
    '<div class="nav2"><button class="ab" id="insPrev">◀ Prev</button><button class="ab" id="insNext">Next ▶</button></div></div>';
   var hs=$('.slotbig',b);hs.insertBefore($('.nftframe',b),hs.firstChild);
   $('#insOv').classList.add('show');document.body.style.overflow='hidden';apply();updNow();
-  $('#nftTog').onchange=function(e){NFT=e.target.checked;b.classList.toggle('nft',NFT)};
+  if($('#nftTog')) $('#nftTog').onchange=function(e){NFT=e.target.checked;b.classList.toggle('nft',NFT)};
   $('#insPrev').onclick=function(){openIns((CUR+28)%29)};$('#insNext').onclick=function(){openIns((CUR+1)%29)};
   $('.x',b).onclick=closeAll;
 }
