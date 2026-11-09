@@ -4,7 +4,6 @@
 (function(){
 'use strict';
 var MINT='A1gRAicaLnYRmKQwRbQCaEEp6iYfu5q5X5gTFAPBeVk';
-var FOUNDER='2gMmnUrxeRkZLA47NyKSGBs1aPFVSfEWruwyTKo7UUyH';
 var UFD='eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump';
 var T22='TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb';
 var TOKENKEG='TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';
@@ -77,8 +76,8 @@ function byMint(owner,mint,programId){
   });
 }
 function holderBalances(owner){
-  return Promise.all([tokenBalance(owner,MINT,T22),tokenBalance(owner,FOUNDER,T22),tokenBalance(owner,UFD,TOKENKEG)])
-    .then(function(r){return {dkorn:r[0],founder:r[1],ufd:r[2]}});
+  return Promise.all([tokenBalance(owner,MINT,T22),tokenBalance(owner,UFD,TOKENKEG)])
+    .then(function(r){return {dkorn:r[0],founder:0,ufd:r[1]}});
 }
 
 /* ---- base58 + PDA (used only to compute a public token-account address; no keys involved) ---- */
@@ -126,21 +125,21 @@ function save(mode,address,balance){
 function tierHTML(s){
   if(!s||!s.verified)return '';
   if(s.mode==='serial')return '<div class="dkv-pass">🪖 VIP PASS ACTIVE <small>collector serial preview</small></div>';
-  var dk=Number(s.dkorn!=null?s.dkorn:(s.balance||0)),fd=Number(s.founder||0),uf=Number(s.ufd||0);
-  var circuit=dk>0||fd>0,herd=uf>0,head,sub,cls='';
-  if(circuit&&herd){head='⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD';sub='$DKORN '+fmt(dk)+' · Founder #000 '+fmt(fd)+' · $UFD '+fmt(uf);cls=' dual'}
+  var dk=Number(s.dkorn!=null?s.dkorn:(s.balance||0)),uf=Number(s.ufd||0);
+  var circuit=dk>0,herd=uf>0,head,sub,cls='';
+  if(circuit&&herd){head='⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD';sub='$DKORN '+fmt(dk)+' · $UFD '+fmt(uf);cls=' dual'}
   else if(herd){head='✨ DUSTER HERD GUEST PASS · '+fmt(uf)+' $UFD';sub=esc(short(s.address))+' · read-only public balance';cls=' herd'}
-  else{head='🪖 VIP PASS ACTIVE';sub=esc(short(s.address))+' · '+fmt(dk)+' $DKORN'+(fd>0?' · Founder #000 '+fmt(fd):'')+' (read-only)';}
+  else{head='🪖 VIP PASS ACTIVE';sub=esc(short(s.address))+' · '+fmt(dk)+' $DKORN (read-only)';}
   return '<div class="dkv-pass'+cls+'">'+head+'<small>'+sub+'</small></div>';
 }
 function msg(t,cls){var m=drawer&&drawer.querySelector('.dkv-msg');if(m){m.className='dkv-msg '+(cls||'');m.innerHTML=t}}
 function verifyAddress(addr,mode){
   addr=(addr||'').trim();
   if(!isAddr(addr)){msg('That doesn\'t look like a Solana public address (32–44 letters/numbers).','bad');return}
-  msg('Reading public balances ($DKORN, Founder #000, $UFD)… <span class="dkv-spin"></span>');
+  msg('Reading public balances ($DKORN, $UFD)… <span class="dkv-spin"></span>');
   holderBalances(addr).then(function(b){
-    if(b.dkorn>0||b.founder>0||b.ufd>0){save(mode,addr,b);msg('✔ Read-only check recorded for '+esc(short(addr))+'. Tokens never leave your wallet.','ok');render()}
-    else msg('No $DKORN, Founder #000, or $UFD found at '+esc(short(addr))+'. Every game stays fully playable.','warn');
+    if(b.dkorn>0||b.ufd>0){save(mode,addr,b);msg('✔ Read-only check recorded for '+esc(short(addr))+'. Tokens never leave your wallet.','ok');render()}
+    else msg('No $DKORN or $UFD found at '+esc(short(addr))+'. Every game stays fully playable.','warn');
   },function(e){msg(esc(e.message||e),'bad')});
 }
 function connectPhantom(){
@@ -191,6 +190,6 @@ function badge(el){
   el.innerHTML='';
 }
 window.DKVIP={open:open,close:close,badge:badge,status:get,isVip:function(){var s=get();return !!(s&&s.verified)},onChange:function(f){subs.push(f)},checkLock:checkLock,LOCKS:LOCKS,capsule:capsule,CLOCK_URL:CLOCK_URL,rpc:rpc,refresh:emit,
-  MINT:MINT,FOUNDER:FOUNDER,UFD:UFD,T22:T22,TOKENKEG:TOKENKEG,tokenBalance:tokenBalance,holderBalances:holderBalances,ESCROW:ESCROW,SERIAL:SERIAL,SALUTE:SALUTE};
+  MINT:MINT,UFD:UFD,T22:T22,TOKENKEG:TOKENKEG,tokenBalance:tokenBalance,holderBalances:holderBalances,ESCROW:ESCROW,SERIAL:SERIAL,SALUTE:SALUTE};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',emit);else emit();
 })();

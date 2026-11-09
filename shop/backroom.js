@@ -1,7 +1,7 @@
 /* X-Comix Crew Backroom — /shop/ add-on
    Petecastic Productions LLC · READ-ONLY BY DESIGN
-   - Crew poster, dossier, sky shimmer, and lore poll are open to everyone.
-   - The Founder #000 poster keeps the original holder gate: $DKORN, Founder #000, or $UFD, plus Demo Preview.
+   - Crew poster, Founder #000 poster, dossier, sky shimmer, and lore poll are open to everyone.
+   - The Founder #000 poster and the Pete & Bear portrait are display-only art.
    - Never builds, signs, or sends a transaction. Never asks for a seed phrase or private key.
    - An optional check reads a PUBLIC address and asks public Solana RPC for balances.
    - Optional free signMessage (plain text, not a transaction) for the Lore Poll vote proof.
@@ -11,11 +11,9 @@
 (function () {
 'use strict';
 var DKORN = 'A1gRAicaLnYRmKQwRbQCaEEp6iYfu5q5X5gTFAPBeVk';       // Token-2022 (verified on-chain 2026-11-06)
-var FOUNDER = '2gMmnUrxeRkZLA47NyKSGBs1aPFVSfEWruwyTKo7UUyH';     // Token-2022 1-of-1
 var UFD = 'eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump';          // classic SPL — Duster Herd Guest Pass
 var T22 = 'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb';
 var TOKENKEG = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA';     // SPL Token program
-var XCOMIX_NFTS = [FOUNDER];                                       // add future X-Comix 1-of-1 mints here
 var CREATOR = '631dUrPhrXGXJJ38BQGubuCuj5s18HnpxssH8c1D8Q8C';
 var SALUTE = 'Independent community crossover salute by Petecastic Productions LLC for $UFD (eL5fUx…pump) holders — not affiliated with, sponsored, or endorsed by UFD Holdings LLC or @BasementRon. Free comic & art perks only; zero financial or price promises.';
 var SKY_LINE = '✨ Rainbow Stardust Sky Active — Good Attracts Good · Circuit 13 Salutes the Basement';
@@ -25,11 +23,8 @@ var INDEX_BLOCK = { 'https://solana-rpc.publicnode.com': 1, 'https://api.mainnet
 /* Permanent Irys/Arweave storage — uploaded Nov 6, 2026. gateway.irys.xyz serves now; arweave.net mirrors resolve once Irys seeds to Arweave. */
 var IRYS = 'https://gateway.irys.xyz/', AR = 'https://arweave.net/';
 var ARWEAVE = {
- card: { label: 'Founder #000 Card', id: 'FspqroSA4CeC5E9u4UVEZ4a96vZT9o9MCmgGxqnzr5FA', ar: '3QjAw6wuc9dri0AMcoQIsr-8egwX_M--G7k-q1c1iZ0' },
- pfp: { label: '1:1 PFP', id: 'JA7L7yr71HwUNJCubL95W7i1YZNgrPWR9933ovmPPw3Q', ar: '_uwP30E1VDsdk4KVyZShw-OpLRsymlb_mJOE4_YzILM' },
  sheet: { label: 'Turnaround Sheet', id: 'HVxic1sz2G8sqy9mxc7jXjKbiSBedborupmVKgDHwjws', ar: '9SZA0-0ANiSWA5Km1Tu5jrXKrCTZxxCSDHfyUPEqPgY' },
- logo: { label: '$DKORN Logo', id: '2xTVAk9GyqELyyopKmhgxS2Z7852F1opq4KT7GoCgaSq', ar: 'HRCUL5eqQ1zuUqXdlWmn7Oeq7Ylr2TpPapoYTQ0nLMY' },
- metadata: { label: 'Founder #000 Metadata JSON', id: 'E7usJT5d7djuQwvoWgU9BwHszXzGYdvCyQyJyEHDQZJu', ar: 'wu0xLRSKQ-136u0Ff88Q9LMdPZl-l6fmfzFRqYHuAyY' }
+ logo: { label: '$DKORN Logo', id: '2xTVAk9GyqELyyopKmhgxS2Z7852F1opq4KT7GoCgaSq', ar: 'HRCUL5eqQ1zuUqXdlWmn7Oeq7Ylr2TpPapoYTQ0nLMY' }
 };
 var LOCKS = [
  ['Vault 1 · 10-Year Book Saga Lock', 'ubsQ1M34RdLFwDgydiRRTctpvYKeYCF76weWk7QfUVa'],
@@ -100,24 +95,21 @@ function connect(name) {
 }
 function lookup(addr, via) {
   st.addr = addr; st.via = via; st.demo = false; st.loading = true; st.err = null; render();
-  return Promise.all([balanceOf(addr, DKORN, T22), balanceOf(addr, FOUNDER, T22), balanceOf(addr, UFD, TOKENKEG)])
+  return Promise.all([balanceOf(addr, DKORN, T22), balanceOf(addr, UFD, TOKENKEG)])
     .then(function (r) {
-      st.dkorn = r[0]; st.founder = r[1]; st.ufd = r[2];
-      st.nfts = XCOMIX_NFTS.filter(function (m) { return m === FOUNDER ? st.founder > 0 : false; });
+      st.dkorn = r[0]; st.founder = 0; st.ufd = r[1];
+      st.nfts = [];
       st.loading = false;
       try { localStorage.setItem('xcb-last', JSON.stringify({ addr: addr, via: via, at: Date.now() })); } catch (e) {}
       render();
     }).catch(function (e) { st.loading = false; st.err = e.message; render(); });
 }
-function isCircuit() { return (st.dkorn > 0) || (st.founder > 0) || st.nfts.length > 0; }
-function isHolder() { return st.demo || isCircuit() || (st.ufd > 0); }
-
 /* ---------- Lore poll: free signMessage (plain text, not a transaction) ---------- */
 function vote(opt) {
   var p = (providers()[0] || [])[1];
   var msg = 'X-Comix Lore Poll ' + POLL.id + '\nVote: ' + opt + '\nWallet: ' + st.addr + '\nTime: ' + new Date().toISOString() + '\nThis is a free signature. It is not a transaction and moves no funds.';
   var rec = { poll: POLL.id, vote: opt, addr: st.addr, msg: msg, sig: null };
-  if (!p || !p.signMessage || st.demo) { rec.sig = st.demo ? 'demo-preview' : 'unsigned (pasted address)'; save(rec); return; }
+  if (!p || !p.signMessage) { rec.sig = 'unsigned (pasted address)'; save(rec); return; }
   Promise.resolve(p.signMessage(new TextEncoder().encode(msg), 'utf8')).then(function (r) {
     var s = r && (r.signature || r); rec.sig = b58(s instanceof Uint8Array ? s : new Uint8Array(s)); save(rec);
   }).catch(function () { st.err = 'Vote signature cancelled — nothing was sent.'; render(); });
@@ -136,7 +128,7 @@ var CSS = '.xcb-ovl{position:fixed;inset:0;z-index:60;background:#05040ce6;displ
  '.xcb h2{margin:0 0 4px;color:#ffcc33;font-size:22px}.xcb h3{margin:16px 0 6px;color:#7ef3ff;font-size:16px}.xcb small,.xcb .m{color:#b8a9d9}' +
  '.xcb button,.xcb .b{background:#2a1f4a;color:#fff;border:1px solid #7ef3ff;border-radius:999px;padding:7px 13px;margin:3px;cursor:pointer;font:inherit;text-decoration:none;display:inline-block}' +
  '.xcb button.g{border-color:#ffcc33;color:#ffcc33}.xcb input{background:#0b0816;color:#fff;border:1px solid #6a5aa8;border-radius:8px;padding:7px;width:min(100%,380px);font:inherit}' +
- '.xcb .x{position:absolute;top:8px;right:10px}.xcb .card{background:#1b1433;border-radius:12px;padding:10px 12px;margin:8px 0}.xcb .lock{filter:blur(3px);pointer-events:none;user-select:none}' +
+ '.xcb .x{position:absolute;top:8px;right:10px}.xcb .card{background:#1b1433;border-radius:12px;padding:10px 12px;margin:8px 0}' +
  '.xcb .err{color:#ff8a8a}.xcb .ok{color:#8affc1}.xcb ul{margin:4px 0;padding-left:18px}' +
  '.xcb .badge{display:block;margin:8px 0 4px;padding:8px 10px;border-radius:10px;border:2px solid #000;font-weight:800;letter-spacing:.2px;line-height:1.3}' +
  '.xcb .badge.guest{background:linear-gradient(115deg,#ffe6fb,#e7fff4 38%,#d9ecff 68%,#fff3c4);color:#24143a}' +
@@ -158,7 +150,6 @@ function onClick(e) {
   if (a === 'close') close();
   else if (a === 'connect') connect(t.getAttribute('data-w'));
   else if (a === 'paste') { var v = ($('#xcbAddr').value || '').trim(); if (isAddr(v)) lookup(v, 'Pasted public address (read-only)'); else { st.err = 'That is not a Solana public address. NEVER paste a seed phrase anywhere.'; render(); } }
-  else if (a === 'demo') { st.demo = !st.demo; render(); }
   else if (a === 'sky') { st.sky = !st.sky; render(); }
   else if (a === 'vote') vote(t.getAttribute('data-o'));
   else if (a === 'forget') { st = { addr: null, via: null, dkorn: null, founder: null, ufd: null, nfts: [], demo: false, sky: false, err: null, loading: false }; try { localStorage.removeItem('xcb-last'); } catch (x) {} render(); }
@@ -194,29 +185,10 @@ function ensureSky() {
 function render() {
   var box = $('#xcbBox'); if (!box) return;
   var h = '<button class="x" data-a="close" aria-label="Close">✕</button><h2>Crew Backroom</h2>' +
-    '<small>The crew poster, the Season 1 dossier, the sky shimmer, and the lore poll are open to everyone. The Founder #000 poster keeps its holder gate. The address check is optional and read-only. This page never asks you to sign a transaction, never moves funds, and never asks for a seed phrase.</small>';
-  h += '<div class="card"><b>1 · Show a public address</b><br>';
-  var pv = providers();
-  pv.forEach(function (p) { h += '<button data-a="connect" data-w="' + esc(p[0]) + '">🔌 Connect ' + esc(p[0]) + ' (Read-Only)</button>'; });
-  if (!pv.length) h += '<span class="m">No browser wallet detected. </span>';
-  h += '<br><input id="xcbAddr" placeholder="Paste any Solana public address (read-only)" autocomplete="off" spellcheck="false"> <button data-a="paste">Check</button>' +
-    ' <button data-a="demo" class="g">' + (st.demo ? '👁️ Exit Demo Preview' : '👁️ Demo Preview') + '</button>';
-  if (st.loading) h += '<div class="m">Reading public Solana mainnet ($DKORN, Founder #000, $UFD)…</div>';
-  if (st.err) h += '<div class="err">' + esc(st.err) + '</div>';
-  if (st.addr && !st.demo) {
-    var circuit = isCircuit(), herd = st.ufd > 0;
-    h += '<div class="' + (isHolder() ? 'ok' : 'm') + '">Address ' + esc(short(st.addr)) + ' via ' + esc(st.via) +
-      ' · $DKORN: <b>' + fmt(st.dkorn) + '</b> · Founder #000: <b>' + fmt(st.founder) + '</b> · $UFD: <b>' + fmt(st.ufd) + '</b>' +
-      (circuit ? ' · 🏆 Circuit 13' : '') + (isHolder() ? ' · ✅ Founder #000 poster unlocked' : ' · Not a holder yet — $DKORN, Founder #000, or $UFD unlocks the Founder #000 poster') + '</div>';
-    if (circuit && herd) h += '<div class="badge dual">⚡ DUAL ALLIANCE: CIRCUIT 13 × DUSTER HERD</div><div class="m">$DKORN <b>' + fmt(st.dkorn) + '</b> · Founder #000 <b>' + fmt(st.founder) + '</b> · $UFD <b>' + fmt(st.ufd) + '</b></div>';
-    else if (herd) h += '<div class="badge guest">✨ DUSTER HERD GUEST PASS · ' + fmt(st.ufd) + ' $UFD</div>';
-    h += ' <button data-a="forget">Forget</button>';
-  }
-  if (st.demo) h += '<div class="m">Demo Preview: showing the backroom as a holder would see it. No wallet read. Rainbow Stardust Sky can be toggled here.</div>';
-  h += '</div>';
-  var founderLock = isHolder() ? '' : ' lock';
-  h += '<div class="card' + founderLock + '"><h3>🖼️ Founder #000 Poster</h3>' +
-    link(BASE + 'assets/backroom/poster-founder-000.png', 'Founder #000 Poster') + '</div>';
+    '<small>The posters, the Season 1 dossier, the sky shimmer, and the lore poll are open to everyone. This page never asks you to sign a transaction, never moves funds, and never asks for a seed phrase.</small>';
+  h += '<div class="card"><h3>🖼️ Founder #000 Poster</h3>' +
+    link(BASE + 'assets/backroom/poster-founder-000.png', 'Founder #000 Poster') +
+    '<div class="m">Not for sale. Display only.</div></div>';
   h += '<div class="card"><b>✨ Rainbow Stardust Sky</b><br><span class="m">Switch the shimmer off or on. It does not catch clicks.</span><br>' +
     '<button data-a="sky" class="g" aria-pressed="' + (st.sky ? 'true' : 'false') + '">' + (st.sky ? '✨ Rainbow Stardust Sky: ON' : '✨ Rainbow Stardust Sky: OFF') + '</button>';
   if (st.sky) h += '<div class="skyline">' + SKY_LINE + '</div>';
@@ -234,25 +206,20 @@ function render() {
   h += '</div>';
   h += '<div class="card"><h3>⛓️ On-Chain Vault &amp; Permanent Arweave Proof</h3><ul>';
   LOCKS.forEach(function (l) { h += '<li>' + esc(l[0]) + ' — ' + link('https://solscan.io/account/' + l[1], 'Solscan') + '</li>'; });
-  h += '</ul>Founder #000: ' + link('https://solscan.io/token/' + FOUNDER, 'Solscan mint') +
-    '<br><b>Permanent Irys / Arweave storage</b> <span class="m">(paid once, stored permanently)</span><ul>' +
+  h += '</ul><b>Display files</b><ul>' +
     Object.keys(ARWEAVE).map(function (k) { var a = ARWEAVE[k]; return '<li>' + esc(a.label) + ' — ' + link(IRYS + a.id, 'Irys gateway') + link(AR + a.ar, 'arweave.net mirror') + '</li>'; }).join('') + '</ul>' +
     '<br>$UFD: ' + link('https://solscan.io/token/' + UFD, 'Solscan') + ' <span class="m">Duster Herd Guest Pass · classic SPL Token</span>' +
     '<br>$DKORN: ' + link('https://solscan.io/token/' + DKORN, 'Solscan') + ' <span class="m">Creator wallet ' + esc(short(CREATOR)) + '</span></div>';
   box.innerHTML = h;
   syncSky();
 }
-function open() { ensure().classList.add('show'); document.body.style.overflow = 'hidden'; render();
-  if (!st.addr) { try { var l = JSON.parse(localStorage.getItem('xcb-last')); if (l && isAddr(l.addr)) lookup(l.addr, l.via); } catch (e) {} }
-  var p = (providers()[0] || [])[1];                                   // silent reconnect only if user already trusted this site
-  if (!st.addr && p && p.connect) { try { Promise.resolve(p.connect({ onlyIfTrusted: true })).then(function (r) { var a = pkOf(p, r); if (isAddr(a)) lookup(a, providers()[0][0]); }).catch(function () {}); } catch (e) {} }
-}
+function open() { ensure().classList.add('show'); document.body.style.overflow = 'hidden'; render(); }
 function close() { var o = $('#xcbOv'); if (o) o.classList.remove('show'); document.body.style.overflow = ''; }
 function mountButton(sel) {
   var host = document.querySelector(sel || '.tbtns'); if (!host || $('#xcbBtn')) return;
   var b = document.createElement('button'); b.className = 'pill gold'; b.id = 'xcbBtn'; b.type = 'button'; b.textContent = '✨ Crew Backroom';
   b.onclick = open; host.insertBefore(b, host.children[1] || null);
 }
-window.XCBACKROOM = { open: open, close: close, lookup: lookup, mountButton: mountButton, state: function () { return st; }, setSky: function (on) { st.sky = !!on; syncSky(); render(); }, MINTS: { DKORN: DKORN, FOUNDER: FOUNDER, UFD: UFD, T22: T22, TOKENKEG: TOKENKEG }, SALUTE: SALUTE, ARWEAVE: ARWEAVE };
+window.XCBACKROOM = { open: open, close: close, lookup: lookup, mountButton: mountButton, state: function () { return st; }, setSky: function (on) { st.sky = !!on; syncSky(); render(); }, MINTS: { DKORN: DKORN, UFD: UFD, T22: T22, TOKENKEG: TOKENKEG }, SALUTE: SALUTE, ARWEAVE: ARWEAVE };
 if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { mountButton(); }); else mountButton();
 })();
