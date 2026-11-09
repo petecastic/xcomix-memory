@@ -313,7 +313,7 @@ function dlg(html, btns){ $('dlgB').innerHTML=html; var bb=$('dlgBtns'); bb.inne
   $('dlg').className='show'; }
 function toMap(){ $('dlg').className=''; renderMap(); show('scrMap'); }
 function share(){ var url='https://petecastic.github.io/xcomix-memory/lanes/';
-  var t = G&&G.endless&&G.over ? 'I held '+(G.held||0)+' waves of Endless in Midnight Lanes ('+G.w.show+')! ' : (G&&G.won ? 'Cleared '+G.w.stageNames[G.st]+' in Midnight Lanes: Three Worlds ('+G.w.show+')! ' : 'Midnight Lanes: Three Worlds, a free 5-lane defense game with Stink Patrol, the Old Bay Boys and Onigiri Squad! ');
+  var t = G&&G.endless&&G.over ? 'I held '+(G.held||0)+' waves of Endless in Midnight Lanes ('+G.w.show+')! ' : (G&&G.won ? 'Cleared '+G.w.stageNames[G.st]+' in Midnight Lanes: Three Worlds ('+G.w.show+')! ' : 'Midnight Lanes: Three Worlds, a free 5-lane defense game with Stink Patrol, the Bay Dust Boys and Onigiri Squad! ');
   var u='https://x.com/intent/post?text='+encodeURIComponent(t+'Free, no ads: '+url+' See you in another timeline.');
   var o=null; try{ o=window.open(u,'_blank'); }catch(e){} if(!o) location.href=u; }
 

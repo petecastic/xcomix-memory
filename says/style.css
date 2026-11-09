@@ -3,5 +3,8 @@
 .pad{position:relative;padding:0;aspect-ratio:1;overflow:hidden;filter:brightness(.55) saturate(.6);transition:filter .1s,transform .1s;border-color:#000}
 .pad img{width:100%;height:100%;object-fit:cover;display:block}.pad b{position:absolute;bottom:0;left:0;right:0;background:#000c;color:#ffd400;font-size:12px;padding:3px}
 .pad.lit{filter:brightness(1.15) saturate(1.2);transform:scale(.96);outline:4px solid #b57bff}
-#go{display:block;margin:8px auto;width:70%;font-size:18px}
+.pad.nope{outline:4px solid #ff5c8a;filter:brightness(.75)}
+.pad.bad{outline:4px solid #ff2e63;filter:brightness(.7)}
+#go,#replay{display:block;margin:8px auto;width:70%;font-size:18px;min-height:48px}
+#replay{background:#ffd400;color:#000}
 body.embed #pads{max-width:240px;gap:6px}body.embed #ov img{width:44px}

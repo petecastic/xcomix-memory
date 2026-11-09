@@ -1,11 +1,11 @@
 const cv=XC.$('#cv'),c=cv.getContext('2d'),W=360,H=480,stage=XC.$('#stage');
-const LV=[{name:'MILL STREET',map:['..AA....BB....','.AAAA..BBBB..','.AWAW..BWBW..','CAAAAACBBBBBDD','CAWAWACBWBWBDD','CAAAAACBBBBBDD','CAADAACBBDBBDD'],pal:{A:'#c0533a',B:'#8a5a3c',C:'#5b6ea8',D:'#3d8a5a',W:'#ffd45a'}},
+const LV=[{name:'MILL STREET',map:['..AA....BB....','.AAAA..BBBB..','.AGAG..BGBG..','CAAAAACBBBBBDD','CAGAGACBGBGBDD','CAAAAACBBBBBDD','CAADAACBBDBBDD'],pal:{A:'#c0533a',B:'#8a5a3c',C:'#5b6ea8',D:'#3d8a5a',G:'#ffd45a'}},
 {name:'BEAR',img:'bear_face'},{name:'ZIB',img:'zib_face'},{name:'OVERMIND',img:'overmind_head'},{name:'BOSS: KRAMPUS',img:'krampus_face'}];
 let st,bricks,balls,pad,pw,drops,lv,lives,score,run=false,keys={},px=null,last=0,slowT=0,wideT=0;
 const imgs={};LV.forEach(l=>{if(l.img){const i=new Image();i.src='../arcade/art/'+l.img+'.jpg';imgs[l.img]=i}});
 function build(){const L=LV[lv%LV.length],cols=14,bw=W/cols,bh=14;bricks=[];
- if(L.map){L.map.forEach((r,y)=>[...r].forEach((ch,x)=>{if(ch!=='.')bricks.push({x:x*bw,y:50+y*bh,w:bw-1,h:bh-1,col:L.pal[ch],hp:ch==='W'?2:1})}))}
- else{const cols=24,rows=20,bw=W/cols,bh=10;let d=null;
+ if(L.map){L.map.forEach((r,y)=>[...r].forEach((ch,x)=>{if(ch!=='.')bricks.push({x:x*bw,y:50+y*bh,w:bw-1,h:bh-1,col:L.pal[ch],hp:ch==='G'?2:1})}))}
+ else{const cols=12,rows=11,bw=W/cols,bh=18;let d=null;
   try{const o=document.createElement('canvas');o.width=cols;o.height=rows;const oc=o.getContext('2d');oc.drawImage(imgs[L.img],0,0,cols,rows);d=oc.getImageData(0,0,cols,rows).data}catch(e){d=null}
   const FB={bear_face:[140,90,50],zib_face:[120,200,80],overmind_head:[150,90,220],krampus_face:[110,80,50]}[L.img]||[200,120,60];
   for(let y=0;y<rows;y++)for(let x=0;x<cols;x++){let r,g,b;
@@ -13,13 +13,13 @@ function build(){const L=LV[lv%LV.length],cols=14,bw=W/cols,bh=14;bricks=[];
    else{const dx=(x-cols/2+.5)/(cols/2),dy=(y-rows/2+.5)/(rows/2);if(dx*dx+dy*dy>1)continue;const k=1-.35*y/rows;r=FB[0]*k+40*(y<4);g=FB[1]*k+40*(y<4);b=FB[2]*k}
    bricks.push({x:x*bw,y:36+y*bh,w:bw-1,h:bh-1,col:'rgb('+(r|0)+','+(g|0)+','+(b|0)+')',hp:1})}}
  serve()}
-var serveT=0;function serve(){serveT=90;pw=70;wideT=slowT=0;pad=W/2;balls=[{x:W/2,y:H-60,vx:2.2,vy:-4.2-lv*.25,stuck:true}];drops=[]}
+var arm=0;function serve(){arm=50;pw=78;wideT=slowT=0;pad=W/2;balls=[{x:W/2,y:H-60,vx:2.1,vy:-3.7-Math.min(lv,8)*.12,stuck:true}];drops=[]}
 function start(){lv=0;lives=3;score=0;build();run=true;hud()}
 function hud(){XC.$('#sc').textContent=score;XC.$('#lv').textContent=(lv+1)+' '+LV[lv%LV.length].name;XC.$('#li').textContent='♥'.repeat(Math.max(0,lives));XC.$('#hi').textContent=XC.get('bricks-best')??'—'}
 function step(){
  const sp=slowT>0?.6:1;if(keys.ArrowLeft)pad-=7;if(keys.ArrowRight)pad+=7;if(px!=null)pad+=(px-pad)*.5;const hw=(wideT>0?pw*1.6:pw)/2;pad=Math.max(hw,Math.min(W-hw,pad));
  slowT--;wideT--;
- if(serveT>0&&--serveT===0)launch();
+ if(arm>0)arm--;
  for(const b of balls){if(b.stuck){b.x=pad;b.y=H-38;continue}
   b.x+=b.vx*sp;b.y+=b.vy*sp;if(b.x<5||b.x>W-5){b.vx*=-1;b.x=Math.max(5,Math.min(W-5,b.x));XC.sfx(300,.03)}if(b.y<5){b.vy=Math.abs(b.vy);XC.sfx(300,.03)}
   if(b.vy>0&&b.y>H-36&&b.y<H-24&&Math.abs(b.x-pad)<hw+5){const t=(b.x-pad)/hw,s=Math.hypot(b.vx,b.vy);b.vx=s*Math.sin(t*1.05);b.vy=-s*Math.cos(t*1.05);XC.sfx(520,.04)}
@@ -37,9 +37,9 @@ function draw(){c.fillStyle='#0b0820';c.fillRect(0,0,W,H);c.fillStyle='#ffffff10
  const hw=(wideT>0?pw*1.6:pw)/2;c.fillStyle=wideT>0?'#2ee6ff':'#ffd400';c.fillRect(pad-hw,H-30,hw*2,10);c.fillStyle='#000';c.fillRect(pad-hw,H-22,hw*2,2);
  c.fillStyle='#fff';for(const b of balls){c.fillRect(b.x-4,b.y-4,8,8)}
  c.font='bold 12px monospace';c.textAlign='center';for(const d of drops){c.fillStyle={W:'#2ee6ff',M:'#ff2e63',S:'#7dff5a'}[d.t];c.fillRect(d.x-12,d.y-7,24,14);c.fillStyle='#000';c.fillText(d.t,d.x,d.y+4)}
- if(balls.some(b=>b.stuck)){c.fillStyle='#fff';c.fillText('TAP TO LAUNCH (or wait)',W/2,H/2+60)}}
+ if(balls.some(b=>b.stuck)){c.fillStyle='#fff';c.font='bold 16px monospace';c.fillText(arm>0?'GET READY':'CLICK, TAP, OR SPACE',W/2,H-78)}}
 var acc=0,lt=0;function loop(t){if(!lt)lt=t;acc+=Math.min(100,t-lt);lt=t;var n=0;while(acc>=16.67&&n<6){if(run)step();acc-=16.67;n++}try{draw()}catch(e){}requestAnimationFrame(loop)}
-function launch(){for(const b of balls)b.stuck=false}
+function launch(){if(!run||arm>0)return;let go=false;for(const b of balls)if(b.stuck){b.stuck=false;go=true}if(go)XC.sfx(660,.05)}
 function end(){run=false;const b=XC.best('bricks-best',score);hud();
  XC.over({img:'../arcade/art/krampus_face.jpg',title:b.rec?'NEW HI-SCORE!':'GAME OVER',stats:`Score <b>${score}</b> · Reached level ${lv+1}: ${LV[lv%LV.length].name}<br>Best ${b.best}`,text:`I scored ${score} in X-COMIX Brick Breaker and made it to ${LV[lv%LV.length].name}. Beat me.`,path:'bricks/',again:start})}
 cv.style.touchAction='none';const pos=e=>{const r=cv.getBoundingClientRect();return (e.clientX-r.left)/r.width*W};
@@ -50,5 +50,5 @@ addEventListener('keydown',e=>{keys[e.key]=1;if(e.key===' '){launch();e.preventD
 XC.muteBtn();lv=0;lives=3;score=0;hud();
 var ready=false;function boot(){if(ready)return;ready=true;try{build()}catch(e){bricks=[];serve()}requestAnimationFrame(loop);
  (function(){build();requestAnimationFrame(loop);
- XC.title(stage,{name:'BRICK BREAKER',img:'../arcade/art/krampus_face.jpg',how:'Smash Mill Street, Bear, Zib and Overmind, then the Krampus boss wall. Drag to move. Power-ups: W wide · M multi-ball · S slow.',best:XC.get('bricks-best'),start})})()}
+ XC.title(stage,{name:'BRICK BREAKER',img:'../arcade/art/krampus_face.jpg',how:'The ball stays on the paddle until you click, tap, or press Space. Drag or use the arrow keys to move. Power-ups: W wide · M multi-ball · S slow. Bricks stay big enough to read.',best:XC.get('bricks-best'),start})})()}
 Promise.all(Object.values(imgs).map(function(i){return new Promise(function(r){if(i.complete&&i.naturalWidth)return r();i.onload=i.onerror=r})})).then(boot);setTimeout(boot,2500);

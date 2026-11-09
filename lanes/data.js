@@ -16,7 +16,7 @@ D.worlds = [
   lose:{img:'sir-sucks-a-lot',who:'Sir Sucks-a-Lot',say:'ALL DUST IS MINE. Kneel before the suction.'},
   stageNames:['Night One','The Toe Bone','The Sleepover','Lights Out','The New Model','BOSS: Sir Sucks-a-Lot','Endless Graveyard Shift']
 },
-{ id:'oldbay', show:'Old Bay Boys', name:'Fells Point Pier', place:'Baltimore Inner Harbor · under the Fells Point docks',
+{ id:'oldbay', show:'Bay Dust Boys', name:'Fells Point Pier', place:'Baltimore Inner Harbor · under the Fells Point docks',
   cur:'Shiny Shells', curShort:'Shells', sweeper:'Harbor Wave Barrel', clockFrom:'7:00 PM', clockTo:'8:19 PM',
   pal:{bg1:'#7a5434',bg2:'#8a6240',line:'#3a2414',accent:'#2d6fb5',hud:'#20324a',glow:'#9ad7ff'},
   blurb:'Dusk on the docks. Captain Dottie\'s traps are out, Gully is selling fake escape maps again, and the boys have to keep the pier clear till the lights come on. Live blue crabs only, hon.',
@@ -63,7 +63,7 @@ doris:{name:'Doris',img:'doris',kind:'trap',cost:75,cd:20,hp:9999,uses:4,stick:3
   role:'Gift-Shop Glue Puddle',desc:'300 million years of patience. Lays a glue puddle on a tile; raiders crossing it get stuck for 3 seconds. Four uses.',line:'"I seen it all, kid."'},
 bigsal:{name:'Big Sal',img:'big-sal',kind:'lob',cost:125,cd:7.5,hp:300,dmg:40,rate:2.8,proj:'candy',splash:0,
   role:'Heavy Museum Thumper',desc:'The muscle. Lobs full-size candy bars over walls, so he can hit things the pelters can\'t.',line:'"Candy bar\'s heavy."'},
-/* ---------- WORLD 2: OLD BAY BOYS (LIVE BLUE CRABS ONLY) ---------- */
+/* ---------- WORLD 2: BAY DUST BOYS (LIVE BLUE CRABS ONLY) ---------- */
 lilsook:{name:'Lil Sook',img:'lil-sook',kind:'prod',cost:50,cd:7.5,hp:300,rate:24,
   role:'Shell Finder',desc:'She\'s really in charge. Digs up Shiny Shells from under the pilings every 24 seconds.',line:'"I\'m in charge, he just has the hat."'},
 bigjimmy:{name:'Big Jimmy',img:'big-jimmy',kind:'shoot',cost:125,cd:7.5,hp:400,dmg:34,rate:1.8,proj:'bolt2',
@@ -72,7 +72,7 @@ hon:{name:'Hon',img:'hon',kind:'tall',cost:100,cd:30,hp:3000,buff:1.3,
   role:'Pier Barricade Counter',desc:'Rolls her crab-shack counter onto the dock. Blocks gulls, and the crabs next to her fire 30% faster because she believes in them.',line:'"What can I get ya, hon?"'},
 softshell:{name:'Softshell Steve',img:'softshell-steve',kind:'mine',cost:25,cd:30,hp:300,arm:14,dmg:1800,
   role:'Mid-Molt Pier Mine',desc:'Too squishy for traps. Hides under the planks for 14 seconds, then pops up under the first thing that steps on him.',line:'"Why now? Why TODAY?"'},
-oldbay:{name:'Old Bay',img:'old-bay',kind:'lob',cost:200,cd:7.5,hp:300,dmg:60,rate:3,proj:'spice',splash:90,
+oldbay:{name:'Bay Dust',img:'old-bay',kind:'lob',cost:200,cd:7.5,hp:300,dmg:60,rate:3,proj:'spice',splash:90,
   role:'Veteran Seasoning Mortar',desc:'Crusted in spice, still a live blue crab underneath. Lobs spice clouds that splash everything nearby.',line:'"Nobody steams a crab that\'s already seasoned."'},
 wheel:{name:'Googly Harbor Wheel',img:'mr-trash-wheel',kind:'paddle',cost:225,cd:20,hp:1200,dmg:45,rate:2.2,
   role:'Paddle Splash Sweeper',desc:'A fictional googly-eyed harbor wheel. Paddles water across three lanes in front of it and strips armor three times as fast. *GULP*',line:'"*chug chug* ... *googly-eye wink*"'},

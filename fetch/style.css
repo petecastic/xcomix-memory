@@ -1,3 +1,11 @@
 #cv{width:100%;max-width:520px;display:block;margin:4px auto;border:3px solid #000;border-radius:12px;touch-action:none;box-shadow:4px 4px 0 #ff2e63;aspect-ratio:4/3;background:#120c24}
-#go{display:block;margin:8px auto;width:70%;font-size:18px}
+.startcard{max-width:520px;margin:8px auto;background:#1b1b2b;border:3px solid #000;outline:3px solid #ffd400;border-radius:14px;padding:12px 14px;text-align:center}
+.startcard h2{font:900 22px Impact,sans-serif;color:#ffd400;margin:0 0 4px;-webkit-text-stroke:0;text-shadow:none}
+.startcard p{font-size:14px;color:#eee;margin:4px 0 8px}
+#go{display:block;margin:4px auto 0;width:100%;font-size:18px;min-height:48px}
+.controls{display:flex;gap:8px;max-width:520px;margin:8px auto}
+#jump{flex:1;min-height:64px;font:900 26px Impact,sans-serif;letter-spacing:1px;background:linear-gradient(#7dff5a,#1fae1f);color:#000}
+#jump small{display:block;font:700 11px/1.2 system-ui,sans-serif;letter-spacing:0}
+#retry{min-height:64px;min-width:108px;background:#ffd400;color:#000;font:900 16px Impact,sans-serif}
 body.embed #cv{max-width:440px}
+body.embed .startcard{padding:8px}

@@ -428,7 +428,7 @@ var acc=0,last=-1;
 function frame(ts){requestAnimationFrame(frame);var now=ts||0,dt=last<0?0:Math.min(0.1,(now-last)/1000);last=now;
  if(G&&!G.paused&&!G.over){acc+=dt*G.speed;var n=0;while(acc>=STEP&&n<36){step(STEP);acc-=STEP;n++;}if(n>=36)acc=0;}
  render();if(G)ui.tick();}
-var ui={},SHORT={pete:'Pete',krampus:'Krampus',marjorie:'Marjorie',jimmy:'Big Jimmy',gus:'Gus & Pixel',stanley:'Stanley',pikaru:'Pikaru',dom:'Dom',salt:'Salt',lumos:'Lumos',tavern:'Tavern',rumple:'Lt. Rumple',tess:'Big Tess',wheel:'Trash Wheel'};
+var ui={},SHORT={pete:'Pete',krampus:'Krampus',marjorie:'Marjorie',jimmy:'Big Jimmy',gus:'Gus & Pixel',stanley:'Stanley',pikaru:'Pikaru',dom:'Dom',salt:'Salt',lumos:'Lumos',tavern:'Tavern',rumple:'Lt. Rumple',tess:'Big Tess',wheel:'Harbor Wheel'};
 function tile(ev){var rc=cv.getBoundingClientRect(),p=ev.touches&&ev.touches[0]?ev.touches[0]:ev.changedTouches&&ev.changedTouches[0]?ev.changedTouches[0]:ev;var x=(p.clientX-rc.left)/rc.width*W,y=(p.clientY-rc.top)/rc.height*H;return {x:x,y:y,c:Math.floor(x/T),r:Math.floor(y/T)};}
 function onDown(ev){if(!G||G.over)return;var p=tile(ev),touch=ev.pointerType?ev.pointerType!=='mouse':!!ev.touches;if(ev.cancelable)ev.preventDefault();
  if(G.zib&&dist2(p.x,p.y,G.zib.x,G.zib.y)<36*36){G.cash+=150;bubble(G.zib.x,G.zib.y+10,"Hi again! ...You don't remember me, do you?",3);text(G.zib.x,G.zib.y,'+'+cur()+'150','#ffe27a',16);G.zib=null;G.zibDone=true;sfx('coin');ui.hud();return;}
