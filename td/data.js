@@ -47,7 +47,7 @@ var TOWERS=[
    {n:'Hiss',c:280,d:'Sees hidden enemies. Cited enemies take +25% damage.',f:all(set('detect',1),set('amp',0.25))},
    {n:'Whip Crack',c:700,d:'The Tabby lashes every enemy near Marjorie for 8/s.',f:set('whip',8)}]}
  ]},
-{id:'jimmy',n:'Big Jimmy',show:'The Old Bay Boys',img:'jimmy',col:'#2d6fc1',lv:2,cost:180,
+{id:'jimmy',n:'Big Jimmy',show:'The Bay Dust Boys',img:'jimmy',col:'#2d6fc1',lv:2,cost:180,
  kind:'melee',dmg:6,rate:1.6,range:72,air:0,
  line:'Nobody gets caught this year.',lines:['Nobody gets caught this year.','Same time tomorrow, hon.','Steve, you picked TODAY?'],
  about:'Huge tough blue crab (live and blue, never cooked). Short-range pinch, big damage.',
@@ -56,7 +56,7 @@ var TOWERS=[
    {n:'Boys. Listen to Me.',c:160,d:'Pinches 50% faster.',f:mul('rate',1.5)},
    {n:'I Will Pinch You',c:340,d:'Ignores 3 armor. +4 damage.',f:all(add('ap',3),add('dmg',4))},
    {n:'Same Time Tomorrow, Hon',c:950,d:'Both claws: hits 2 enemies for 18.',f:all(set('multi',2),set('dmg',18))}]},
-  {n:"Old Bay's Seasoning",u:[
+  {n:"Bay Dust Seasoning",u:[
    {n:'Pre-Seasoned',c:150,d:'Pinched enemies are seasoned: +15% damage taken.',f:set('season',0.15)},
    {n:'Taste the Wisdom',c:300,d:'Seasons everything in range: +25%.',f:all(set('season',0.25),set('seasonAura',1))},
    {n:'The Pot Sees All',c:650,d:'Reveals hidden enemies for every tower nearby. Seasoning +40%.',f:all(set('season',0.4),set('reveal',120),set('detect',1))}]}
@@ -187,7 +187,7 @@ var TOWERS=[
    {n:'Grill Smoke',c:450,d:'Grill smoke: 5/s to ground enemies nearby.',f:set('grill',5)},
    {n:'Deck 4 Diner',c:1000,d:'+$50 at the end of every wave.',f:set('waveCash',50)}]}
  ]},
-{id:'wheel',n:'Mr. Trash Wheel',show:'The Old Bay Boys',img:'trashwheel',col:'#5b6670',lv:12,cost:450,
+{id:'wheel',n:'Harbor Wheel',show:'The Bay Dust Boys',img:'trashwheel',col:'#5b6670',lv:12,cost:450,
  kind:'gulp',range:90,air:0,gulp:40,gulpEvery:4,dmg:0,
  line:'*chug chug*',lines:['*chug chug*','*GULP*','*googly-eye wink*'],
  about:'The harbor legend. Every few seconds: *GULP*. Swallows the lead enemy whole if it is small enough.',
