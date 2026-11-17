@@ -1,0 +1,24 @@
+.reader{display:flex;flex-direction:column;align-items:center;gap:10px;margin:8px auto 16px;max-width:720px}
+.stage-card{position:relative;width:min(100%,384px);aspect-ratio:4/5;background:#111;border:4px solid #000;outline:3px solid #ffd400;border-radius:14px;overflow:hidden;box-shadow:6px 6px 0 #ff2e63}
+.stage-card iframe{position:absolute;inset:0;width:384px;height:480px;border:0;transform-origin:0 0;background:#111}
+.meta{text-align:center}
+.meta .strip-lab{font:900 12px "Courier New",monospace;color:#2ee6ff;letter-spacing:.4px}
+.meta h2{font:900 28px Impact,sans-serif;color:#ffd400;-webkit-text-stroke:1px #000;margin:2px 0 0}
+.meta p{color:#ddd;font-size:14px;margin:4px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;max-width:520px}
+.controls button{min-width:88px;min-height:48px}
+#playbtn.on{background:#ffd400;color:#000}
+.strips{display:flex;gap:6px;overflow-x:auto;justify-content:center;padding-bottom:6px;margin:4px 0}
+.strips button{border-radius:30px;padding:8px 14px;font:900 14px Impact,sans-serif;letter-spacing:.3px;background:linear-gradient(#fff,#cfd8ff);color:#000;flex:none}
+.strips button.on{background:linear-gradient(#7dff5a,#1fae1f)}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:720px;margin:8px auto 0}
+.thumbs button{padding:0;background:#241838;border-radius:10px;overflow:hidden;box-shadow:2px 2px 0 #000;position:relative}
+.thumbs button.on{outline:3px solid #ffd400;outline-offset:0}
+.thumbs img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;image-rendering:pixelated}
+.thumbs i{position:absolute;left:4px;bottom:4px;font:900 10px Impact,sans-serif;background:#000c;color:#ffd400;padding:1px 5px;border-radius:4px;font-style:normal}
+.hint{text-align:center;color:#9a93b0;font-size:12px;margin:10px auto 0;max-width:36rem;line-height:1.35}
+@media (max-width:520px){
+  .thumbs{grid-template-columns:repeat(5,minmax(0,1fr));gap:5px}
+  .thumbs i{font-size:8px;padding:0 3px}
+}
+body.hub a.back{display:none}

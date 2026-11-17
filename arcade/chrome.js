@@ -30,6 +30,7 @@
   bar.innerHTML='<a class="xc-logo" href="../">X-<span>COMIX</span></a>'
     +'<nav aria-label="Arcade">'
     +'<a href="../" aria-current="page">Games</a>'
+    +'<a href="../doge-yard/">Doge Yard</a>'
     +'<a href="../shop/">Shop</a>'
     +'<a href="../binder/">Binder</a>'
     +'<a href="../vault-clock/">Clock</a>'

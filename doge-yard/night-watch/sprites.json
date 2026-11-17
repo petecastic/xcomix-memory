@@ -1,0 +1,272 @@
+{
+  "image": "sprites.png",
+  "width": 256,
+  "height": 128,
+  "colors": 36,
+  "inscription_placeholder": "SPRITESHEET_INSCRIPTION_ID",
+  "content_url_template": "/content/<SPRITESHEET_INSCRIPTION_ID>",
+  "preview_url": "sprites.png",
+  "frames": {
+    "krampus": {
+      "x": 0,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "dkorn": {
+      "x": 24,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "tabby": {
+      "x": 48,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "zib": {
+      "x": 72,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "gus": {
+      "x": 96,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "pixel": {
+      "x": 120,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "domino": {
+      "x": 144,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "pickle": {
+      "x": 168,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "bear": {
+      "x": 192,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "lamp": {
+      "x": 216,
+      "y": 0,
+      "w": 8,
+      "h": 32
+    },
+    "cactus": {
+      "x": 224,
+      "y": 0,
+      "w": 16,
+      "h": 32
+    },
+    "tree": {
+      "x": 240,
+      "y": 0,
+      "w": 16,
+      "h": 32
+    },
+    "domino_wag_0": {
+      "x": 0,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "domino_wag_1": {
+      "x": 24,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "domino_wag_2": {
+      "x": 48,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "portal": {
+      "x": 72,
+      "y": 36,
+      "w": 24,
+      "h": 24
+    },
+    "box": {
+      "x": 96,
+      "y": 44,
+      "w": 16,
+      "h": 12
+    },
+    "pretzel": {
+      "x": 112,
+      "y": 48,
+      "w": 8,
+      "h": 8
+    },
+    "coffee": {
+      "x": 120,
+      "y": 48,
+      "w": 8,
+      "h": 8
+    },
+    "grass": {
+      "x": 128,
+      "y": 48,
+      "w": 16,
+      "h": 8
+    },
+    "sand": {
+      "x": 144,
+      "y": 48,
+      "w": 16,
+      "h": 8
+    },
+    "snow": {
+      "x": 160,
+      "y": 48,
+      "w": 16,
+      "h": 8
+    },
+    "puddle": {
+      "x": 176,
+      "y": 50,
+      "w": 16,
+      "h": 6
+    },
+    "sun": {
+      "x": 192,
+      "y": 40,
+      "w": 8,
+      "h": 8
+    },
+    "moon": {
+      "x": 200,
+      "y": 40,
+      "w": 8,
+      "h": 8
+    },
+    "cloud": {
+      "x": 208,
+      "y": 40,
+      "w": 16,
+      "h": 8
+    },
+    "star": {
+      "x": 224,
+      "y": 40,
+      "w": 8,
+      "h": 8
+    },
+    "rock": {
+      "x": 232,
+      "y": 40,
+      "w": 8,
+      "h": 8
+    },
+    "bark": {
+      "x": 240,
+      "y": 40,
+      "w": 8,
+      "h": 8
+    },
+    "heart": {
+      "x": 248,
+      "y": 40,
+      "w": 8,
+      "h": 8
+    },
+    "dome": {
+      "x": 0,
+      "y": 64,
+      "w": 48,
+      "h": 32
+    },
+    "rain_0": {
+      "x": 48,
+      "y": 64,
+      "w": 16,
+      "h": 16
+    },
+    "rain_1": {
+      "x": 64,
+      "y": 64,
+      "w": 16,
+      "h": 16
+    },
+    "rain_2": {
+      "x": 80,
+      "y": 64,
+      "w": 16,
+      "h": 16
+    },
+    "fence": {
+      "x": 96,
+      "y": 80,
+      "w": 24,
+      "h": 16
+    },
+    "booth": {
+      "x": 120,
+      "y": 72,
+      "w": 32,
+      "h": 24
+    },
+    "buzzer": {
+      "x": 152,
+      "y": 72,
+      "w": 8,
+      "h": 24
+    },
+    "slip": {
+      "x": 160,
+      "y": 72,
+      "w": 8,
+      "h": 16
+    },
+    "ballot": {
+      "x": 168,
+      "y": 80,
+      "w": 8,
+      "h": 12
+    },
+    "fence2": {
+      "x": 176,
+      "y": 80,
+      "w": 24,
+      "h": 16
+    },
+    "domino_wag": {
+      "w": 24,
+      "h": 32,
+      "frames": 3,
+      "origin": [
+        "domino_wag_0",
+        "domino_wag_1",
+        "domino_wag_2"
+      ]
+    },
+    "rain": {
+      "w": 16,
+      "h": 16,
+      "frames": 3,
+      "origin": [
+        "rain_0",
+        "rain_1",
+        "rain_2"
+      ]
+    }
+  },
+  "notes": "Krampus antlers are branching (elk/stag tines with gaps). Dkorn antlers are palmate (wide moose paddles). Pixel prints from a side slot, not a chest mark. Pickle is a fawn dog with a snout and floppy ears, not a teddy. Bear is a chocolate pit-mix with white paws, chest, and tail tip, plus an orange harness pack. The Tabby is a cat: pointed ears, whiskers, stripes, long tail. Domino and Pickle only bark. No humans in their scenes. The dome is a dome-ready venue, unmarked, with amber ticks built into the face."
+}

@@ -1,0 +1,19 @@
+/* Doge Yard landing — sits on top of the arcade hub.css. */
+.sec{margin:18px 0 8px;display:flex;align-items:baseline;gap:10px}
+.sec h2{font:900 22px Impact,sans-serif;color:#ffd400;letter-spacing:.5px;margin:0}
+.sec p{color:#b7b0c9;font-size:13px;margin:0}
+.tile.soon{cursor:default;opacity:.92;filter:saturate(.85)}
+.tile.soon:hover,.tile.soon:focus-visible{transform:none;box-shadow:4px 4px 0 #000}
+.tile.soon .play{background:linear-gradient(#cfd8ff,#9aa3c8);color:#111;box-shadow:0 3px 0 #000}
+.soon-note{text-align:center;color:#9a93b0;font-size:12px;margin:4px 0 0}
+.hero .free{font-size:40px}
+.hero .tagline{letter-spacing:1px}
+@media (min-width:760px){.hero .free{font-size:56px}}
+/* Featured pick: show the full 16:9 promo. Chrome was honoring the
+   img height attribute (675) over aspect-ratio, which cropped a sliver. */
+.pick{flex-wrap:wrap;align-items:center}
+.pick img{width:min(520px,100%);max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;flex:1 1 280px}
+.pick > div{flex:1 1 240px;padding:6px 8px}
+@media (min-width:760px){
+  .grid.pair{grid-template-columns:repeat(2,minmax(0,1fr))}
+}

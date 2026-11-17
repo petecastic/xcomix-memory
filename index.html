@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>X-COMIX Arcade · 3 AM Valley</title>
 <meta name="theme-color" content="#0d0d14">
-<meta name="description" content="21 free X-COMIX games in the 3 AM Valley, plus the Card Shop, the Binder, and the 2126 Clock. New this week: Drop Run and Last Booth. No ads, no login.">
+<meta name="description" content="21 free X-COMIX games in the 3 AM Valley, plus the Doge Yard, the Card Shop, the Binder, and the 2126 Clock. New this week: Doge Yard. No ads, no login.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@mrpetecastic">
 <meta name="twitter:title" content="X-COMIX Arcade · 3 AM Valley">
-<meta name="twitter:description" content="21 free games. Drop Run, Last Booth, and the rest of the 3 AM Valley. No ads, no login. Tap and play.">
+<meta name="twitter:description" content="21 free games, plus the Doge Yard. Night Watch, Drop Run, Last Booth, and the rest of the 3 AM Valley. No ads, no login. Tap and play.">
 <meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/arcade.jpg">
 <meta property="og:title" content="X-COMIX Arcade · 3 AM Valley">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://petecastic.github.io/xcomix-memory/">
-<meta property="og:description" content="21 free X-COMIX games in the 3 AM Valley, plus the Card Shop, the Binder, and the 2126 Clock.">
+<meta property="og:description" content="21 free X-COMIX games in the 3 AM Valley, plus the Doge Yard, the Card Shop, the Binder, and the 2126 Clock.">
 <meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/arcade.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="675">
@@ -29,6 +29,7 @@
   <a class="logo" href="./">X-<span>COMIX</span> <small>ARCADE</small></a>
   <nav class="sitenav" aria-label="Arcade">
     <a href="./" aria-current="page">Games</a>
+    <a href="doge-yard/">Doge Yard</a>
     <a href="shop/">Shop</a>
     <a href="binder/">Binder</a>
     <a href="vault-clock/">Clock</a>
@@ -39,7 +40,7 @@
   <div class="hero">
     <h1 class="free">FREE GAMES</h1>
     <p class="tagline">X-COMIX, we never close.</p>
-    <p class="lead">21 free games in the 3 AM Valley, plus the Card Shop, the Binder, and the 2126 Clock. No ads. No login. Pick one and play.</p>
+    <p class="lead">21 free games in the 3 AM Valley, plus the Doge Yard, the Card Shop, the Binder, and the 2126 Clock. No ads. No login. Pick one and play.</p>
   </div>
   <div class="tools">
     <label class="find">
@@ -48,7 +49,7 @@
     </label>
     <button class="vipb" id="vipHub" type="button">VIP Pass (read-only)</button>
     <span id="lockHub"></span>
-    <span class="showing" id="showing" aria-live="polite">24 on the board</span>
+    <span class="showing" id="showing" aria-live="polite">25 on the board</span>
   </div>
   <div class="cats" id="cats" role="tablist" aria-label="Game types">
     <button class="on" type="button" data-c="All" role="tab" aria-selected="true">ALL</button>
@@ -63,6 +64,11 @@
   </div>
   <a class="pick" id="pick" href="#"></a>
   <div class="grid" id="grid">
+    <a class="tile" id="g-dogeyard" data-cat="Action" data-k="dogeyard" href="doge-yard/">
+      <span class="th"><img src="arcade/promo/doge-yard.jpg" alt="Domino, Pickle, and Bear on the night lawn by the unmarked dome" width="320" height="180"><i>NEW</i></span>
+      <span class="body"><b>DOGE YARD</b><small>Night Watch, the 20-panel strip, and more on the way.</small><span class="foot"><span class="stars" data-k="dogeyard"></span><span class="play">ENTER</span></span></span>
+      <em class="cat">Action</em>
+    </a>
     <a class="tile" id="g-droprun" data-cat="Action" data-k="droprun" href="drop-run/">
       <span class="th"><img src="arcade/promo/drop-run.jpg" alt="Pete hooking a night drop onto a rowhouse, Bear safe in the van" width="320" height="180"><i>NEW</i></span>
       <span class="body"><b>DROP RUN</b><small>Hook the house drop. Ladders never go on the pole.</small><span class="foot"><span class="stars" data-k="droprun"></span><span class="play">PLAY</span></span></span>
