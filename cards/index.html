@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>On-chain Cards · X-COMIX Arcade</title>
+<meta name="theme-color" content="#0d0d14">
+<meta name="description" content="A catalog of every minted X-Comix card on Solana, Base, and Doge, each linked to its on-chain page. Display only. No prices.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@XComixWorld">
+<meta name="twitter:title" content="On-chain Cards · X-COMIX Arcade">
+<meta name="twitter:description" content="Every minted X-Comix card on Solana, Base, and Doge, linked to its on-chain page. Display only. No prices.">
+<meta name="twitter:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/onchain-cards.jpg">
+<meta property="og:title" content="On-chain Cards · X-COMIX Arcade">
+<meta property="og:type" content="website">
+<meta property="og:description" content="Every minted X-Comix card on Solana, Base, and Doge, linked to its on-chain page. Display only. No prices.">
+<meta property="og:image" content="https://petecastic.github.io/xcomix-memory/arcade/promo/onchain-cards.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="675">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../arcade/common.css">
+<link rel="stylesheet" href="../arcade/hub.css">
+<link rel="stylesheet" href="cards.css">
+</head>
+<body class="hub cards-page">
+<a class="sr" href="#grid">Skip to the catalog</a>
+<header class="top">
+  <a class="logo" href="../">X-<span>COMIX</span> <small>ARCADE</small></a>
+  <nav class="sitenav" aria-label="Arcade">
+    <a href="../">Games</a>
+    <a href="../doge-yard/">Doge Yard</a>
+    <a href="../shop/">Shop</a>
+    <a href="./" aria-current="page">Cards</a>
+    <a href="../binder/">Binder</a>
+    <a href="../vault-clock/">Clock</a>
+  </nav>
+  <div class="clk" title="The mill clock, stuck">12:49</div>
+</header>
+<div class="wrap">
+  <div class="hero">
+    <h1 class="free">ON-CHAIN CARDS</h1>
+    <p class="tagline">Minted on Solana, Base, and Doge.</p>
+    <p class="lead">A display catalog of every X-Comix card that has been minted or inscribed, each with a link to its on-chain page. This is not a store. Nothing here is listed, and no prices are shown. Fan arcade and comic collectibles only — not financial advice.</p>
+  </div>
+
+  <div class="tools">
+    <label class="find">
+      <span class="sr">Find a card</span>
+      <input id="q" type="search" placeholder="Find a card…" autocomplete="off" enterkeyhint="search">
+    </label>
+    <span class="showing" id="showing" aria-live="polite">Loading…</span>
+  </div>
+
+  <div class="cats" id="chains" role="tablist" aria-label="Chains">
+    <button type="button" data-chain="all" class="on">All chains</button>
+    <button type="button" data-chain="solana">Solana</button>
+    <button type="button" data-chain="base">Base</button>
+    <button type="button" data-chain="doge">Doge</button>
+  </div>
+  <div class="cats collections" id="collections" role="tablist" aria-label="Collections"></div>
+
+  <label class="support-tog"><input type="checkbox" id="showSupport"> Show support files (sprites, libraries, strip wrappers)</label>
+
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>Nothing in this catalog matches that. Try another word, or tap All chains.</p>
+
+  <p class="note">Every card here is already minted or inscribed and sits in Pete’s archive wallets. Links go to Solscan, Basescan, or the Doginals explorer. Unminted and held Series 1 numbers are not in this list. To add a newly minted daily-arc card, see the note in <a href="README.md">cards/README.md</a>.</p>
+  <footer class="site">X-COMIX MULTIVERSE by <a href="https://x.com/XComixWorld" target="_blank" rel="noopener">@XComixWorld</a> · #XCOMIX · “X-COMIX, we never close.”<span class="legal">© 2026 Petecastic Productions LLC · Fan arcade &amp; comic collectible fun, not financial advice</span></footer>
+</div>
+<script src="cards.js"></script>
+</body>
+</html>

@@ -121,7 +121,10 @@ function cardFace(c,big){
 }
 function displayOnly(c){return c&&c.id==='pete-castic-bear'}
 function statusHTML(c){
-  if(displayOnly(c)) return '<div class="status">Not for sale. Display only.</div>';
+  if(displayOnly(c) || c.display_only) return '<div class="status">Not for sale. Display only.</div>';
+  if(c.held) return '<div class="status">Not minted · held in the archive</div>';
+  if(c.minted && c.explorer) return '<div class="status">Minted on Solana · <a href="'+c.explorer+'" target="_blank" rel="noopener">on-chain page</a></div>';
+  if(c.minted) return '<div class="status">Minted on Solana</div>';
   return '<div class="status">SERIES 1 WAVE 1</div>';
 }
 function actsHTML(c){

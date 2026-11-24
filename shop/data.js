@@ -29,6 +29,8 @@ window.SHOP={
 "quote": "\"I wire the block by day and draw the Multiverse by night.\"",
 "minted": false,
 "mint": null,
+"held": false,
+"display_only": true,
 "groups": []
 },
 {
@@ -56,8 +58,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Same time tomorrow, hon.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "772GdAbYJKBXa6L2ZyJX1VEdiw9ojfvsBQrXgXryfatG",
+"explorer": "https://solscan.io/token/772GdAbYJKBXa6L2ZyJX1VEdiw9ojfvsBQrXgXryfatG",
+"held": false,
 "groups": [
 "critters",
 "comedy"
@@ -88,8 +92,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"don't tell anybody\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "2HAc1WSEykjwpy9pHq15xSYvgsGMtFE5RoMPPyBe1zJH",
+"explorer": "https://solscan.io/token/2HAc1WSEykjwpy9pHq15xSYvgsGMtFE5RoMPPyBe1zJH",
+"held": false,
 "groups": [
 "night"
 ]
@@ -119,8 +125,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Nobody beats me in here.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "BohvZ3UHKcmZiXNg9y2vgvUyf3DTTthcSaJ4gBi8TYz2",
+"explorer": "https://solscan.io/token/BohvZ3UHKcmZiXNg9y2vgvUyf3DTTthcSaJ4gBi8TYz2",
+"held": false,
 "groups": [
 "action"
 ]
@@ -150,8 +158,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Patrol never sleeps.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "FHcF6nt2wfj6BXwjuGc66YKfJ1n2V4ecMynR86FoFqzp",
+"explorer": "https://solscan.io/token/FHcF6nt2wfj6BXwjuGc66YKfJ1n2V4ecMynR86FoFqzp",
+"held": false,
 "groups": [
 "critters"
 ]
@@ -183,6 +193,7 @@ window.SHOP={
 "quote": "\"Lady, you don't have a head.\"",
 "minted": false,
 "mint": null,
+"held": true,
 "groups": [
 "night",
 "action"
@@ -213,8 +224,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Naptime is forever.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "GvGKoYAuNChNmt8hZZhJECitqGtTZYVT1i3M6UuXhw3P",
+"explorer": "https://solscan.io/token/GvGKoYAuNChNmt8hZZhJECitqGtTZYVT1i3M6UuXhw3P",
+"held": false,
 "groups": [
 "mystery"
 ]
@@ -244,8 +257,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Keep the horizon red.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "3hvmPqozbgqwT6VTUHAaHZU9EV4finPVcKo7ifZLXF5b",
+"explorer": "https://solscan.io/token/3hvmPqozbgqwT6VTUHAaHZU9EV4finPVcKo7ifZLXF5b",
+"held": false,
 "groups": [
 "action"
 ]
@@ -275,8 +290,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Charts are just vibes, bro.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "7shWSAcqJHXMbHYX4mQyDRWc6wTYe3gEVJLZFM9X2pZF",
+"explorer": "https://solscan.io/token/7shWSAcqJHXMbHYX4mQyDRWc6wTYe3gEVJLZFM9X2pZF",
+"held": false,
 "groups": [
 "comedy"
 ]
@@ -306,8 +323,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"If the signal's gone, we go find it.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "GT7nBjKAakN3DJoXEfZebHsSs7UpB8vb3YhfuNk3nBwy",
+"explorer": "https://solscan.io/token/GT7nBjKAakN3DJoXEfZebHsSs7UpB8vb3YhfuNk3nBwy",
+"held": false,
 "groups": [
 "action",
 "mystery"
@@ -338,8 +357,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"And here… the creature awaits.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "5HxxQxFLYhRnKqzyA5o4CFU85aPTNDZiBGUbHKDPz3Q9",
+"explorer": "https://solscan.io/token/5HxxQxFLYhRnKqzyA5o4CFU85aPTNDZiBGUbHKDPz3Q9",
+"held": false,
 "groups": [
 "mystery"
 ]
@@ -369,8 +390,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Pull up a stool, it's 1777.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "DYigtVuvFuMTvC2YWKAEEchbYJf5XbtkCF93V1aKCERR",
+"explorer": "https://solscan.io/token/DYigtVuvFuMTvC2YWKAEEchbYJf5XbtkCF93V1aKCERR",
+"held": false,
 "groups": [
 "night",
 "mystery"
@@ -403,6 +426,7 @@ window.SHOP={
 "quote": "\"Blue side never folds.\"",
 "minted": false,
 "mint": null,
+"held": true,
 "groups": [
 "action"
 ]
@@ -432,8 +456,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Mangia! You're too skinny.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "Fg62H21mpBskbsowbjRqZpJqRbcj11LA8HVZoryLWMLD",
+"explorer": "https://solscan.io/token/Fg62H21mpBskbsowbjRqZpJqRbcj11LA8HVZoryLWMLD",
+"held": false,
 "groups": [
 "night",
 "comedy"
@@ -464,8 +490,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Just one more thing...\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "4FnFHAZrQPKivyBbZxVBCWpEzU88FFd8tzVwfnzsz17j",
+"explorer": "https://solscan.io/token/4FnFHAZrQPKivyBbZxVBCWpEzU88FFd8tzVwfnzsz17j",
+"held": false,
 "groups": [
 "night",
 "mystery"
@@ -496,8 +524,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"This just in from the alley.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "5qy8S1JY9EE1zHE5H995RHLWUo2FJiGyWH84kmhbKJDG",
+"explorer": "https://solscan.io/token/5qy8S1JY9EE1zHE5H995RHLWUo2FJiGyWH84kmhbKJDG",
+"held": false,
 "groups": [
 "critters",
 "comedy"
@@ -528,8 +558,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"My blade decides.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "DiKu71VsmYsKiNze1NRPA1DWq1adejsPt5SKtbY34To",
+"explorer": "https://solscan.io/token/DiKu71VsmYsKiNze1NRPA1DWq1adejsPt5SKtbY34To",
+"held": false,
 "groups": [
 "action"
 ]
@@ -559,8 +591,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Squad up — rice first!\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "9es6bQLGYnMqww3gnovPc5yB4a9niTGCijtQsitLkWu3",
+"explorer": "https://solscan.io/token/9es6bQLGYnMqww3gnovPc5yB4a9niTGCijtQsitLkWu3",
+"held": false,
 "groups": [
 "critters"
 ]
@@ -590,8 +624,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"See y'all in the next verse.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "GLcRu8aHwgCLgNJ1FoVcJo9nXFzyNM8mLAXUB7ZUEaXN",
+"explorer": "https://solscan.io/token/GLcRu8aHwgCLgNJ1FoVcJo9nXFzyNM8mLAXUB7ZUEaXN",
+"held": false,
 "groups": [
 "comedy"
 ]
@@ -621,8 +657,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Okay. Okay. I'm right here.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "8ZUxaWAwavEULNJ3SqJuujeXUPyhmuSSbLRfd19EiNZ7",
+"explorer": "https://solscan.io/token/8ZUxaWAwavEULNJ3SqJuujeXUPyhmuSSbLRfd19EiNZ7",
+"held": false,
 "groups": [
 "night"
 ]
@@ -652,8 +690,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"*stares from the URGENT pile*\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "Ba72ojrfWbBR8stBLATB961NBoKwWLmNpgtSwTT7itVt",
+"explorer": "https://solscan.io/token/Ba72ojrfWbBR8stBLATB961NBoKwWLmNpgtSwTT7itVt",
+"held": false,
 "groups": [
 "critters",
 "comedy"
@@ -684,8 +724,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"Shall we consult the manual?\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "5T325h9xRUQvFzpLigUMde8AdJ8DM4qaS629L9fYPkZn",
+"explorer": "https://solscan.io/token/5T325h9xRUQvFzpLigUMde8AdJ8DM4qaS629L9fYPkZn",
+"held": false,
 "groups": [
 "comedy"
 ]
@@ -717,6 +759,7 @@ window.SHOP={
 "quote": "\"Stability before beauty.\"",
 "minted": false,
 "mint": null,
+"held": true,
 "groups": [
 "night"
 ]
@@ -726,7 +769,7 @@ window.SHOP={
 "num": "023",
 "id": "dkorn",
 "name": "Dkorn",
-"title": "CIRCUIT 13 APE · FAMILY CORE",
+"title": "CIRCUIT 13 GRID GIANT · FAMILY CORE",
 "show": "Dkorn Saga",
 "cat": "Family Arcade Epic",
 "front": "assets/fronts/023_dkorn.jpg",
@@ -748,6 +791,7 @@ window.SHOP={
 "quote": "\"You wake the baby, you eat the spool.\"",
 "minted": false,
 "mint": null,
+"held": true,
 "groups": [
 "night",
 "critters"
@@ -778,8 +822,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"The file was never empty.\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "7JEUs3PnXQH3D8gXZFg1UVpjhED1D4ngUoBwFFaihyCu",
+"explorer": "https://solscan.io/token/7JEUs3PnXQH3D8gXZFg1UVpjhED1D4ngUoBwFFaihyCu",
+"held": false,
 "groups": [
 "mystery"
 ]
@@ -809,8 +855,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"*boof* — we're done here\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "7a1NSe3Mb2bj79jScQxfXFhUXhGLaCnJvEHorTz2czDA",
+"explorer": "https://solscan.io/token/7a1NSe3Mb2bj79jScQxfXFhUXhGLaCnJvEHorTz2czDA",
+"held": false,
 "groups": [
 "critters"
 ]
@@ -842,6 +890,7 @@ window.SHOP={
 "quote": "\"Bro it's so over → wait it's so back.\"",
 "minted": false,
 "mint": null,
+"held": true,
 "groups": [
 "comedy"
 ]
@@ -871,8 +920,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"…wit' mustard?\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "59ZuZ5jYvNKwMATXCCA2xHYUGnphjdPiSkJKdj33QDUq",
+"explorer": "https://solscan.io/token/59ZuZ5jYvNKwMATXCCA2xHYUGnphjdPiSkJKdj33QDUq",
+"held": false,
 "groups": [
 "mystery"
 ]
@@ -902,8 +953,10 @@ window.SHOP={
 ]
 ],
 "quote": "\"See you in another timeline!\"",
-"minted": false,
-"mint": null,
+"minted": true,
+"mint": "CfmuU4yKQ8meYbiaEQBrAjGxMcni9i4L7oeWcahfjXJr",
+"explorer": "https://solscan.io/token/CfmuU4yKQ8meYbiaEQBrAjGxMcni9i4L7oeWcahfjXJr",
+"held": false,
 "groups": [
 "comedy"
 ]
