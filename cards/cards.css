@@ -25,3 +25,7 @@ body.cards-page .lead{max-width:46rem}
 @media (prefers-reduced-motion:reduce){
   .card:hover,.card:focus-within{transform:none}
 }
+@media (max-width:680px){
+  body.cards-page .tools{flex-direction:column;align-items:stretch}
+  body.cards-page .showing{align-self:flex-start}
+}
