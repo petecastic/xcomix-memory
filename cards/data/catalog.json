@@ -1,13 +1,13 @@
 {
   "schema": 1,
-  "updated_et": "2026-11-24 1:50 PM ET",
+  "updated_et": "2026-11-25 8:53 AM ET",
   "source": "Box mint receipts and inscription ledgers. Minted items only.",
   "counts": {
-    "total": 368,
-    "solana": 135,
+    "total": 388,
+    "solana": 155,
     "base": 52,
     "doge": 181,
-    "cards": 354,
+    "cards": 374,
     "support": 14,
     "by_collection": {
       "founder": 1,
@@ -26,7 +26,8 @@
       "doge_show": 28,
       "doge_pause": 1,
       "doge_arc1": 6,
-      "doge_yard_issue": 10
+      "doge_yard_issue": 10,
+      "multiverse_dkorn": 20
     }
   },
   "collections": [
@@ -77,6 +78,13 @@
       "name": "X-Comix Series 2: Orbit Crew",
       "label": "Series 2 \u00b7 Orbit Crew",
       "address": "hTscEAeMV3M4BP8AezyvPP2wfGLq2QcsFnVBVECbcvr"
+    },
+    {
+      "id": "multiverse_dkorn",
+      "chain": "solana",
+      "name": "X-Comix Multiverse: Dkorn Costume Set",
+      "label": "Multiverse \u00b7 Dkorn",
+      "address": "Cxv6p1pZWAQAg3i42kMQHtQ7q8hVH7DiTNLtZEYCQHEQ"
     },
     {
       "id": "base_edition",
@@ -4557,6 +4565,246 @@
       "asset": "c84315be97e117ea51a984baf0e85d94c12217a7e0c317fc704c67b5eb6b145fi0",
       "explorer": "https://thedoginalsexplorer.com/inscription/c84315be97e117ea51a984baf0e85d94c12217a7e0c317fc704c67b5eb6b145fi0",
       "thumb": "thumbs/doge-s2-d10-first-packet.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-01",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-01",
+      "name": "D-01 Stuck at Twelve Forty-Nine",
+      "kind": "card",
+      "asset": "FhHps6dbZKD2kDoaMy2mNcsZFjP7yu1gtky6gKSCb8Jf",
+      "explorer": "https://solscan.io/token/FhHps6dbZKD2kDoaMy2mNcsZFjP7yu1gtky6gKSCb8Jf",
+      "thumb": "thumbs/sol-mv-d-01.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-02",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-02",
+      "name": "D-02 First Frost Climb",
+      "kind": "card",
+      "asset": "8tSH5f7x9ZwhXGJpWnEPH77tWpDQCcbDKcTAxYWEu8o5",
+      "explorer": "https://solscan.io/token/8tSH5f7x9ZwhXGJpWnEPH77tWpDQCcbDKcTAxYWEu8o5",
+      "thumb": "thumbs/sol-mv-d-02.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-03",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-03",
+      "name": "D-03 Please Don't Sneeze",
+      "kind": "card",
+      "asset": "8D91Q58UjmkCiXnCC5VYyiM2zPZLTiVTqTr8E6dQuizK",
+      "explorer": "https://solscan.io/token/8D91Q58UjmkCiXnCC5VYyiM2zPZLTiVTqTr8E6dQuizK",
+      "thumb": "thumbs/sol-mv-d-03.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-04",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-04",
+      "name": "D-04 Yours or Mine?",
+      "kind": "card",
+      "asset": "8eLtjB89SK4uC9NkezUbv31hkuVgzbA35pF9m7BGhCcR",
+      "explorer": "https://solscan.io/token/8eLtjB89SK4uC9NkezUbv31hkuVgzbA35pF9m7BGhCcR",
+      "thumb": "thumbs/sol-mv-d-04.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-05",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-05",
+      "name": "D-05 Hint: The Kite",
+      "kind": "card",
+      "asset": "7ewBxP2X4nEVxhYxBo6gP5d7apxNhsoVYRrjiVeyfi8S",
+      "explorer": "https://solscan.io/token/7ewBxP2X4nEVxhYxBo6gP5d7apxNhsoVYRrjiVeyfi8S",
+      "thumb": "thumbs/sol-mv-d-05.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-06",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-06",
+      "name": "D-06 Three-Line Minimum",
+      "kind": "card",
+      "asset": "3bxHB1ck2zJ9DK2F5vkeHVjKT6xpGjLxryVzCFL6oTPn",
+      "explorer": "https://solscan.io/token/3bxHB1ck2zJ9DK2F5vkeHVjKT6xpGjLxryVzCFL6oTPn",
+      "thumb": "thumbs/sol-mv-d-06.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-07",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-07",
+      "name": "D-07 Homemade Test Pattern",
+      "kind": "card",
+      "asset": "6Yr7ZRpf1vZJmX6NZm9iUJpL846EC7X4rAuAWeLV5HrN",
+      "explorer": "https://solscan.io/token/6Yr7ZRpf1vZJmX6NZm9iUJpL846EC7X4rAuAWeLV5HrN",
+      "thumb": "thumbs/sol-mv-d-07.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-08",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-08",
+      "name": "D-08 Cast List in the Fog",
+      "kind": "card",
+      "asset": "CPqzfa1MqifmPUuzbaQrQttLtCBMWpgjpt2NVrNmnU38",
+      "explorer": "https://solscan.io/token/CPqzfa1MqifmPUuzbaQrQttLtCBMWpgjpt2NVrNmnU38",
+      "thumb": "thumbs/sol-mv-d-08.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-09",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-09",
+      "name": "D-09 Hands on the Crimp",
+      "kind": "card",
+      "asset": "8kXq9n6WzLZMjfbRhAfauB7oZyaMvyDuJHnmTAgXB7aJ",
+      "explorer": "https://solscan.io/token/8kXq9n6WzLZMjfbRhAfauB7oZyaMvyDuJHnmTAgXB7aJ",
+      "thumb": "thumbs/sol-mv-d-09.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-10",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-10",
+      "name": "D-10 Harmony Punch, Year 2200",
+      "kind": "card",
+      "asset": "ACYS6d1Y3nJL5dJdHLms9TNXqmPGK3Ny4EFMegU9XqYu",
+      "explorer": "https://solscan.io/token/ACYS6d1Y3nJL5dJdHLms9TNXqmPGK3Ny4EFMegU9XqYu",
+      "thumb": "thumbs/sol-mv-d-10.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-11",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-11",
+      "name": "D-11 The Performance Review",
+      "kind": "card",
+      "asset": "FYtibZhWiDFcjY3cR5nY9HbFKy1pwrKUcmt61QioH5De",
+      "explorer": "https://solscan.io/token/FYtibZhWiDFcjY3cR5nY9HbFKy1pwrKUcmt61QioH5De",
+      "thumb": "thumbs/sol-mv-d-11.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-12",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-12",
+      "name": "D-12 Latch Key, Crown Array",
+      "kind": "card",
+      "asset": "8ve3nbYp2L5HZiUqxcoTtJBo3J1sWtYSVYAvxozZZHYf",
+      "explorer": "https://solscan.io/token/8ve3nbYp2L5HZiUqxcoTtJBo3J1sWtYSVYAvxozZZHYf",
+      "thumb": "thumbs/sol-mv-d-12.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-13",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-13",
+      "name": "D-13 Fries Only, Hon",
+      "kind": "card",
+      "asset": "GZvDfqb58AbkPBEcViTvPLLwuaohnvcQ4pbTdtk6cH6g",
+      "explorer": "https://solscan.io/token/GZvDfqb58AbkPBEcViTvPLLwuaohnvcQ4pbTdtk6cH6g",
+      "thumb": "thumbs/sol-mv-d-13.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-14",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-14",
+      "name": "D-14 Sock-Hop Dusty",
+      "kind": "card",
+      "asset": "84QYSMmkUVj3orYaXcQkqzQXbhfttfQV49kTUsY8h1iu",
+      "explorer": "https://solscan.io/token/84QYSMmkUVj3orYaXcQkqzQXbhfttfQV49kTUsY8h1iu",
+      "thumb": "thumbs/sol-mv-d-14.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-15",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-15",
+      "name": "D-15 Letter at the Ring",
+      "kind": "card",
+      "asset": "2Qgs2QjJ42AoxQrJ2dqX7Cs5Xx8AqXbJ8vUmuxh8SLcC",
+      "explorer": "https://solscan.io/token/2Qgs2QjJ42AoxQrJ2dqX7Cs5Xx8AqXbJ8vUmuxh8SLcC",
+      "thumb": "thumbs/sol-mv-d-15.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-16",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-16",
+      "name": "D-16 Pickle's Paper Cap",
+      "kind": "card",
+      "asset": "F5gQJvupBc7GD8ru5FqrQbUZPZb7aoRbw6Yf6FURdrk5",
+      "explorer": "https://solscan.io/token/F5gQJvupBc7GD8ru5FqrQbUZPZb7aoRbw6Yf6FURdrk5",
+      "thumb": "thumbs/sol-mv-d-16.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-17",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-17",
+      "name": "D-17 Filed Under Remarkable",
+      "kind": "card",
+      "asset": "AY8QV1zuZ7fXnMvdpnd7LLYTdMbfgDiAgDyMKdDxPaq1",
+      "explorer": "https://solscan.io/token/AY8QV1zuZ7fXnMvdpnd7LLYTdMbfgDiAgDyMKdDxPaq1",
+      "thumb": "thumbs/sol-mv-d-17.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-18",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-18",
+      "name": "D-18 They Call It Ancient",
+      "kind": "card",
+      "asset": "9quXcptVJX8xMSQLXCPwEQAWgL1j2k6mX57k8tQUcA2",
+      "explorer": "https://solscan.io/token/9quXcptVJX8xMSQLXCPwEQAWgL1j2k6mX57k8tQUcA2",
+      "thumb": "thumbs/sol-mv-d-18.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-19",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-19",
+      "name": "D-19 Mildred's Wrench",
+      "kind": "card",
+      "asset": "E9MxooHj3Ak8TSPxXoinu3ggHYqT5CqYrStTZ3vEaEor",
+      "explorer": "https://solscan.io/token/E9MxooHj3Ak8TSPxXoinu3ggHYqT5CqYrStTZ3vEaEor",
+      "thumb": "thumbs/sol-mv-d-19.webp",
+      "minted": true
+    },
+    {
+      "id": "sol-mv-d-20",
+      "chain": "solana",
+      "collection": "multiverse_dkorn",
+      "num": "D-20",
+      "name": "D-20 A Soft Sorry",
+      "kind": "card",
+      "asset": "GT2EmrCsxGzdWnb68Xy6VBybAHLMYKJ5cz1xtDXHC1zp",
+      "explorer": "https://solscan.io/token/GT2EmrCsxGzdWnb68Xy6VBybAHLMYKJ5cz1xtDXHC1zp",
+      "thumb": "thumbs/sol-mv-d-20.webp",
       "minted": true
     }
   ]

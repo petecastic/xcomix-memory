@@ -39,7 +39,7 @@ Explorer URL patterns:
 - Base: `https://basescan.org/nft/<contract>/<tokenId>`
 - Doge: `https://thedoginalsexplorer.com/inscription/<inscriptionId>`
 
-Collection ids already in the file: `founder`, `series1`, `series1_cw`, `series1_bg`, `motion`, `collector`, `series2_orbit`, `base_edition`, `base_locked`, `series2_harbor`, `doge_strip`, `doge_dig`, `doge_game`, `doge_show`, `doge_pause`, `doge_arc1`, `doge_yard_issue`.
+Collection ids already in the file: `founder`, `series1`, `series1_cw`, `series1_bg`, `motion`, `collector`, `series2_orbit`, `multiverse_dkorn`, `base_edition`, `base_locked`, `series2_harbor`, `doge_strip`, `doge_dig`, `doge_game`, `doge_show`, `doge_pause`, `doge_arc1`, `doge_yard_issue`.
 
 ## Adding a daily-arc (or any newly minted) card
 
